@@ -1,9 +1,12 @@
 import React,{Component} from "react";
 import {BrowserRouter as Router,Route,Link,NavLink} from 'react-router-dom';
+import Search from './Search.js'
+import UnSettings from './UnauthorizedSettings.js'
 import './App.css';
 
 
-class Head extends Component{
+class Header extends Component{
+   
     state ={
         login:"LogIn",
         registration:"Registration",
@@ -13,19 +16,12 @@ render(){
     return(
 <header className="header">
     <div className ="title container header-text">TravelBook</div>
-    <div className="search container">
- 
-        <form name ="myForm">
-            <input type= "text" placeholder="Search"/>
-                    </form>
-    </div>
-    <div className="authorize1 container header-text">{this.state.login}</div>
-    <div className="authorize2 container header-text">{this.state.registration}</div>
-    
-</header>
+  <Search/>
+  <UnSettings login ="Log In" registration ="Registration"></UnSettings>
+    </header>
     )
 }
 
 
 }
-export default Head;
+export default Header;

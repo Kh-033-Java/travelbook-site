@@ -26,8 +26,7 @@ class Main extends Component{
 
     regionClicker(ev,worldSeries) {
       console.log(ev.target.dataItem.dataContext);
-      
-        this.setState({
+         this.setState({
         nameCountry : ev.target.dataItem.dataContext.name,
         idCountry: ev.target.dataItem.dataContext.id,
         map:worldSeries
@@ -40,7 +39,7 @@ class Main extends Component{
     <Map clicker={this.regionClicker}/>
     <Route path = "/travelbook">
           </Route>
-    <Route path = "/clicked">
+    <Route path = "/generalInfo">
     <Icons></Icons>
      <SideBar id={this.state.nameCountry}/>
      </Route>

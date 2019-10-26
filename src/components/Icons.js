@@ -8,26 +8,22 @@ import Notes from "./Notes.js";
 
 
 
-class Icons extends Component{
-   constructor(){
-      super();
-      }
-   render(){
+function Icons (props){
   return (
     <div className="icons container ">
-        <div className ="icon-comp1 ">
+        <div className ="icon-comp2 ">
        <NavLink to ="/notes" >
-           <button className="icon-button1" ></button>
-           </NavLink>
-           </div>
-           <div className ="icon-comp2 ">
-           <NavLink to ="/plans" >
            <button className="icon-button2" ></button>
            </NavLink>
            </div>
            <div className ="icon-comp3 ">
-           <NavLink to ="/gi" >
+           <NavLink to ="/plans" >
            <button className="icon-button3" ></button>
+           </NavLink>
+           </div>
+           <div className ="icon-comp1 ">
+           <NavLink to ="/generalInfo" >
+           <button className="icon-button1" ></button>
            </NavLink>
            </div>
            <div className ="icon-comp4 ">
@@ -37,7 +33,6 @@ class Icons extends Component{
            </div>
     </div>
   );
-   }
-}
+  }
 
 export default Icons;

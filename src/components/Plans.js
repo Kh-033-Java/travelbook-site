@@ -1,18 +1,11 @@
-import React,{Component} from "react";
+import React from "react";
 import './App.css';
-class Plans extends Component{
-    constructor(props){
-        super();
-        
-      }
-
-render(){
+function Plans(props){
     return(
 <aside className="rightbar container">
     <h1>Plans</h1>
-<p>{this.props.name}</p>
+<p>{props.name}</p>
 </aside>
     )
-}
 }
 export default Plans;

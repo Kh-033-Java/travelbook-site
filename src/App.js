@@ -12,7 +12,7 @@ class App extends Component{
   return (
     <Router baseName="/travelbook/">
       <Switch>
-      <Route path="/clicked/">
+      <Route path="/generalInfo/">
         <Main gridClass="grid-cont"/>
         </Route>
         <Route path="/notes/">

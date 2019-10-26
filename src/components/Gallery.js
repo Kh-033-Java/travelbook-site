@@ -6,31 +6,34 @@ class Gallery extends Component{
     constructor(props){
         super();
         this.state = {
-            photos :[{}]
+            photos :[{}],
+            validCountry:true
         }
-        this.getGallery = this.getGallery.bind(this);
-       
-      }
-getGallery(){
-    let endpoint= `http://localhost:8080/country/`+this.props.name + `/photos`;
-    axios.get(endpoint)
-    .then(res => {
-      const photos = res.data;
-      this.setState({ photos });
-      console.log(res.data);
-    })
-    console.log("photots"+this.state.photos);
-}
-render(){
-   this.getGallery();
-    return(
+            }
+      componentDidMount() {
+        let endpoint= `http://localhost:8080/country/${this.props.name}/photos`;
+        axios.get(endpoint)
+        .then(res => {
+         this.setState({ photos:res.data,validCountry:true });
+          console.log(res.data);
+        }).catch(error=>{
+            console.log("error");
+            console.log(error);
+            this.setState({
+              validCountry:false
+            });
+        })
+        console.log("photots"+this.state.photos);
+    }
 
+render(){
+  
+    return(
 <aside className="rightbar container">
     <h1>Gallery</h1>
 <p>{this.props.name}</p>
 <h1>photos</h1>
-
-<p>{this.state.photos[0].link}</p>
+{this.state.photos?<p>{this.state.photos[0].link}</p>:<p>No such country</p>}
 </aside>
     )
 }
