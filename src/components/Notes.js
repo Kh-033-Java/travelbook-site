@@ -1,17 +1,23 @@
 import React from "react";
 import './App.css';
-import * as am4core from "@amcharts/amcharts4/core";
-function Notes(props){
-function addAndFill(){
-  props.worldSeries.getPolygonById(props.id).fill =am4core.color("#67f58d");
+import NotesLook from "./notesComponents/NotesLook";
+import {MyContext} from './context/MyContext.js'
 
-}
+function Notes(props){
     return(
-<aside className="rightbar container">
-    <h1>InNotes</h1>
-<p>{props.name}</p>
-<button onClick={addAndFill}>Add Note</button>
-</aside>
+        <MyContext.Consumer>
+        {(context) => (
+                
+              <aside className="rightbar container">
+                   {/* will be a panel with name and country */}
+                  <h1>In Notes</h1>
+                    <p>In country : {props.name}</p>
+                <NotesLook name={props.name} id ={props.id} worldSeries = {props.worldSeries} typeOfUser = {context.state.currentUser} />
+            </aside>
+            )
+        }
+            </MyContext.Consumer>
     )
 }
 export default Notes;
+

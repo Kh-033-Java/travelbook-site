@@ -1,27 +1,24 @@
-import React,{Component} from "react";
-import {BrowserRouter as Router,Route,Link,NavLink} from 'react-router-dom';
+import React from "react";
 import Search from './Search.js'
-import UnSettings from './UnauthorizedSettings.js'
+import {MyContext} from './context/MyContext.js'
 import './App.css';
+import Settings from "./Settings.js";
 
 
-class Header extends Component{
-   
-    state ={
-        login:"LogIn",
-        registration:"Registration",
-    }
-    
-render(){
+function Header(){
+
     return(
 <header className="header">
     <div className ="title container header-text">TravelBook</div>
   <Search/>
-  <UnSettings login ="Log In" registration ="Registration"></UnSettings>
+  <MyContext.Consumer>
+        {(context) => (
+             <Settings userType={context.state.currentUser}/>   
+              )
+        }
+            </MyContext.Consumer>
     </header>
     )
 }
 
-
-}
 export default Header;

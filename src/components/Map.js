@@ -12,9 +12,12 @@ class Map extends Component {
       properLink:'/travelbook'
     }
   }
+  changeState=()=>{
+    this.setState({ properLink:'/travelbook'});
+  }
+
   componentDidMount() {
     let chart = am4core.create("chartdiv", am4maps.MapChart);
-
     chart.geodata = am4geodata_worldLow;
 
     chart.projection = new am4maps.projections.Miller();
@@ -27,9 +30,7 @@ class Map extends Component {
     polygonTemplate.tooltipText = "{name}";
     polygonTemplate.fill = am4core.color('rgb(204, 204, 204)');
     polygonTemplate.nonScalingStroke = true;
-  
-
-    
+ 
     
     polygonTemplate.events.on('hit',(e) => {
           console.log(e.target.dataItem.dataContext);
@@ -37,26 +38,28 @@ class Map extends Component {
       this.setState({
        properLink :'/generalInfo'
       })
+
       e.target.series.chart.zoomToMapObject(e.target);
     });
-  }
+    }
 
   componentWillUnmount() {
     if (this.chart) {
       this.chart.dispose();
     }
   }
-  
-
+ 
   render() {
 
     return (
-      <main className="mainPage container">
+      <main className="mainPage container" >
       <Link to={this.state.properLink}>
-          <div className="chartdiv"></div>
+          <div className="chartdiv" onClick={this.changeState}></div>
           </Link>
       </main>
+      
     )
+    
   }
 
 }

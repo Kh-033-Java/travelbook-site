@@ -5,11 +5,13 @@ import Head from "./components/header.js";
 import Map from "./components/Map.js";
 import Main from './components/Main.js';
 import Login from './components/login';
+import MyProvider from './components/context/MyContext.js'
 
 class App extends Component{
 
    render(){
   return (
+    <MyProvider>
     <Router baseName="/travelbook/">
       <Switch>
       <Route path="/generalInfo/">
@@ -32,6 +34,7 @@ class App extends Component{
       </Route>
       </Switch>
       </Router>
+      </MyProvider>
   );
    }
 }

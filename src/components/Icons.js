@@ -1,10 +1,7 @@
-import React,{Component} from 'react';
-import {BrowserRouter as Router,Route,Link,NavLink} from 'react-router-dom';
+import React from 'react';
+import {NavLink} from 'react-router-dom';
 import './App.css';
-import SideBar from "./sidebar.js";
-import Head from "./header.js";
-import Map from "./Map.js";
-import Notes from "./Notes.js";
+
 
 
 
@@ -13,23 +10,28 @@ function Icons (props){
     <div className="icons container ">
         <div className ="icon-comp2 ">
        <NavLink to ="/notes" >
-           <button className="icon-button2" ></button>
+           <button className="icon-button2 icons-button" ></button>
            </NavLink>
            </div>
            <div className ="icon-comp3 ">
            <NavLink to ="/plans" >
-           <button className="icon-button3" ></button>
+           <button className="icon-button3 icons-button" ></button>
            </NavLink>
            </div>
            <div className ="icon-comp1 ">
            <NavLink to ="/generalInfo" >
-           <button className="icon-button1" ></button>
+           <button className="icon-button1 icons-button" ></button>
            </NavLink>
            </div>
-           <div className ="icon-comp4 ">
+           <div className ="icon-comp4">
            <NavLink to ="/gallery" >
-           <button className="icon-button4" ></button>
+           <button className="icon-button4 icons-button" ></button>
            </NavLink>
+           </div>
+           <div className="map-comp ">
+             <NavLink to="travelbook">
+            <button className="full-map">Full map</button>
+            </NavLink>
            </div>
     </div>
   );

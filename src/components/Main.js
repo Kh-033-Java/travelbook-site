@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
-import * as am4core from "@amcharts/amcharts4/core";
-import {BrowserRouter as Router,Route,Link,NavLink} from 'react-router-dom';
+import {Route,} from 'react-router-dom';
 import './App.css';
 import SideBar from "./sidebar.js";
 import Head from "./header.js";
@@ -53,7 +52,7 @@ class Main extends Component{
      </Route>
      <Route path = "/plans">
         <Icons></Icons>
-     <Plans name={this.state.nameCountry}/>
+     <Plans name={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map}/>
      </Route>
      </div>
   );
