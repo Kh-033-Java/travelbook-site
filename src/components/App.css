@@ -136,7 +136,8 @@ aside {
 grid-area: rightbar;
 }
 .header,.rightbar{
-    background-color: rgb(150, 191, 214);
+    /*background-color: rgb(150, 191, 214);*/
+    background-color: #d3f8fe;
  }
 
 .login {
