@@ -2,13 +2,12 @@ import React from "react";
 import '../App.css';
 import AuthorizedNotes from './AuthorizedNotes.js'
 import NotesWrapper from "./NotesWrapper.js";
-import * as auth from '../context/MyContext.js';
+import isAuthorized from '../checker/authorizationChecker'
 
 
 function NotesLook(props){
-
     return(
-        !auth.isAuthorized(props.typeOfUser)?
+       !isAuthorized()?
         <React.Fragment>
 <NotesWrapper/>
 </React.Fragment>

@@ -1,17 +1,13 @@
 import React,{Component} from 'react';
-import {BrowserRouter as Router,Route,Link,NavLink,Switch} from 'react-router-dom';
-import SideBar from "./components/sidebar.js";
-import Head from "./components/header.js";
-import Map from "./components/Map.js";
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Main from './components/Main.js';
-import Login from './components/login';
-import MyProvider from './components/context/MyContext.js'
+
 
 class App extends Component{
 
    render(){
   return (
-    <MyProvider>
+  
     <Router baseName="/travelbook/">
       <Switch>
       <Route path="/generalInfo/">
@@ -29,12 +25,12 @@ class App extends Component{
         <Route path="/travelbook/">
         <Main gridClass="grid-cont-initially"/>
       </Route>
-      <Route >
+      <Route>
         <h1>Not Found</h1>
       </Route>
       </Switch>
       </Router>
-      </MyProvider>
+    
   );
    }
 }
