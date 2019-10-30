@@ -46,6 +46,10 @@ function Main(props){
         <Icons></Icons>
      <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
      </Route>
+     <Route path = "/note">
+        <Icons></Icons>
+     <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
+     </Route>
      </div>
   );
    }
