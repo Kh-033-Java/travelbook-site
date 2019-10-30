@@ -1,18 +1,15 @@
-import React,{Component} from "react";
+import React from "react";
+import PlanLook from './planComponents/PlanLook.js'
 import './App.css';
-class Plans extends Component{
-    constructor(props){
-        super();
-        
-      }
-
-render(){
+function Plans(props){
     return(
-<aside className="rightbar container">
-    <h1>Plans</h1>
-<p>{this.props.name}</p>
-</aside>
+             <aside className="rightbar container">
+                   {/* will be a panel with name and country */}
+                  <h1> Plans</h1>
+                    <p>In country : {props.name}</p>
+                  <PlanLook name={props.name} id ={props.id} worldSeries = {props.worldSeries} />
+            </aside>
+    
     )
-}
 }
 export default Plans;
