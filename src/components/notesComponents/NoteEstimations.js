@@ -4,7 +4,7 @@ import '../App.css';
 function NotesEstimations(props){
 
     return (
-  <div className ="estimations container">
+          <div className ="estimations container">
    
           </div>
 

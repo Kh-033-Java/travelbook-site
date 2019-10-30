@@ -10,11 +10,11 @@ function NoteMain(props){
     return (
    <div className = "note-main-comp container">
        <NoteOwner/>
-    
-       <NoteProperties city = {props.city} date = {props.date}/>
-       <div className="description container"></div>
-       <NotesPhotos/>
-       <NoteEstimations/>
+        <NoteProperties city = {props.note.city} date = {props.note.date}/>
+       <div className="description container">{props.note.text}</div>
+       <NotesPhotos photos ={props.note.photos}/>
+       <NoteEstimations people = {props.note.peopleEstimate} prices ={props.note.peopleEstimate}
+        cuisine ={props.note.peopleEstimate} impression ={props.note.peopleEstimate}/>
    </div>
     );
 }

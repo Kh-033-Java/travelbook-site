@@ -9,11 +9,11 @@ function NotesLook(props){
     return(
        !isAuthorized()?
         <React.Fragment>
-<NotesWrapper/>
+<NotesWrapper setId={props.setId}/>
 </React.Fragment>
 :
 <React.Fragment>
-<AuthorizedNotes worldSeries={props.worldSeries} id = {props.id}></AuthorizedNotes>
+<AuthorizedNotes worldSeries={props.worldSeries} id = {props.id} setId={props.setId}></AuthorizedNotes>
 </React.Fragment>
     )
 }

@@ -12,7 +12,7 @@ function AuthNotes(props){
     return(
         <React.Fragment>
             <OnlyMyNotes/>
-          <NotesWrapper/>
+          <NotesWrapper setId={props.setId}/>
         <button onClick={addAndFill}>Add Note</button>
         </React.Fragment>
     )

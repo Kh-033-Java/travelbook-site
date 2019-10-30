@@ -2,26 +2,32 @@ import React,{Component} from "react";
 import '../App.css';
 import NotesHeader from "./NotesHeader";
 import NoteMain from "./NoteMain";
+import * as actions from '../../actions/notesActions'
 import NotesFooter from "./NotesFooter";
 
 class Note extends Component{
 constructor(props){
     super();
     this.state ={
-            title : 'title',
-            countryName:"sth",
-            city:"city",
-            date :'date'
+        //temporary
+           note: {
+               title:"",
+               city :"",
+               date:"",
+               photos :{}
+           }
     }
 }
 componentDidMount(){
-//in this component will be axios 
+    actions.getNoteById(this.props.countryName,this.props.noteId).then(res=>
+        this.setState({notes : res})
+        );
 }
     render(){  
 return(
     <aside className="rightbar note-whole-comp">
-<NotesHeader title = {this.state.title} countryName={this.state.name}/>
-<NoteMain city = {this.state.city} date ={this.state.date}/>
+<NotesHeader title = {this.state.note.title} countryName={this.props.name}/>
+<NoteMain note = {this.state.note}/>
 <NotesFooter/>
 </aside>
 );

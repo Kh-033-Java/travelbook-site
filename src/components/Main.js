@@ -8,6 +8,7 @@ import Notes from "./Notes.js";
 import Plans from "./Plans.js";
 import Gallery from "./Gallery.js";
 import Icons from './Icons';
+import Note from './notesComponents/Note.js';
 
 
 
@@ -23,6 +24,11 @@ function Main(props){
         map:worldSeries
       })
    }
+   function setNoteID(id){
+      setState({
+         idNote:id
+      })
+   }
 
   return (
       <div className = {props.gridClass}>
@@ -36,7 +42,7 @@ function Main(props){
      </Route>
        <Route path = "/notes">
         <Icons></Icons>
-     <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} />
+     <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
      </Route>
      <Route path = "/gallery">
         <Icons></Icons>
@@ -48,7 +54,7 @@ function Main(props){
      </Route>
      <Route path = "/note">
         <Icons></Icons>
-     <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
+     <Note countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
      </div>
   );
