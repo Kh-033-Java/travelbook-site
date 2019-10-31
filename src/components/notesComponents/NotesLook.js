@@ -8,12 +8,10 @@ import isAuthorized from '../checker/authorizationChecker'
 function NotesLook(props){
     return(
        !isAuthorized()?
-        <React.Fragment>
-<NotesWrapper setId={props.setId}/>
-</React.Fragment>
+    <NotesWrapper setId={props.setId}/>
 :
 <React.Fragment>
-<AuthorizedNotes worldSeries={props.worldSeries} id = {props.id} setId={props.setId}></AuthorizedNotes>
+<AuthorizedNotes worldSeries={props.worldSeries} id= {props.id} setId={props.setId}/>
 </React.Fragment>
     )
 }

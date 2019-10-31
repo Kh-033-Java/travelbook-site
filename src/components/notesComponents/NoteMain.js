@@ -8,7 +8,7 @@ import NotesPhotos from './NotePhotos';
 function NoteMain(props){
 
     return (
-   <div className = "note-main-comp container">
+   <div className = "note-main-comp main-sidebar container">
        <NoteOwner/>
         <NoteProperties city = {props.note.city} date = {props.note.date}/>
        <div className="description container">{props.note.text}</div>

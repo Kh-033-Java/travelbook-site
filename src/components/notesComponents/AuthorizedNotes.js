@@ -3,6 +3,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import '../App.css';
 import NotesWrapper from "./NotesWrapper.js";
 import OnlyMyNotes from "./OnlyMyNotes";
+import ToAddFooter from '../sidebarComponents/ToAddFooter.js';
 
 function AuthNotes(props){
     function addAndFill(){
@@ -10,11 +11,12 @@ function AuthNotes(props){
       }
       
     return(
-        <React.Fragment>
+             <div className="listnotes-main-comp main-sidebar container">
             <OnlyMyNotes/>
           <NotesWrapper setId={props.setId}/>
-        <button onClick={addAndFill}>Add Note</button>
-        </React.Fragment>
+                        </div>     
+        
+       
     )
 }
 

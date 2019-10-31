@@ -1,8 +1,7 @@
 import React from 'react';
-import './NoteStyling.css'
+import '../notesComponents/NoteStyling.css'
 import '../App.css';
-function NotesHeader(props){
-
+function SidebarHeader(props){
     return (
        <React.Fragment>
 <div className ="note-title container">{props.title}</div>
@@ -10,4 +9,4 @@ function NotesHeader(props){
 </React.Fragment>
     );
 }
-export default NotesHeader;
+export default SidebarHeader;
