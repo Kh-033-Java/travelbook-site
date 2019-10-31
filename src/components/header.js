@@ -1,31 +1,20 @@
-import React,{Component} from "react";
-import {BrowserRouter as Router,Route,Link,NavLink} from 'react-router-dom';
+import React from "react";
+import Search from './Search.js'
 import './App.css';
+import Settings from "./Settings.js";
 
 
-class Head extends Component{
-    state ={
-        login:"LogIn",
-        registration:"Registration",
-    }
-    
-render(){
+function Header(){
     return(
 <header className="header">
     <div className ="title container header-text">TravelBook</div>
-    <div className="search container">
- 
-        <form name ="myForm">
-            <input type= "text" placeholder="Search"/>
-                    </form>
-    </div>
-    <div className="authorize1 container header-text">{this.state.login}</div>
-    <div className="authorize2 container header-text">{this.state.registration}</div>
+  <Search/>
+  
+             <Settings/>   
+             
     
-</header>
+    </header>
     )
 }
 
-
-}
-export default Head;
+export default Header;
