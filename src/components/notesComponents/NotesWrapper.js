@@ -1,10 +1,11 @@
 import React from "react";
 import {NavLink} from 'react-router-dom'
 import '../App.css';
+import './AllNotesPage.css';
 
 function NotesWrapper(props){
     return(
-<div>
+<div className={props.classWr}>
 <p>All Public notes</p>
 <NavLink to="/notes">
     <div setId = {props.setId}></div>{/*container with small description on click will be a function

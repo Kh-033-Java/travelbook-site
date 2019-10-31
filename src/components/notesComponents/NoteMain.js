@@ -4,11 +4,12 @@ import NoteOwner from './NoteOwner.js'
 import NoteProperties from './NoteProperties.js'
 import NoteEstimations from './NoteEstimations.js'
 import '../App.css';
+import"../sidebarComponents/SideBar.css";
 import NotesPhotos from './NotePhotos';
 function NoteMain(props){
 
     return (
-   <div className = "note-main-comp main-sidebar container">
+   <div className = "main-comp main-sidebar container">
        <NoteOwner/>
         <NoteProperties city = {props.note.city} date = {props.note.date}/>
        <div className="description container">{props.note.text}</div>
