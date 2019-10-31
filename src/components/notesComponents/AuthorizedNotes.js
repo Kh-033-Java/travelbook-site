@@ -1,21 +1,20 @@
-import React from "react";
-import * as am4core from "@amcharts/amcharts4/core";
+import React,{Component} from "react";
 import '../App.css';
 import NotesWrapper from "./NotesWrapper.js";
 import OnlyMyNotes from "./OnlyMyNotes";
+import './AllNotesPage.css';
 
-function AuthNotes(props){
-    function addAndFill(){
-        props.worldSeries.getPolygonById(props.id).fill =am4core.color("#67f58d");
-      }
-      
+
+class AuthNotes extends Component{
+     
+      render(){
     return(
-        <React.Fragment>
-            <OnlyMyNotes/>
-          <NotesWrapper/>
-        <button onClick={addAndFill}>Add Note</button>
-        </React.Fragment>
-    )
+             <div className="list-main-auth main-sidebar container">
+            <OnlyMyNotes className="only-my-checkbox container"/>
+          <NotesWrapper classWr={"allNotes container"} setId={this.props.setId}/>
+             </div>     
+                )
+      }
 }
 
 export default AuthNotes;

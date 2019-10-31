@@ -22,8 +22,14 @@ class App extends Component{
         <Route path="/plans/">
         <Main gridClass="grid-cont"/>
         </Route>
+        <Route path="/note/">
+        <Main gridClass="grid-cont"/>
+        </Route>
         <Route path="/travelbook/">
         <Main gridClass="grid-cont-initially"/>
+      </Route>
+      <Route path="/errorPage/">
+        <h1>Error</h1>
       </Route>
       <Route>
         <h1>Not Found</h1>

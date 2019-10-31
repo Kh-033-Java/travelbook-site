@@ -1,0 +1,11 @@
+
+ .only-my-checkbox{
+     grid-row: 1;
+    vertical-align: center;
+     padding:2px;
+    
+ }
+
+  .allNotes{
+    grid-row: 2;
+}

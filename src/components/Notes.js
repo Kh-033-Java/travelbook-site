@@ -1,17 +1,30 @@
 import React from "react";
 import './App.css';
-import NotesLook from "./notesComponents/NotesLook";
+import"./sidebarComponents/SideBar.css";
+import './notesComponents/AllNotesPage.css';
+import isAuthorized from './checker/authorizationChecker'
+import UnAuthorizedNotes from './notesComponents/UnAuthorizedNotes.js';
+import AuthorizedNotes from './notesComponents/AuthorizedNotes.js'
+import Header from './sidebarComponents/SidebarHeader.js';
+import ToAddFooter from './sidebarComponents/ToAddFooter.js';
+
 
 function Notes(props){
     return(
-                        
-              <aside className="rightbar container">
-                   {/* will be a panel with name and country */}
-                  <h1>In Notes</h1>
-                    <p>In country : {props.name}</p>
-                <NotesLook name={props.name} id ={props.id} worldSeries = {props.worldSeries} />
-            </aside>
+       !isAuthorized()?
+        <aside className="rightbar whole-comp-no-footer container">
+        <Header title = "Notes" countryName={props.name}/>
+    <UnAuthorizedNotes />
+</aside>
+:
+<aside className="rightbar whole-comp container">
+<Header title = "Notes" countryName={props.name}/>
+<AuthorizedNotes worldSeries={props.worldSeries} id= {props.id} setId={props.setId}/>
+<ToAddFooter text="add note" path="note"/>{/*change path to add note*/} 
+</aside>
+                                         
          )
-}
+    }
+
 export default Notes;
 

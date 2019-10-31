@@ -6,7 +6,7 @@ import OnlyMyPlans from "./OnlyMyPlans.js";
 
 function AuthPlans(props){
     function addAndFill(){
-        props.worldSeries.getPolygonById(props.id).fill =am4core.color("#67f58d");
+        props.worldSeries.getPolygonById(props.id).fill =am4core.color("#dde5ed");
       }
       
     return(
