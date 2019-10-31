@@ -10,7 +10,6 @@ class Notes extends Component {
 
     addAndFill() {
         this.props.worldSeries.getPolygonById(this.props.id).fill = am4core.color("#67f58d");
-
     }
 
     render() {

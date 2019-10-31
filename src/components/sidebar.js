@@ -19,6 +19,10 @@ class SideBar extends Component {
                 <NavLink to="/gi">
                     To General Info
                 </NavLink>
+                <br/>
+                <NavLink to="/users/login/map">
+                    To user map
+                </NavLink>
             </aside>
         )
     }

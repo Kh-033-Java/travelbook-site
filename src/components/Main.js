@@ -20,20 +20,21 @@ class Main extends Component {
         this.state = {
             nameCountry: "",
             idCountry: "",
-            login: "ivanmalik"
+            login: "ivanmalik" // mocking user login
         }
 
         this.regionClicker = this.regionClicker.bind(this);
     }
 
     regionClicker(ev, worldSeries) {
-        console.log(ev.target.dataItem.dataContext);
+        // console.log(ev.target.dataItem.dataContext);
 
         this.setState({
             nameCountry: ev.target.dataItem.dataContext.name,
             idCountry: ev.target.dataItem.dataContext.id,
             map: worldSeries
         })
+        // console.log(ev.target.dataItem.dataContext.id);
     }
 
     render() {
@@ -63,9 +64,9 @@ class Main extends Component {
                     <Icons></Icons>
                     <GeneralInfo name={this.state.nameCountry}/>
                 </Route>
-                <Route path="/users/:log/map">
+                <Route path="/users/login/map">
                     <Icons></Icons>
-                    <UserMap name={this.state.nameCountry} login={this.state.login}/>
+                    <UserMap name={this.state.nameCountry} login={this.state.login} worldSeries={this.state.map}/>
                 </Route>
             </div>
         );
