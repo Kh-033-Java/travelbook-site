@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './App.css';
+import VisitedCountry from './VisitedCountry';
 
 
 
@@ -8,6 +9,12 @@ import './App.css';
 function Icons (props){
   return (
     <div className="icons container ">
+
+        <div className="visited ">
+            <React.Fragment>
+                <VisitedCountry/>
+            </React.Fragment>
+        </div>
         <div className ="icon-comp2 ">
        <NavLink to ="/notes" >
            <button className="icon-button2 icons-button" ></button>

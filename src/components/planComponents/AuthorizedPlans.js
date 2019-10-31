@@ -13,8 +13,8 @@ function AuthPlans(props){
         <React.Fragment>
             <OnlyMyPlans/>
             <PlansWrapper/>
-        <button onClick={addAndFill}>Add Plan</button>
-              </React.Fragment>
+            <button onClick={addAndFill}>Add Plan</button>
+        </React.Fragment>
     )
 }
 

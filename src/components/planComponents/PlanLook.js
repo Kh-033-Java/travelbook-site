@@ -10,12 +10,12 @@ function PlansLook(props){
     return(
         !isAuthorized()?
         <React.Fragment>
-<PlansWrapper/>
-</React.Fragment>
-:
-<React.Fragment>
-<AuthorizedPlans worldSeries={props.worldSeries} id ={props.id}/>
-</React.Fragment>
+            <PlansWrapper/>
+        </React.Fragment>
+        :
+        <React.Fragment>
+            <AuthorizedPlans worldSeries={props.worldSeries} id ={props.id}/>
+        </React.Fragment>
     )
 }
 export default PlansLook;

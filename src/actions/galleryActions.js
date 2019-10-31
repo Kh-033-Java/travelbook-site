@@ -10,12 +10,10 @@ export const getPublicUnAuthorized = async(nameOfCountry)=>{
       ).catch(error=>{
         throw error;
       })
-  }
-
-
+  };
 
 export const getAllPublicAuthorized = (nameOfCountry,userLogin)=>{
-  let endpoint= `http://localhost:8080/country/${nameOfCountry}/photos/${userLogin}`;
+  let endpoint= `http://localhost:8080/country/${nameOfCountry}/photos?user=${userLogin}`;
   return axios.get(endpoint)
   .then(res =>{ 
     console.log(res.data);
@@ -25,6 +23,7 @@ export const getAllPublicAuthorized = (nameOfCountry,userLogin)=>{
   })
 
 };
+
 export const getOnlyUsers = (nameOfCountry,userLogin)=>{
   let endpoint= `http://localhost:8080/country/${nameOfCountry}/photos/private/${userLogin}`;//endpoint change 
   return axios.get(endpoint)

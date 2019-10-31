@@ -5,7 +5,7 @@ import isAuthorized from './checker/authorizationChecker'
 
 class Gallery extends Component{
     constructor(props){
-        super();
+        super(props);
         this.state = {
             photos : [{}],
                      validCountry:false
