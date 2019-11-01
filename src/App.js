@@ -32,10 +32,10 @@ class App extends Component {
                         <Main gridClass="grid-cont-initially"/>
                     </Route>
                     <Route path="/my-photos">
-                        <Main gridClass="grid-cont-initially"/>
+                        <Main gridClass="grid-cont"/>
                     </Route>
                     <Route path="/general-photos">
-                        <Main gridClass="grid-cont-initially"/>
+                        <Main gridClass="grid-cont"/>
                     </Route>
                     <Route>
                         <h1>Not Found</h1>

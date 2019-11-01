@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import axios from "axios";
 
 
-
-
 class MyPhotos extends Component {
     constructor(props) {
         super(props);
@@ -11,6 +9,10 @@ class MyPhotos extends Component {
             photos: [{}],
             validCountry: true
         }
+    }
+
+    goTo(route) {
+        this.props.history.replace(`/${route}`);
     }
 
     componentDidMount() {
@@ -37,9 +39,15 @@ class MyPhotos extends Component {
                 <div>
                     <h1>My Photo</h1>
                     <p>{this.props.name}</p>
+                    <button
+                        className="btn-margin"
+                        onClick={this.goTo.bind(this, "gallery")}
+                    >
+                        Back
+                    </button>
                     <h1>photos</h1>
                     {photos ? <p>{photos.map((value, index) =>
-                        <img src={value} alt={"No image"}/>
+                        <img src={value} alt={"No image"} className="photo"/>
                     )}</p> : <p>No such country</p>}
                 </div>
             </aside>

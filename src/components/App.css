@@ -32,7 +32,6 @@
 header {
     grid-area: header;
     display: grid;
-    grid-auto-flow: rows;
     margin: 0;
     padding: 5px;
     grid-gap: 10px;
@@ -167,3 +166,10 @@ aside {
     height: 100%;
 }
 
+.photo {
+    grid-column: 3;
+    width: 30%;
+    height: 30%;
+    margin: 5px;
+    padding: 5px;
+}
