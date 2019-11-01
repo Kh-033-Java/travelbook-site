@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './App.css';
 import axios from 'axios';
+import {Route, NavLink, Redirect} from 'react-router-dom';
 
 class GeneralInfo extends Component {
 
@@ -15,6 +16,7 @@ class GeneralInfo extends Component {
 
     componentDidMount() {
         const endpoint = `http://localhost:8080/country/` + this.props.name + `/description`;
+        console.log(endpoint);
         axios.get(endpoint)
             .then(response => {
                 const generalInfo = response.data;
@@ -30,6 +32,9 @@ class GeneralInfo extends Component {
     render() {
         return (
             <aside className="rightbar container">
+                <NavLink to="/users/map">
+                    To user map
+                </NavLink>
                 <h1>General Information about country</h1>
                 <p>Country name - {this.state.generalInfo.name}</p>
                 <p>Capital - {this.state.description.capital} </p>

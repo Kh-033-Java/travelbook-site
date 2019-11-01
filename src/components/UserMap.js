@@ -10,15 +10,16 @@ class UserMap extends Component {
         this.state = {
             visitedCountries: [{}],
             countriesPlannedToVisit: [{}],
-            // visitedCountriesIds: [{}],
-            // countriesPlannedToVisitIds: [{}]
         };
         this.showUserPlannedCountries = this.showUserPlannedCountries.bind(this);
         this.showUserVisitedCountries = this.showUserVisitedCountries.bind(this);
     }
 
     componentDidMount() {
-        const endpoint = `http://localhost:8080/users/` + this.props.login + `/map`;
+        const login = "ivanmalik"; // mocking user login
+        const endpoint = `http://localhost:8080/users/` + login + `/map`;
+        // const endpoint = `http://localhost:8080/users/ivanmalik/map`;
+        // console.log(endpoint);
         axios.get(endpoint)
             .then(response => {
                 const visitedCountries = response.data.visitedCountries;
@@ -88,7 +89,7 @@ class UserMap extends Component {
     render() {
         return (
             <aside className="rightbar container">
-                <h1 style={{color: '#67f58d'}}>User's visited coutries : </h1>
+                <h1 style={{color: '#67f58d'}}>User's visited countries : </h1>
                 {this.state.visitedCountries.map(country => <p>{country.name}</p>)}
 
                 <h1 style={{color: '#E111F0'}}>User's planned countries : </h1>

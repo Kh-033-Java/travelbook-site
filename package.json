@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@amcharts/amcharts4": "^4.7.4",
+    "@amcharts/amcharts4": "^4.7.6",
     "@amcharts/amcharts4-geodata": "^4.1.8",
     "axios": "^0.19.0",
     "react": "^16.11.0",
