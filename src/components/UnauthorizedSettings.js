@@ -6,11 +6,11 @@ localStorage.setItem("token","sth");
 }
     return(
             <div className="settings">
-         <div className="authorize1 container header-text">
+         <div className="authorize1  header-text">
              <div>Log in</div>
              <button onClick={authorize}>authorize</button>
          </div>
-    <div className="authorize2 container header-text">Registration</div>
+    <div className="authorize2  header-text">Registration</div>
     </div>
        )
     }

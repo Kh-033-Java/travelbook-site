@@ -12,15 +12,15 @@ import ToAddFooter from './sidebarComponents/ToAddFooter.js';
 function Notes(props){
     return(
        !isAuthorized()?
-        <aside className="rightbar whole-comp-no-footer container">
+        <aside className="rightbar whole-comp-no-footer ">
         <Header title = "Notes" countryName={props.name}/>
     <UnAuthorizedNotes />
 </aside>
 :
-<aside className="rightbar whole-comp container">
+<aside className="rightbar whole-comp ">
 <Header title = "Notes" countryName={props.name}/>
 <AuthorizedNotes worldSeries={props.worldSeries} id= {props.id} setId={props.setId}/>
-<ToAddFooter text="add note" path="note"/>{/*change path to add note*/} 
+
 </aside>
                                          
          )

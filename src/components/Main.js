@@ -9,13 +9,12 @@ import Plans from "./Plans.js";
 import Gallery from "./Gallery.js";
 import Icons from './Icons';
 import Note from './notesComponents/Note.js';
+import NewNote from './notesComponents/NewNote.js';
 
 
 
 function Main(props){
    const [state,setState] = useState({ });
-
-
     function regionClicker(ev,worldSeries) {
       console.log(ev.target.dataItem.dataContext);
          setState({
@@ -55,6 +54,10 @@ function Main(props){
      <Route path = "/note">
         <Icons></Icons>
      <Note countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
+     </Route>
+     <Route path = "/newnote">
+        <Icons></Icons>
+     <NewNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
      </div>
   );
