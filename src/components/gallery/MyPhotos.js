@@ -11,9 +11,6 @@ class MyPhotos extends Component {
         }
     }
 
-    goTo(route) {
-        this.props.history.replace(`/${route}`);
-    }
 
     componentDidMount() {
         let endpoint = `http://localhost:8080/country/${this.props.name}/photos/${this.props.login}`;
@@ -39,12 +36,6 @@ class MyPhotos extends Component {
                 <div>
                     <h1>My Photo</h1>
                     <p>{this.props.name}</p>
-                    <button
-                        className="btn-margin"
-                        onClick={this.goTo.bind(this, "gallery")}
-                    >
-                        Back
-                    </button>
                     <h1>photos</h1>
                     {photos ? <p>{photos.map((value, index) =>
                         <img src={value} alt={"No image"} className="photo"/>
