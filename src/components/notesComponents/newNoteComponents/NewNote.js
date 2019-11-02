@@ -11,7 +11,7 @@ function NewNote(props){
 return(
  <aside className="rightbar whole-comp ">
 <Header title = "New Note" countryName={props.countryName}/>
-<NewNoteMain countryName={props.countryName} />
+<NewNoteMain countryName={props.countryName} idCountry={props.id} worldSeries = {props.worldSeries } />
 <FooterSubmit text ="edit note" for="addNote"/>
 </aside>
 );
