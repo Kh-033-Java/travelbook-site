@@ -1,4 +1,6 @@
-
+*{
+    outline: none;
+}
 .note-property-city{
         grid-row: 2;
         grid-column: 1;

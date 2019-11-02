@@ -15,7 +15,7 @@ class AuthNotes extends Component{
             <OnlyMyNotes />
           <NotesWrapper classWr={"allNotes container"} setId={this.props.setId}/>
              </div>   
-             <ToAddFooter text="add note" path="note"/>
+             <ToAddFooter text="add note" path="newnote"/>
              </React.Fragment>
                 )
       }

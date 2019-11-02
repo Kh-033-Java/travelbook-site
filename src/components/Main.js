@@ -9,7 +9,7 @@ import Plans from "./Plans.js";
 import Gallery from "./Gallery.js";
 import Icons from './Icons';
 import Note from './notesComponents/Note.js';
-import NewNote from './notesComponents/NewNote.js';
+import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 
 
 

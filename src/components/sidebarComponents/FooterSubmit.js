@@ -5,7 +5,7 @@ import '../App.css';
 function FooterSubmit(props){
     return (
   <div className ="sidebar-footer container">
-     <input type='submit' name="addNoteSubmit" form ={props.for} value="Add Note"/>
+     <input type='submit' name="addNoteSubmit" className="add-note-button" form ={props.for} value="Add Note"/>
  </div>
 
     );

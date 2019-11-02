@@ -26,8 +26,9 @@ componentDidMount(){
     actions.getNoteById(this.props.countryName,/*this.props.noteId*/49).then(res=>{
         console.log(res);
         this.setState({note : res[0]})
-    }
-        );
+    })
+    
+      
 }
     render(){  
 return(
