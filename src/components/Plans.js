@@ -1,16 +1,26 @@
 import React from "react";
-import PlanLook from './planComponents/PlanLook.js'
 import './App.css';
-function Plans(props){
+import isAuthorized from "./checker/authorizationChecker";
+import Header from "./sidebarComponents/SidebarHeader";
+import ToAddFooter from "./sidebarComponents/ToAddFooter";
+import AuthorizedPlans from "./planComponents/AuthorizedPlans.js"
+import UnAuthorizedPlans from "./planComponents/UnAuthorizedPlans";
 
+function Plans(props){
     return(
-             <aside className="rightbar container">
-                   {/* will be a panel with name and country */}
-                  <h1> Plans</h1>
-                    <p>In country : {props.name}</p>
-                  <PlanLook name={props.name} id ={props.id} worldSeries = {props.worldSeries} />
+        !isAuthorized()?
+            <aside className="rightbar whole-comp-no-footer container">
+                <Header title = "Plans" countryName={props.name}/>
+                <UnAuthorizedPlans />
+            </aside>
+            :
+            <aside className="rightbar whole-comp container">
+                <Header title = "Plans" countryName={props.name}/>
+                <AuthorizedPlans worldSeries={props.worldSeries} id= {props.id} setId={props.setId}/>
+                <ToAddFooter text="add plan" path="plan"/>
             </aside>
 
     )
 }
+
 export default Plans;

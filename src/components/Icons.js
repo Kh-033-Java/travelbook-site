@@ -1,19 +1,19 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './App.css';
-import VisitedCountry from './VisitedCountry';
+import VisitedCountryCheckBox from './VisitedCountryCheckBox';
 
 
 
 
 function Icons (props){
+
+
   return (
     <div className="icons container ">
 
         <div className="visited ">
-            <React.Fragment>
-                <VisitedCountry/>
-            </React.Fragment>
+              <VisitedCountryCheckBox countryName={props.nameCountry} id={props.id} worldSeries={props.worldSeries}/>
         </div>
         <div className ="icon-comp2 ">
        <NavLink to ="/notes" >

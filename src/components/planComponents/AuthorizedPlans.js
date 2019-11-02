@@ -4,9 +4,9 @@ import '../App.css';
 import PlansWrapper from "./PlansWrapper.js";
 import OnlyMyPlans from "./OnlyMyPlans.js";
 
-function AuthPlans(props){
+function AuthorizedPlans(props){
     function addAndFill(){
-        props.worldSeries.getPolygonById(props.id).fill =am4core.color("#dde5ed");
+        props.worldSeries.getPolygonById(props.id).fill = am4core.color("#dde5ed");
       }
       
     return(
@@ -18,4 +18,4 @@ function AuthPlans(props){
     )
 }
 
-export default AuthPlans;
+export default AuthorizedPlans;

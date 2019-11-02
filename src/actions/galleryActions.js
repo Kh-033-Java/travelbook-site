@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 export const getPublicUnAuthorized = (nameOfCountry)=>{
-      let endpoint= `http://localhost:8080/country/${nameOfCountry}/photos`;
+      let endpoint= `http://localhost:8081/country/${nameOfCountry}/photos`;
       return axios.get(endpoint)
       .then(res =>{ 
         console.log(res.data);

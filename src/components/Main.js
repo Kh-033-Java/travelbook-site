@@ -9,6 +9,7 @@ import Plans from "./Plans.js";
 import Gallery from "./Gallery.js";
 import Icons from './Icons';
 import Note from './notesComponents/Note.js';
+import Plan from "./planComponents/Plan";
 
 
 
@@ -30,33 +31,43 @@ function Main(props){
       })
    }
 
+    function setPlanID(id){
+        setState({
+            idPlan:id
+        })
+    }
+
   return (
       <div className = {props.gridClass}>
-    <Head/>
-    <Map clicker={regionClicker}/>
-    <Route path = "/travelbook">
+          <Head/>
+          <Map clicker={regionClicker}/>
+          <Route path = "/travelbook">
           </Route>
-    <Route path = "/generalInfo">
-    <Icons></Icons>
-     <SideBar id={state.nameCountry}/>
-     </Route>
-       <Route path = "/notes">
-        <Icons></Icons>
-     <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
-     </Route>
-     <Route path = "/gallery">
-        <Icons></Icons>
-     <Gallery name={state.nameCountry}/>
-     </Route>
-     <Route path = "/plans">
-        <Icons></Icons>
-     <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
-     </Route>
-     <Route path = "/note">
-        <Icons></Icons>
-     <Note countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
-     </Route>
-     </div>
+          <Route path = "/generalInfo">
+              <Icons countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map}></Icons>
+              <SideBar id={state.nameCountry}/>
+          </Route>
+          <Route path = "/notes">
+              <Icons></Icons>
+              <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
+          </Route>
+          <Route path = "/gallery">
+              <Icons></Icons>
+              <Gallery name={state.nameCountry}/>
+          </Route>
+          <Route path = "/plans">
+              <Icons></Icons>
+              <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} planId={setPlanID} />
+          </Route>
+          <Route path = "/note">
+              <Icons></Icons>
+              <Note countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
+          </Route>
+          <Route path = "/plan">
+              <Icons></Icons>
+              <Plan countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map} planId={state.idPlan} />
+          </Route>
+      </div>
   );
    }
 

@@ -9,7 +9,7 @@
 .whole-comp-no-footer{
     display : grid;
     grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: 0.85fr 9fr;
+    grid-template-rows: 0.91fr 9fr;
     grid-column-gap: 2px;
     grid-row-gap: 2px;
     

@@ -23,8 +23,8 @@ export const getPublicAndPrivatePlans = async(nameOfCountry, login)=>{
 };
 
 
-export const getPlansById = async(nameOfCountry, idOfPlan)=>{
-    let endpoint= `http://localhost:8080/country/${nameOfCountry}/plans/${idOfPlan}`;
+export const getPlanById = async(nameOfCountry, idOfPlan)=>{
+    let endpoint= `http://localhost:8081/country/${nameOfCountry}/plans/${idOfPlan}`;
     return axios.get(endpoint)
         .then(res =>{
             console.log(res.data);

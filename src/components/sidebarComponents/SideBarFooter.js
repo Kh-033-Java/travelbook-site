@@ -1,10 +1,10 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
 import '../notesComponents/NoteStyling.css'
-import '../App.css';
+import '../SideBar.css';
+
 function SideBarFooter(props){
     return (
-  <div className ="note-footer container">
+  <div className ="sidebar-footer container">
                 {props.text}
                    </div>
 

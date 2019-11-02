@@ -12,19 +12,18 @@ export default class OnlyMyPlans extends Component {
     }
     componentDidMount() {
         let endpointCheckedTrue = 'http://localhost:8081/country/' + this.props.name + '/plans/private?user=' + localStorage.getItem("login");
-        let endpointCheckedFalse = 'http://localhost:8081/country/' + this.props.name + '/plans/notprivate=' + localStorage.getItem("login");
-        this.state.isChecked ?
+        // this.state.isChecked ?
             axios.get(endpointCheckedTrue)
                 .then(response => {
                     this.setState({plans: response});
                     console.log(response);
                 })
-            :
+           /* :
             axios.get(endpointCheckedFalse)
                 .then(response => {
                     this.setState({plans: response});
                     console.log(response);
-                })
+                })*/
     };
 
     toggleChange = () => {
