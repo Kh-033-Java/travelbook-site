@@ -1,5 +1,6 @@
 import React from "react";
 import './App.css';
+import './sidebarComponents/SideBar.css';
 import isAuthorized from "./checker/authorizationChecker";
 import Header from "./sidebarComponents/SidebarHeader";
 import ToAddFooter from "./sidebarComponents/ToAddFooter";
@@ -16,8 +17,8 @@ function Plans(props){
             :
             <aside className="rightbar whole-comp container">
                 <Header title = "Plans" countryName={props.name}/>
-                <AuthorizedPlans worldSeries={props.worldSeries} id= {props.id} setId={props.setId}/>
-                <ToAddFooter text="add plan" path="plan"/>
+                <AuthorizedPlans />
+                <ToAddFooter text="add plan" />
             </aside>
 
     )

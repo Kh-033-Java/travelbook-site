@@ -18,7 +18,7 @@ class VisitedCountryCheckBox extends Component {
     }
 
     delAndFill() {
-        this.props.worldSeries.getPolygonById(this.props.id).fill = am4core.color("#000000")
+        this.props.worldSeries.getPolygonById(this.props.id).fill = am4core.color("#cccccc")
     }
 
     componentDidMount() {
@@ -38,13 +38,13 @@ class VisitedCountryCheckBox extends Component {
 
     toggleChange = () => {
         this.state.isChecked ?
-            this.addAndFill()
+            this.delAndFill()
         :
-            this.delAndFill();    
+            this.addAndFill();    
         this.setState({
             isChecked: !this.state.isChecked,
     });
-        //  this.addAndFill();
+
     };
 
     render() {

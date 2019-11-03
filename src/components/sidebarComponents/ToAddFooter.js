@@ -2,14 +2,15 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import '../notesComponents/NoteStyling.css'
 import '../App.css';
-function SideBarFooter(props){
+
+function ToAddFooter(props){
     return (
   <div className ="note-footer container">
-      <NavLink to ={props.path}>
+      <button><a href = "/plan"/>
                 {props.text}
-                </NavLink>
+                </button>
                    </div>
 
     );
 }
-export default SideBarFooter;
+export default ToAddFooter;
