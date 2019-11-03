@@ -9,8 +9,8 @@ import NotesPhotos from './NotePhotos';
 function NoteMain(props){
 
     return (
-   <div className = "main-comp main-sidebar ">
-       <NoteOwner/>
+   <div className = "main-comp main-sidebar">
+       <NoteOwner account={props.note.login}/>
         <NoteProperties city = {props.note.city} date = {props.note.date}/>
        <div className="description container">{props.note.description}</div>
        <NotesPhotos photos ={props.note.photos}/>

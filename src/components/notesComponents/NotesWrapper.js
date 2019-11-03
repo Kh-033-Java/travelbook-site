@@ -17,7 +17,9 @@ function NotesWrapper(props){
     }
     this function sets id to the main container so that when we go to "/notes" we pass the id of the note we wannns see
     */ }
+
 </NavLink>
+<NavLink to="/note">note</NavLink>
 </div>
     )
 }

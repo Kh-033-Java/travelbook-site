@@ -7,7 +7,7 @@ function NoteOwner(props){
     return (
   <div className ="note-owner ">
     <div><img src ={logo} alt="" className="account-image"></img></div>
-    <div className="account-label">account name</div>
+    <div className="account-label">{props.account}</div>
           </div>
 
     );

@@ -1,11 +1,10 @@
 import React from 'react';
-import '../NoteStyling.css'
 import '../../App.css';
 function Estimations(props){
 
     return (
           <div className ="set-estimations ">
-         
+        <p className="header-text est-title">Estimations</p>
             <div className="label-stars">people</div>
             <Estimate type ="people" fun={props.setPeople}/>
           

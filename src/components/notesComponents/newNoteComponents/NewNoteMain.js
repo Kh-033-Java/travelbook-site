@@ -7,6 +7,7 @@ import"../../sidebarComponents/SideBar.css";
 import PhotoUploader from './PhotoUploading';
 import Estimations from './Estimations';
 import * as am4core from "@amcharts/amcharts4/core";
+import axios from 'axios';
 
 class NewNoteMain extends Component{
     constructor(props){
@@ -16,8 +17,8 @@ class NewNoteMain extends Component{
             city:'',
             country : this.props.countryName,
             photos: {},
-            estimations:{},
-            date:'',
+            login : 'login',
+            dateOfVisiting:'',
             description: '',
             isPublic : false,     
         }
@@ -40,37 +41,36 @@ class NewNoteMain extends Component{
         this.setState({
             date: e.target.value
         });
-        console.log(this.state);
+
     }
     onChangeDescription(e) {
         this.setState({
             description: e.target.value
         });
-        console.log(this.state);
     }
     sendNewNote(e){
         e.preventDefault();
-        console.log(this.props.idCountry);
+        axios.post(`http://localhost:8080/country/${this.props.countryName}/notes`,this.state);
         this.props.worldSeries.getPolygonById(this.props.idCountry).fill =am4core.color("#67f58d");
         console.log("sthg");
         console.log(this.state);
             //will be axios
     }
     setPhotos(e){
-           this.setState({photos :e});
-       console.log(this.state.photos);
+           this.setState({photosEstimate :e});
     }
     setCuisine(e){
-        this.setState({cuisine :e});
+        this.setState({cuisineEstimate :e});
     }
     setPrices(e){
-        this.setState({prices :e});
+        this.setState({pricesEstimate :e});
     }
     setImpression(e){
-        this.setState({impression :e});
+        this.setState({commonImpression :e});
     }
     setPeople(e){
-        this.setState({people :e});
+        this.setState({peopleEstimate
+             :e});
     }
     render(){
     
@@ -82,14 +82,15 @@ class NewNoteMain extends Component{
                     </div>
                     <City style_class = "city-field" countryName={this.props.countryName}/>
                     <div className="date-field ">
-                 <label for="date-note">date</label><input type="date" onChange={this.onChangeDate}  name ="date-note" className="date-in" required/>
+                 <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate}  name ="date-note" className="date-in" required/>
                     </div>
-                    <div className="description container">
+                    <div className="description ">
+                        <p className="header-text">Description</p>
                         <textarea placeholder="describe your trip" onChange={this.onChangeDescription} name="description"/> 
                     </div>
                     <PhotoUploader setPhotos={this.setPhotos} />
                     <Estimations setPeople={this.setPeople} setPrices={this.setPrices} setImpression={this.setImpression} setCuisine={this.setCuisine} />
-                    <div className="public-checkbox container">
+                    <div className="public-checkbox ">
                     <input name="isPublic" type="checkbox"/> <label htmlFor="name-note" >public</label>  
                     </div>
                  
@@ -100,11 +101,3 @@ class NewNoteMain extends Component{
 
 export default NewNoteMain;
 
-
-function InputForm(props){
-    return (
-        <div className={props.st}>
-        <label for={props.fieldName}>Имя</label><input type="text" />
-        </div>
-    )
-}
