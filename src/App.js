@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Main from './components/Main.js';
-
+//const BrowserHistory = require('react-router/lib/BrowserHistory').default;
 
 class App extends Component{
 
@@ -14,6 +14,9 @@ class App extends Component{
         <Main gridClass="grid-cont"/>
         </Route>
         <Route path="/notes/">
+        <Main gridClass="grid-cont"/>
+        </Route>
+        <Route path="/note">
         <Main gridClass="grid-cont"/>
         </Route>
         <Route path="/gallery/">
