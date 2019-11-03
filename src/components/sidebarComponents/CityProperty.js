@@ -16,7 +16,7 @@ class City extends Component{
   render(){
     return(
         <div className={this.props.style_class}>
-        <label for="from-city">{this.props.countryName}</label><input type="text" name ="from-city" />
+        <label for="from-city">City</label><input type="text" name ="from-city" />
                </div>
     );
   }
