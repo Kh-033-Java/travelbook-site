@@ -12,11 +12,11 @@ class PhotoUploader extends React.Component{
 return(
 <div className="photo-upload">
     <p className="header-text">Your photos</p>
-<FilePond name ="photos" allowMultiple={true} 
+<FilePond name ="photos" allowMultiple={true}
   ref={(ref)=> this.p = ref}
  onupdatefiles={
      (fileItems) => {
-  this.props.setPhotos(fileItems); 
+  this.props.setPhotos(fileItems);
   console.log(this.p.getFiles())
   }}
 >

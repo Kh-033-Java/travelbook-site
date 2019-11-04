@@ -9,9 +9,7 @@ import Note from './notesComponents/Note.js'
 import Plans from "./Plans.js";
 import Gallery from "./Gallery.js";
 import Icons from './Icons';
-import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
-
 import GeneralInfo from './GeneralInfo';
 
 
@@ -41,7 +39,7 @@ function Main(props){
           </Route>
     <Route path = "/generalInfo">
     <Icons countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map}></Icons>
-     <SideBar id={state.nameCountry}/>
+     <GeneralInfo name={state.nameCountry} worldSeries = {state.map}/>
      </Route>
        <Route path = "/notes">
         <Icons></Icons>

@@ -4,7 +4,7 @@ import NotesWrapper from "./NotesWrapper.js";
 import OnlyMyNotes from "./OnlyMyNotes";
 import ToAddFooter from "../sidebarComponents/ToAddFooter.js";
 import './AllNotesPage.css';
-
+import * as am4core from "@amcharts/amcharts4/core";
 
 
 class AuthNotes extends Component{
