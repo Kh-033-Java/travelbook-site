@@ -6,7 +6,6 @@ import isAuthorized from './checker/authorizationChecker'
 import UnAuthorizedNotes from './notesComponents/UnAuthorizedNotes.js';
 import AuthorizedNotes from './notesComponents/AuthorizedNotes.js'
 import Header from './sidebarComponents/SidebarHeader.js';
-import ToAddFooter from './sidebarComponents/ToAddFooter.js';
 
 
 function Notes(props){

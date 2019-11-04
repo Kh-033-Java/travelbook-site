@@ -43,11 +43,11 @@
    grid-template-rows: 0.7fr 9fr;
    grid-column-gap: 5px;
    grid-row-gap: 5px;
-  
+  overflow: auto;
  }
  .list-main-unauth{
     display : grid;
-   grid-template-columns: 1fr 1fr;
+   grid-template-columns: 1fr ;
    grid-template-rows: 1fr;
    grid-column-gap: 5px;
    grid-row-gap: 5px;

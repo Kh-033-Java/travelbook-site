@@ -9,7 +9,7 @@ function UnAuthNotes(props){
    
     return(
          <div className = "list-main-unauth  main-sidebar">
-<NotesWrapper setId={props.setId}/>
+<NotesWrapper classWr={"allNotes container"}  setId={props.setId}/>
 </div>
              )
 }

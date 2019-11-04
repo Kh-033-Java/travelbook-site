@@ -1,4 +1,17 @@
   .allNotes{
     grid-row: 2;
     overflow: auto;
+    display: grid;
+}
+.list-note-el{
+width:100%;
+height:170px;
+background-color: lavender;
+margin:10px 0;
+}
+.list-note{
+  text-align: center;
+  display:grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr auto;
 }

@@ -40,7 +40,7 @@ return(
 : <aside className="rightbar whole-comp ">
 <Header title = {this.state.note.title} countryName={this.props.countryName}/>
 <NoteMain note = {this.state.note}/>
-<FooterWithEdit text ="edit note"/>
+<FooterWithEdit text ="edit note" path="/editNote"/>
 </aside>
 );
     }

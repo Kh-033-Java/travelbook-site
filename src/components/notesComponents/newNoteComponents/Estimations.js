@@ -6,7 +6,7 @@ function Estimations(props){
           <div className ="set-estimations ">
         <p className="header-text est-title">Estimations</p>
             <div className="label-stars">people</div>
-            <Estimate type ="people" fun={props.setPeople}/>
+            <Estimate type ="people" fun={props.setPeople} cssCl={props.type +"rating"}/>
           
             <div className="label-stars">prices</div>
             <Estimate type ="prices" fun={props.setPrices}/>
@@ -31,6 +31,7 @@ function Estimate(props){
         console.log(e.target.id);
         props.fun(str.charAt(str.length-1));
     }
+    
 return(
     <div className={props.type}>
     <div className="feedback">
@@ -45,7 +46,7 @@ return(
       <label htmlFor={props.type + "2"}></label>
       <input type="radio" name={props.type +"rating"} id={props.type + "1"} onChange={check}/>
       <label htmlFor={props.type + "1"}></label>
-            </div>
+        </div>
         </div>
         </div>
 )
