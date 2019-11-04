@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {ACCESS_TOKEN} from "../../constants/constants";
 import {Redirect} from "react-router";
+import './UserInput.css'
 
 export default class UserInput extends React.Component {
     state = {
@@ -26,27 +27,28 @@ export default class UserInput extends React.Component {
             password: password
         })
             .then(res => {
-                    localStorage.setItem(ACCESS_TOKEN, res.data.token);
-                    localStorage.setItem("login", res.data.login);
-                    localStorage.setItem("avatar", res.data.avatar);
-                    console.log(res.data);
-                    if(res.status === 200){
-                        this.setState({isSignedUp: true})
-                    }else {
-                        window.location = 'login'
-                    }
-            });
+                localStorage.setItem(ACCESS_TOKEN, res.data.token);
+                localStorage.setItem("login", res.data.login);
+                localStorage.setItem("avatar", res.data.avatar);
+                console.log(res.data);
+                this.setState({isSignedUp: true})
+            }).catch((error) => {
+            if (error.request) {
+                alert("Login or password incorrect");
+                window.location = 'login'
+            }
+        })
     };
 
 
-
     render() {
-        if(this.state.isSignedUp) {
+        if (this.state.isSignedUp) {
             return <Redirect to={{pathname: "/travelbook"}}/>;
         }
         return <form onSubmit={e => this.handleSubmit(e)}>
             <div className="login-input">Login:
-            <input type="text" className="auth" name="login" onChange={e => this.handleChange(e)} value={this.state.login}/>
+                <input type="text" className="auth" name="login" onChange={e => this.handleChange(e)}
+                       value={this.state.login}/>
             </div>
             <div className="password-input">Password:
                 <input type="password" className="auth" name="password" id="pwd"

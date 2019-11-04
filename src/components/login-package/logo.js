@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import TravelBook2 from '../icons/travelBook2.svg'
 import ImageFadeIn from 'react-image-fade-in'
 

@@ -8,7 +8,7 @@ function Login(){
         return (
             <div className="login">
                 <Logo/>
-                <div className="authorize1"> <UserInput/></div>
+                <div><UserInput/></div>
             </div>
         );
 }

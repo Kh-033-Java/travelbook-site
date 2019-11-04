@@ -8,7 +8,10 @@ import Settings from "./Settings";
 function Header() {
         return (
             <header className="header">
-                <div className="title container header-text">TravelBook</div>
+                <div className="title container header-text">
+                        <NavLink to="/travelbook">TravelBook
+                        </NavLink>
+                        </div>
                 <Search/>
                 <Settings/>
             </header>

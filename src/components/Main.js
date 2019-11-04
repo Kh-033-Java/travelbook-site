@@ -12,6 +12,7 @@ import Icons from './Icons';
 import Login from "./login-package/login";
 import {getJwt} from "../helpers/jwt";
 import AuthenticationChecker from "./checker/authorizationChecker";
+import UserGeneralInformation from "./user-page/UserGeneralInformation";
 
 
 
@@ -59,10 +60,11 @@ class Main extends Component{
      <Route path = "/plans">
         <Icons></Icons>
      <Plans name={this.state.nameCountry}/>
-     <Route path="/login">
-         <Login></Login>
      </Route>
-     </Route>
+      <Route path="/main">
+          <Icons></Icons>
+          <UserGeneralInformation/>
+      </Route>
      </div>
   );
    }

@@ -6,6 +6,8 @@ import Map from "./components/Map.js";
 import Main from './components/Main.js';
 import Login from './components/login-package/login';
 import UserSettings from './components/user-page/UserSettings';
+import Registration from "./components/Registration";
+import UserGeneralInformation from './components/user-page/UserGeneralInformation'
 
 class App extends Component{
 
@@ -15,6 +17,10 @@ class App extends Component{
       <Switch>
           <Route path="/settings/" component={UserSettings} exact/>
           <Route path="/login/" component={Login} exact/>
+          <Route path="/registration" component={Registration} exact/>
+          <Route path="/main" component={UserGeneralInformation} exact>
+              <Main gridClass="grid-cont"/>
+          </Route>
       <Route path="/clicked/">
         <Main gridClass="grid-cont"/>
         </Route>
