@@ -79,6 +79,7 @@ min-height: 40px;
 textarea {
     outline: none;
     resize: none;
+
 }
 input:focus, textarea:focus {
     background   : rgba(0,0,0,.1);
