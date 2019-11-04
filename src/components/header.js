@@ -7,10 +7,12 @@ import Settings from "./Settings.js";
 function Header(){
     return(
 <header className="header">
+
              <div className ="title ">TravelBook</div>
                 <Search/>
                <Settings/>   
                 </header>
+
     )
 }
 

@@ -1,11 +1,13 @@
 import React,{Component} from "react";
 import '../App.css';
+
 import Header from "../sidebarComponents/SidebarHeader";
 import"../sidebarComponents/SideBar.css";
 import NoteMain from "./NoteMain";
 import * as actions from '../../actions/notesActions'
 import isAuthorized from '../checker/authorizationChecker'
 import FooterWithEdit from '../sidebarComponents/FooterWithEdit'
+
 
 
 class Note extends Component{
@@ -41,6 +43,7 @@ return(
 <Header title = {this.state.note.title} countryName={this.props.countryName}/>
 <NoteMain note = {this.state.note}/>
 <FooterWithEdit text ="edit note"/>
+
 </aside>
 );
     }

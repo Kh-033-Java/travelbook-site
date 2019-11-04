@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from 'react-router-dom';
 import './App.css';
 import"./sidebarComponents/SideBar.css";
 import './notesComponents/AllNotesPage.css';
@@ -11,6 +12,7 @@ import ToAddFooter from './sidebarComponents/ToAddFooter.js';
 
 function Notes(props){
     return(
+
        !isAuthorized()?
         <aside className="rightbar whole-comp-no-footer ">
         <Header title = "Notes" countryName={props.name}/>

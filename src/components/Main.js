@@ -5,6 +5,7 @@ import SideBar from "./sidebar.js";
 import Head from "./header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
+import Note from './notesComponents/Note.js'
 import Plans from "./Plans.js";
 import Gallery from "./Gallery.js";
 import Icons from './Icons';
@@ -43,6 +44,7 @@ function Main(props){
         <Icons></Icons>
      <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
      </Route>
+
      <Route path = "/gallery">
         <Icons></Icons>
      <Gallery name={state.nameCountry}/>
