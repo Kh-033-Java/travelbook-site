@@ -1,23 +1,19 @@
-import React,{Component} from "react";
+import React from "react";
+import {NavLink} from 'react-router-dom';
 import './App.css';
-import * as am4core from "@amcharts/amcharts4/core";
-class Notes extends Component{
-    constructor(props){
-        super();
-        this.addAndFill = this.addAndFill.bind(this);
-      }
-addAndFill(){
-   this.props.worldSeries.getPolygonById(this.props.id).fill =am4core.color("#67f58d");
+import NotesLook from "./notesComponents/NotesLook";
 
-}
-render(){
+function Notes(props){
     return(
-<aside className="rightbar container">
-    <h1>InNotes</h1>
-<p>{this.props.name}</p>
-<button onClick={this.addAndFill}>Add Note</button>
-</aside>
-    )
-}
+                        
+              <aside className="rightbar container">
+                   {/* will be a panel with name and country */}
+                  <h1>In Notes</h1>
+                    <p>In country : {props.name}</p>
+                <NotesLook name={props.name} id ={props.id} worldSeries = {props.worldSeries} />
+                <NavLink to="/note">to note</NavLink>
+            </aside>
+         )
 }
 export default Notes;
+

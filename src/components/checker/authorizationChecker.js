@@ -1,3 +1,3 @@
 export default function isAuthorized(){
-    return !(localStorage.getItem("token") ===null);
+        return !(localStorage.getItem("token") ===null);
 }

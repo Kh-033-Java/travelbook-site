@@ -1,38 +1,49 @@
 import React,{Component} from "react";
 import './App.css';
-import axios from 'axios';
+import * as actions from '../actions/galleryActions.js'
+import isAuthorized from './checker/authorizationChecker'
 
 class Gallery extends Component{
     constructor(props){
         super();
         this.state = {
-            photos :[{}]
-        }
-        this.getGallery = this.getGallery.bind(this);
-       
-      }
-getGallery(){
-    let endpoint= `http://localhost:8080/country/`+this.props.name + `/photos`;
-    axios.get(endpoint)
-    .then(res => {
-      const photos = res.data;
-      this.setState({ photos });
-      console.log(res.data);
-    })
-    console.log("photots"+this.state.photos);
-}
-render(){
-   this.getGallery();
-    return(
+            photos : [{}],
+                     validCountry:false
+               }
+            }
+         componentDidMount() {
+        actions.getPublicUnAuthorized(this.props.name).then(res =>{
+            console.log(res);
+            this.setState({ photos:res,validCountry:true });
+        }).catch(error =>{
+            console.log(error);
+            this.setState({validCountry:false });
+           });
+    }
 
-<aside className="rightbar container">
+render(){
+      return(
+       <aside className="rightbar container">
     <h1>Gallery</h1>
 <p>{this.props.name}</p>
 <h1>photos</h1>
-
-<p>{this.state.photos[0].link}</p>
+<React.Fragment>
+<GetPhotos photos={this.state.photos}></GetPhotos>
+{isAuthorized()?<button>only my gallery</button>:<React.Fragment></React.Fragment>}
+</React.Fragment>
 </aside>
-    )
-}
+)
+      }
 }
 export default Gallery;
+
+export function GetPhotos(props){
+    let  empty =Object.keys(props.photos).length === 0;
+    console.log("empty "+empty)
+if(!empty)
+{
+return (<p>{props.photos[0].link}</p>)
+}
+else {
+return (<p>No such country</p>)}
+}

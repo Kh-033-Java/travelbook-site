@@ -1,8 +1,9 @@
 import React from 'react'
 import './App.css';
 import {NavLink} from "react-router-dom";
-function UnSettings(){
-    return(
+
+function UnSettings(props) {
+    return (
         <div className="settings">
             <div className="authorize1 container header-text">
                 <NavLink to="/login">Log In</NavLink>
