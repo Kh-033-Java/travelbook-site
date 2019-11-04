@@ -37,7 +37,7 @@ function Main(props){
     <Route path = "/travelbook">
           </Route>
     <Route path = "/generalInfo">
-    <Icons></Icons>
+    <Icons countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map}></Icons>
      <SideBar id={state.nameCountry}/>
      </Route>
        <Route path = "/notes">
