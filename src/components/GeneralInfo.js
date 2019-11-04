@@ -12,9 +12,19 @@ class GeneralInfo extends Component {
             description: [{}],
             weather: [{}]
         };
+        this.getGeneralInfo = this.getGeneralInfo.bind(this);
     }
 
     componentDidMount() {
+        this.getGeneralInfo();
+    };
+
+    componentWillReceiveProps() {
+        console.log("next props");
+        this.getGeneralInfo();
+    }
+
+    getGeneralInfo() {
         const endpoint = `http://localhost:8080/country/` + this.props.name + `/description`;
         console.log(endpoint);
         axios.get(endpoint)
@@ -27,19 +37,19 @@ class GeneralInfo extends Component {
                 this.setState({weather});
                 console.log(generalInfo);
             });
-    };
+    }
 
     render() {
         return (
-            <aside className="rightbar container">
+            <aside className="rightbar container" style={{overflow: 'auto'}}>
                 <NavLink to="/users/map">
-                    To user map
+                    Display user map
                 </NavLink>
                 <h1>General Information about country</h1>
                 <p>Country name - {this.state.generalInfo.name}</p>
                 <p>Capital - {this.state.description.capital} </p>
                 <p>Current weather in capital - {this.state.weather.temperature}, {" "}
-                     {this.state.weather.description}
+                    {this.state.weather.description}
                 </p>
                 <p>Description - {this.state.description.commonInformation}</p>
                 <p>Cuisine - {this.state.description.cuisine}</p>

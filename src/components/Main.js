@@ -10,6 +10,7 @@ import Gallery from "./Gallery.js";
 import Icons from './Icons';
 import GeneralInfo from "./GeneralInfo";
 import UserMap from "./UserMap";
+import UserNoteById from "./UserNoteById";
 
 
 function Main(props) {
@@ -30,15 +31,11 @@ function Main(props) {
             <Head/>
             <Map clicker={regionClicker}/>
             <Route path="/travelbook">
-                {/*<UserMap worldSeries={state.map}/>*/}
             </Route>
-            {/*<Route path="/somepath">*/}
-                {/*<Icons></Icons>*/}
-                {/*<SideBar id={state.nameCountry}/>*/}
-            {/*</Route>*/}
             <Route path="/notes">
                 <Icons></Icons>
-                <Notes name={state.nameCountry} id={state.idCountry} worldSeries={state.map}/>
+                {/*<Notes name={state.nameCountry} id={state.idCountry} worldSeries={state.map}/>*/}
+                <UserNoteById name={state.nameCountry}/>
             </Route>
             <Route path="/gallery">
                 <Icons></Icons>
@@ -52,7 +49,7 @@ function Main(props) {
                 <Icons></Icons>
                 <GeneralInfo name={state.nameCountry}/>
             </Route>
-            <Route path="/users/map">
+            <Route path="/users">
                 <Icons></Icons>
                 <UserMap name={state.nameCountry} worldSeries={state.map}/>
             </Route>

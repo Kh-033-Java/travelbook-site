@@ -166,8 +166,7 @@ aside {
 }
 
 .header, .rightbar {
-    /*background-color: rgb(150, 191, 214);*/
-    background-color: #d3f8fe;
+    background-color: rgb(150, 191, 214);
 }
 
 .login {

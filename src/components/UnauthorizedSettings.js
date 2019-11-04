@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css';
 function UnSettings(props){
 const authorize=()=>{
-localStorage.setItem("token","sth");
+localStorage.setItem("token","ivanmalik");
 }
     return(
             <div className="settings">
