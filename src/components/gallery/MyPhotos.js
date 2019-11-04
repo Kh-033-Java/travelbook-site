@@ -29,8 +29,7 @@ class MyPhotos extends Component {
     }
 
     render() {
-        const photos = ['https://picsum.photos/200', 'https://picsum.photos/200', 'https://picsum.photos/200'];
-        // const photos = this.state.photos;
+        const photos = this.state.photos;
         return (
             <aside className="rightbar container">
                 <div>

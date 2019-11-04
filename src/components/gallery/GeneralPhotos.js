@@ -24,21 +24,20 @@ class GeneralPhotos extends Component {
                 validCountry: false
             });
         });
-        console.log("photots" + this.state.photos);
+        console.log("photots " + this.state.photos);
     }
 
     render() {
-        const photos = ['https://picsum.photos/200', 'https://picsum.photos/200', 'https://picsum.photos/200', 'https://picsum.photos/200'];
-        // const photos = this.state.photos;
+        const photos = this.state.photos;
         return (
-
             <aside className="rightbar container">
                 <div>
                     <h1>General Gallery</h1>
                     <p>{this.props.name}</p>
                     <h1>photos</h1>
                     {photos ? <p>{photos.map((value, index) =>
-                        <img src={value} alt={"No image"} className="photo"/>
+
+                        <img src={value.link} alt={"No image"} className="photo" key={index}/>
                     )}</p> : <p>No such country</p>}
                 </div>
             </aside>

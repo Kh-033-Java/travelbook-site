@@ -17,21 +17,20 @@ class Gallery extends Component {
     changeToGeneralPhoto = () => {
         this.setState({
             ...this.state,
-            isUserPhoto : false,
+            isUserPhoto : true,
     })
     };
     changeToUserPhoto = () => {
         this.setState({
             ...this.state,
-            isUserPhoto : true,
+            isUserPhoto : false,
         })
 
     };
 
 
     render() {
-        console.log(this.props);
-        console.log(this.state.isUserPhoto);
+        const name = this.props.name;
         return (
             <aside className="rightbar container">
                 <button
@@ -48,7 +47,7 @@ class Gallery extends Component {
                 </button>
 
                 {
-                    this.state.isUserPhoto === false ? <MyPhotos/> : <GeneralPhotos/>
+                    this.state.isUserPhoto ? <MyPhotos name={name}/> : <GeneralPhotos name={name}/>
                 }
             </aside>
         )
