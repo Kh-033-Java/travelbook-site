@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from 'react-router-dom';
 import './App.css';
 import NotesLook from "./notesComponents/NotesLook";
 
@@ -10,6 +11,7 @@ function Notes(props){
                   <h1>In Notes</h1>
                     <p>In country : {props.name}</p>
                 <NotesLook name={props.name} id ={props.id} worldSeries = {props.worldSeries} />
+                <NavLink to="/note">to note</NavLink>
             </aside>
          )
 }

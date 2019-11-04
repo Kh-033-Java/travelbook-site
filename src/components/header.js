@@ -8,8 +8,7 @@ function Header(){
     return(
 <header className="header">
     <div className ="title container header-text">TravelBook</div>
-  <Search/>
-  
+            <Search/>
              <Settings/>   
              
     
