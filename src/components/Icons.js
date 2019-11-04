@@ -7,7 +7,7 @@ import './App.css';
 
 function Icons (props){
   return (
-    <div className="icons container ">
+    <div className="icons  ">
         <div className ="icon-comp2 ">
        <NavLink to ="/notes" >
            <button className="icon-button2 icons-button" ></button>
@@ -28,12 +28,7 @@ function Icons (props){
            <button className="icon-button4 icons-button" ></button>
            </NavLink>
            </div>
-           <div className="map-comp ">
-             <NavLink to="travelbook">
-            <button className="full-map">Full map</button>
-            </NavLink>
-           </div>
-    </div>
+               </div>
   );
   }
 
