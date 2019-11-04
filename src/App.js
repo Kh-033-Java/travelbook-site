@@ -27,8 +27,9 @@ class App extends Component{
         </Route>
         <Route path="/travelbook/">
         <Main gridClass="grid-cont-initially"/>
-      </Route>
-      <Route>
+        <Route path="/users/">
+            <Main gridClass="grid-cont"/>
+        </Route>
         <h1>Not Found</h1>
       </Route>
       </Switch>
