@@ -4,9 +4,9 @@ import './App.css';
 function Search(){
 
     return(
-        <div className="search container">
+        <div className="search ">
          <form name ="myForm">
-            <input type= "text" placeholder="Search"/>
+            <input type="text" placeholder="Search"/>
                     </form>
     </div>
     )
