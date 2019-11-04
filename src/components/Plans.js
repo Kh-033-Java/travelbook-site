@@ -20,7 +20,7 @@ function Plans(props){
                 <Header title = "Plans" countryName={props.name}/>
                 <AuthorizedPlans name={props.name} id={props.id} worldSeries = {props.worldSeries} planId={props.planId}/>
                 <div className="create-plan-button container ">
-                    <NavLink to="/plan">
+                    <NavLink to="/newplan">
                         <button type="button" class="button-plan">Create plan</button>
                     </NavLink>
                 </div>

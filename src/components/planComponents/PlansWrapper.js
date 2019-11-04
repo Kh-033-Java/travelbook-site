@@ -6,18 +6,38 @@ function PlansWrapper(props){
 
     return(
         <div className = 'plans-wraper container'>
-            <p>All Public plans</p>
-                <div className = 'one-plan container' >
-                    <div>{plan.title}</div>
-                    <div>User : {plan.userLoginCreator}  Date of travel: {plan.date}</div>
-                    <div>City from: {plan.nameCityFrom} City to: {plan.nameCityToGo}</div>
-                    <div>Budget: {plan.budgetMin} - {plan.budgetMax}     Transport: {plan.transport}</div>
-                    <div>Amount of people: {plan.amountOfPeople}</div>
-                    <div>{plan.description}</div>
-                    <NavLink to = "/editplan">
-                    <button type="button" class="plan-button">more...</button>
-                    </NavLink>
+            <h4>Title: {props.title}</h4>
+            <React.Fragment>
+            <div className ="plan-owner ">
+                <div className="account-label">{props.login}</div>
+            </div>
+            <div className ="container plan-property-date plan-property">
+                {props.date}
+            </div>
+            </React.Fragment>
+            <React.Fragment>
+                <div className ="container plan-property-cityFrom plan-property">
+                    City from: {props.nameCityFrom}
                 </div>
+                <div className ="container plan-property-cityToGo plan-property">
+                    City to: {props.nameCityFrom}
+                </div>
+            </React.Fragment>
+            <React.Fragment>
+                <div className ="container plan-property-budget plan-property">
+                    Budget: {props.budgetMin} - {props.budgetMax}
+                </div>
+                <div className ="container plan-property-budget plan-property">
+                    Transport: {props.transport}
+                </div>
+            </React.Fragment>
+            <p>Amount of people: {props.amountOfPeople}</p>
+            <div className="description container">{props.description}</div>
+
+            <NavLink to = "/plan">
+                <button type="button" class="plan-button">more...</button>
+            </NavLink>
+
         </div>
     )
 }

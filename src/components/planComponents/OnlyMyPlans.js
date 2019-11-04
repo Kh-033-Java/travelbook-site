@@ -46,7 +46,7 @@ export default class OnlyMyPlans extends Component {
                 />
                 only my plans
             </label>
-            <div className = "plans-wrapper">
+            <div className = "list-main-auth container">
                 {this.state.plans.map((plan) => {
                    return <PlansWrapper plan = {plan} />
                 })}
