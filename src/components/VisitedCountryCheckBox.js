@@ -22,8 +22,8 @@ class VisitedCountryCheckBox extends Component {
     }
 
     componentDidMount() {
-        let endpointVisited = 'http://localhost:8081/country/' + this.props.name + '/visit?user=' + localStorage.getItem("login");
-        let endpointDidntVisited = 'http://localhost:8081/country/' + this.props.name + '/notvisit?user=' + localStorage.getItem("login");
+        let endpointVisited = 'http://localhost:8080/country/' + this.props.name + '/visit?user=' + localStorage.getItem("login");
+        let endpointDidntVisited = 'http://localhost:8080/country/' + this.props.name + '/notvisit?user=' + localStorage.getItem("login");
         this.state.isChecked ?
             axios.put(endpointVisited)
                 .then(response => {

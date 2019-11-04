@@ -1,19 +1,23 @@
 import React from "react";
 import '../App.css';
+import {NavLink} from 'react-router-dom';
 
 function PlansWrapper(props){
 
     return(
         <div className = 'plans-wraper container'>
             <p>All Public plans</p>
-            {props.plans.map(plans => (
-                <p>{plans.title}</p>
-                <p>User : {plans.userLoginCreator}  Date of travel: {plans.date}</p>
-                <p>City from: {plans.nameCityFrom} City to: {plans.nameCityToGo}</p>
-                <p>Budget: {plans.budgetMin} - {plans.budgetMax}     Transport: {plans.transport}</p>
-                <p>Amount of people': {plans.amountOfPeople}</p>
-                <p>{plans.description}</p>
-            ))}
+                <div className = 'one-plan container' >
+                    <div>{plan.title}</div>
+                    <div>User : {plan.userLoginCreator}  Date of travel: {plan.date}</div>
+                    <div>City from: {plan.nameCityFrom} City to: {plan.nameCityToGo}</div>
+                    <div>Budget: {plan.budgetMin} - {plan.budgetMax}     Transport: {plan.transport}</div>
+                    <div>Amount of people: {plan.amountOfPeople}</div>
+                    <div>{plan.description}</div>
+                    <NavLink to = "/editplan">
+                    <button type="button" class="plan-button">more...</button>
+                    </NavLink>
+                </div>
         </div>
     )
 }

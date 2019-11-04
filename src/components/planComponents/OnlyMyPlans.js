@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import '../sidebarComponents/SideBar.css'
+import PlansWrapper from './PlansWrapper';
 
 
 export default class OnlyMyPlans extends Component {
@@ -11,9 +12,10 @@ export default class OnlyMyPlans extends Component {
             isChecked: false
         };
     }
+    
     componentDidMount() {
-        let endpointCheckedTrue = 'http://localhost:8081/country/' + this.props.name + '/plans/private?user=' + localStorage.getItem("login");
-        let endpointCheckedTrue = 'http://localhost:8081/country/' + this.props.name + '/plans?user=' + localStorage.getItem("login");
+        let endpointCheckedTrue = 'http://localhost:8080/country/' + this.props.name + '/plans/private?user=' + localStorage.getItem("login");
+        let endpointCheckedFalse = 'http://localhost:8080/country/' + this.props.name + '/plans?user=' + localStorage.getItem("login");
         this.state.isChecked ? 
             axios.get(endpointCheckedTrue)
                 .then(response => {
@@ -44,8 +46,12 @@ export default class OnlyMyPlans extends Component {
                 />
                 only my plans
             </label>
+            <div className = "plans-wrapper">
+                {this.state.plans.map((plan) => {
+                   return <PlansWrapper plan = {plan} />
+                })}
             </div>
-            
+            </div>
         );
     }
 }

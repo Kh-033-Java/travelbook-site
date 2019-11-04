@@ -21,7 +21,7 @@ function Plans(props){
                 <AuthorizedPlans name={props.name} id={props.id} worldSeries = {props.worldSeries} planId={props.planId}/>
                 <div className="create-plan-button container ">
                     <NavLink to="/plan">
-                        <button className="create-plan">Create plan</button>
+                        <button type="button" class="button-plan">Create plan</button>
                     </NavLink>
                 </div>
             </aside>
