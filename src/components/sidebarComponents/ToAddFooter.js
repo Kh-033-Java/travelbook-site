@@ -6,7 +6,7 @@ import '../App.css';
 function ToAddFooter(props){
     return (
   <div className ="note-footer container">
-      <button><a href = "/plan"/>
+      <button>
                 {props.text}
                 </button>
                    </div>

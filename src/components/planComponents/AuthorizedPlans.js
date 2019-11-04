@@ -7,11 +7,11 @@ function AuthorizedPlans(props){
     
       
     return(
-        <React.Fragment>
-            <OnlyMyPlans/>
-            <PlansWrapper/>
-
-        </React.Fragment>
+        <div className = "list-main-auth  main-sidebar container">
+            <React.Fragment>
+                <OnlyMyPlans name={props.name} id={props.id} />
+            </React.Fragment>
+        </div>
     )
 }
 

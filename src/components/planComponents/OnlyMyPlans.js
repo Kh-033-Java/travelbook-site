@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import '../sidebarComponents/SideBar.css'
 
 
 export default class OnlyMyPlans extends Component {
@@ -12,18 +13,19 @@ export default class OnlyMyPlans extends Component {
     }
     componentDidMount() {
         let endpointCheckedTrue = 'http://localhost:8081/country/' + this.props.name + '/plans/private?user=' + localStorage.getItem("login");
-        // this.state.isChecked ?
+        let endpointCheckedTrue = 'http://localhost:8081/country/' + this.props.name + '/plans?user=' + localStorage.getItem("login");
+        this.state.isChecked ? 
             axios.get(endpointCheckedTrue)
                 .then(response => {
                     this.setState({plans: response});
                     console.log(response);
                 })
-           /* :
+            :
             axios.get(endpointCheckedFalse)
                 .then(response => {
                     this.setState({plans: response});
                     console.log(response);
-                })*/
+                })
     };
 
     toggleChange = () => {
@@ -34,7 +36,7 @@ export default class OnlyMyPlans extends Component {
 
     render() {
         return (
-            <div className="some">
+            <div className="only-my-checkbox container">
             <label >
                 <input type="checkbox"
                        checked={this.state.isChecked}
@@ -42,10 +44,8 @@ export default class OnlyMyPlans extends Component {
                 />
                 only my plans
             </label>
-                <div>
-                    {/*{this.state.plans}*/}
-                </div>
             </div>
+            
         );
     }
 }

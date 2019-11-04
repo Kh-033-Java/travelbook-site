@@ -1,11 +1,12 @@
 import React from "react";
 import './App.css';
 import './sidebarComponents/SideBar.css';
+import {NavLink} from 'react-router-dom';
 import isAuthorized from "./checker/authorizationChecker";
 import Header from "./sidebarComponents/SidebarHeader";
-import ToAddFooter from "./sidebarComponents/ToAddFooter";
-import AuthorizedPlans from "./planComponents/AuthorizedPlans.js"
+
 import UnAuthorizedPlans from "./planComponents/UnAuthorizedPlans";
+import AuthorizedPlans from "./planComponents/AuthorizedPlans";
 
 function Plans(props){
     return(
@@ -17,8 +18,12 @@ function Plans(props){
             :
             <aside className="rightbar whole-comp container">
                 <Header title = "Plans" countryName={props.name}/>
-                <AuthorizedPlans />
-                <ToAddFooter text="add plan" />
+                <AuthorizedPlans name={props.name} id={props.id} worldSeries = {props.worldSeries} planId={props.planId}/>
+                <div className="create-plan-button container ">
+                    <NavLink to="/plan">
+                        <button className="create-plan">Create plan</button>
+                    </NavLink>
+                </div>
             </aside>
 
     )

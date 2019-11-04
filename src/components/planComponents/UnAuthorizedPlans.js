@@ -2,7 +2,7 @@
 import React from "react";
 import '../App.css';
 import PlansWrapper from "./PlansWrapper.js";
-
+import '../sidebarComponents/SideBar.css'
 import './AllPlansPage.css';
 
 
