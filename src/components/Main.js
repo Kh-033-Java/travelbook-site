@@ -1,5 +1,4 @@
-import * as am4core from "@amcharts/amcharts4/core";
-import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import React, {useState} from 'react';
 import './App.css';
 import SideBar from "./sidebar.js";
@@ -13,7 +12,6 @@ import UserGeneralInformation from "./user-page/UserGeneralInformation";
 import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 import MyPhotos from "./gallery/MyPhotos";
-import history from "../history";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 
 
@@ -49,7 +47,7 @@ function Main(props){
      </Route>
           <Route path="/gallery">
               <Icons></Icons>
-              <Gallery name={this.state.nameCountry} history={this.props.history}/>
+              <Gallery name={state.nameCountry}/>
           </Route>
      <Route path = "/plans">
         <Icons></Icons>
@@ -80,7 +78,7 @@ function Main(props){
   );
    }
 
-    }
+
 
 
 export default Main;

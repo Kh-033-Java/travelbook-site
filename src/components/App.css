@@ -102,7 +102,7 @@ main {
 .icon-button2 {
     background: url("./icons/icon1.jpg") 100% 100% no-repeat;
     background-size: cover;
-
+}
 .icons{
   grid-area: icons;
   display: grid;
@@ -116,12 +116,12 @@ margin-top:10px;
 .icon-button1 {
     background: url("./icons/icon2.jpg") 100% 100% no-repeat;
     background-size: cover;
+}
 
 .visited{
   grid-column: 2;
 }
 
-}
 
 .icon-button4 {
     background: url("./icons/icon3.jpg") 100% 100% no-repeat;

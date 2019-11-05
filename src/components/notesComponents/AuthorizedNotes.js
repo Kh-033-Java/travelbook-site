@@ -11,9 +11,6 @@ class AuthNotes extends Component{
      
       render(){
 
-    function addAndFill(){
-        props.worldSeries.getPolygonById(props.id).fill =am4core.color("#67f58d");
-      }
 
     return(
        <React.Fragment>
