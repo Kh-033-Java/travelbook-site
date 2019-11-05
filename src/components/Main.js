@@ -10,6 +10,7 @@ import Gallery from "./Gallery.js";
 import Icons from './Icons';
 import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
+import EditNote from './notesComponents/editNoteComponents/EditNote';
 
 
 
@@ -20,10 +21,12 @@ function Main(props){
          setState({
         nameCountry : ev.target.dataItem.dataContext.name,
         idCountry: ev.target.dataItem.dataContext.id,
-        map:worldSeries
+        map:worldSeries,
+        idNote:49
       })
    }
    function setNoteID(id){
+      console.log("got"+id);
       setState({
          idNote:id
       })
@@ -58,6 +61,10 @@ function Main(props){
      <Route path = "/newnote">
         <Icons></Icons>
      <NewNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
+     </Route>
+     <Route path = "/editNote">
+        <Icons></Icons>
+     <EditNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
      </div>
   );
