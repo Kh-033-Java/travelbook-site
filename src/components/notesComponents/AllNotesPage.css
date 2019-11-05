@@ -1,0 +1,4 @@
+  .allNotes{
+    grid-row: 2;
+    overflow: auto;
+}

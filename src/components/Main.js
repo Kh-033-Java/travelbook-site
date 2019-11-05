@@ -1,4 +1,3 @@
-
 import * as am4core from "@amcharts/amcharts4/core";
 import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom';
 import React, {useState} from 'react';
@@ -16,6 +15,7 @@ import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 import MyPhotos from "./gallery/MyPhotos";
 import history from "../history";
 import GeneralPhotos from "./gallery/GeneralPhotos";
+
 
 function Main(props){
    const [state,setState] = useState({ });
@@ -47,7 +47,6 @@ function Main(props){
         <Icons></Icons>
      <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
      </Route>
-
           <Route path="/gallery">
               <Icons></Icons>
               <Gallery name={this.state.nameCountry} history={this.props.history}/>
@@ -56,6 +55,7 @@ function Main(props){
         <Icons></Icons>
      <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
      </Route>
+
           <Route
               path="/my-photos"
               render={props => <MyPhotos {...props}/>}
@@ -81,5 +81,6 @@ function Main(props){
    }
 
     }
+
 
 export default Main;
