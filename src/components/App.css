@@ -27,7 +27,6 @@ margin: 0;
     grid-template-columns: 7fr 5fr;
   grid-template-rows: 1fr  10fr;
 margin: 0;
-
 grid-column-gap:5px;
 height : 100vh;
 }
@@ -76,22 +75,23 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 .search{
   grid-column: 2;
 }
-.search{
-  margin-bottom: 5px;
-}
+
 .search input{
   -webkit-border-radius: 30px;
   border-radius: 30px;
-  
+  border-color:black;
   height: 40px;
   width: 300px;
 
 }
 
-.header-text {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 30px;
+
+.header-text{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 27px;
+  text-align: center;
 }
+
 
 main {
     grid-area: main;
@@ -108,7 +108,7 @@ main {
   display: grid;
 grid-template-columns: 11fr repeat(5,1fr);
 grid-auto-flow: column;
-grid-template-row: 10f 1fr;
+grid-template-row: 10fr 1fr;
 padding:0;
 margin-top:10px;
 }
@@ -221,11 +221,6 @@ padding:2px;
 .settings-button{
     padding-top: 20px;
     height: 60px;
-}
-.header-text{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 27px;
-  text-align: center;
 }
 
 .avatar {

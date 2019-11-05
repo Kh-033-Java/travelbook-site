@@ -97,7 +97,7 @@ class NewNoteMain extends Component {
                     <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate} name="date-note"
                                                               className="date-in" required/>
                 </div>
-                <div className="description ">
+                <div className="ddescription ">
                     <p className="header-text">Description</p>
                     <textarea placeholder="describe your trip" onChange={this.onChangeDescription} name="description"/>
                 </div>

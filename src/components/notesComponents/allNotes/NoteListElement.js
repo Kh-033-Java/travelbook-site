@@ -7,6 +7,7 @@ import '../AllNotesPage.css'
 import NProperty from './NProperty'
 import NoteOwner from '../NoteOwner';
 import * as actions from '../../../actions/notesActions'
+import { conditionalExpression } from '@babel/types';
 
 
 class NoteListElement extends Component{
@@ -18,9 +19,7 @@ class NoteListElement extends Component{
 
     }
   }
-    goToWholeNote(){
-this.props.setId(this.props.note.id);
-    }
+
     
      avEstimate(){
        let av = (this.props.note.peopleEstimate + this.props.note.cuisineEstimate + this.props.note.commonImpression + this.props.note.pricesEstimate)/4;
@@ -30,8 +29,8 @@ this.props.setId(this.props.note.id);
     render()
 {return(
 
-    <NavLink className="nav-link list-el-container list-note-el" to="note" onClick={this.goToWholeNote.bind(this)}>
-      <NoteOwner account={this.state.login} style_="owner-list-notes note-owner-gen"/>
+    <NavLink className="nav-link list-el-container list-note-el" to="note">
+      <NoteOwner account={this.state.login} style_="owner-list-notes note-owner-gen"  onClick={console.log("set")}/>
       <Estimation grade={this.avEstimate.bind(this)}/>
       <NProperty positn="property1  prop" type ="Title" text ={this.props.note.title}/>
       <NProperty positn="property2  prop" type="City" text ={this.props.note.describedCity}/>

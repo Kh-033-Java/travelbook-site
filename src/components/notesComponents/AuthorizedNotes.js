@@ -33,7 +33,8 @@ class AuthNotes extends Component{
      }
   }
   loadAll(){
-   axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/${'login'}`).then(res=>{
+   axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/${localStorage.getItem("login"
+   )}`).then(res=>{
       console.log(res.data);
    this.setState({...this.state,notes:res.data.notes})
    })

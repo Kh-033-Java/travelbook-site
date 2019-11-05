@@ -46,7 +46,7 @@
     min-height: 85%;
 }
 
-.description {
+.ddescription {
     grid-column: 1/3;
     grid-row: 3;
     text-align: center;
@@ -86,7 +86,7 @@
 
 
 
-.description textarea {
+.ddescription textarea {
     width: 85%;
     height: 80%;
     min-height: 200px;

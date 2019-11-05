@@ -5,6 +5,8 @@ import axios from 'axios';
 import './Registration.css';
 import {ValidatorForm} from 'react-form-validator-core';
 import TextValidator from "./validations/TextValidator";
+import {object} from "@amcharts/amcharts4/core";
+import {Redirect} from "react-router";
 
 class Registration extends Component {
     constructor(props) {
@@ -18,7 +20,8 @@ class Registration extends Component {
             email: '',
             description: '',
             avatar: '',
-            disabled: true
+            disabled: true,
+            isSignedUp: false
         };
     }
 
@@ -46,7 +49,11 @@ class Registration extends Component {
           email: email,
           avatar: localStorage.getItem("avatar")
       }).then(res => {
-          console.log(res)
+          console.log(res);
+          if(res.status === 200){
+              alert("User successfully created, you can sign in now");
+              this.setState({isSignedUp: true});
+          }
       }).catch((error) => {
           const message = error.response.data.message;
           const checkerOnLogin = message.includes("and property `login` = ");
@@ -60,6 +67,9 @@ class Registration extends Component {
     };
 
     render() {
+        if (this.state.isSignedUp) {
+            return <Redirect to={{pathname: "/login"}}/>;
+        }
         return <div>
             <Header/>
             <ValidatorForm ref={node => (this.form = node)}
@@ -127,6 +137,7 @@ class Registration extends Component {
                         <ImageUpload/>
                 </div>
             </div>
+            </ValidatorForm>
             <div className="ROW">
                 <div className="registration-button">
                     <form onSubmit={this.handleSubmit}>
@@ -137,16 +148,19 @@ class Registration extends Component {
                         </div>
                     </form>
                 </div>
-                <div className="description">Desc
+                <ValidatorForm ref={node => (this.form = node)}
+                               onSubmit={this.handleSubmit} onError={this.handleError}>
+                <div className="description">
                     <div className="description-inner">
+                        Description
                         <textarea className="description-input-form" name="description" rows="4"
                                   onChange={e => this.handleChange(e)}
                                   value={this.state.description}>
                         </textarea>
                     </div>
                 </div>
+                </ValidatorForm>
             </div>
-            </ValidatorForm>
         </div>
     }
 }
