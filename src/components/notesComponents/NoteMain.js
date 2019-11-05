@@ -16,7 +16,7 @@ function NoteMain(props){
         <NoteProperties city = {props.note.city} date = {props.note.date}/>
        <div className="description container">
        <div className="title-note">Description</div>
-       <textarea placeholder={props.note.description} readOnly></textarea>
+       <textarea value={props.note.description} readOnly></textarea>
        </div>
        <NotesPhotos photos ={[logo,logo2,logo,logo2]/*props.note.photos*/ }/>
        <NoteEstimations people = {props.note.peopleEstimate} prices ={props.note.pricesEstimate}

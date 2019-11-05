@@ -4,6 +4,7 @@ import NotesWrapper from "./NotesWrapper.js";
 import OnlyMyNotes from "./OnlyMyNotes";
 import ToAddFooter from "../sidebarComponents/ToAddFooter.js";
 import './AllNotesPage.css';
+import axios from 'axios';
 
 
 class AuthNotes extends Component{
@@ -29,13 +30,18 @@ class AuthNotes extends Component{
       this.setState({checked:false});
       this.loadAll();
      }
-   //will be axios that
   }
   loadAll(){
-
+   axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/${'login'}`).then(res=>{
+      console.log(res.data);
+   this.setState({...this.state,notes:res.data.notes})
+   })
   }
   loadOnlyUsers(){
-
+   axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private/${'login'}`).then(res=>{
+      console.log(res.data);
+   this.setState({...this.state,notes:res.data.notes})
+   })
   }
   componentDidMount(){
     this.loadAll();

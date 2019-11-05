@@ -21,14 +21,7 @@ class NoteListElement extends Component{
     goToWholeNote(){
 this.props.setId(this.props.note.id);
     }
-    componentDidMount(){
-      //actions.getNoteById(this.props.countryName,/*this.props.noteId*/49).then(res=>{
-        //console.log(res[0]);
-      //  this.setState(
-      //       res[0]     
-      //  )
-    //})
-    }
+    
      avEstimate(){
        let av = (this.props.note.peopleEstimate + this.props.note.cuisineEstimate + this.props.note.commonImpression + this.props.note.pricesEstimate)/4;
        let res = (Math.floor(av*100)/100);
@@ -36,17 +29,7 @@ this.props.setId(this.props.note.id);
     }
     render()
 {return(
-  /*  <NavLink className="nav-link container list-note-el" to="note" onClick={this.goToWholeNote.bind(this)}>>
-      <NoteOwner account={this.state.login} style_="owner-list-notes container"/>
-      <div className="country-li container">{this.props.countryName}</div>
-      <Estimation/>
-      <NProperty positn="property1 container prop" type ="Title" text ={this.state.title}/>
-      <NProperty positn="property2 container prop" type="City" text ={this.state.describedCity}/>
-      <div className="small-description">
-        <textarea value={this.state.description} readOnly></textarea>
-      </div>
-        
-    </NavLink>*/
+
     <NavLink className="nav-link list-el-container list-note-el" to="note" onClick={this.goToWholeNote.bind(this)}>
       <NoteOwner account={this.state.login} style_="owner-list-notes note-owner-gen"/>
       <Estimation grade={this.avEstimate.bind(this)}/>

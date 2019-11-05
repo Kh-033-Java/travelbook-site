@@ -37,11 +37,15 @@ return(
 <Header title = {this.state.note.title} countryName={this.props.countryName}/>
 <NoteMain note = {this.state.note}/>
 </aside>
-: <aside className="rightbar whole-comp ">
+:( true?<aside className="rightbar whole-comp ">{/*check login and node owner*/}
 <Header title = {this.state.note.title} countryName={this.props.countryName}/>
 <NoteMain note = {this.state.note}/>
 <FooterWithEdit text ="edit note" path="/editNote"/>
+</aside>:<aside className="rightbar whole-comp-no-footer ">
+<Header title = {this.state.note.title} countryName={this.props.countryName}/>
+<NoteMain note = {this.state.note}/>
 </aside>
+)
 );
     }
 }
