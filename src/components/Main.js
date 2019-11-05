@@ -10,7 +10,7 @@ import Gallery from "./Gallery.js";
 import Icons from './Icons';
 import UserGeneralInformation from "./user-page/UserGeneralInformation";
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
-
+import Note from './notesComponents/Note'
 
 
 function Main(props){
