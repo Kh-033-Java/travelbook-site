@@ -1,14 +1,15 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import {Route,} from 'react-router-dom';
 import './App.css';
 import SideBar from "./sidebar.js";
 import Head from "./header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
-import Note from './notesComponents/Note.js'
 import Plans from "./Plans.js";
 import Gallery from "./Gallery.js";
 import Icons from './Icons';
+import UserGeneralInformation from "./user-page/UserGeneralInformation";
+import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 
 
@@ -60,9 +61,14 @@ function Main(props){
         <Icons></Icons>
      <NewNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
+     <Route path="/main">
+                <Icons></Icons>
+                <UserGeneralInformation/>
+            </Route>
      </div>
   );
    }
+
 
 
 export default Main;

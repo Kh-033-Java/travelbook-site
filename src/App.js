@@ -1,7 +1,11 @@
 import React,{Component} from 'react';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Main from './components/Main.js';
-//const BrowserHistory = require('react-router/lib/BrowserHistory').default;
+import Login from './components/login-package/login';
+import UserSettings from './components/user-page/UserSettings';
+import Registration from "./components/Registration";
+import UserGeneralInformation from './components/user-page/UserGeneralInformation'
+
 
 class App extends Component{
 
@@ -10,6 +14,12 @@ class App extends Component{
   
     <Router baseName="/travelbook/">
       <Switch>
+          <Route path="/settings/" component={UserSettings} exact/>
+          <Route path="/login/" component={Login} exact/>
+          <Route path="/registration" component={Registration} exact/>
+          <Route path="/main" component={UserGeneralInformation} exact>
+              <Main gridClass="grid-cont"/>
+          </Route>
       <Route path="/generalInfo/">
         <Main gridClass="grid-cont"/>
         </Route>
