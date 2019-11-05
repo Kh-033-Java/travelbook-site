@@ -1,17 +1,20 @@
+import * as am4core from "@amcharts/amcharts4/core";
+import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom';
 import React, {useState} from 'react';
-import {Route,} from 'react-router-dom';
 import './App.css';
 import SideBar from "./sidebar.js";
 import Head from "./header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
 import Plans from "./Plans.js";
-import Gallery from "./Gallery.js";
+import Gallery from "./gallery/Gallery.js";
 import Icons from './Icons';
 import UserGeneralInformation from "./user-page/UserGeneralInformation";
 import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
-
+import MyPhotos from "./gallery/MyPhotos";
+import history from "../history";
+import GeneralPhotos from "./gallery/GeneralPhotos";
 
 
 function Main(props){
@@ -44,15 +47,23 @@ function Main(props){
         <Icons></Icons>
      <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
      </Route>
-
-     <Route path = "/gallery">
-        <Icons></Icons>
-     <Gallery name={state.nameCountry}/>
-     </Route>
+          <Route path="/gallery">
+              <Icons></Icons>
+              <Gallery name={this.state.nameCountry} history={this.props.history}/>
+          </Route>
      <Route path = "/plans">
         <Icons></Icons>
      <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
      </Route>
+
+          <Route
+              path="/my-photos"
+              render={props => <MyPhotos {...props}/>}
+          />
+          <Route
+              path="/general-photos"
+              render={props => <GeneralPhotos {...props}/>}
+          />
      <Route path = "/note">
         <Icons></Icons>
      <Note countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
@@ -69,6 +80,7 @@ function Main(props){
   );
    }
 
+    }
 
 
 export default Main;
