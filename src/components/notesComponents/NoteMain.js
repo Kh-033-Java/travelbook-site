@@ -12,7 +12,7 @@ function NoteMain(props){
 
     return (
    <div className = "main-comp main-sidebar">
-       <NoteOwner account={props.note.login}/>
+       <NoteOwner account={/*props.note.login*/"login"} style_="note-owne note-owner-gen"/>
         <NoteProperties city = {props.note.city} date = {props.note.date}/>
        <div className="description container">
        <div className="title-note">Description</div>

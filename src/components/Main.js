@@ -26,6 +26,7 @@ function Main(props){
       })
    }
    function setNoteID(id){
+      console.log("got"+id);
       setState({
          idNote:id
       })
