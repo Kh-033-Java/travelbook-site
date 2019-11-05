@@ -1,16 +1,22 @@
 import React from 'react';
 import axios from 'axios';
-import {ACCESS_TOKEN} from "../../constants/constants";
+import {ACCESS_TOKEN, SECRET_PHRASE} from "../../constants/constants";
 import {Redirect} from "react-router";
 import './UserInput.css'
+import CryptoJS from "crypto-js";
 
 export default class UserInput extends React.Component {
-    state = {
-        login: '',
-        password: '',
-        isSignedUp: false,
-        token: '',
-    };
+    constructor(props){
+        super(props);
+
+        this.state = {
+            login: '',
+            password: '',
+            isSignedUp: false,
+            token: '',
+        };
+    }
+
 
     handleChange(e) {
         this.setState({[e.target.name]: e.target.value});
@@ -27,10 +33,13 @@ export default class UserInput extends React.Component {
             password: password
         })
             .then(res => {
-                localStorage.setItem(ACCESS_TOKEN, res.data.token);
+                let encryptedToken = CryptoJS.AES.encrypt(res.data.token, SECRET_PHRASE);
+                localStorage.setItem(ACCESS_TOKEN, encryptedToken);
                 localStorage.setItem("login", res.data.login);
                 localStorage.setItem("avatar", res.data.avatar);
                 console.log(res.data);
+                console.log(res.data.token);
+                console.log(encryptedToken);
                 this.setState({isSignedUp: true})
             }).catch((error) => {
             if (error.request) {

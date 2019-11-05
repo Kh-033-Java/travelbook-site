@@ -23,6 +23,7 @@
     width: 300px;
 }
 .input-forms-dislocation{
+    font-size: 80%;
     text-align: right;
     padding-right: 70px;
     transform: translate(10%, -70%);

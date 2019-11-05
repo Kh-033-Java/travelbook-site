@@ -8,7 +8,7 @@ function LogOut() {
     };
     return (
         <div className="authorize3 container header-text">
-            <a href='http://localhost:3000/travelbook' onClick={logout}>Log Out</a>
+            <NavLink to='/travelbook' onClick={logout}>Log Out</NavLink>
         </div>
     )
 }

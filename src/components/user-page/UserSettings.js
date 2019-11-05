@@ -6,6 +6,8 @@ import {getJwt} from "../../helpers/jwt";
 import {confirmAlert} from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import './UserSettingsPage.css'
+import {ValidatorForm} from "react-form-validator-core";
+import TextValidator from "../validations/TextValidator";
 
 class UserSettings extends Component {
     constructor(props) {
@@ -18,9 +20,7 @@ class UserSettings extends Component {
             password: '',
             description: '',
             avatar: '',
-            formErrors: {password: ''},
-            passwordValid: false,
-            formValid: false
+            disabled: true
         };
     }
 
@@ -46,13 +46,14 @@ class UserSettings extends Component {
         });
     }
 
-    handleChange(e) {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState({[name]: value},
-            () => {
-                this.validateField(name, value)
-            });
+    handleError = () => {
+        this.form.isFormValid().then(isValid => {
+            this.setState({disabled: !isValid});
+        });
+    };
+
+    handleChange(event) {
+        this.setState({[event.target.name]: event.target.value});
     }
 
     handleSubmit = (e) => {
@@ -141,98 +142,96 @@ class UserSettings extends Component {
 
     };
 
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let passwordValid = this.state.passwordValid;
-        if (fieldName === "password") {
-            passwordValid = value.length >= 4;
-            fieldValidationErrors.password = passwordValid ? '' : ' is too short';
-        }
-        this.setState({formErrors: fieldValidationErrors, passwordValid: passwordValid},
-            this.validateForm);
-    }
-
-    validateForm() {
-        this.setState({formValid: this.state.passwordValid});
-    }
-
     render() {
         return (
             <div className="userSettingsGeneral">
                 <Header/>
-                <div className="panel panel-default">
-                </div>
-                <div className="titlePageName">Settings</div>
-                <div className="ROW">
-                    <div className="CONTENT">
-                        <div className="INNER-CONTENT1">
-                            <form onSubmit={this.handleSubmit}>
-                                <label className="my-account">My account</label>
-                                <div>
-                                    <input className="settings-inputs" type="text" placeholder="Change First Name"
-                                           name="firstName"
-                                           onChange={e => this.handleChange(e)}
-                                           value={this.state.firstName}/>
+                <ValidatorForm ref={node => (this.form = node)}
+                               onSubmit={this.handleSubmit}
+                               onError={this.handleError}>
+                    <div className="titlePageName">Settings</div>
+                    <div className="ROW">
+                        <div className="CONTENT">
+                            <div className="INNER-CONTENT1">
+                                    <label className="my-account">My account</label>
+                                    <div>
+                                        <input className="settings-inputs"
+                                               type="text"
+                                               placeholder="Change First Name"
+                                               name="firstName"
+                                               onChange={e => this.handleChange(e)}
+                                               value={this.state.firstName}/>
+                                        <br/>
+                                        <input className="settings-inputs"
+                                               type="text"
+                                               placeholder="Change Last Name"
+                                               name="lastName"
+                                               onChange={e => this.handleChange(e)}
+                                               value={this.state.lastName}/>
+                                    </div>
+                            </div>
+                            <div className="INNER-CONTENT2">
+                                    <label className="security">Security</label>
+                                    <div className="inner-content-and-errors">
+                                        <input className="settings-inputs" type="text" placeholder="Change Login"
+                                               name="login"
+                                               onChange={e => this.handleChange(e)}
+                                               value={this.state.login}/>
+                                        <TextValidator
+                                            onChange={this.handleChange}
+                                            name="login"
+                                            value={this.state.login}
+                                            validators={['required', 'minStringLength: 4', 'maxStringLength: 15']}
+                                            errorMessages={['this field is required', 'Login should to be 4 or more chars', 'Login should to be maximum 15 chars']}/>
+                                        <br/>
+                                        <input className="settings-inputs"
+                                               type="password"
+                                               placeholder="Change Password"
+                                               name="password"
+                                               autoComplete="on"
+                                               onChange={e => this.handleChange(e)}
+                                               value={this.state.password}/>
+                                        <TextValidator
+                                            validatorListener={this.handleError}
+                                            onChange={this.handleChange}
+                                            name="password"
+                                            value={this.state.password}
+                                            validators={['required', 'minStringLength: 4']}
+                                            errorMessages={['this field is required', 'Password should to be 4 or more chars']}/>
+                                    </div>
+                            </div>
+                        </div>
+                        <div className="SIDEBAR-1">
+                                <div className="INNER-SIDEBAR-1">Description
                                     <br/>
-                                    <input className="settings-inputs" type="text" placeholder="Change Last Name"
-                                           name="lastName"
-                                           onChange={e => this.handleChange(e)}
-                                           value={this.state.lastName}/>
+                                    <textarea className="description-input" type="text" name="description"
+                                              onChange={e => this.handleChange(e)}
+                                              value={this.state.description}/>
+                                </div>
+                        </div>
+                        <div className="SIDEBAR-2">
+                            <div className="INNER-SIDEBAR-2">Profile Image
+                                <ImageUpload/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="FOOTER">
+                        <div className="INNER-FOOTER">
+                            <form onSubmit={this.deleteAccount}>
+                                <div className="delete-account">
+                                    <button type="submit">
+                                        Delete account
+                                    </button>
                                 </div>
                             </form>
-                        </div>
-                        <div className="INNER-CONTENT2">
-                            <form onSubmit={this.handleSubmit}>
-                                <label className="security">Security</label>
-                                <div>
-                                    <input className="settings-inputs" type="text" placeholder="Change Login"
-                                           name="login"
-                                           onChange={e => this.handleChange(e)}
-                                           value={this.state.login}/>
-                                    <br/>
-                                    <input className="settings-inputs" type="password" placeholder="Change Password"
-                                           name="password"
-                                           autoComplete="on"
-                                           onChange={e => this.handleChange(e)}
-                                           value={this.state.password}/>
+                                <div className="save-settings">
+                                    <button type="submit" disabled={this.state.disabled}>
+                                        Save settings
+                                    </button>
                                 </div>
-                            </form>
                         </div>
                     </div>
-                    <div className="SIDEBAR-1">
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="INNER-SIDEBAR-1">Description
-                                <br/>
-                                <textarea className="description-input" type="text" name="description"
-                                          onChange={e => this.handleChange(e)}
-                                          value={this.state.description}/>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="SIDEBAR-2">
-                        <div className="INNER-SIDEBAR-2">Profile Image
-                            <ImageUpload/>
-                        </div>
-                    </div>
-                </div>
-                <div className="FOOTER">
-                    <div className="INNER-FOOTER">
-                        <form onSubmit={this.deleteAccount}>
-                            <div className="delete-account">
-                                <button type="submit">
-                                    Delete account
-                                </button>
-                            </div>
-                        </form>
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="save-settings">
-                                <button type="submit" disabled={!this.state.formValid}>
-                                    Save settings
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                </ValidatorForm>
             </div>
         )
     }

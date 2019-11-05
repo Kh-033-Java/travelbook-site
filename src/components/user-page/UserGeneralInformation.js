@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
 import {getJwt} from "../../helpers/jwt";
-import Header from '../header';
 import axios from 'axios';
 import './UserMainPage.css';
 
 class UserGeneralInformation extends Component {
-    state = {
-        login: '',
-        firstName:'',
-        lastName: '',
-        description: '',
+    constructor(params){
+        super(params);
+
+        this.state = {
+            login: '',
+            firstName:'',
+            lastName: '',
+            description: '',
+        }
     }
+
 
     componentDidMount() {
         let token = getJwt();
