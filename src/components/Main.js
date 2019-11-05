@@ -10,7 +10,6 @@ import Plans from "./Plans.js";
 import Gallery from "./Gallery.js";
 import Icons from './Icons';
 import UserGeneralInformation from "./user-page/UserGeneralInformation";
-import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 
 

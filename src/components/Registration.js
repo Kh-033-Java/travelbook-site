@@ -137,8 +137,9 @@ class Registration extends Component {
                         </div>
                     </form>
                 </div>
-                <div className="description">Desc
+                <div className="description">
                     <div className="description-inner">
+                        Description
                         <textarea className="description-input-form" name="description" rows="4"
                                   onChange={e => this.handleChange(e)}
                                   value={this.state.description}>

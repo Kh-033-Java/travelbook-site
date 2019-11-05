@@ -7,7 +7,7 @@
 .main-registration-inner{
     text-align: center;
     font-size: 30px;
-    min-height: 500px;
+    min-height: 70%;
 }
 
 .photo-upload-form{
@@ -30,14 +30,21 @@
 }
 
 .description{
-    width: 50%;
+    min-height: 30%;
+    width: 46%;
     float:left;
-    padding-bottom: 60px;
-    transform: translate(30%, -60%);
+    text-align: left;
+    transform: translate(2%, -65%);
+
+}
+
+.description-inner{
+    float: left;
+    width: 50%;
 }
 
 .description-input-form{
-    font-size: 30px;
+    font-size: 15px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     white-space: normal;
     border-bottom-color: black;
