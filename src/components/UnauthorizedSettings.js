@@ -1,18 +1,20 @@
 import React from 'react'
 import './App.css';
-function UnSettings(props){
-const authorize=()=>{
-localStorage.setItem("token","sth");
+import {NavLink} from "react-router-dom";
+
+function UnSettings(props) {
+    return (
+        <div className="settings">
+            <div className="authorize1 container header-text">
+                <NavLink to="/login">Log In</NavLink>
+            </div>
+            <div className="authorize2 container header-text">
+                <NavLink to="/registration">Registration
+                </NavLink>
+            </div>
+        </div>
+    )
 }
-    return(
-            <div className="settings">
-         <div className="authorize1  header-text">
-             <div>Log in</div>
-             <button onClick={authorize}>authorize</button>
-         </div>
-    <div className="authorize2  header-text">Registration</div>
-    </div>
-       )
-    }
+
 
 export default UnSettings;

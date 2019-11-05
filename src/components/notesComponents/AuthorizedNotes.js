@@ -7,6 +7,7 @@ import './AllNotesPage.css';
 import axios from 'axios';
 
 
+
 class AuthNotes extends Component{
    constructor(props){
       super(props);
@@ -47,7 +48,9 @@ class AuthNotes extends Component{
     this.loadAll();
   }
       render(){
-             return(
+
+    return(
+
        <React.Fragment>
              <div className="list-main-auth main-sidebar " >
             <OnlyMyNotes funCheck={this.onCheck} />

@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from 'react-router-dom';
 import './App.css';
 import"./sidebarComponents/SideBar.css";
 import './notesComponents/AllNotesPage.css';
@@ -10,6 +11,8 @@ import Header from './sidebarComponents/SidebarHeader.js';
 
 function Notes(props){
     return(
+
+
        !isAuthorized()?
         <aside className="rightbar whole-comp-no-footer ">
         <Header title = "Notes" countryName={props.name}/>
@@ -22,6 +25,7 @@ function Notes(props){
 
 </aside>
                                          
+
          )
     }
 

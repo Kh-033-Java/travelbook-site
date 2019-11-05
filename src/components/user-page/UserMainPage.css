@@ -1,0 +1,35 @@
+.first{
+    text-align: center;
+    width: 70%;
+    float:left;
+    min-height: 50px;
+}
+
+.second{
+    width:30%;
+    float: left;
+    min-height: 50px;
+}
+
+.third{
+    width: 50%;
+    height: 50%;
+    float: left;
+}
+
+.fourth{
+    padding-top: 60px;
+    width: 50%;
+    height: 50%;
+    float: left;
+}
+
+.fifth{
+    height: 42%;
+    float: left;
+    width: 100%;
+}
+
+.avatar-inner{
+    width: 280px;
+}

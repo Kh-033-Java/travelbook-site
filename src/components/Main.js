@@ -1,16 +1,19 @@
-import React,{useState} from 'react';
-import {Route,} from 'react-router-dom';
+import { Route} from 'react-router-dom';
+import React, {useState} from 'react';
 import './App.css';
 import SideBar from "./sidebar.js";
 import Head from "./header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
 import Plans from "./Plans.js";
-import Gallery from "./Gallery.js";
+import Gallery from "./gallery/Gallery.js";
 import Icons from './Icons';
+import UserGeneralInformation from "./user-page/UserGeneralInformation";
 import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 import EditNote from './notesComponents/editNoteComponents/EditNote';
+import MyPhotos from "./gallery/MyPhotos";
+import GeneralPhotos from "./gallery/GeneralPhotos";
 
 
 
@@ -39,21 +42,30 @@ function Main(props){
     <Route path = "/travelbook">
           </Route>
     <Route path = "/generalInfo">
-    <Icons></Icons>
+    <Icons countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map}></Icons>
      <SideBar id={state.nameCountry}/>
      </Route>
        <Route path = "/notes">
         <Icons></Icons>
      <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
      </Route>
-     <Route path = "/gallery">
-        <Icons></Icons>
-     <Gallery name={state.nameCountry}/>
-     </Route>
+          <Route path="/gallery">
+              <Icons></Icons>
+              <Gallery name={state.nameCountry}/>
+          </Route>
      <Route path = "/plans">
         <Icons></Icons>
      <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
      </Route>
+
+          <Route
+              path="/my-photos"
+              render={props => <MyPhotos {...props}/>}
+          />
+          <Route
+              path="/general-photos"
+              render={props => <GeneralPhotos {...props}/>}
+          />
      <Route path = "/note">
         <Icons></Icons>
      <Note countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
@@ -66,9 +78,17 @@ function Main(props){
         <Icons></Icons>
      <EditNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
+
+     <Route path="/main">
+                <Icons></Icons>
+                <UserGeneralInformation/>
+            </Route>
+
      </div>
   );
    }
+
+
 
 
 export default Main;

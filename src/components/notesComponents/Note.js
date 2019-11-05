@@ -8,6 +8,7 @@ import isAuthorized from '../checker/authorizationChecker'
 import FooterWithEdit from '../sidebarComponents/FooterWithEdit'
 
 
+
 class Note extends Component{
 constructor(props){
     super(props);
