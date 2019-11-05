@@ -29,12 +29,6 @@
 .ROW {
     display: block;
 }
-
-
-body {
-    font-size: 40px;
-}
-
 .CONTENT {
     width: 35%;
     float: left;
@@ -56,12 +50,10 @@ body {
 .SIDEBAR-1 {
     width: 35%;
     float: left;
-    padding-left: 10px;
 }
 
 .INNER-SIDEBAR-1 {
     padding-top: 20px;
-    padding-left: 30px;
     min-height: 50%;
 }
 

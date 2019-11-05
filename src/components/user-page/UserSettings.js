@@ -215,7 +215,8 @@ class UserSettings extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="FOOTER">
+                </ValidatorForm>
+                <div className="FOOTER">
                         <div className="INNER-FOOTER">
                             <form onSubmit={this.deleteAccount}>
                                 <div className="delete-account">
@@ -224,14 +225,17 @@ class UserSettings extends Component {
                                     </button>
                                 </div>
                             </form>
+                            <ValidatorForm ref={node => (this.form = node)}
+                                                  onSubmit={this.handleSubmit}
+                                                  onError={this.handleError}>
                                 <div className="save-settings">
                                     <button type="submit" disabled={this.state.disabled}>
                                         Save settings
                                     </button>
                                 </div>
+                            </ValidatorForm>
                         </div>
                     </div>
-                </ValidatorForm>
             </div>
         )
     }

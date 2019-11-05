@@ -5,16 +5,28 @@
     min-height: 50px;
 }
 
+.first-inner{
+    font-size: 200%;
+}
+
 .second{
     width:30%;
     float: left;
     min-height: 50px;
 }
 
+.second-inner{
+    font-size: 200%;
+}
+
 .third{
     width: 50%;
     height: 50%;
     float: left;
+}
+
+.third-inner{
+    font-size: 200%;
 }
 
 .fourth{
@@ -24,12 +36,20 @@
     float: left;
 }
 
+.fourth-inner{
+    font-size: 200%;
+}
+
 .fifth{
     height: 42%;
     float: left;
     width: 100%;
 }
 
+.fifth-inner{
+    font-size: 200%;
+}
+
 .avatar-inner{
-    width: 280px;
+    width:100% ;
 }
