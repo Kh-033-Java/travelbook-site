@@ -5,7 +5,7 @@ import Login from './components/login-package/login';
 import UserSettings from './components/user-page/UserSettings';
 import Registration from "./components/Registration";
 import UserGeneralInformation from './components/user-page/UserGeneralInformation'
-//const BrowserHistory = require('react-router/lib/BrowserHistory').default;
+
 
 class App extends Component{
 
@@ -35,8 +35,17 @@ class App extends Component{
         <Route path="/plans/">
         <Main gridClass="grid-cont"/>
         </Route>
+        <Route path="/note/">
+        <Main gridClass="grid-cont"/>
+        </Route>
+        <Route path="/newnote/">
+        <Main gridClass="grid-cont"/>
+        </Route>
         <Route path="/travelbook/">
         <Main gridClass="grid-cont-initially"/>
+      </Route>
+      <Route path="/errorPage/">
+        <h1>Error</h1>
       </Route>
       <Route>
         <h1>Not Found</h1>
