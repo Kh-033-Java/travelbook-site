@@ -17,7 +17,7 @@ function Settings(props){
                 <LogOut/>
                 <div>
                     <NavLink to="/settings">
-                        <img className="settings-button" src={icon}/>
+                        <div className="settings-button" />
                     </NavLink>
                 </div>
                 <div>

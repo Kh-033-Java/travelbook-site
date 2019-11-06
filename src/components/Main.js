@@ -100,7 +100,6 @@ render(){
         <Icons></Icons>
      <EditNote countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
      </Route>
-
      <Route path="/main">
                 <Icons></Icons>
                 <UserGeneralInformation/>
