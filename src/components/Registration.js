@@ -40,7 +40,6 @@ class Registration extends Component {
 
         var {login, password, lastName, firstName, description, email} = this.state;
 
-
         axios.post("http://localhost:8080/anonymous/registration", {
             login: login,
             password: password,
@@ -57,8 +56,8 @@ class Registration extends Component {
             }
         }).catch((error) => {
             const message = error.response.data.message;
-            const checkerOnLogin = message.includes("and property `login` = ");
-            const checkerOnEmail = message.includes("and property `email` = ");
+            const checkerOnLogin = message.includes("and property login = ");
+            const checkerOnEmail = message.includes("and property email = ");
             if (checkerOnLogin) {
                 alert("User with such login already exists.");
             } else if (checkerOnEmail) {
@@ -102,7 +101,7 @@ class Registration extends Component {
                                     onChange={this.handleChange}
                                     name="login"
                                     value={this.state.login}
-                                    validators={['required', 'minStringLength: 4', 'maxStringLength: 15']}
+validators={['required', 'minStringLength: 4', 'maxStringLength: 15']}
                                     errorMessages={['this field is required', 'Login should to be 4 or more chars', 'Login should to be maximum 15 chars']}
                                 />
                             </div>
@@ -148,19 +147,15 @@ class Registration extends Component {
                     <ImageUpload/>
                 </div>
             </div>
-            </ValidatorForm>
             <div className="ROW">
                 <div className="description-part">Description
-
                     <div className="description-inner">
-                        Description
                         <textarea className="description-input-form" name="description" rows="4"
                                   onChange={e => this.handleChange(e)}
                                   value={this.state.description}>
                         </textarea>
                     </div>
                 </div>
-                </ValidatorForm>
             </div>
 
         </div>
