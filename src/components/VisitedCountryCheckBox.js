@@ -42,19 +42,21 @@ class VisitedCountryCheckBox extends Component {
         })
         if (this.state.checkVisitedCountry === true) {
             this.state.setState({isChecked: true});
-        }
-        if (this.state.checkVisitedCountry === false) {
-            this.state.isChecked ?
+        } else {
+          if (this.state.checkVisitedCountry === false) {
+            if (this.state.isChecked === true) {
                 axios.put(endpointVisited)
                     .then(response => {
                         console.log(response);
                     })
-            :
-                axios.put(endpointDidntVisited)
+                } else {
+                    axios.put(endpointDidntVisited)
                     .then(response => {
                         console.log(response);
                     })
-            }
+                    }
+        }
+    }
     };
 
     toggleChange = () => {
