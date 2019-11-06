@@ -1,0 +1,53 @@
+.fileInput {
+    box-shadow: 0 0 3px #000000;
+    padding: 10px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.imgPreview {
+    box-shadow: 0 0 3px #000000;
+    text-align: center;
+    margin: 5px 15px;
+    height: 35vh;
+    width: 70%;
+}
+.previewText {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.submitButton {
+    padding: 12px;
+    margin-left: 10px;
+    background: white;
+    border: 4px solid lightgray;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 10pt;
+    cursor: pointer;
+    background: #efefef;
+}
+
+.deleteSubmitButton{
+    width: 120px;
+    padding: 12px;
+    margin-left: 10%;
+    background: white;
+    border: 4px solid lightgray;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 10pt;
+    cursor: pointer;
+    background: #efefef;
+}
+
+.centerText {
+    text-align: center;
+    width: 500px;
+}
+.photo {
+    box-shadow: 0 0 3px #000000;
+    width: 100%;
+    height: 100%;
+}

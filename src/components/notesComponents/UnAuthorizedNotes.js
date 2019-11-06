@@ -1,18 +1,26 @@
 
-import React from "react";
+import React,{Component} from "react";
 import '../App.css';
 import NotesWrapper from "./NotesWrapper.js";
-
 import './AllNotesPage.css';
 
 
-function UnAuthNotes(props){
-   
+class UnAuthNotes extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            notes:[]
+        }
+    }
+    componentDidMount(){
+        //will be axios
+    }
+   render(){
     return(
-         <div className = "list-main-unauth  main-sidebar container">
-<NotesWrapper setId={props.setId}/>
+         <div className = "list-main-unauth  main-sidebar">
+<NotesWrapper classWr={"allNotes container"}  setId={this.props.setId} countryName={this.props.name} notes={this.state.notes}/>
 </div>
              )
 }
-
+}
 export default UnAuthNotes;

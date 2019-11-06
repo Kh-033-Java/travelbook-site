@@ -1,37 +1,193 @@
-    .note-property-city{
+*{
+    outline: none;
+}
+.note-property-city{
         grid-row: 2;
         grid-column: 1;
     }
-    .note-title{
+ .note-title{
         grid-column: 1;
         grid-row: 1;
+        border-right: none;
+        border-top: none;
+        border-left: none;
+       padding :10px;
         }
-        .note-country{
+.note-country{
             grid-column: 2;
             grid-row: 1;
+            border-right: none;
+        border-top: none;
+       
+    padding :10px;
             }
-    .note-property{
+.note-property{
         padding :5px;
         margin-bottom:12px;
     }
-    .note-property-date{
+.note-property-date{
         grid-row: 2;
         grid-column: 2;
     }
-    .note-owner{
-        grid-row: 1;
-        grid-column: 1/3;
+.note-owner{
+    grid-row: 1;
+    grid-column: 1/3;
+    padding:10px;
     }
 .description{
         grid-row: 3;
         grid-column: 1/3;
 }
-.estimations{
-    grid-row: 5;
-    grid-column: 1/3;
-}
+
 .note-photos{
-    grid-row: 4;
-    grid-column: 1/3; 
+    grid-row: 6;
+    grid-column: 1/4; 
+margin-top:40px;
+}
+.star-img{
+    background: url("../../images/star.png")  100% 100% no-repeat; 
+    background-size: contain;
+    background-position: center;
+    margin-top:3px;
+    margin-bottom:5px;
+    width: 28px;
+  height: 28px;
+
+    }
+.estimations-n{
+        grid-row: 4;
+        grid-column: 1/3;
+        display:grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(4,1fr);
+        padding:6px;
+    }
+.one-est{
+        height:100px;
+        padding:6px;
+        display: grid;
+        margin: 2px 10%;
+        grid-template-rows: 1;
+        text-align: center;
+        grid-template-columns:5fr repeat(5,1fr) ;
+    }
+.one-est div:first-child{
+        grid-column: 1;
+        padding-bottom:3px;
+        margin:2px;
+        height: 15px;
+        vertical-align: center;
+               
+    } 
+    
+ .one-est div:first-child span{
+            font-size: 16px;
+          
+    } 
+    .note-owner-gen {
+        display: grid;
+        grid-template-columns: 1fr 12fr;
+    }
+ .account-image{
+     border-radius: 50%;
+    border: 3px solid black;
+    width:38px;
+    margin: 0.3em;
+    height:38px;
+    grid-column: 1;
+
+ }
+ .account-label{
+     margin: 4% 0;
+     grid-column:2;
+ } 
+   
+/*Estimationsss*/
+#show-est{
+    max-height: 300px;
+    width:80%;
+   margin: 0 auto;
 }
 
+ .rating2 {
+    display: flex;
+    width: 100%;
+    height:100%;
+    justify-content: center;
+    flex-direction: row-reverse;
+    position: relative;
+  }
+  .rating2-0 {
+    filter: grayscale(100%);
+  }
+  
+  
+ .rating2 > input {
+    display: none;
+  }
+  
+  
+   .rating2 > label {
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    margin: auto 2px;
+ background-image:  url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23fcd93a' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
+   background-repeat: no-repeat;
+    background-position: center;
+    background-size: 76%;
+    transition: .3s;
+  }
+
+  
+.feedback2 {
+    max-width: 360px;
+    max-height: 40px;
+    background-color: #fff;
+    width:100%;
+    height: 100%;
+    border-radius: 8px;
+     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  margin:auto;
+  }
+
+.people-l{
+grid-column: 1;
+grid-row: 2;
+}
+.cuisine-l{
+    grid-column: 1;
+    grid-row: 3;
+}
+.impression-l{
+    grid-column: 1;
+    grid-row: 4;
+}
+.prices-l{
+    grid-column: 1;
+    grid-row: 5;
+}
+  /*Gallery*/
+  .carouseel{
+   
+      width:80%;
+      margin :auto;
+      border:2px solid green;
+      text-align:center;
+      background-color: white;
+      
+   border-radius:5%;
+  }
+
+  .car-img img{
+   background-size: cover;
+   border-radius:5%;
+  }
+ /*end gallery*/
+ .title-note{
+    font-size:30px;
+    text-align: center;
+}

@@ -6,16 +6,21 @@ import NoteEstimations from './NoteEstimations.js'
 import '../App.css';
 import"../sidebarComponents/SideBar.css";
 import NotesPhotos from './NotePhotos';
+import logo from '../icons/icon3.jpg'
+import logo2 from '../icons/icon4.jpg'
 function NoteMain(props){
 
     return (
-   <div className = "main-comp main-sidebar container">
-       <NoteOwner/>
+   <div className = "main-comp main-sidebar">
+       <NoteOwner account={/*props.note.login*/"login"} style_="note-owne note-owner-gen"/>
         <NoteProperties city = {props.note.city} date = {props.note.date}/>
-       <div className="description container">{props.note.text}</div>
-       <NotesPhotos photos ={props.note.photos}/>
-       <NoteEstimations people = {props.note.peopleEstimate} prices ={props.note.peopleEstimate}
-        cuisine ={props.note.peopleEstimate} impression ={props.note.peopleEstimate}/>
+       <div className="description container">
+       <div className="title-note">Description</div>
+       <textarea value={props.note.description} readOnly></textarea>
+       </div>
+       <NotesPhotos photos ={[logo,logo2,logo,logo2]/*props.note.photos*/ }/>
+       <NoteEstimations people = {props.note.peopleEstimate} prices ={props.note.pricesEstimate}
+        cuisine ={props.note.cuisineEstimate} impression ={props.note.commonImpression}/>
    </div>
     );
 }

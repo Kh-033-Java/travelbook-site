@@ -1,14 +1,14 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import '../notesComponents/NoteStyling.css'
+import '../sidebarComponents/SideBar.css'
 import '../App.css';
 
 function ToAddFooter(props){
     return (
-  <div className ="note-footer container">
-      <button>
-                {props.text}
-                </button>
+  <div className ="sidebar-footer container ">
+      <NavLink className="nav-link header-text" to ={props.path}>
+                    {props.text}
+                              </NavLink>
                    </div>
 
     );
