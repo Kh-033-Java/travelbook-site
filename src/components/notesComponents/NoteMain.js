@@ -17,7 +17,7 @@ const getDate=()=>{
 }
     return (
    <div className = "main-comp main-sidebar">
-       <NoteOwner account={props.note.login} /*logo={props.note.photoLink[0]}*/ style_="note-owne note-owner-gen" onClick={console.log(props.note)}/>
+       <NoteOwner account={props.note.login} logo={props.note.linkToUserAvatar} style_="note-owne note-owner-gen" onClick={console.log(props.note)}/>
         <NoteProperties city = {props.note.describedCity} date ={getDate()}/>
        <div className="ddescription">
        <div className="title-note">Description</div>

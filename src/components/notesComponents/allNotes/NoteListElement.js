@@ -44,7 +44,7 @@ setID(e){
     
     <div  className="list-el-container list-note-el" onClick={e=>this.setID(e)}>
         
-      <NoteOwner account={this.props.note.login} logo ={this.props.note.photoLink[0]}   style_="owner-list-notes note-owner-gen" onClick={this.setID}/>
+      <NoteOwner account={this.props.note.login} logo={this.props.note.linkToUserAvatar} style_="owner-list-notes note-owner-gen" onClick={this.setID}/>
       <Estimation grade={this.avEstimate.bind(this)}/>
       <NProperty positn="property1  prop" type ="Title" text ={this.props.note.title}/>
       <NProperty positn="property2  prop" type="City" text ={this.props.note.describedCity}/>
