@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 .main-registration-form{
     padding-top: 1%;
     width: 50%;
@@ -5,9 +9,9 @@
 }
 
 .main-registration-inner{
-    text-align: center;
+    text-align: left;
     font-size: 30px;
-    min-height: 500px;
+    min-height: 70%;
 }
 
 .photo-upload-form{
@@ -26,18 +30,26 @@
     font-size: 80%;
     text-align: right;
     padding-right: 70px;
-    transform: translate(10%, -70%);
+    transform: translate(-20%, -70%);
 }
 
-.description{
-    width: 50%;
+.description-part{
+    transform: translate(150%, -400%);
+    min-height: 30%;
+    width: 30%;
     float:left;
-    padding-bottom: 60px;
-    transform: translate(30%, -60%);
+    text-align: left;
+    font-size: 150%;
+}
+
+.description-inner{
+    text-align: left;
+    font-size: 160%;
+    width: 200%;
 }
 
 .description-input-form{
-    font-size: 30px;
+    font-size: 15px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     white-space: normal;
     border-bottom-color: black;
@@ -49,7 +61,6 @@
 }
 
 .registration-button-inner{
-    transform: translate(70%, -30%);
 }
 
 .registration{

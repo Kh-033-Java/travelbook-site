@@ -78,7 +78,6 @@ function Main(props){
         <Icons></Icons>
      <EditNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
-
      <Route path="/main">
                 <Icons></Icons>
                 <UserGeneralInformation/>
