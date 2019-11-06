@@ -16,6 +16,7 @@ class NewNoteMain extends Component{
              note:{} 
         }
         this.sendEditedNote = this.sendEditedNote.bind(this);
+        this.getDate = this.getDate.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.setPhotos = this.setPhotos.bind(this);
@@ -47,7 +48,7 @@ class NewNoteMain extends Component{
         axios.post(`http://localhost:8080/country/${this.props.countryName}/notes`,this.state);
         console.log("sthg");
         console.log(this.state);
-            //will be axios
+           
     }
     setPhotos(e){
            this.setState({photosEstimate :e});
@@ -66,7 +67,7 @@ class NewNoteMain extends Component{
              :e});
     }
     componentDidMount(){
-        actions.getNoteById(this.props.countryName,/*this.props.noteId*/49).then(res=>{
+        actions.getNoteById(this.props.countryName,this.props.noteId).then(res=>{
             console.log(res[0]);
             this.setState(
                  res[0]     
@@ -75,19 +76,25 @@ class NewNoteMain extends Component{
         console.log(this.state);
         
     }
+     getDate(){
+        if(this.state.dateOfVisiting){
+       let str= this.state.dateOfVisiting;
+       console.log(str.slice(0,10));
+       return str.slice(0,10);
+        }
+    }
     render(){
       
     return (
-        
                  <form name="editNote" id="editNote" className="main-sidebar  main-comp-newnote" onSubmit={this.sendEditedNote} >
                  <div className="name-field ">
                  <label htmlFor="name-note">Name of the note</label><input  name ="name-note" value={this.state.title} type="text" onInput={()=>{}} onChange={this.onChangeName}/>
                     </div>
-                    <City style_class = "city-field" countryName={this.props.countryName}/>
+                    <City select_class="city-select" style_class = "city-field" countryName={this.props.countryName}/>
                     <div className="date-field ">
-                 <label htmlFor="date-note">Date</label><input name ="date-note" value={this.state.dateOfVisiting}  type="date" onChange={this.onChangeDate}  className="date-in"/>
+                 <label htmlFor="date-note">Date</label><input name ="date-note" value={this.getDate}  type="date" onChange={this.onChangeDate}  className="date-in"/>
                     </div>
-                    <div className="description">
+                    <div className="ddescription">
                         <p className="header-text">Description</p>
                         <textarea name="description"  value={this.state.description} onChange={this.onChangeDescription} /> 
                     </div>

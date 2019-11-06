@@ -3,6 +3,7 @@ import React,{Component} from "react";
 import '../App.css';
 import NotesWrapper from "./NotesWrapper.js";
 import './AllNotesPage.css';
+import axios from 'axios'
 
 
 class UnAuthNotes extends Component{
@@ -13,7 +14,10 @@ class UnAuthNotes extends Component{
         }
     }
     componentDidMount(){
-        //will be axios
+        axios.get(`http://localhost:8080/country/${this.props.countryName}/notes`).then(res=>{
+           console.log(res.data);
+        this.setState({...this.state,notes:res.data})
+        })
     }
    render(){
     return(

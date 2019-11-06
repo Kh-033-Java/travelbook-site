@@ -1,25 +1,34 @@
 import React,{Component} from 'react';
-import {NavLink} from 'react-router-dom'
+import {NavLink,Redirect} from 'react-router-dom'
 import '../NoteStyling.css'
 import '../../App.css';
 import '../newNoteComponents/NewNote.css'
 import '../AllNotesPage.css'
 import NProperty from './NProperty'
 import NoteOwner from '../NoteOwner';
-import * as actions from '../../../actions/notesActions'
-import { conditionalExpression } from '@babel/types';
+
 
 
 class NoteListElement extends Component{
   constructor(props){
     super(props)
     this.state={
-      login:"account_login",
-      describedCity:"VisitedCity"
+   clicked:false
 
     }
+    this.setID = this.setID.bind(this);
+  }
+setID(e){
+  e.preventDefault();
+  if(!this.props.note){ return;}
+  console.log(this.props.note)
+  if(this.props.note.id){
+  this.props.setId(this.props.note.id)
+  this.setState({clicked:true});
   }
 
+
+}
     
      avEstimate(){
        let av = (this.props.note.peopleEstimate + this.props.note.cuisineEstimate + this.props.note.commonImpression + this.props.note.pricesEstimate)/4;
@@ -27,18 +36,23 @@ class NoteListElement extends Component{
       return res;
     }
     render()
-{return(
+{if(this.state.clicked)
+ return <Redirect to="/note"/>
+  
+  return(
 
-    <NavLink className="nav-link list-el-container list-note-el" to="note">
-      <NoteOwner account={this.state.login} style_="owner-list-notes note-owner-gen"  onClick={console.log("set")}/>
+    
+    <div  className="list-el-container list-note-el" onClick={e=>this.setID(e)}>
+        
+      <NoteOwner account={this.props.note.login} logo ={this.props.note.photoLink[0]}   style_="owner-list-notes note-owner-gen" onClick={this.setID}/>
       <Estimation grade={this.avEstimate.bind(this)}/>
       <NProperty positn="property1  prop" type ="Title" text ={this.props.note.title}/>
       <NProperty positn="property2  prop" type="City" text ={this.props.note.describedCity}/>
       <div className="small-description">
         <div >{this.props.note.description}</div>
       </div>
-        
-    </NavLink>
+     </div>
+  
 )
 }
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../NoteStyling.css'
+import {Redirect} from 'react-router-dom';
 import './NewNote.css'
 import City from '../../sidebarComponents/CityProperty'
 import '../../App.css';
@@ -17,10 +18,11 @@ class NewNoteMain extends Component {
             city: '',
             country: this.props.countryName,
             photos: {},
-            login: 'login',
+            login: localStorage.getItem('login'),
             dateOfVisiting: '',
             description: '',
             isPublic: false,
+            
         }
         this.sendNewNote = this.sendNewNote.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
@@ -31,6 +33,7 @@ class NewNoteMain extends Component {
         this.setPeople = this.setPeople.bind(this);
         this.setCuisine = this.setCuisine.bind(this);
         this.setImpression = this.setImpression.bind(this);
+        this.onCheck = this.onCheck.bind(this);
     }
 
     onChangeName(e) {
@@ -58,7 +61,8 @@ class NewNoteMain extends Component {
         this.props.worldSeries.getPolygonById(this.props.idCountry).fill = am4core.color("#67f58d");
         console.log("sthg");
         console.log(this.state);
-        //will be axios
+        this.setState({onSubmit:true})
+        
     }
 
     setPhotos(e) {
@@ -82,12 +86,22 @@ class NewNoteMain extends Component {
             peopleEstimate: e
         });
     }
+    onCheck(e){
+        if(e.target.checked){
+            console.log("checked")
+            this.setState({isPublic:true})
+        }else{
+            console.log("not checked")
+            this.setState({isPublic:false})
+        }
+    }
+    
 
     render() {
-
+        if(this.state.onSubmit){        return <Redirect to="travelbook"/>}
         return (
 
-            <form name="addNote" id="addNote" className="main-sidebar  main-comp-newnote" onSubmit={this.sendNewNote}>
+            <form name="addNote" id="addNote"  className="main-sidebar  main-comp-newnote" onSubmit={this.sendNewNote}>
                 <div className="name-field ">
                     <label htmlFor="name-note">Name of the note</label><input type="text" onChange={this.onChangeName}
                                                                               name="name-note"/>
@@ -105,7 +119,7 @@ class NewNoteMain extends Component {
                 <Estimations setPeople={this.setPeople} setPrices={this.setPrices} setImpression={this.setImpression}
                              setCuisine={this.setCuisine}/>
                 <div className="public-checkbox ">
-                    <input name="isPublic" type="checkbox"/> <label htmlFor="name-note">public</label>
+                    <input name="isPublic" onClick={e=>this.onCheck(e)} type="checkbox"/> <label htmlFor="name-note">public</label>
                 </div>
 
             </form>
