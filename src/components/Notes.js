@@ -13,6 +13,7 @@ import ToAddFooter from './sidebarComponents/ToAddFooter.js';
 function Notes(props){
     return(
 
+
        !isAuthorized()?
         <aside className="rightbar whole-comp-no-footer ">
         <Header title = "Notes" countryName={props.name}/>
@@ -25,6 +26,7 @@ function Notes(props){
 
 </aside>
                                          
+
          )
     }
 

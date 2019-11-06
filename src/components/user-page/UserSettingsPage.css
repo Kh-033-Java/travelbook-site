@@ -1,0 +1,103 @@
+.userSettingsGeneral{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.titlePageName{
+    text-align: center;
+    font-size: 40px;
+    padding-left: 30px;
+}
+
+.ROW:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.ROW {
+    display: inline-block;
+}
+
+
+* html .ROW {
+    height: 1%;
+}
+
+.ROW {
+    display: block;
+}
+
+
+body {
+    font-size: 40px;
+}
+
+.CONTENT {
+    width: 35%;
+    float: left;
+}
+
+.INNER-CONTENT1 {
+    font-size: 40px;
+    padding-top: 30px;
+    padding-left: 80px;
+}
+
+.INNER-CONTENT2{
+    font-size: 40px;
+    padding-top: 60px;
+    padding-left: 80px;
+    min-height: 330px;
+}
+
+.SIDEBAR-1 {
+    width: 35%;
+    float: left;
+    padding-left: 10px;
+}
+
+.INNER-SIDEBAR-1 {
+    padding-top: 20px;
+    padding-left: 30px;
+    min-height: 50%;
+}
+
+.SIDEBAR-2 {
+    width: 30%;
+    float: left;
+    padding-left: 10px;
+}
+
+.INNER-SIDEBAR-2 {
+    padding-top: 20px;
+    min-height: 50%;
+    padding-left: 30px;
+}
+
+.description-input{
+    box-shadow: 0 0 3px #000000;
+    font-size: 30px;
+    height: 300px;
+    font-weight: bold;
+    white-space: normal;
+    width: 450px;
+}
+
+.save-settings{
+    text-align: center;
+}
+
+.delete-account{
+    float: right;
+}
+
+.settings-inputs{
+    box-shadow: 0 0 3px #000000;
+}
+
+.inner-content-and-errors{
+    font-size: 80%;
+}
