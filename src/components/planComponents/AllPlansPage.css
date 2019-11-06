@@ -1,0 +1,41 @@
+.title{
+    grid-column: 1;
+    grid-row: 1
+}  
+.plan-owner{
+    grid-column: 1;
+    grid-row: 2;
+}
+.plan-property-date{
+    grid-column: 2;
+    grid-row: 2;
+}
+.plan-property-cityFrom{
+    grid-column: 1;
+    grid-row: 3;
+}
+.plan-property-cityToGo{
+    grid-column: 2;
+    grid-row: 3;
+}
+.plan-property-budget{
+    grid-column: 1;
+    grid-row: 4;
+}
+.plan-property-transport{
+    grid-column: 2;
+    grid-row: 4;
+}
+.amount-of-people{
+    grid-column: 1;
+    grid-row: 5;
+}
+.description{
+    grid-column: 1;
+    grid-row: 6;
+}
+.button{
+    align-content: center;
+    grid-row: 7;
+    grid-column: 2;
+} 

@@ -31,7 +31,7 @@ class Plan extends Component{
         return(
             <aside className="rightbar whole-comp-no-footer container">
                 <Header title = {this.state.plan.title} countryName={this.props.name}/>
-                <PlansMain note = {this.state.plan}/>
+                <PlansMain plan = {this.state.plan}/>
             </aside>
         );
     }

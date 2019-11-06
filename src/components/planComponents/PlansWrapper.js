@@ -1,43 +1,40 @@
 import React from "react";
 import '../App.css';
+import './AllPlansPage.css'
 import {NavLink} from 'react-router-dom';
 
 function PlansWrapper(props){
 
     return(
         <div className = 'plans-wraper container'>
-            <h4>Title: {props.title}</h4>
-            <React.Fragment>
-            <div className ="plan-owner ">
-                <div className="account-label">{props.login}</div>
+            <div className ="title">
+                Title: {props.title}
+                </div>
+            <div className ="plan-owner">
+                Author: {props.login}
             </div>
-            <div className ="container plan-property-date plan-property">
-                {props.date}
+            <div className ="plan-property-date">
+                Date of travel: {props.date}
             </div>
-            </React.Fragment>
-            <React.Fragment>
-                <div className ="container plan-property-cityFrom plan-property">
+                <div className ="plan-property-cityFrom">
                     City from: {props.nameCityFrom}
                 </div>
-                <div className ="container plan-property-cityToGo plan-property">
-                    City to: {props.nameCityFrom}
+                <div className ="plan-property-cityToGo">
+                    City to: {props.nameCityToGo}
                 </div>
-            </React.Fragment>
-            <React.Fragment>
-                <div className ="container plan-property-budget plan-property">
+                <div className ="plan-property-budget">
                     Budget: {props.budgetMin} - {props.budgetMax}
                 </div>
-                <div className ="container plan-property-budget plan-property">
+                <div className ="plan-property-transport">
                     Transport: {props.transport}
                 </div>
-            </React.Fragment>
-            <p>Amount of people: {props.amountOfPeople}</p>
-            <div className="description container">{props.description}</div>
-
+            <div className="amount-of-people">Amount of people: {props.amountOfPeople}</div>
+            <div className="description">{props.description}</div>
+            <div className="button">
             <NavLink to = "/plan">
-                <button type="button" class="plan-button">more...</button>
+                <button type="button">more...</button>
             </NavLink>
-
+            </div>
         </div>
     )
 }

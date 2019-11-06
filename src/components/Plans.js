@@ -13,7 +13,7 @@ function Plans(props){
         !isAuthorized()?
             <aside className="rightbar whole-comp-no-footer container">
                 <Header title = "Plans" countryName={props.name}/>
-                <UnAuthorizedPlans />
+                <UnAuthorizedPlans name={props.name} id={props.id} planId={props.planId}/>
             </aside>
             :
             <aside className="rightbar whole-comp container">

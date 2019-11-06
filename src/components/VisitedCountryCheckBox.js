@@ -9,8 +9,10 @@ class VisitedCountryCheckBox extends Component {
         super(props);
         this.state = {
             isChecked: false,
+            countries: [],
         };
         this.addAndFill = this.addAndFill.bind(this);
+        this.delAndFill = this.delAndFill.bind(this);
     }
 
     addAndFill() {
@@ -21,19 +23,38 @@ class VisitedCountryCheckBox extends Component {
         this.props.worldSeries.getPolygonById(this.props.id).fill = am4core.color("#cccccc")
     }
 
+    checkVisitedCountry() {
+        let check = false;
+        for (let i = 0; i < this.state.countries.length; i++) {
+            if (this.props.name === this.state.countries[i]) {
+                check = true;
+            }
+        }
+        return check;
+    }
+
     componentDidMount() {
         let endpointVisited = 'http://localhost:8080/country/' + this.props.name + '/visit?user=' + localStorage.getItem("login");
         let endpointDidntVisited = 'http://localhost:8080/country/' + this.props.name + '/notvisit?user=' + localStorage.getItem("login");
-        this.state.isChecked ?
-            axios.put(endpointVisited)
-                .then(response => {
-                    console.log(response);
-                })
-        :
-            axios.put(endpointDidntVisited)
-                .then(response => {
-                    console.log(response);
-                })
+        let endpointAllVisitedCountries = 'http://localhost:8080/user/' + localStorage.getItem("login") + '/map';
+        axios.get(endpointAllVisitedCountries).then(response => {
+            this.setState({countries: response});
+        })
+        if (this.state.checkVisitedCountry === true) {
+            this.state.setState({isChecked: true});
+        }
+        if (this.state.checkVisitedCountry === false) {
+            this.state.isChecked ?
+                axios.put(endpointVisited)
+                    .then(response => {
+                        console.log(response);
+                    })
+            :
+                axios.put(endpointDidntVisited)
+                    .then(response => {
+                        console.log(response);
+                    })
+            }
     };
 
     toggleChange = () => {
@@ -50,14 +71,25 @@ class VisitedCountryCheckBox extends Component {
     render() {
         return (
             isAuthorized() ?
-            <label >
-                <input type="checkbox"
-                       checked={this.state.isChecked}
-                       onChange={this.toggleChange}
-                />
-                Visited
-            </label>
-                : <React.Fragment/>
+                <div>
+                    {!this.checkVisitedCountry ? 
+                        <label >
+                        <input type="checkbox"
+                               checked="true"
+                        />
+                        Visited
+                        </label>    
+                    :
+                        <label >
+                        <input type="checkbox"
+                               checked={this.state.isChecked}
+                               onChange={this.toggleChange}
+                        />
+                        Visited
+                        </label>    
+                    }
+                </div>
+            : <React.Fragment/>
         );
     }
 }

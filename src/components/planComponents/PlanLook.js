@@ -14,7 +14,7 @@ function PlansLook(props){
         </React.Fragment>
         :
         <React.Fragment>
-            <AuthorizedPlans worldSeries={props.worldSeries} id ={props.id} setId/>
+            <AuthorizedPlans worldSeries={props.worldSeries} id ={props.id}/>
         </React.Fragment>
     )
 }

@@ -4,12 +4,26 @@ import '../sidebarComponents/SideBar.css'
 import PlansWrapper from './PlansWrapper';
 
 
-export default class OnlyMyPlans extends Component {
+class OnlyMyPlans extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            plans: [{}],
-            isChecked: false
+            isChecked: false,
+            plans: {
+                id: "",
+                title: "",
+                description: "",
+                date: "",
+                budgetMin: "",
+                budgetMax: "",
+                amountOfPeople: "",
+                isPublic: "",
+                userLoginCreator: "",
+                nameCityFrom: "",
+                nameCityToGo: "",
+                transportType: "",
+            }
+            
         };
     }
     
@@ -47,11 +61,14 @@ export default class OnlyMyPlans extends Component {
                 only my plans
             </label>
             <div className = "list-main-auth container">
-                {this.state.plans.map((plan) => {
-                   return <PlansWrapper plan = {plan} />
-                })}
+                {/* {this.state.plans.map((plan) => {
+                   return <PlansWrapper plan = {plan}/>
+                })}; */}
+                <PlansWrapper plan = {this.state.plans}/>
             </div>
             </div>
         );
     }
 }
+
+export default OnlyMyPlans;
