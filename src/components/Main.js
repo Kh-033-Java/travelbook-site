@@ -1,5 +1,4 @@
-import * as am4core from "@amcharts/amcharts4/core";
-import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import React, {useState} from 'react';
 import './App.css';
 import SideBar from "./sidebar.js";
@@ -13,8 +12,8 @@ import GeneralInfo from './GeneralInfo';
 import UserGeneralInformation from "./user-page/UserGeneralInformation";
 import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
+import EditNote from './notesComponents/editNoteComponents/EditNote';
 import MyPhotos from "./gallery/MyPhotos";
-import history from "../history";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 
 
@@ -28,10 +27,12 @@ function Main(props){
          setState({
         nameCountry : ev.target.dataItem.dataContext.name,
         idCountry: ev.target.dataItem.dataContext.id,
-        map:worldSeries
+        map:worldSeries,
+        idNote:49
       })
    }
    function setNoteID(id){
+      console.log("got"+id);
       setState({
          idNote:id
       })
@@ -53,7 +54,7 @@ function Main(props){
      </Route>
           <Route path="/gallery">
               <Icons></Icons>
-              <Gallery name={this.state.nameCountry} history={this.props.history}/>
+              <Gallery name={state.nameCountry}/>
           </Route>
      <Route path = "/plans">
         <Icons></Icons>
@@ -76,15 +77,21 @@ function Main(props){
         <Icons></Icons>
      <NewNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
+     <Route path = "/editNote">
+        <Icons></Icons>
+     <EditNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
+     </Route>
+
      <Route path="/main">
                 <Icons></Icons>
                 <UserGeneralInformation/>
             </Route>
+
      </div>
   );
    }
 
-    }
+
 
 
 export default Main;

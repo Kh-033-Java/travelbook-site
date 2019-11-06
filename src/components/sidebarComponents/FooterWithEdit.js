@@ -1,12 +1,14 @@
 import React from 'react';
-
+import {NavLink} from 'react-router-dom';
 import '../sidebarComponents/SideBar.css'
 import '../App.css';
 function FooterWithEdit(props){
     return (
   <div className ="sidebar-footer container">
+                          <NavLink className="nav-link header-text" to ={props.path}>
                     {props.text}
-                                 </div>
+                              </NavLink>
+                             </div>
 
     );
 }
