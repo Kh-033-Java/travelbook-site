@@ -22,7 +22,6 @@ class GeneralInfo extends Component {
     };
 
     componentWillReceiveProps() {
-        console.log("next props");
         this.getGeneralInfo();
     }
 
