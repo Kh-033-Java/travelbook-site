@@ -1,5 +1,5 @@
 import { Route} from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useState,Component} from 'react';
 import './App.css';
 import SideBar from "./sidebar.js";
 import Head from "./header.js";
@@ -17,45 +17,67 @@ import GeneralPhotos from "./gallery/GeneralPhotos";
 
 
 
-function Main(props){
-   const [state,setState] = useState({ });
-    function regionClicker(ev,worldSeries) {
+class Main extends Component{
+   constructor(props){
+super(props);
+this.state={
+   nameCountry : '',
+        idCountry: '',
+        map:"",
+}
+this.setNoteID=this.setNoteID.bind(this);
+this.regionClicker = this.regionClicker.bind(this);
+   }
+     regionClicker(ev,worldSeries) {
       console.log(ev.target.dataItem.dataContext);
-         setState({
+         this.setState({
         nameCountry : ev.target.dataItem.dataContext.name,
         idCountry: ev.target.dataItem.dataContext.id,
         map:worldSeries,
-        idNote:49
       })
+      localStorage.setItem('country',ev.target.dataItem.dataContext.name);
+      localStorage.setItem('id',ev.target.dataItem.dataContext.id)
+      localStorage.setItem('world',worldSeries)
+
    }
-   function setNoteID(id){
+    setNoteID(id){
       console.log("got"+id);
-      setState({
+      this.setState({
          idNote:id
       })
    }
-
+   componentDidMount(){
+      console.log(localStorage.getItem('world'))
+    if(this.state.nameCountry===''){
+      
+       this.setState({nameCountry:localStorage.getItem('country'),
+       idCountry: localStorage.getItem('id'),
+       map:localStorage.getItem('world')})
+    }
+    
+   }
+render(){
   return (
-      <div className = {props.gridClass}>
+      <div className = {this.props.gridClass}>
     <Head/>
-    <Map clicker={regionClicker}/>
+    <Map clicker={this.regionClicker}/>
     <Route path = "/travelbook">
           </Route>
     <Route path = "/generalInfo">
-    <Icons countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map}></Icons>
-     <SideBar id={state.nameCountry}/>
+    <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}></Icons>
+     <SideBar id={this.state.nameCountry}/>
      </Route>
        <Route path = "/notes">
         <Icons></Icons>
-     <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
+     <Notes name={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} setId={this.setNoteID} />
      </Route>
           <Route path="/gallery">
               <Icons></Icons>
-              <Gallery name={state.nameCountry}/>
+              <Gallery name={this.state.nameCountry}/>
           </Route>
      <Route path = "/plans">
         <Icons></Icons>
-     <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
+     <Plans name={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map}/>
      </Route>
 
           <Route
@@ -68,15 +90,15 @@ function Main(props){
           />
      <Route path = "/note">
         <Icons></Icons>
-     <Note countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
+     <Note countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
      </Route>
      <Route path = "/newnote">
         <Icons></Icons>
-     <NewNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
+     <NewNote countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
      </Route>
      <Route path = "/editNote">
         <Icons></Icons>
-     <EditNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
+     <EditNote countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
      </Route>
      <Route path="/main">
                 <Icons></Icons>
@@ -86,6 +108,7 @@ function Main(props){
      </div>
   );
    }
+}
 
 
 

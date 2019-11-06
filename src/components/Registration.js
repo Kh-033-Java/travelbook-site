@@ -56,8 +56,8 @@ class Registration extends Component {
             }
         }).catch((error) => {
             const message = error.response.data.message;
-            const checkerOnLogin = message.includes("and property `login` = ");
-            const checkerOnEmail = message.includes("and property `email` = ");
+            const checkerOnLogin = message.includes("and property login = ");
+            const checkerOnEmail = message.includes("and property email = ");
             if (checkerOnLogin) {
                 alert("User with such login already exists.");
             } else if (checkerOnEmail) {
@@ -101,7 +101,7 @@ class Registration extends Component {
                                     onChange={this.handleChange}
                                     name="login"
                                     value={this.state.login}
-                                    validators={['required', 'minStringLength: 4', 'maxStringLength: 15']}
+validators={['required', 'minStringLength: 4', 'maxStringLength: 15']}
                                     errorMessages={['this field is required', 'Login should to be 4 or more chars', 'Login should to be maximum 15 chars']}
                                 />
                             </div>

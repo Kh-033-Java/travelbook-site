@@ -9,6 +9,7 @@ function UnSettings(props) {
                 <NavLink to="/login" className="nav-link">Log In</NavLink>
             </div>
             <div className="authorize2  header-text">
+
                 <NavLink to="/registration" className="nav-link">Registration
                 </NavLink>
             </div>

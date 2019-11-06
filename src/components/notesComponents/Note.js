@@ -6,44 +6,42 @@ import NoteMain from "./NoteMain";
 import * as actions from '../../actions/notesActions'
 import isAuthorized from '../checker/authorizationChecker'
 import FooterWithEdit from '../sidebarComponents/FooterWithEdit'
-
+import axios from 'axios'
 
 
 class Note extends Component{
 constructor(props){
     super(props);
     this.state ={
-        //temporary
-           note: {
-               title:"title",
-               city :"city",
-               date:"date",
-               photos :[]
-
-           }
+     note :{}
     }
 }
+
 componentDidMount(){
-    actions.getNoteById(this.props.countryName,/*this.props.noteId*/49).then(res=>{
-        console.log(res);
-        this.setState({note : res[0]})
-    })
-    
-      
+            axios.get(`http://localhost:8080/country/notes/${this.props.noteId}`).then(res=>{
+        console.log(res.data);
+     this.setState({note:res.data})
+     }).catch(err=>console.log(err))
+console.log(this.props.noteId)  
 }
-    render(){  
+theSameLogin(login){
+    console.log(localStorage.getItem('country'))
+    return (login===localStorage.getItem('login'))
+}
+    render(){
+    
 return(
     !isAuthorized()?
-    <aside className="rightbar whole-comp-no-footer ">
-<Header title = {this.state.note.title} countryName={this.props.countryName}/>
+    <aside className="rightbar whole-comp-no-footer">
+<Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
 </aside>
-:( true?<aside className="rightbar whole-comp ">{/*check login and node owner*/}
-<Header title = {this.state.note.title} countryName={this.props.countryName}/>
+:( this.theSameLogin(this.state.note.login)?<aside className="rightbar whole-comp ">{/*check login and node owner*/}
+<Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
 <FooterWithEdit text ="edit note" path="/editNote"/>
 </aside>:<aside className="rightbar whole-comp-no-footer ">
-<Header title = {this.state.note.title} countryName={this.props.countryName}/>
+<Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
 </aside>
 )

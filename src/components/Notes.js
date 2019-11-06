@@ -16,10 +16,10 @@ function Notes(props){
        !isAuthorized()?
         <aside className="rightbar whole-comp-no-footer ">
         <Header title = "Notes" countryName={props.name}/>
-    <UnAuthorizedNotes countryName={props.name}/>
+    <UnAuthorizedNotes countryName={props.name} setId={props.setId}/>
 </aside>
 :
-<aside className="rightbar whole-comp ">
+<aside className="rightbar whole-comp">
 <Header title = "Notes" countryName={props.name}/>
 <AuthorizedNotes worldSeries={props.worldSeries} id= {props.id} setId={props.setId} countryName={props.name}/>
 
