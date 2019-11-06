@@ -11,7 +11,7 @@ class GeneralInfo extends Component {
         this.state = {
             generalInfo: [{}],
             description: [{}],
-            weather: [{}],
+            weather: [{}]
         };
         this.getGeneralInfo = this.getGeneralInfo.bind(this);
     }
