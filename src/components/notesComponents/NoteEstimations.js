@@ -5,40 +5,30 @@ import './newNoteComponents/NewNote.css'
 function NotesEstimations(props){
 
     return (
-          <div className ="set-estimations container">
-               <div><span>people</span></div>
-               <Estimate type="people" stars ={props.people} cl ="container one-est"/>
-               <div><span>cuisine</span></div>
-               <Estimate type="cuisine" stars ={props.cuisine} cl ="container one-est"/>
-               <div><span>general impression</span></div>
-               <Estimate type="general impression" stars ={props.impression} cl ="container one-est"/>
-               <div><span>prices</span></div>
-               <Estimate type="prices" stars ={props.prices} cl ="container one-est"/>
+          <div id ="show-est"className ="set-estimations ">
+              <p className="title-note est-title">Estimations</p>
+               <div  className="label-stars people-l ">people</div>
+               <Estimate type="people" stars ={props.people} cl =" one-est"/>
+               <div  className="label-stars cuisine-l ">cuisine</div>
+               <Estimate type="cuisine" stars ={props.cuisine} cl =" one-est"/>
+               <div  className="label-stars impression-l ">general impression</div>
+               <Estimate type="impression" stars ={props.impression} cl =" one-est"/>
+               <div  className="label-stars prices-l ">prices</div>
+               <Estimate type="prices" stars ={props.prices} cl =" one-est"/>
           </div>
 
     );
 }
 export default NotesEstimations;
-/*function Estimate(props){
-    return (
-        <div className = {props.cl}>
-            <div><span>{props.type}</span></div>
-           {printStars(props.stars)}
-        </div>
-    );
-}
-const  printStars = (quantity)=>{
-    const stars = [];
-     for(let i =0;i<quantity;i++)
-     stars.push(<div className="star-img" key={i}></div>);
-     return stars;
-  }*/
+
 function Estimate(props){
     return (
-                 <div className="feedback2 container">
+        <div className={props.type}>
+                 <div className="feedback2 ">
                 <div className="rating2">
                   {printStars(props.stars,props)}
                  </div>
+                </div>
                 </div>
     
     );

@@ -1,16 +1,20 @@
+import { Route} from 'react-router-dom';
 import React, {useState} from 'react';
-import {Route,} from 'react-router-dom';
 import './App.css';
 import SideBar from "./sidebar.js";
 import Head from "./header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
 import Plans from "./Plans.js";
-import Gallery from "./Gallery.js";
+import Gallery from "./gallery/Gallery.js";
 import Icons from './Icons';
 import UserGeneralInformation from "./user-page/UserGeneralInformation";
+import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
-import Note from './notesComponents/Note'
+import EditNote from './notesComponents/editNoteComponents/EditNote';
+import MyPhotos from "./gallery/MyPhotos";
+import GeneralPhotos from "./gallery/GeneralPhotos";
+
 
 
 function Main(props){
@@ -20,10 +24,12 @@ function Main(props){
          setState({
         nameCountry : ev.target.dataItem.dataContext.name,
         idCountry: ev.target.dataItem.dataContext.id,
-        map:worldSeries
+        map:worldSeries,
+        idNote:49
       })
    }
    function setNoteID(id){
+      console.log("got"+id);
       setState({
          idNote:id
       })
@@ -43,15 +49,23 @@ function Main(props){
         <Icons></Icons>
      <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
      </Route>
-
-     <Route path = "/gallery">
-        <Icons></Icons>
-     <Gallery name={state.nameCountry}/>
-     </Route>
+          <Route path="/gallery">
+              <Icons></Icons>
+              <Gallery name={state.nameCountry}/>
+          </Route>
      <Route path = "/plans">
         <Icons></Icons>
      <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
      </Route>
+
+          <Route
+              path="/my-photos"
+              render={props => <MyPhotos {...props}/>}
+          />
+          <Route
+              path="/general-photos"
+              render={props => <GeneralPhotos {...props}/>}
+          />
      <Route path = "/note">
         <Icons></Icons>
      <Note countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
@@ -60,13 +74,19 @@ function Main(props){
         <Icons></Icons>
      <NewNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
+     <Route path = "/editNote">
+        <Icons></Icons>
+     <EditNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
+     </Route>
      <Route path="/main">
                 <Icons></Icons>
                 <UserGeneralInformation/>
             </Route>
+
      </div>
   );
    }
+
 
 
 

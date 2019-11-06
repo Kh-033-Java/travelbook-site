@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 .main-registration-form{
     padding-top: 1%;
     width: 50%;
@@ -29,18 +33,19 @@
     transform: translate(-20%, -70%);
 }
 
-.description{
+.description-part{
+    transform: translate(150%, -400%);
     min-height: 30%;
-    width: 46%;
+    width: 30%;
     float:left;
     text-align: left;
-    transform: translate(-15%, -150%);
-
+    font-size: 150%;
 }
 
 .description-inner{
-    float: left;
-    width: 50%;
+    text-align: left;
+    font-size: 160%;
+    width: 200%;
 }
 
 .description-input-form{
@@ -56,7 +61,6 @@
 }
 
 .registration-button-inner{
-    transform: translate(90%, -150%);
 }
 
 .registration{

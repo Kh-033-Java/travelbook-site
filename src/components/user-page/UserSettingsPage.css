@@ -79,6 +79,7 @@
 }
 
 .save-settings{
+    transform: translate(0%, 200%);
     text-align: center;
 }
 

@@ -146,9 +146,6 @@ class UserSettings extends Component {
         return (
             <div className="userSettingsGeneral">
                 <Header/>
-                <ValidatorForm ref={node => (this.form = node)}
-                               onSubmit={this.handleSubmit}
-                               onError={this.handleError}>
                     <div className="titlePageName">Settings</div>
                     <div className="ROW">
                         <div className="CONTENT">
@@ -170,6 +167,9 @@ class UserSettings extends Component {
                                                value={this.state.lastName}/>
                                     </div>
                             </div>
+                            <ValidatorForm ref={node => (this.form = node)}
+                                           onSubmit={this.handleSubmit}
+                                           onError={this.handleError}>
                             <div className="INNER-CONTENT2">
                                     <label className="security">Security</label>
                                     <div className="inner-content-and-errors">
@@ -178,6 +178,7 @@ class UserSettings extends Component {
                                                onChange={e => this.handleChange(e)}
                                                value={this.state.login}/>
                                         <TextValidator
+                                            validatorListener={this.handleError}
                                             onChange={this.handleChange}
                                             name="login"
                                             value={this.state.login}
@@ -199,7 +200,13 @@ class UserSettings extends Component {
                                             validators={['required', 'minStringLength: 4']}
                                             errorMessages={['this field is required', 'Password should to be 4 or more chars']}/>
                                     </div>
+                                <div className="save-settings">
+                                    <button type="submit" disabled={this.state.disabled}>
+                                        Save settings
+                                    </button>
+                                </div>
                             </div>
+                            </ValidatorForm>
                         </div>
                         <div className="SIDEBAR-1">
                                 <div className="INNER-SIDEBAR-1">Description
@@ -215,7 +222,6 @@ class UserSettings extends Component {
                             </div>
                         </div>
                     </div>
-                </ValidatorForm>
                 <div className="FOOTER">
                         <div className="INNER-FOOTER">
                             <form onSubmit={this.deleteAccount}>
@@ -225,15 +231,6 @@ class UserSettings extends Component {
                                     </button>
                                 </div>
                             </form>
-                            <ValidatorForm ref={node => (this.form = node)}
-                                                  onSubmit={this.handleSubmit}
-                                                  onError={this.handleError}>
-                                <div className="save-settings">
-                                    <button type="submit" disabled={this.state.disabled}>
-                                        Save settings
-                                    </button>
-                                </div>
-                            </ValidatorForm>
                         </div>
                     </div>
             </div>
