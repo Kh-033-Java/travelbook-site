@@ -11,7 +11,7 @@ function EditNote(props){
 return(
      <aside className="rightbar whole-comp ">
 <Header title = "Edit Note" countryName={props.countryName}/>
-<EditNoteMain />
+<EditNoteMain countryName={props.countryName} />
 <FooterSubmit text ="edit note" path="notes" for="editNote"/>
 </aside>
 );

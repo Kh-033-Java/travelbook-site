@@ -1,24 +1,43 @@
-import React from 'react';
+import React,{Component} from 'react';
 import './NoteStyling.css'
 import '../App.css';
 import { Carousel } from 'react-responsive-carousel';
 import   'react-responsive-carousel/lib/styles/carousel.min.css';
-function NotePhotos(props){
+class NotePhotos extends Component{
+constructor(props){
+    super(props)
+  this.getNotes = this.getNotes.bind(this)
+}
+getNotes=()=>{
+    const notes=[];
+    console.log(this.props.photos);
+    tempList = this.props.photos;
+    tempList.forEach(e=>notes.push(<div className="car-img">
+    <img src={e} alt=""/>
+    </div>));
+    console.log(tempList);
+    console.log(notes);
+    return notes
+}
+componentDidMount(){
 
+}
+
+render(){
     return (
   <div className ="note-photos container">
       <div className="title-note">Photos</div>
       <div  className="carouseel">
    <Carousel  showArrows={true} showThumbs={false} dynamicHeight={true} dynamicWidth={true}>
-       {props.photos.map(photo=>
-             <div className="car-img">
-           <img src={photo} alt=""/>
-       </div>
-       )}
+  { this.props.photos ? this.getNotes() : null }
+    
    </Carousel>
    </div>
           </div>
 
     );
 }
+}
 export default NotePhotos;
+
+ let tempList = [{}]

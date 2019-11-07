@@ -8,7 +8,6 @@ import Notes from "./Notes.js";
 import Plans from "./Plans.js";
 import Gallery from "./gallery/Gallery.js";
 import Icons from './Icons';
-import GeneralInfo from './GeneralInfo';
 import UserGeneralInformation from "./user-page/UserGeneralInformation";
 import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
@@ -20,8 +19,6 @@ import GeneralPhotos from "./gallery/GeneralPhotos";
 
 function Main(props){
    const [state,setState] = useState({ });
-
-
     function regionClicker(ev,worldSeries) {
       console.log(ev.target.dataItem.dataContext);
          setState({
@@ -30,6 +27,10 @@ function Main(props){
         map:worldSeries,
         idNote:49
       })
+      localStorage.setItem('country',ev.target.dataItem.dataContext.name);
+      localStorage.setItem('id',ev.target.dataItem.dataContext.id)
+      localStorage.setItem('world',worldSeries)
+
    }
    function setNoteID(id){
       console.log("got"+id);
@@ -89,7 +90,8 @@ function Main(props){
 
      </div>
   );
-   }
+
+}
 
 
 

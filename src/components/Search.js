@@ -4,7 +4,7 @@ import './App.css';
 function Search(){
 
     return(
-        <div className="search ">
+        <div className="search">
          <form name ="myForm">
             <input type="text" placeholder="Search"/>
                     </form>
