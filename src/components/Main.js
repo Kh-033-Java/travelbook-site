@@ -1,5 +1,5 @@
 import { Route} from 'react-router-dom';
-import React, {useState,Component} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import SideBar from "./sidebar.js";
 import Head from "./header.js";
@@ -14,70 +14,53 @@ import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 import EditNote from './notesComponents/editNoteComponents/EditNote';
 import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
+import GeneralInfo from "./GeneralInfo.js";
 
 
 
-class Main extends Component{
-   constructor(props){
-super(props);
-this.state={
-   nameCountry : '',
-        idCountry: '',
-        map:"",
-}
-this.setNoteID=this.setNoteID.bind(this);
-this.regionClicker = this.regionClicker.bind(this);
-   }
-     regionClicker(ev,worldSeries) {
+function Main(props){
+   const [state,setState] = useState({ });
+    function regionClicker(ev,worldSeries) {
       console.log(ev.target.dataItem.dataContext);
-         this.setState({
+         setState({
         nameCountry : ev.target.dataItem.dataContext.name,
         idCountry: ev.target.dataItem.dataContext.id,
         map:worldSeries,
+        idNote:49
       })
       localStorage.setItem('country',ev.target.dataItem.dataContext.name);
       localStorage.setItem('id',ev.target.dataItem.dataContext.id)
       localStorage.setItem('world',worldSeries)
 
    }
-    setNoteID(id){
+   function setNoteID(id){
       console.log("got"+id);
-      this.setState({
+      setState({
          idNote:id
       })
    }
-   componentDidMount(){
-      console.log(localStorage.getItem('world'))
-    if(this.state.nameCountry===''){
-      
-       this.setState({nameCountry:localStorage.getItem('country'),
-       idCountry: localStorage.getItem('id'),
-       map:localStorage.getItem('world')})
-    }
-    
-   }
-render(){
+
   return (
-      <div className = {this.props.gridClass}>
+      <div className = {props.gridClass}>
     <Head/>
-    <Map clicker={this.regionClicker}/>
+    <Map clicker={regionClicker}/>
     <Route path = "/travelbook">
           </Route>
     <Route path = "/generalInfo">
-    <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}></Icons>
-     <SideBar id={this.state.nameCountry}/>
+    <Icons countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map}></Icons>
+     <GeneralInfo name={state.nameCountry} worldSeries = {state.map}/>
      </Route>
        <Route path = "/notes">
         <Icons></Icons>
-     <Notes name={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} setId={this.setNoteID} />
+     <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
      </Route>
           <Route path="/gallery">
               <Icons></Icons>
-              <Gallery name={this.state.nameCountry}/>
+              <Gallery name={state.nameCountry}/>
           </Route>
      <Route path = "/plans">
         <Icons></Icons>
-     <Plans name={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map}/>
+     <Plans name={state.nameCountry} id={state.idCountry} worldSeries = {state.map}/>
      </Route>
 
           <Route
@@ -90,16 +73,17 @@ render(){
           />
      <Route path = "/note">
         <Icons></Icons>
-     <Note countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
+     <Note countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
      <Route path = "/newnote">
         <Icons></Icons>
-     <NewNote countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
+     <NewNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
      <Route path = "/editNote">
         <Icons></Icons>
-     <EditNote countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
+     <EditNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
+
      <Route path="/main">
                 <Icons></Icons>
                 <UserGeneralInformation/>
@@ -107,7 +91,7 @@ render(){
 
      </div>
   );
-   }
+
 }
 
 
