@@ -10,7 +10,7 @@ function NotePhotos(props){
       <div className="title-note">Photos</div>
       <div  className="carouseel">
    <Carousel  showArrows={true} showThumbs={false} dynamicHeight={true} dynamicWidth={true}>
-       {props.photos.map(photo=> 
+       {props.photos.map(photo=>
              <div className="car-img">
            <img src={photo} alt=""/>
        </div>
