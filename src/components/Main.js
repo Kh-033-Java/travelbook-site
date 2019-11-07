@@ -14,6 +14,7 @@ import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 import EditNote from './notesComponents/editNoteComponents/EditNote';
 import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
+import GeneralInfo from "./GeneralInfo.js";
 
 
 
