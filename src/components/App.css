@@ -239,3 +239,9 @@ aside {
     width: 50%;
     height: 50%;
 }
+
+.photoGallery{
+    grid-column: 3;
+    width: 30%;
+    height: 30%;
+}
