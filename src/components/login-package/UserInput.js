@@ -6,7 +6,7 @@ import './UserInput.css'
 import CryptoJS from "crypto-js";
 
 export default class UserInput extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -51,6 +51,7 @@ export default class UserInput extends React.Component {
 
 
     render() {
+        username = this.state.login;
         if (this.state.isSignedUp) {
             return <Redirect to={{pathname: "/travelbook"}}/>;
         }
