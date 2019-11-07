@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './App.css';
-import VisitedCountryCheckBox from './VisitedCountryCheckBox';
+import VisitedCountryCheckBox from './VisitedCountryCheckBox.js';
 
 
 
@@ -10,9 +10,9 @@ function Icons (props){
 
   return (
     <div className="icons ">
-      <div className="visited ">
-              <VisitedCountryCheckBox countryName={props.nameCountry} id={props.id} worldSeries={props.worldSeries}/>
-        </div>
+      {/* <div className="visited ">
+              <VisitedCountryCheckBox name={props.name} id={props.id} worldSeries={props.worldSeries}/>
+        </div> */}
         <div className ="icon-comp2 ">
        <NavLink to ="/notes" >
            <button className="icon-button2 icons-button" ></button>

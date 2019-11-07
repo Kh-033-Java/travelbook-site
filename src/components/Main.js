@@ -14,6 +14,7 @@ import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 import EditNote from './notesComponents/editNoteComponents/EditNote';
 import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
+import VisitedCountryCheckBox from './VisitedCountryCheckBox';
 
 
 
@@ -48,7 +49,8 @@ function Main(props){
           <Route path = "/travelbook">
           </Route>
     <Route path = "/generalInfo">
-    <Icons countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map}></Icons>
+    <Icons></Icons>
+    <VisitedCountryCheckBox name={state.nameCountry} id={state.idCountry} worldSeries={state.map}/>
      <SideBar id={state.nameCountry}/>
      </Route>
        <Route path = "/notes">

@@ -12,6 +12,7 @@ class Gallery extends Component{
                }
             }
          componentDidMount() {
+
         actions.getPublicUnAuthorized(this.props.name).then(res =>{
             console.log(res);
             this.setState({ photos:res,validCountry:true });
