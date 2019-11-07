@@ -51,7 +51,6 @@ export default class UserInput extends React.Component {
 
 
     render() {
-        username = this.state.login;
         if (this.state.isSignedUp) {
             return <Redirect to={{pathname: "/travelbook"}}/>;
         }
