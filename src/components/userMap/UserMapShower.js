@@ -3,7 +3,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 
 export default function showUserMap(worldSeries) {
 
-    const login = localStorage.getItem("token");
+    const login = localStorage.getItem("login");
     const endpoint = `http://localhost:8080/users/` + login + `/map`;
     axios.get(endpoint)
         .then(response => {

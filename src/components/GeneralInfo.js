@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import {Route, NavLink, Redirect} from 'react-router-dom';
 import showUserMap from './userMap/UserMapShower'
+import Loading from "./Loading";
 
 class GeneralInfo extends Component {
 
@@ -11,21 +12,19 @@ class GeneralInfo extends Component {
         this.state = {
             generalInfo: [{}],
             description: [{}],
-            weather: [{}]
+            weather: [{}],
+            photos: [{}],
+            isInfoValid: true,
+            isLoading: true
         };
-        this.getGeneralInfo = this.getGeneralInfo.bind(this);
+        // this.getGeneralInfo=this.getGeneralInfo.bind(this);
     }
 
     componentDidMount() {
-        this.getGeneralInfo();
-        showUserMap(this.props.worldSeries);
-    };
 
-    componentWillReceiveProps() {
-        this.getGeneralInfo();
-    }
+        // this.getGeneralInfo();
+        // this.interval = setInterval(this.getGeneralInfo, 10000);
 
-    getGeneralInfo() {
         const endpoint = `http://localhost:8080/country/` + this.props.name + `/description`;
         console.log(endpoint);
         axios.get(endpoint)
@@ -33,27 +32,85 @@ class GeneralInfo extends Component {
                 const generalInfo = response.data;
                 const description = response.data.description;
                 const weather = response.data.weather;
+                const photos = response.data.photos;
                 this.setState({generalInfo});
                 this.setState({description});
                 this.setState({weather});
-                console.log(generalInfo);
+                this.setState({photos});
+            }).catch(error => {
+            console.log("Could not get GI from backend");
+            this.setState({
+                isInfoValid: false
             });
+        });
+        this.setState({
+            isLoading: false
+        });
+    };
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
+    // getGeneralInfo() {
+    //     const endpoint = `http://localhost:8080/country/` + this.props.name + `/description`;
+    //     console.log(endpoint);
+    //     axios.get(endpoint)
+    //         .then(response => {
+    //             const generalInfo = response.data;
+    //             const description = response.data.description;
+    //             const weather = response.data.weather;
+    //             const photos = response.data.photos;
+    //             this.setState({generalInfo});
+    //             this.setState({description});
+    //             this.setState({weather});
+    //             this.setState({photos});
+    //         }).catch(error => {
+    //         console.log("Could not get GI from backend");
+    //         this.setState({
+    //             isInfoValid: false
+    //         });
+    //     });
+    //     this.setState({
+    //         isLoading: false
+    //     });
+    // }
+
     render() {
+        // while (this.state.isLoading) {
+        //     console.log("loading");
+        //     return <Loading/>
+        // }
+        const { isLoading } = this.state;
+        const spinner = isLoading ? <Loading/> : null;
+        if(this.state.isInfoValid) {
         return (
             <aside className="rightbar container" style={{overflow: 'auto'}}>
+                {spinner}
                 <h1>General Information about country</h1>
                 <p>Country name - {this.state.generalInfo.name}</p>
                 <p>Capital - {this.state.description.capital} </p>
-                <p>Current weather in capital - {this.state.weather.temperature}, {" "}
+                <p className="weather">Current weather in capital {this.state.weather.temperature}, {" "}
                     {this.state.weather.description}
                 </p>
                 <p>Description - {this.state.description.commonInformation}</p>
                 <p>Cuisine - {this.state.description.cuisine}</p>
                 <p>Climate - {this.state.description.climate}</p>
+                {this.state.photos ? <p>{this.state.photos.map((value, index) =>
+                    <img src={value.link} alt={"No image"} className="photo" key={index}/>
+                )}</p> : <p></p>}
             </aside>
         )
+        }
+        else {
+            return (
+                <aside className="rightbar container" style={{overflow: 'auto'}}>
+                    {spinner}
+                    <h1>General Information about country</h1>
+                    <p>No info</p>
+                </aside>
+            );
+        }
     }
 }
 

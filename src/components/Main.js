@@ -46,10 +46,14 @@ function Main(props){
     <Map clicker={regionClicker}/>
     <Route path = "/travelbook">
           </Route>
-    <Route path = "/generalInfo">
+    <Route path = "/map">
     <Icons countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map}></Icons>
-     <GeneralInfo name={state.nameCountry} worldSeries = {state.map}/>
+        <SideBar name={state.nameCountry} worldSeries = {state.map}/>
      </Route>
+          <Route path = "/generalInfo">
+              <Icons></Icons>
+              <GeneralInfo name={state.nameCountry} worldSeries = {state.map}/>
+          </Route>
        <Route path = "/notes">
         <Icons></Icons>
      <Notes name={state.nameCountry} id={state.idCountry} worldSeries = {state.map} setId={setNoteID} />
