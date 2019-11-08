@@ -1,5 +1,6 @@
 import React from 'react';
 
+// this class is not used now but may be used as load spinner while data goes from backend
 class Loading extends React.Component {
     constructor(props) {
         super(props);
