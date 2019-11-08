@@ -243,3 +243,9 @@ aside {
 .weather {
     color: purple;
 }
+
+.photoGallery{
+    grid-column: 3;
+    width: 30%;
+    height: 30%;
+}

@@ -37,7 +37,7 @@ class GeneralPhotos extends Component {
                     <h1>photos</h1>
                     {photos ? <p>{photos.map((value, index) =>
 
-                        <img src={value.link} alt={"No image"} className="photo" key={index}/>
+                        <img src={value.link} alt={"No image"} className="photoGallery" key={index}/>
                     )}</p> : <p>No such country</p>}
                 </div>
             </aside>
