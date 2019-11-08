@@ -1,7 +1,23 @@
 import React from 'react';
+// import Loader from 'react-loader-spinner'
 
 // this class is not used now but may be used as load spinner while data goes from backend
 class Loading extends React.Component {
+
+    // render() {
+    //     return (
+    //         <Loader
+    //             type="Puff"
+    //             color="#00BFFF"
+    //             height={100}
+    //             width={100}
+    //             timeout={3000} //3 secs
+    //
+    //         />
+    //     );
+    // }
+
+
     constructor(props) {
         super(props);
         this.style = {
@@ -30,6 +46,7 @@ class Loading extends React.Component {
         styleSheet.insertRule(this.keyframes, styleSheet.cssRules.length);
         return <div style={this.style}/>
     }
+
 }
 
-export default Loading
+export default Loading;

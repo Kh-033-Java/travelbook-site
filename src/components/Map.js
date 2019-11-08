@@ -38,7 +38,7 @@ class Map extends Component {
           console.log(e.target.dataItem.dataContext);
       this.props.clicker(e,polygonSeries)
       this.setState({
-       properLink :'/map'
+       properLink :'/toGeneralInfo'
       })
 
       e.target.series.chart.zoomToMapObject(e.target);

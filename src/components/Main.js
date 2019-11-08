@@ -1,7 +1,6 @@
 import { Route} from 'react-router-dom';
 import React, {useState} from 'react';
 import './App.css';
-import SideBar from "./sidebar.js";
 import Head from "./header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
@@ -15,7 +14,7 @@ import EditNote from './notesComponents/editNoteComponents/EditNote';
 import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 import GeneralInfo from "./GeneralInfo.js";
-
+import ToGeneralInfo from "./ToGeneralInfo.js";
 
 
 function Main(props){
@@ -46,9 +45,9 @@ function Main(props){
     <Map clicker={regionClicker}/>
     <Route path = "/travelbook">
           </Route>
-    <Route path = "/map">
+    <Route path = "/toGeneralInfo">
     <Icons countryName={state.nameCountry} id={state.idCountry} worldSeries={state.map}></Icons>
-        <SideBar name={state.nameCountry} worldSeries = {state.map}/>
+        <ToGeneralInfo  name={state.nameCountry} worldSeries = {state.map}/>
      </Route>
           <Route path = "/generalInfo">
               <Icons></Icons>
