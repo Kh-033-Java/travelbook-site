@@ -1,34 +1,42 @@
-
 import React, { Component } from "react";
 import '../App.css';
-import PlansWrapper from "./PlansWrapper.js";
+import OnePlanCreator from "./OnePlanCreator.js";
 import '../sidebarComponents/SideBar.css'
 import './AllPlansPage.css';
-import * as actions from '../../actions/plansActions.js'
-
+import axios from 'axios';
 
 class UnAuthorizedPlans extends Component{
 
     constructor(props){
         super(props);
         this.state = {
-            plans: [{}],
+            plans: [],
         }
+        this.getArrayPlans = this.getArrayPlans.bind(this);
     }
 
     componentDidMount() {
-        actions.getPublicPlans(this.props.name).then(res => {
-            this.setState({plans: res})
+        let endpoint= `http://localhost:8080/country/${this.props.countryName}/plans`;
+        axios.get(endpoint).then(res => {
+            this.setState({...this.state, plans: res.data})
+            console.log(res.data);
+        }).catch(error => {
+            throw error;
         });
-    }
+    };
+
+    getArrayPlans=()=>{
+        const plans = [];
+        this.state.plans.forEach(e=>plans.push(<OnePlanCreator plan = {e} setId = {this.props.setId} countryName = {this.props.countryName}/>));
+        return plans;
+    };
 
     render() {
        return(
-            <div className = "list-main-unauth  main-sidebar container">
-                {/* {this.state.plans.map((plan) => {
-                    return <PlansWrapper plan={plan} id={plan.id}/>
-                })} */}
-                <PlansWrapper plan={this.state.plans} id={this.state.plans.id}/>
+            <div className = "list-main-unauth  main-sidebar ">
+                <div className={"allPlans container"}>
+                    {this.getArrayPlans()}
+                </div>
             </div>
         )
     }

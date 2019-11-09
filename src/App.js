@@ -26,6 +26,9 @@ class App extends Component {
                     <Route path="/notes/">
                         <Main gridClass="grid-cont"/>
                     </Route>
+                    <Route path="/editNote/">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
                     <Route path="/gallery/">
                         <Main gridClass="grid-cont"/>
                     </Route>
@@ -36,6 +39,12 @@ class App extends Component {
                         <Main gridClass="grid-cont"/>
                     </Route>
                     <Route path="/newnote/">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
+                    <Route path="/newPlan/">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
+                    <Route path="/editPlan/">
                         <Main gridClass="grid-cont"/>
                     </Route>
                     <Route path="/travelbook/">

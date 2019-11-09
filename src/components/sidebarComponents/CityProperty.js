@@ -30,7 +30,7 @@ class City extends Component {
     render() {
         return (
             <div className={this.props.style_class}>
-                <label for="from-city">City</label>
+                <label for="from-city">City {this.props.direct}</label>
                 <select className={this.props.select_class} name="from-city">
                     {this.createOptionsForSelect()}
                 </select>

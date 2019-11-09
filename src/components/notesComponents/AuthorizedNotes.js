@@ -33,15 +33,19 @@ class AuthNotes extends Component{
      }
   }
   loadAll(){
-   axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/${'login'}`).then(res=>{
+   axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/${localStorage.getItem("login"
+   )}`).then(res=>{
       console.log(res.data);
-   this.setState({...this.state,notes:res.data.notes})
+   this.setState({...this.state,notes:res.data})
    })
   }
   loadOnlyUsers(){
-   axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private/${'login'}`).then(res=>{
+     console.log(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${localStorage.getItem("login"
+     )}`)
+   axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${localStorage.getItem("login"
+   )}`).then(res=>{
       console.log(res.data);
-   this.setState({...this.state,notes:res.data.notes})
+   this.setState({...this.state,notes:res.data})
    })
   }
   componentDidMount(){
@@ -54,7 +58,7 @@ class AuthNotes extends Component{
        <React.Fragment>
              <div className="list-main-auth main-sidebar " >
             <OnlyMyNotes funCheck={this.onCheck} />
-          <NotesWrapper classWr={"allNotes container"} setId={this.props.setId} countryName={this.props.countryName}/>
+          <NotesWrapper classWr={"allNotes container"} setId={this.props.setId} notes ={this.state.notes} countryName={this.props.countryName}/>
              </div>   
              <ToAddFooter text="add note" path="newnote"/>
              </React.Fragment>

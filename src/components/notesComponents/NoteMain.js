@@ -6,19 +6,24 @@ import NoteEstimations from './NoteEstimations.js'
 import '../App.css';
 import"../sidebarComponents/SideBar.css";
 import NotesPhotos from './NotePhotos';
-import logo from '../icons/icon3.jpg'
-import logo2 from '../icons/icon4.jpg'
-function NoteMain(props){
 
+function NoteMain(props){
+const getDate=()=>{
+    if(props.note.dateOfVisiting){
+   let str= props.note.dateOfVisiting;
+   console.log(str.slice(0,10));
+   return str.slice(0,10);
+    }
+}
     return (
    <div className = "main-comp main-sidebar">
-       <NoteOwner account={/*props.note.login*/"login"} style_="note-owne note-owner-gen"/>
-        <NoteProperties city = {props.note.city} date = {props.note.date}/>
-       <div className="description container">
+       <NoteOwner account={props.note.login} logo={props.note.linkToUserAvatar} style_="note-owne note-owner-gen" onClick={console.log(props.note)}/>
+        <NoteProperties city = {props.note.describedCity} date ={getDate()}/>
+       <div className="ddescription">
        <div className="title-note">Description</div>
        <textarea value={props.note.description} readOnly></textarea>
        </div>
-       <NotesPhotos photos ={[logo,logo2,logo,logo2]/*props.note.photos*/ }/>
+       <NotesPhotos photos ={props.note.photoLink}/>
        <NoteEstimations people = {props.note.peopleEstimate} prices ={props.note.pricesEstimate}
         cuisine ={props.note.cuisineEstimate} impression ={props.note.commonImpression}/>
    </div>

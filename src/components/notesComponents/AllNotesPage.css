@@ -2,6 +2,7 @@
     grid-row: 2;
     overflow: auto;
     display: grid;
+    grid-template-rows: repeat(4,1fr) auto;
 }
 
 .list-note{
@@ -20,13 +21,14 @@
 /*Grid for the list*/
 .list-note-el{
   width:100%;
+ min-height:170px;
  max-height:170px;
  overflow: hidden;
  
   margin:10px 0;
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 0.5fr;
-  grid-template-rows: 1fr 1fr 1,5fr;
+  grid-template-rows: 1fr 1fr 1.5fr;
   padding:10px;
   grid-gap: 10px;
   }

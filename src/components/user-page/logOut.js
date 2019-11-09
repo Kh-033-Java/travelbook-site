@@ -7,8 +7,8 @@ function LogOut() {
         window.location.href = '/travelbook';
     };
     return (
-        <div className="authorize3 container header-text">
-            <NavLink to='/travelbook' onClick={logout}>Log Out</NavLink>
+        <div className="authorize3  header-text">
+            <NavLink to='/travelbook' className="nav-link" onClick={logout}>Log Out</NavLink>
         </div>
     )
 }

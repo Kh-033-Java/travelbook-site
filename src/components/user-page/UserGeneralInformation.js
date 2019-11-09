@@ -37,24 +37,32 @@ class UserGeneralInformation extends Component {
         return (
             <aside className="rightbar container">
                 <div className="first container">
+                    <div className="first-inner">
                     Profile
+                    </div>
                 </div>
                 <div className="second container">
+                    <div className="second-inner">
                     {this.state.login}
+                    </div>
                 </div>
                 <div className="third container">
                             <img className="avatar-inner" src={localStorage.getItem("avatar")}/>
                 </div>
                 <div className="fourth container">
+                    <div className="fourth-inner">
                     {this.state.firstName}
                 <br/>
                 <br/>
                     {this.state.lastName}
+                    </div>
                 </div>
                 <div className="fifth container">
+                    <div className="fifth-inner">
                     Description
                     <div className="container">
                     {this.state.description}
+                    </div>
                 </div>
                     <div className="fifth-inner">
                     </div>
