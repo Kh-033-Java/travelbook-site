@@ -76,7 +76,7 @@ class Main extends Component{
                 </Route>
                 <Route path = "/generalInfo">
                     <VisitedCountryCheckBox countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
-                    <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
+                    <Icons/>
                     <SideBar id={this.state.nameCountry}/>
                 </Route>
                 <Route path = "/notes">
