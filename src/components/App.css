@@ -229,3 +229,13 @@ aside {
     width: 50%;
     height: 50%;
 }
+
+.weather {
+    color: purple;
+}
+
+.photoGallery{
+    grid-column: 3;
+    width: 30%;
+    height: 30%;
+}

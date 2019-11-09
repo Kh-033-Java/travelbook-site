@@ -17,13 +17,13 @@ class Gallery extends Component {
     changeToGeneralPhoto = () => {
         this.setState({
             ...this.state,
-            isUserPhoto : true,
-    })
+            isUserPhoto: true,
+        })
     };
     changeToUserPhoto = () => {
         this.setState({
             ...this.state,
-            isUserPhoto : false,
+            isUserPhoto: false,
         })
 
     };

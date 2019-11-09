@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@amcharts/amcharts4-geodata/-/amcharts4-geodata-4.1.8.tgz#399c436745848a7f4e3d4a82a7fe9f68ec0dc73a"
   integrity sha512-0cSqIvm1VeIHCBjYIrv33Cek32r/v9UCaoOebaahB+nn6pd7i0MJiqNvO091qGSZ4c2kD4neJ7Qlqw0de5gdBw==
 
-"@amcharts/amcharts4@^4.7.4":
-  version "4.7.6"
-  resolved "https://registry.yarnpkg.com/@amcharts/amcharts4/-/amcharts4-4.7.6.tgz#00df3411352954018b0be7465e2f1a1f3b4305b3"
-  integrity sha512-FJ0RQTC9dhb2Ca1rsY+SJq7qdwwwrW48SLcNaysLEIJfzBSPp7X+nKWiUpt2G0vjfKJuvSxcAF337JLaNqIJWA==
+"@amcharts/amcharts4@^4.7.6":
+  version "4.7.8"
+  resolved "https://registry.yarnpkg.com/@amcharts/amcharts4/-/amcharts4-4.7.8.tgz#30101bd31cdcf6df326d9c7693e5c67081fc19fb"
+  integrity sha512-nBrxYnibe5IrX9RpS8lNV0VnhpV3OYTw931Bp6ud4stjqUWtwr7g/XMTnGtoGu55Xy+db3VzMff6a4jHt7/Yvw==
   dependencies:
     "@types/regression" "^2.0.0"
     canvg "^2.0.0"
@@ -3019,7 +3019,7 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
 
-crypto-js@^3.1.9-1:
+crypto-js@^3.1.9-1, crypto-js@latest:
   version "3.1.9-1"
   resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
   integrity sha1-/aGedh/Ad+Af+/3G6f38WeiAbNg=
@@ -8799,6 +8799,14 @@ react-lifecycles-compat@^3.0.2:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-loader-spinner@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/react-loader-spinner/-/react-loader-spinner-3.1.4.tgz#03ef24252f6802d6e85443c23b32c2e66973fe4d"
+  integrity sha512-pl7cvc1eZFwOoUW33BJnuR9TBcAS25SD15RFYecY9ikb8Kv+yFFmaITU6xg001Aw8HsNreAUsrIHozf2fNmIqQ==
+  dependencies:
+    babel-runtime "^6.26.0"
+    prop-types "^15.6.2"
 
 react-popper@^1.3.4:
   version "1.3.4"
