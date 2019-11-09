@@ -1,12 +1,11 @@
 import React,{Component} from "react";
 import './App.css';
-
+import Loading from "./Loading";
 
 function SideBar(props){
     return(
 <aside className="rightbar container">
-<p>{props.id}</p>
-
+<h1>In country : {props.name}</h1>
 </aside>
     )
 }

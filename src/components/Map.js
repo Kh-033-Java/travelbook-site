@@ -4,6 +4,8 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import showUserMap from './userMap/UserMapShower'
+import isAutorized from './checker/authorizationChecker.js'
 
 class Map extends Component {
   constructor(){
@@ -36,11 +38,16 @@ class Map extends Component {
           console.log(e.target.dataItem.dataContext);
       this.props.clicker(e,polygonSeries)
       this.setState({
-       properLink :'/generalInfo'
+       properLink :'/toGeneralInfo'
       })
 
       e.target.series.chart.zoomToMapObject(e.target);
     });
+
+    if (isAutorized) {
+       showUserMap(polygonSeries);
+    }
+
     }
 
   componentWillUnmount() {
