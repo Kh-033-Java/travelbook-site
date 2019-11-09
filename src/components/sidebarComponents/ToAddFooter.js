@@ -2,7 +2,8 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import '../sidebarComponents/SideBar.css'
 import '../App.css';
-function SideBarFooter(props){
+
+function ToAddFooter(props){
     return (
   <div className ="sidebar-footer container ">
       <NavLink className="nav-link header-text" to ={props.path}>
@@ -12,4 +13,4 @@ function SideBarFooter(props){
 
     );
 }
-export default SideBarFooter;
+export default ToAddFooter;

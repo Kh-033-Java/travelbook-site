@@ -1,15 +1,31 @@
 import React from "react";
-import PlanLook from './planComponents/PlanLook.js'
 import './App.css';
+import './sidebarComponents/SideBar.css';
+import {NavLink} from 'react-router-dom';
+import isAuthorized from "./checker/authorizationChecker";
+import Header from "./sidebarComponents/SidebarHeader";
+import UnAuthorizedPlans from "./planComponents/UnAuthorizedPlans";
+import AuthorizedPlans from "./planComponents/AuthorizedPlans";
+
 function Plans(props){
     return(
-             <aside className="rightbar ">
-                   {/* will be a panel with name and country */}
-                  <h1> Plans</h1>
-                    <p>In country : {props.name}</p>
-                  <PlanLook name={props.name} id ={props.id} worldSeries = {props.worldSeries} />
+        !isAuthorized()?
+            <aside className="rightbar whole-comp-no-footer ">
+                <Header title = "Plans" countryName={props.countryName}/>
+                <UnAuthorizedPlans countryName={props.countryName} id={props.id} setId={props.setId}/>
             </aside>
-    
+            :
+            <aside className="rightbar whole-comp ">
+                <Header title = "Plans" countryName={props.countryName}/>
+                <AuthorizedPlans countryName={props.countryName} id={props.id} worldSeries = {props.worldSeries} setId={props.setId}/>
+                <div className="create-plan-button container ">
+                    <NavLink to="/newPlan">
+                        <button type="button" className="button-plan">Create plan</button>
+                    </NavLink>
+                </div>
+            </aside>
+
     )
 }
+
 export default Plans;

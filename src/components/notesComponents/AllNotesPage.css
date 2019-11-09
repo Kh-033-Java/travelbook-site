@@ -28,7 +28,7 @@
   margin:10px 0;
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 0.5fr;
-  grid-template-rows: 1fr 1fr 1,5fr;
+  grid-template-rows: 1fr 1fr 1.5fr;
   padding:10px;
   grid-gap: 10px;
   }
@@ -89,4 +89,3 @@ margin-top:1em;
     border: 3px solid grey;
     border-radius: 2%;
   }
- 
