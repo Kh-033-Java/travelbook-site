@@ -121,14 +121,7 @@ class Main extends Component {
                     <Icons></Icons>
                     <EditNote countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map} noteId={this.state.idNote} />
                 </Route>
-                {/*<Route path="/newPlan">
-                    <Icons></Icons>
-                    <NewPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map} planId={this.state.idPlan} />
-                </Route>
-                <Route path="/editPlan">
-                    <Icons></Icons>
-                    <EditPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map} planId={this.state.idPlan} />
-                </Route>*/}
+
                 <Route path="/main">
                     <Icons></Icons>
                     <UserGeneralInformation />
