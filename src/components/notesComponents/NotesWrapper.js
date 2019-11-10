@@ -1,36 +1,40 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import NoteListElement from './allNotes/NoteListElement'
 
 import '../App.css';
 import './AllNotesPage.css';
+
 //gets list of object of notes from props
-class NotesWrapper extends Component{
-    constructor(props){
+class NotesWrapper extends Component {
+    constructor(props) {
         super(props)
         this.getNotes = this.getNotes.bind(this);
     }
-  getNotes=()=>{
-    const notes=[];
-    console.log(this.props.notes);
-    tempList = this.props.notes;
-    tempList.forEach(e=>notes.push(<NoteListElement note={e} setId={this.props.setId} countryName={this.props.countryName}/>));
-    console.log(tempList);
-    console.log(notes);
-    return notes
-}
-render()
-{  
-    console.log(this.props.notes);
-    return(
-<div className={this.props.classWr}>
-{this.getNotes()}
 
-</div>
-    )
+    getNotes = () => {
+        const notes = [];
+        console.log(this.props.notes);
+        tempList = this.props.notes;
+        tempList.forEach(e => notes.push(<NoteListElement note={e} setId={this.props.setId}
+                                                          countryName={this.props.countryName}/>));
+        console.log(tempList);
+        console.log(notes);
+        return notes
+    }
+
+    render() {
+        console.log(this.props.notes);
+        return (
+            <div className={this.props.classWr}>
+                {this.getNotes()}
+
+            </div>
+        )
+    }
 }
-}
+
 export default NotesWrapper;
-let  tempList = [{
+let tempList = [{
     id: 1,
     title: "Lviv is nice",
     isPublic: true,
@@ -43,7 +47,7 @@ let  tempList = [{
     describedCity: null,
     photoLink: null,
     public: true
-},{
+}, {
     id: 2,
     title: "Lviv is nice",
     isPublic: true,
@@ -56,7 +60,7 @@ let  tempList = [{
     describedCity: null,
     photoLink: null,
     public: true
-},{
+}, {
     id: 3,
     title: "Lviv is nice",
     isPublic: true,
@@ -69,7 +73,7 @@ let  tempList = [{
     describedCity: null,
     photoLink: null,
     public: true
-},{
+}, {
     id: 4,
     title: "Lviv is nice",
     isPublic: true,
@@ -82,7 +86,7 @@ let  tempList = [{
     describedCity: null,
     photoLink: null,
     public: true
-},{
+}, {
     id: 5,
     title: "Lviv",
     isPublic: true,
@@ -95,7 +99,7 @@ let  tempList = [{
     describedCity: null,
     photoLink: null,
     public: true
-},{
+}, {
     id: 6,
     title: "Lviv is vert nice",
     isPublic: true,
@@ -108,7 +112,7 @@ let  tempList = [{
     describedCity: null,
     photoLink: null,
     public: true
-},{
+}, {
     id: 7,
     title: "Lviv is not nice",
     isPublic: true,
