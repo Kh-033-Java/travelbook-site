@@ -13,7 +13,8 @@ class MyPhotos extends Component {
 
 
     componentDidMount() {
-        let endpoint = `http://localhost:8080/country/${this.props.name}/photos/${this.props.login}`;
+        const login = localStorage.getItem("login");
+        const endpoint = `http://localhost:8080/country/${this.props.name}/photos/${login}`;
         axios.get(endpoint)
             .then(res => {
                 this.setState({photos: res.data, validCountry: true});
@@ -30,6 +31,7 @@ class MyPhotos extends Component {
 
     render() {
         const photos = this.state.photos;
+        console.log();
         return (
             <aside className="rightbar container">
                 <div>
@@ -37,7 +39,7 @@ class MyPhotos extends Component {
                     <p>{this.props.name}</p>
                     <h1>photos</h1>
                     {photos ? <p>{photos.map((value, index) =>
-                        <img src={value} alt={"No image"} className="photo"/>
+                        <img src={value.link} alt={"No image"} className="photoGallery" key={index}/>
                     )}</p> : <p>No such country</p>}
                 </div>
             </aside>

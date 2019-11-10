@@ -60,7 +60,7 @@ class VisitedCountryCheckBox extends Component {
         })
     }
 
-    async isVisitedCountry() {
+    isVisitedCountry() {
         let token = getJwt();
         let endpointAllVisitedCountries = `http://localhost:8080/users/${localStorage.getItem("login")}/map`;
         axios.get(endpointAllVisitedCountries, {
@@ -69,7 +69,6 @@ class VisitedCountryCheckBox extends Component {
             }
         }).then((res) =>{
             let visitedCountries = res.data.visitedCountries;
-            console.log(visitedCountries);
             this.setState({visitedCountries: visitedCountries});
             console.log(this.state.visitedCountries);
         });
@@ -87,7 +86,9 @@ class VisitedCountryCheckBox extends Component {
 
 
     componentDidMount() {
-        this.isVisitedCountry();
+        if (isAuthorized()) {
+            this.isVisitedCountry();
+        }
     };
 
     render() {

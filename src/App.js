@@ -20,6 +20,9 @@ class App extends Component {
                     <Route path="/userPage/:login" component={UserGeneralInformation} exact>
                         <Main gridClass="grid-cont"/>
                     </Route>
+                    <Route path="/toGeneralInfo">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
                     <Route path="/generalInfo/">
                         <Main gridClass="grid-cont"/>
                     </Route>

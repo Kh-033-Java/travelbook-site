@@ -28,6 +28,4 @@ function Notes(props){
 
          )
     }
-
 export default Notes;
-
