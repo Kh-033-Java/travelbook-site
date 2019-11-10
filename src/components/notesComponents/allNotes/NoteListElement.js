@@ -8,6 +8,7 @@ import NProperty from './NProperty'
 import NoteOwner from '../NoteOwner';
 import axios from 'axios';
 import {getJwt} from "../../../helpers/jwt";
+import isAuthorized from "../../checker/authorizationChecker";
 
 
 class NoteListElement extends Component {
@@ -17,7 +18,8 @@ class NoteListElement extends Component {
             noteId: '',
             numberOfLikes: '',
             clicked: false,
-            liked: false
+            liked: false,
+            disabled: false
         }
         this.setID = this.setID.bind(this);
         this.getCountOfLikes = this.getCountOfLikes.bind(this);
@@ -29,6 +31,10 @@ class NoteListElement extends Component {
         console.log(this.props.note.id);
         this.getCountOfLikes();
         this.checkIfAlreadyLiked();
+
+        if(isAuthorized()){
+            this.setState({disabled: true});
+        }
     }
 
     setID(e) {
@@ -57,6 +63,7 @@ class NoteListElement extends Component {
             this.props.setId(this.props.note.id)
             this.setState({noteId: this.props.note.id})
         }
+
 
         console.log(this.state.noteId);
 
@@ -94,9 +101,9 @@ class NoteListElement extends Component {
     render() {
         let like = null;
         if(!this.state.liked){
-            like = <div className="like" onClick={this.sendLike}/>;
-        }else{
-            like = <div className="liked" onClick={this.sendLike}/>;
+            like = <div className="like" onClick={this.state.disabled ? this.sendLike: undefined}/>;
+        }else if(this.state.liked){
+            like = <div className="liked" onClick={this.state.disabled ? this.sendLike: undefined}/>;
         }
 
         if (this.state.clicked) {
