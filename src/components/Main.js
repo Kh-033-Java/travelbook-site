@@ -15,6 +15,7 @@ import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 import GeneralInfo from "./GeneralInfo.js";
 import ToGeneralInfo from "./ToGeneralInfo.js";
+import DeleteNote from "./notesComponents/deleteNoteComponents/DeleteNote";
 
 
 function Main(props){
@@ -86,6 +87,10 @@ function Main(props){
         <Icons></Icons>
      <EditNote countryName={state.nameCountry} id={state.idCountry} worldSeries = {state.map} noteId ={state.idNote} />
      </Route>
+          <Route path = "/deleteNote">
+              <Icons></Icons>
+              <DeleteNote countryName={state.nameCountry} noteId ={state.idNote} />
+          </Route>
 
      <Route path="/main">
                 <Icons></Icons>

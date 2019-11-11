@@ -58,7 +58,7 @@ class AuthNotes extends Component{
        <React.Fragment>
              <div className="list-main-auth main-sidebar " >
             <OnlyMyNotes funCheck={this.onCheck} />
-          <NotesWrapper classWr={"allNotes container"} setId={this.props.setId} notes ={this.state.notes} countryName={this.props.countryName}/>
+          <NotesWrapper classWr={"allNotes container"} setId={this.props.setId} notes ={this.state.notes} countryName={localStorage.getItem("country")}/>
              </div>   
              <ToAddFooter text="add note" path="newnote"/>
              </React.Fragment>

@@ -21,7 +21,7 @@ function Notes(props){
 :
 <aside className="rightbar whole-comp">
 <Header title = "Notes" countryName={props.name}/>
-<AuthorizedNotes worldSeries={props.worldSeries} id= {props.id} setId={props.setId} countryName={props.name}/>
+<AuthorizedNotes worldSeries={props.worldSeries} id= {props.id} setId={props.setId} countryName={localStorage.getItem("country")}/>
 
 </aside>
                                          

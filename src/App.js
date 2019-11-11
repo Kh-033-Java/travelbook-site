@@ -32,6 +32,9 @@ class App extends Component {
                     <Route path="/editNote/">
                         <Main gridClass="grid-cont"/>
                     </Route>
+                    <Route path="/deleteNote/">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
                     <Route path="/gallery/">
                         <Main gridClass="grid-cont"/>
                     </Route>
