@@ -10,7 +10,6 @@ class CheckBox extends Component {
         this.onClick = this.onClick.bind(this);
     }
     onClick(e){
-        console.log('props2', this.props)
 
         if(e.type === 'click')
         {

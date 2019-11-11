@@ -86,7 +86,6 @@ class Search extends Component {
         } else {
             this.setState({ isUserSearch: false });
         }
-        console.log('state', this.state.isUserSearch);
     }
 
     async onChange(event) {
@@ -100,7 +99,6 @@ class Search extends Component {
             const AllCountries = await this.getAllCountries();
             this.filterCountries();
             this.displayAllCountries();
-            console.log(this.state.countries);
         }
         
         if (this.state.inputValue.length > 0) {
