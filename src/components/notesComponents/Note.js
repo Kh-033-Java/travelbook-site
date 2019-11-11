@@ -7,6 +7,7 @@ import * as actions from '../../actions/notesActions'
 import isAuthorized from '../checker/authorizationChecker'
 import FooterWithEdit from '../sidebarComponents/FooterWithEdit'
 import axios from 'axios'
+import {getJwt} from "../../helpers/jwt";
 
 
 class Note extends Component{
@@ -18,7 +19,9 @@ constructor(props){
 }
 
 componentDidMount(){
-            axios.get(`http://localhost:8080/country/notes/${this.props.noteId}`).then(res=>{
+
+            axios.get(`http://localhost:8080/country/notes/${this.props.noteId}`
+    ).then(res=>{
         console.log(res.data);
      this.setState({note:res.data})
      }).catch(err=>console.log(err))

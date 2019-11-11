@@ -1,5 +1,5 @@
 import {Route} from 'react-router-dom';
-import React, {Component} from 'react';
+import React, {useState, Component} from 'react';
 import './App.css';
 import SideBar from "./sidebar.js";
 import Head from "./header.js";
@@ -22,7 +22,6 @@ import ToGeneralInfo from "./ToGeneralInfo.js";
 import SearchPlans from "./search/SearchPlans";
 import SearchMain from "./search/SearchMain";
 
-
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -32,8 +31,8 @@ class Main extends Component {
             map: "",
         }
         this.setNoteID = this.setNoteID.bind(this);
-        this.setPlanID = this.setPlanID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
+        this.setPlanID = this.setPlanID.bind(this)
     }
 
     regionClicker(ev, worldSeries) {
@@ -83,14 +82,13 @@ class Main extends Component {
                 <Route path="/travelbook">
                 </Route>
                 <Route path="/toGeneralInfo">
-                    <Icons countryName={this.state.nameCountry} id={this.state.idCountry}
-                           worldSeries={this.state.map}></Icons>
+                    <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
                     <ToGeneralInfo name={this.state.nameCountry} worldSeries={this.state.map}/>
                 </Route>
                 <Route path="/generalInfo">
                     <VisitedCountryCheckBox countryName={this.state.nameCountry} id={this.state.idCountry}
                                             worldSeries={this.state.map}/>
-                    <Icons></Icons>
+                    <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
                     <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map}/>
                 </Route>
                 <Route path="/notes">
@@ -107,6 +105,14 @@ class Main extends Component {
                     <Plans countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
                            setId={this.setPlanID}/>
                 </Route>
+                <Route
+                    path="/my-photos"
+                    render={props => <MyPhotos {...props}/>}
+                />
+                <Route
+                    path="/general-photos"
+                    render={props => <GeneralPhotos {...props}/>}
+                />
                 <Route path="/note">
                     <Icons></Icons>
                     <Note countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
@@ -122,11 +128,10 @@ class Main extends Component {
                     <EditNote countryName={this.state.nameCountry} id={this.state.idCountry}
                               worldSeries={this.state.map} noteId={this.state.idNote}/>
                 </Route>
-
-                <Route path="/main">
+                <Route path="/userPage/:login">
                     <Icons></Icons>
-                    <UserGeneralInformation/>
-                </Route>
+                    <UserGeneralInformation login={localStorage.getItem("login")}/>
+                    </Route>
 
                 <Route
                     path="/search-plans">
@@ -136,7 +141,6 @@ class Main extends Component {
                                  worldSeries={this.state.map}
                                  setId={this.setPlanID}/>
                 </Route>
-
             </div>
         );
     }

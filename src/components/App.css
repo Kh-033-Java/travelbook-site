@@ -172,6 +172,10 @@ main {
     grid-column: 6;
 }
 
+.icon-comp5{
+    grid-column: 2;
+}
+
 .icons-button {
     padding: 0;
     border: none;
