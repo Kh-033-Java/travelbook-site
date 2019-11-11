@@ -20,6 +20,7 @@ import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
 import GeneralInfo from "./GeneralInfo.js";
 import ToGeneralInfo from "./ToGeneralInfo.js";
 import SearchPlans from "./search/SearchPlans";
+import SearchMain from "./search/SearchMain";
 
 
 class Main extends Component {
@@ -130,7 +131,7 @@ class Main extends Component {
                 <Route
                     path="/search-plans">
                     <Icons></Icons>
-                    <SearchPlans countryName={this.state.nameCountry}
+                    <SearchMain countryName={this.state.nameCountry}
                                  id={this.state.idCountry}
                                  worldSeries={this.state.map}
                                  setId={this.setPlanID}/>

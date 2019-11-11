@@ -241,5 +241,5 @@ aside {
 }
 
 .search-plan {
-    grid-row: inherit;
+    display: grid;
 }
