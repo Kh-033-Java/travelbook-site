@@ -19,7 +19,8 @@ import GeneralPhotos from "./gallery/GeneralPhotos";
 import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
 import GeneralInfo from "./GeneralInfo.js";
 import ToGeneralInfo from "./ToGeneralInfo.js";
-
+import SearchPlans from "./search/SearchPlans";
+import SearchMain from "./search/SearchMain";
 
 class Main extends Component {
     constructor(props) {
@@ -101,10 +102,9 @@ class Main extends Component {
                 </Route>
                 <Route path="/plans">
                     <Icons></Icons>
-                    <Plans name={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                    <Plans countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
                            setId={this.setPlanID}/>
                 </Route>
-
                 <Route
                     path="/my-photos"
                     render={props => <MyPhotos {...props}/>}
@@ -131,6 +131,15 @@ class Main extends Component {
                 <Route path="/userPage/:login">
                     <Icons></Icons>
                     <UserGeneralInformation login={localStorage.getItem("login")}/>
+                    </Route>
+
+                <Route
+                    path="/search-plans">
+                    <Icons></Icons>
+                    <SearchMain countryName={this.state.nameCountry}
+                                 id={this.state.idCountry}
+                                 worldSeries={this.state.map}
+                                 setId={this.setPlanID}/>
                 </Route>
             </div>
         );
