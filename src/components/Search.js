@@ -30,9 +30,6 @@ class Search extends Component {
         const response = await Axios.get(endpoint).then(async response => this.setState({countries: await response.data}));
     }
 
-    addUserToDisplay(userData) {
-        return <a href={"http://localhost:8080/users/" + userData.login} style={{ display: '' }}>{userData.login}</a>
-    }
 
 
     displayAllUsers() {
@@ -40,7 +37,7 @@ class Search extends Component {
         const displayData = [];
 
         for (let i = 0; i < users.length; i++) {
-            displayData.push(this.addUserToDisplay(users[i]));
+            displayData.push( <a key={i} href={"http://localhost:8080/users/" + users[i].login} style={{ display: '' }}>{users[i].login}</a>);
 
         }
         this.setState({ displayData });
@@ -51,7 +48,7 @@ class Search extends Component {
         const displayData = [];
 
         for(let i = 0; i < countries.length; i++){
-            displayData.push(<a href={"http://localhost:8080/country/" + countries[i].name} style={{ display: '' }}>{countries[i].name}</a>)
+            displayData.push(<a key={i} href={"http://localhost:8080/country/" + countries[i].name} style={{ display: '' }}>{countries[i].name}</a>)
         }
         this.setState({displayData});
     }
