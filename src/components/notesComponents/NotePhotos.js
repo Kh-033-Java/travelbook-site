@@ -25,7 +25,7 @@ componentDidMount(){
 
 render(){
     return (
-  <div className ="note-photos container">
+  <div className ="note-photos">
       <div className="title-note">Photos</div>
       <div  className="carouseel">
    <Carousel  showArrows={true} showThumbs={false} dynamicHeight={true} dynamicWidth={true}>
