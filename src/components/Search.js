@@ -12,20 +12,23 @@ class Search extends Component {
             inputValue: '',
             isUserSearch: true,
             users: [],
-            displayData: []
+            displayData: [],
+            countries: []
         };
 
         this.onChange = this.onChange.bind(this);
     }
 
     async getAllUsers() {
-        const endpoint = 'http://localhost:8080/users/allUsers'
+        const endpoint = 'http://localhost:8080/users/allUsers';
         const response = await Axios.get(endpoint).then(async response => this.setState({ users: await response.data }));
-
-        console.log(this.state.users[0]);
     }
 
 
+    async getAllCountries(){
+        const endpoint = 'http://localhost:8080/country/getAllCountries';
+        const response = await Axios.get(endpoint).then(async response => this.setState({countries: await response.data}));
+    }
 
     addUserToDisplay(userData) {
         return <a href={"http://localhost:8080/users/" + userData.login} style={{ display: '' }}>{userData.login}</a>
@@ -34,8 +37,8 @@ class Search extends Component {
 
     displayAllUsers() {
         const users = this.state.users;
-
         const displayData = [];
+
         for (let i = 0; i < users.length; i++) {
             displayData.push(this.addUserToDisplay(users[i]));
 
@@ -43,7 +46,17 @@ class Search extends Component {
         this.setState({ displayData });
     }
 
-    filterFunction() {
+    displayAllCountries(){
+        const countries = this.state.countries;
+        const displayData = [];
+
+        for(let i = 0; i < countries.length; i++){
+            displayData.push(<a href={"http://localhost:8080/country/" + countries[i].name} style={{ display: '' }}>{countries[i].name}</a>)
+        }
+        this.setState({displayData});
+    }
+
+    filterUsers() {
         const users = this.state.users;
         const filtered = users.filter((user) => {
             if (user.login.toLowerCase().startsWith(this.state.inputValue)) {
@@ -53,6 +66,17 @@ class Search extends Component {
 
         this.setState({ users: filtered });
 
+    }
+
+    filterCountries(){
+        const countries = this.state.countries;
+        const filtered = countries.filter((country) =>{
+            if(country.name.toLowerCase().startsWith(this.state.inputValue.toLowerCase())){
+                return country;
+            }
+        });
+
+        this.setState({countries:filtered});
     }
 
     onClick = () => {
@@ -73,10 +97,13 @@ class Search extends Component {
         
         if (this.state.isUserSearch) {
             const allUsers = await this.getAllUsers();
-            this.filterFunction();
+            this.filterUsers();
             this.displayAllUsers();
         }else{
-
+            const AllCountries = await this.getAllCountries();
+            this.filterCountries();
+            this.displayAllCountries();
+            console.log(this.state.countries);
         }
         
         if (this.state.inputValue.length > 0) {
