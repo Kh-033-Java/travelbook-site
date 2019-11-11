@@ -128,10 +128,6 @@ class Main extends Component {
                     <EditNote countryName={this.state.nameCountry} id={this.state.idCountry}
                               worldSeries={this.state.map} noteId={this.state.idNote}/>
                 </Route>
-                <Route path="/main">
-                    <Icons></Icons>
-                    <UserGeneralInformation/>
-                </Route>
                 <Route path="/userPage/:login">
                     <Icons></Icons>
                     <UserGeneralInformation login={localStorage.getItem("login")}/>
