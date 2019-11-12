@@ -9,13 +9,12 @@ import {deleteNoteById} from "../../../actions/notesActions";
 import {Redirect} from 'react-router-dom';
 import NoteListElement from "../allNotes/NoteListElement";
 
-class NewNoteMain extends Component {
+class DeleteNoteMain extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            note: [{}]
         };
-        this.deleteNote = this.deleteNote.bind(this);
         this.deleteNote = this.deleteNote.bind(this);
     }
 
@@ -33,8 +32,18 @@ class NewNoteMain extends Component {
             })
     }
 
-    componentDidMount() {
+    getNoteEntityById(noteId) {
+        const endpoint = `http://localhost:8080/country/notes/${noteId}`;
+        axios.get(endpoint)
+            .then(response => {
+                const note = response.data;
+                this.setState({note})
+            });
+    }
 
+    componentDidMount() {
+        this.getNoteEntityById(this.props.noteId);
+        console.log(this.state.note);
     }
 
     render() {
@@ -43,8 +52,8 @@ class NewNoteMain extends Component {
             <form name="deleteNote" id="deleteNote" className="main-sidebar  main-comp-newnote"
                   onSubmit={this.deleteNote}>
                 <div className="name-field">
-                    Are you sure you want to delete this note {this.props.noteId}?
-                    {/*<NoteListElement note = {this.props.note}/>*/}
+                    Are you sure you want to delete this note?
+                    <NoteListElement note={this.state.note} isReadOnly={true}/>
                 </div>
             </form>
         );
@@ -52,5 +61,5 @@ class NewNoteMain extends Component {
 
 }
 
-export default NewNoteMain;
+export default DeleteNoteMain;
 

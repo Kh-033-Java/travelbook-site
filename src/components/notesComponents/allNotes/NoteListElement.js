@@ -36,13 +36,16 @@ setID(e){
       return res;
     }
     render()
-{if(this.state.clicked)
- return <Redirect to="/note"/>
-  
+{if(this.state.clicked) {
+    const { note } = this.props.note;
+    localStorage.setItem("note", note);
+    console.log(note);
+    return <Redirect to="/note"/>
+}
   return(
 
     
-    <div  className="list-el-container list-note-el" onClick={e=>this.setID(e)}>
+    <div  className="list-el-container list-note-el" onClick={this.props.isReadOnly ? console.log("read only") : e=>this.setID(e)}>
         
       <NoteOwner account={this.props.note.login} logo={this.props.note.linkToUserAvatar} style_="owner-list-notes note-owner-gen" onClick={this.setID}/>
       <Estimation grade={this.avEstimate.bind(this)}/>
