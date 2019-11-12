@@ -47,6 +47,9 @@ class App extends Component {
                     <Route path="/editPlan/">
                         <Main gridClass="grid-cont"/>
                     </Route>
+                    <Route path="/plan/">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
                     <Route path="/travelbook/">
                         <Main gridClass="grid-cont-initially"/>
                     </Route>

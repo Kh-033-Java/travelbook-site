@@ -14,6 +14,7 @@ import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 import EditNote from './notesComponents/editNoteComponents/EditNote';
 import NewPlan from './planComponents/NewPlan.js';
 import EditPlan from './planComponents/EditPlan'
+import ViewSinglePlan from "./planComponents/ViewSinglePlan";
 import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
@@ -26,6 +27,7 @@ class Main extends Component{
             nameCountry : '',
             idCountry: '',
             map:"",
+            idPlan: '',
         }
         this.setNoteID=this.setNoteID.bind(this);
         this.setPlanID = this.setPlanID.bind(this);
@@ -119,6 +121,10 @@ class Main extends Component{
                 <Route path = "/editPlan">
                     <Icons></Icons>
                     <EditPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
+                </Route>
+                <Route path = "/plan">
+                    <Icons></Icons>
+                    <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
                 </Route>
                 <Route path="/main">
                     <Icons></Icons>
