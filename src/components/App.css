@@ -28,7 +28,7 @@
 }
 
 .container {
-    border: 2px solid black;
+    border: 2px solid white;
 }
 
 header {
@@ -172,7 +172,7 @@ main {
     grid-column: 6;
 }
 
-.icon-comp5{
+.icon-comp5 {
     grid-column: 2;
 }
 
@@ -239,11 +239,21 @@ aside {
 }
 
 .photoGallery {
+    border: 4px solid white;
     grid-column: 3;
-    width: 30%;
-    height: 30%;
+    width: 33%;
+    height: 200px;
 }
-
+.photos-gallery {
+    width: 100%;
+    height: 400px;
+    overflow: scroll;
+}
 .search-plan {
     display: grid;
+}
+
+.plan-scroll {
+    height: 400px;
+    overflow: scroll;
 }
