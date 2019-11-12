@@ -14,15 +14,14 @@ class NewNoteMain extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            city: '',
-            country: this.props.countryName,
-            photos: {},
-            login: localStorage.getItem('login'),
-            dateOfVisiting: '',
-            description: '',
+            title: '',
             isPublic: false,
-            
+            description: '',
+            dateOfVisiting: '',
+            login: localStorage.getItem('login'),
+            describedCity: '',
+            country: this.props.countryName,
+            photos: {}
         }
         this.sendNewNote = this.sendNewNote.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
@@ -38,13 +37,13 @@ class NewNoteMain extends Component {
 
     onChangeName(e) {
         this.setState({
-            name: e.target.value
+            title: e.target.value
         });
     }
 
     onChangeDate(e) {
         this.setState({
-            date: e.target.value
+            dateOfVisiting: e.target.value
         });
 
     }
@@ -57,9 +56,10 @@ class NewNoteMain extends Component {
 
     sendNewNote(e) {
         e.preventDefault();
-        axios.post(`http://localhost:8080/country/${this.props.countryName}/notes`, this.state);
+        axios.post(`http://localhost:8080/notes`, this.state);
+        axios.put(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`);
         this.props.worldSeries.getPolygonById(this.props.idCountry).fill = am4core.color("#67f58d");
-        console.log("sthg");
+        console.log("new note created");
         console.log(this.state);
         this.setState({onSubmit:true})
         
@@ -95,7 +95,7 @@ class NewNoteMain extends Component {
             this.setState({isPublic:false})
         }
     }
-    
+
 
     render() {
         if(this.state.onSubmit){        return <Redirect to="travelbook"/>}

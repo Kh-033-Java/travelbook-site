@@ -13,15 +13,22 @@ class DeleteNoteMain extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            note: [{}]
+            note: [{}],
+            country: this.props.countryName,
+            login: localStorage.getItem('login')
         };
         this.deleteNote = this.deleteNote.bind(this);
     }
 
     deleteNote(e) {
         e.preventDefault();
-        const endpoint = `http://localhost:8080/notes/${this.props.noteId}`;
-        axios.delete(endpoint)
+        axios.put(`http://localhost:8080/country/${this.state.country}/notvisit?user=${this.state.login}`)
+            .catch(error => {
+                window.location.href = '/errorPage';
+                console.log(error);
+            });
+        const deleteNoteEndpoint = `http://localhost:8080/notes/${this.props.noteId}`;
+        axios.delete(deleteNoteEndpoint)
             .then(response => {
                 window.location.href = '/notes';
                 console.log("deleted");
