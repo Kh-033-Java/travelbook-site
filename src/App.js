@@ -5,6 +5,7 @@ import Login from './components/login-package/login';
 import UserSettings from './components/user-page/UserSettings';
 import Registration from "./components/Registration";
 import UserGeneralInformation from './components/user-page/UserGeneralInformation'
+import SearchMain from "./components/search/SearchMain";
 
 
 class App extends Component {
@@ -15,9 +16,13 @@ class App extends Component {
             <Router baseName="/travelbook/">
                 <Switch>
                     <Route path="/settings/" component={UserSettings} exact/>
+                    <Route path="/search-plans" component={SearchMain} exact/>
                     <Route path="/login/" component={Login} exact/>
                     <Route path="/registration" component={Registration} exact/>
-                    <Route path="/main" component={UserGeneralInformation} exact>
+                    <Route path="/userPage/:login" component={UserGeneralInformation} exact>
+                        <Main gridClass="grid-cont"/>
+                    </Route>
+                    <Route path="/toGeneralInfo">
                         <Main gridClass="grid-cont"/>
                     </Route>
                     <Route path="/generalInfo/">
@@ -71,7 +76,6 @@ class App extends Component {
         );
     }
 }
-
 
 
 export default App;

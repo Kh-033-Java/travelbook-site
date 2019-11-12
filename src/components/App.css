@@ -86,10 +86,10 @@ header {
 }
 
 
-.header-text{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 27px;
-  text-align: center;
+.header-text {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 27px;
+    text-align: center;
 }
 
 
@@ -103,6 +103,7 @@ main {
     margin-top: 10px;
     margin-left: -65%;
 }
+
 .icons {
     grid-area: icons;
     display: grid;
@@ -171,6 +172,10 @@ main {
     grid-column: 6;
 }
 
+.icon-comp5{
+    grid-column: 2;
+}
+
 .icons-button {
     padding: 0;
     border: none;
@@ -216,7 +221,6 @@ aside {
 }
 
 
-
 .header-text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 27px;
@@ -228,4 +232,18 @@ aside {
     grid-column: 5;
     width: 50%;
     height: 50%;
+}
+
+.weather {
+    color: purple;
+}
+
+.photoGallery {
+    grid-column: 3;
+    width: 30%;
+    height: 30%;
+}
+
+.search-plan {
+    display: grid;
 }

@@ -1,5 +1,5 @@
 import {Route} from 'react-router-dom';
-import React, {Component} from 'react';
+import React, {useState, Component} from 'react';
 import './App.css';
 import SideBar from "./sidebar.js";
 import Head from "./header.js";
@@ -18,82 +18,95 @@ import ViewSinglePlan from "./planComponents/ViewSinglePlan";
 import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
+import GeneralInfo from "./GeneralInfo.js";
+import ToGeneralInfo from "./ToGeneralInfo.js";
+import SearchPlans from "./search/SearchPlans";
+import SearchMain from "./search/SearchMain";
 
-
-class Main extends Component{
-    constructor(props){
+class Main extends Component {
+    constructor(props) {
         super(props);
-        this.state={
-            nameCountry : '',
+        this.state = {
+            nameCountry: '',
             idCountry: '',
             map:"",
             idPlan: '',
         }
-        this.setNoteID=this.setNoteID.bind(this);
-        this.setPlanID = this.setPlanID.bind(this);
+        this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
+        this.setPlanID = this.setPlanID.bind(this)
     }
-    regionClicker(ev,worldSeries) {
+
+    regionClicker(ev, worldSeries) {
         console.log(ev.target.dataItem.dataContext);
         this.setState({
-            nameCountry : ev.target.dataItem.dataContext.name,
+            nameCountry: ev.target.dataItem.dataContext.name,
             idCountry: ev.target.dataItem.dataContext.id,
-            map:worldSeries,
+            map: worldSeries,
         })
-        localStorage.setItem('country',ev.target.dataItem.dataContext.name);
-        localStorage.setItem('id',ev.target.dataItem.dataContext.id)
-        localStorage.setItem('world',worldSeries)
+        localStorage.setItem('country', ev.target.dataItem.dataContext.name);
+        localStorage.setItem('id', ev.target.dataItem.dataContext.id)
+        localStorage.setItem('world', worldSeries)
 
     }
-    setNoteID(id){
-        console.log("got"+id);
+
+    setNoteID(id) {
+        console.log("got" + id);
         this.setState({
-            idNote:id
+            idNote: id
         })
     }
 
-    setPlanID(id){
+    setPlanID(id) {
         this.setState({
-            idPlan:id
+            idPlan: id
         })
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log(localStorage.getItem('world'))
-        if(this.state.nameCountry===''){
+        if (this.state.nameCountry === '') {
 
-            this.setState({nameCountry:localStorage.getItem('country'),
+            this.setState({
+                nameCountry: localStorage.getItem('country'),
                 idCountry: localStorage.getItem('id'),
-                map:localStorage.getItem('world')})
+                map: localStorage.getItem('world')
+            })
         }
 
     }
 
-    render(){
+    render() {
         return (
-            <div className = {this.props.gridClass}>
+            <div className={this.props.gridClass}>
                 <Head/>
                 <Map clicker={this.regionClicker}/>
-                <Route path = "/travelbook">
+                <Route path="/travelbook">
                 </Route>
-                <Route path = "/generalInfo">
-                    <VisitedCountryCheckBox countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
-                    <Icons/>
-                    <SideBar id={this.state.nameCountry}/>
+                <Route path="/toGeneralInfo">
+                    <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
+                    <ToGeneralInfo name={this.state.nameCountry} worldSeries={this.state.map}/>
                 </Route>
-                <Route path = "/notes">
+                <Route path="/generalInfo">
+                    <VisitedCountryCheckBox countryName={this.state.nameCountry} id={this.state.idCountry}
+                                            worldSeries={this.state.map}/>
+                    <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
+                    <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map}/>
+                </Route>
+                <Route path="/notes">
                     <Icons></Icons>
-                    <Notes name={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} setId={this.setNoteID} />
+                    <Notes name={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                           setId={this.setNoteID}/>
                 </Route>
                 <Route path="/gallery">
                     <Icons></Icons>
                     <Gallery name={this.state.nameCountry}/>
                 </Route>
-                <Route path = "/plans">
+                <Route path="/plans">
                     <Icons></Icons>
-                    <Plans countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} setId={this.setPlanID}/>
+                    <Plans countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                           setId={this.setPlanID}/>
                 </Route>
-
                 <Route
                     path="/my-photos"
                     render={props => <MyPhotos {...props}/>}
@@ -102,41 +115,41 @@ class Main extends Component{
                     path="/general-photos"
                     render={props => <GeneralPhotos {...props}/>}
                 />
-                <Route path = "/note">
+                <Route path="/note">
                     <Icons></Icons>
-                    <Note countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
+                    <Note countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                          noteId={this.state.idNote}/>
                 </Route>
-                <Route path = "/newnote">
+                <Route path="/newnote">
                     <Icons></Icons>
-                    <NewNote countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
+                    <NewNote countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                             noteId={this.state.idNote}/>
                 </Route>
-                <Route path = "/editNote">
+                <Route path="/editNote">
                     <Icons></Icons>
-                    <EditNote countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} noteId ={this.state.idNote} />
-                </Route>
-                <Route path = "/newPlan">
-                    <Icons></Icons>
-                    <NewPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
-                </Route>
-                <Route path = "/editPlan">
-                    <Icons></Icons>
-                    <EditPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
+                    <EditNote countryName={this.state.nameCountry} id={this.state.idCountry}
+                              worldSeries={this.state.map} noteId={this.state.idNote}/>
                 </Route>
                 <Route path = "/plan">
                     <Icons></Icons>
                     <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
                 </Route>
-                <Route path="/main">
+                <Route path="/userPage/:login">
                     <Icons></Icons>
-                    <UserGeneralInformation/>
+                    <UserGeneralInformation login={localStorage.getItem("login")}/>
+                    </Route>
+                <Route
+                    path="/search-plans">
+                    <Icons></Icons>
+                    <SearchMain countryName={this.state.nameCountry}
+                                 id={this.state.idCountry}
+                                 worldSeries={this.state.map}
+                                 setId={this.setPlanID}/>
                 </Route>
-
             </div>
         );
     }
 }
-
-
 
 
 export default Main;
