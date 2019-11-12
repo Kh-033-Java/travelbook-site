@@ -32,11 +32,8 @@ class GeneralInfo extends Component {
     }
 
     componentDidMount() {
-
-        const endpoint = `http://localhost:8080/country/` + this.props.name + `/description`;
-        console.log(endpoint);
         const isLoading =false;
-        axios.get(endpoint)
+        axios.get(`http://localhost:8080/country/${this.props.name}/description`)
             .then(response => {
                 const generalInfo = response.data;
                 if(this.checkInfoValid(generalInfo)){

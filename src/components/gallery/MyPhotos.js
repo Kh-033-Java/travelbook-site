@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import GetPhotos from "./GetPhotos";
+import {getJwt} from "../../helpers/jwt";
 
 
 class MyPhotos extends Component {
@@ -13,9 +15,13 @@ class MyPhotos extends Component {
 
 
     componentDidMount() {
-        const login = localStorage.getItem("login");
-        const endpoint = `http://localhost:8080/country/${this.props.name}/photos/${login}`;
-        axios.get(endpoint)
+        const token = getJwt();
+        const endpoint = `http://localhost:8080/country/${this.props.name}/photos/${localStorage.getItem("login")}`;
+        axios.get(endpoint, {
+            headers: {
+                Authorization: token
+            }
+        })
             .then(res => {
                 this.setState({photos: res.data, validCountry: true});
                 console.log(res.data);
@@ -30,20 +36,10 @@ class MyPhotos extends Component {
     }
 
     render() {
-        const photos = this.state.photos;
-        console.log();
         return (
-            <aside className="rightbar container">
-                <div>
-                    <h1>My Photo</h1>
-                    <p>{this.props.name}</p>
-                    <h1>photos</h1>
-                    {photos ? <p>{photos.map((value, index) =>
-                        <img src={value.link} alt={"No image"} className="photoGallery" key={index}/>
-                    )}</p> : <p>No such country</p>}
-                </div>
-            </aside>
-        )
+            <div className="photoGallery">
+                <GetPhotos photos={this.state.photos}/>
+            </div>)
     }
 }
 

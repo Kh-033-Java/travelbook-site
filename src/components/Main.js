@@ -21,6 +21,7 @@ import GeneralInfo from "./GeneralInfo.js";
 import ToGeneralInfo from "./ToGeneralInfo.js";
 import SearchPlans from "./search/SearchPlans";
 import SearchMain from "./search/SearchMain";
+import Rating from './rating/Rating'
 
 class Main extends Component {
     constructor(props) {
@@ -102,7 +103,7 @@ class Main extends Component {
                 </Route>
                 <Route path="/plans">
                     <Icons></Icons>
-                    <Plans countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                    <Plans name={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
                            setId={this.setPlanID}/>
                 </Route>
                 <Route
@@ -140,6 +141,10 @@ class Main extends Component {
                                  id={this.state.idCountry}
                                  worldSeries={this.state.map}
                                  setId={this.setPlanID}/>
+                </Route>
+                <Route path="/rating">
+                    <Icons/>
+                    <Rating/>
                 </Route>
             </div>
         );

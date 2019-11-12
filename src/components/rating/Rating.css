@@ -1,0 +1,57 @@
+.user-container {
+    border: 2px solid grey;
+    border-radius: 10px;
+}
+
+.rating-header{
+    padding-left: 60px;
+    padding-bottom: 5px;
+    font-size: 200%;
+}
+
+.main-container{
+    border-right: grey;
+    border-left: 2px solid silver;
+    border-top: grey;
+    border-bottom: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.91fr 9fr;
+    overflow: auto;
+
+    text-align: center;
+
+}
+
+.inner-user{
+    font-size: 125%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 5fr 9fr;
+    grid-template-rows: 1fr;
+    grid-gap: 10px;
+    grid-auto-flow: column;
+    max-height: 6%;
+    margin-top: 1px;
+}
+
+.inner-user > div{
+    padding: .2em;
+    text-align: center;
+}
+.user-place{
+    justify-items: start;
+    grid-column: 1;
+}
+
+.user-avatar{
+    grid-column: 2;
+}
+
+.user-login{
+    grid-column: 3/7;
+}
+
+.user-score{
+    margin-right: 100%;
+    grid-column: 8/9;
+}

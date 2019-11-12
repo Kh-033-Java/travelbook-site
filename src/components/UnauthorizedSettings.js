@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 function UnSettings(props) {
     return (
         <div className="settings">
-            <div className="authorize1  header-text">
+            <div className="authorize4  header-text">
                 <NavLink to="/login" className="nav-link">Log In</NavLink>
             </div>
             <div className="authorize2  header-text">

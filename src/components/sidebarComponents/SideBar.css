@@ -1,102 +1,112 @@
-.whole-comp{
-    display : grid;
+.whole-comp {
+    display: grid;
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1fr 9fr 1fr;
-    
+
 }
-.whole-comp-no-footer{
-    display : grid;
+
+.whole-comp-no-footer {
+    display: grid;
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 0.91fr 9fr;
-    
 }
-.main-comp{
-    display : grid;
- grid-template-columns: 1fr 1fr;
- grid-template-rows: 1fr 1fr 5fr 2fr 4fr;
- grid-column-gap: 5px;
- grid-row-gap: 5px;
- overflow: auto;
- }
- .main-sidebar{
-     grid-column: 1/3;
-     grid-row: 2; 
-     margin-bottom: 4px;  
-     margin-top:1px;
- }
 
-.sidebar-footer{
-     grid-row: 3;
-     grid-column: 1/3;
- }
+.main-comp {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 5fr 2fr 4fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    overflow: auto;
+}
 
- .create-plan-button{
+.main-sidebar {
+    grid-column: 1/3;
+    grid-row: 2;
+    margin-bottom: 4px;
+    margin-top: 1px;
+}
+
+.sidebar-footer {
+    text-align: center;
     grid-row: 3;
-    grid-column: span 2; 
- }
- .button-plan{
+    grid-column: 1/3;
+}
+
+.create-plan-button {
+    grid-row: 3;
+    grid-column: span 2;
+}
+
+.button-plan {
     grid-row: 3;
     grid-column: span 2;
     height: 100%;
     width: 100%;
- }
-
- .list-main-auth{
-     text-align: center;
-     font-size : 22px;
-     padding: 10px;
-      }
-.nav-link{
-    text-decoration: none;
-    color:black;
-   
 }
-      .list-main-auth{
-    display : grid;
-   grid-template-columns: 1fr;
-   grid-template-rows: 0.7fr 9fr;
-   grid-column-gap: 5px;
-   grid-row-gap: 5px;
-  overflow: auto;
- }
- .list-main-unauth{
-    display : grid;
-   grid-template-columns: 1fr ;
-   grid-template-rows: 1fr;
-   grid-column-gap: 5px;
-   grid-row-gap: 5px;
-   overflow: auto;
-   }
-   
- .only-my-checkbox{
+
+.list-main-auth {
+    text-align: center;
+    font-size: 22px;
+    padding: 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+
+}
+
+.list-main-auth {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 9fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    overflow: auto;
+}
+
+.list-main-unauth {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    overflow: auto;
+}
+
+.only-my-checkbox {
     grid-row: 1;
-   vertical-align: center;
-    padding:2px;
-    }
-.input-field{
+    vertical-align: center;
+    padding: 2px;
+}
+
+.input-field {
     text-align: center;
 }
-.add-note-button{
-padding: 0;
-border: none;
-font: inherit;
-color: inherit;
-width: 100%;
-height: 100%;
-background-color: transparent;
-  background-position: center;
-  min-width: 40px;
-min-height: 40px;
+
+.add-note-button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-position: center;
+    min-width: 40px;
+    min-height: 40px;
     color: black;
-    box-shadow: rgb(255, 255, 255) 1px 1px 1px 1px; 
+    box-shadow: rgb(255, 255, 255) 1px 1px 1px 1px;
 }
+
 textarea {
     outline: none;
     resize: none;
+}
+
+input:focus, textarea:focus {
+    background: rgba(0, 0, 0, .1);
 
 }
-input:focus, textarea:focus {
-    background   : rgba(0,0,0,.1);
-
-  }
 

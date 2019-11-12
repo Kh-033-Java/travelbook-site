@@ -35,7 +35,7 @@ class UserGeneralInformation extends Component {
 
     render() {
         return (
-            <aside className="rightbar container">
+            <aside className="container">
                 <div className="first container">
                     <div className="first-inner">
                     Profile
