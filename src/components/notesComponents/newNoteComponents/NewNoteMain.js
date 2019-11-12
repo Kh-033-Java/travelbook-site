@@ -33,6 +33,8 @@ class NewNoteMain extends Component {
         this.setCuisine = this.setCuisine.bind(this);
         this.setImpression = this.setImpression.bind(this);
         this.onCheck = this.onCheck.bind(this);
+        // this.onChangeCity = this.onChangeCity.bind(this);
+        this.setCity = this.setCity.bind(this);
     }
 
     onChangeName(e) {
@@ -52,6 +54,7 @@ class NewNoteMain extends Component {
         this.setState({
             description: e.target.value
         });
+        console.log("description changed")
     }
 
     sendNewNote(e) {
@@ -86,6 +89,13 @@ class NewNoteMain extends Component {
             peopleEstimate: e
         });
     }
+
+    setCity(value) {
+        this.setState({
+            describedCity: value
+        });
+    }
+
     onCheck(e){
         if(e.target.checked){
             console.log("checked")
@@ -106,7 +116,7 @@ class NewNoteMain extends Component {
                     <label htmlFor="name-note">Name of the note</label><input type="text" onChange={this.onChangeName}
                                                                               name="name-note"/>
                 </div>
-                <City select_class="city-select" style_class="city-field" countryName={this.props.countryName}/>
+                <City select_class="city-select" style_class="city-field" countryName={this.props.countryName} setCity={this.setCity}/>
                 <div className="date-field ">
                     <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate} name="date-note"
                                                               className="date-in" required/>

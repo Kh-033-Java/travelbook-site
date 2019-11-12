@@ -6,6 +6,7 @@ import ToAddFooter from "../sidebarComponents/ToAddFooter.js";
 import './AllNotesPage.css';
 import axios from 'axios';
 import Loading from "../Loading";
+import showUserMap from "../userMap/UserMapShower";
 
 
 class AuthNotes extends Component {
@@ -61,6 +62,7 @@ class AuthNotes extends Component {
 
     componentDidMount() {
         this.loadAll();
+        showUserMap(this.props.worldSeries);
     }
 
     render() {

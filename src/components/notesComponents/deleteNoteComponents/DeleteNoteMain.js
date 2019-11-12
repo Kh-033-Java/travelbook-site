@@ -22,21 +22,23 @@ class DeleteNoteMain extends Component {
 
     deleteNote(e) {
         e.preventDefault();
-        axios.put(`http://localhost:8080/country/${this.state.country}/notvisit?user=${this.state.login}`)
+        const deleteRelationshipEndpoint = `http://localhost:8080/country/${this.state.country}/notvisit?user=${this.state.login}`;
+        console.log(deleteRelationshipEndpoint);
+        axios.put(deleteRelationshipEndpoint)
             .catch(error => {
                 window.location.href = '/errorPage';
                 console.log(error);
             });
-        const deleteNoteEndpoint = `http://localhost:8080/notes/${this.props.noteId}`;
-        axios.delete(deleteNoteEndpoint)
-            .then(response => {
-                window.location.href = '/notes';
-                console.log("deleted");
-            })
-            .catch(error => {
-                window.location.href = '/errorPage';
-                console.log(error);
-            })
+        // const deleteNoteEndpoint = `http://localhost:8080/notes/${this.props.noteId}`;
+        // axios.delete(deleteNoteEndpoint)
+        //     .then(response => {
+        //         window.location.href = '/notes';
+        //         console.log("deleted");
+        //     })
+        //     .catch(error => {
+        //         window.location.href = '/errorPage';
+        //         console.log(error);
+        //     })
     }
 
     getNoteEntityById(noteId) {
