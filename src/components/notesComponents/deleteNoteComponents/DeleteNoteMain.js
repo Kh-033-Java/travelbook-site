@@ -8,6 +8,7 @@ import * as actions from '../../../actions/notesActions'
 import {deleteNoteById} from "../../../actions/notesActions";
 import {Redirect} from 'react-router-dom';
 import NoteListElement from "../allNotes/NoteListElement";
+import {getJwt} from "../../../helpers/jwt";
 
 class DeleteNoteMain extends Component {
     constructor(props) {
@@ -22,15 +23,24 @@ class DeleteNoteMain extends Component {
 
     deleteNote(e) {
         e.preventDefault();
+        const token = getJwt();
         const deleteRelationshipEndpoint = `http://localhost:8080/country/${this.state.country}/notvisit?user=${this.state.login}`;
         console.log(deleteRelationshipEndpoint);
-        axios.put(deleteRelationshipEndpoint)
+        axios.put(deleteRelationshipEndpoint, {
+            headers: {
+                Authorization: token
+            }
+        }
             .catch(error => {
                 window.location.href = '/errorPage';
                 console.log(error);
             });
         const deleteNoteEndpoint = `http://localhost:8080/notes/${this.props.noteId}`;
-        axios.delete(deleteNoteEndpoint)
+        axios.delete(deleteNoteEndpoint, {
+            headers: {
+                Authorization: token
+            }
+        })
             .then(response => {
                 window.location.href = '/notes';
                 console.log("deleted");

@@ -8,24 +8,28 @@ import PhotoUploader from '../newNoteComponents/PhotoUploading.js';
 import EditEstimations from './EditEstimations.js';
 import axios from 'axios';
 import * as actions from '../../../actions/notesActions'
+import CityForNote from "../../sidebarComponents/CityForNote";
+import {getJwt} from "../../../helpers/jwt";
 
-class NewNoteMain extends Component{
-    constructor(props){
+class EditNoteMain extends Component{
+    constructor(props) {
         super(props)
         this.state = {
-             note:{} 
-        }
+            note: {}
+        };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.setPhotos = this.setPhotos.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.setPrices= this.setPrices.bind(this);
+        this.setPrices = this.setPrices.bind(this);
         this.setPeople = this.setPeople.bind(this);
         this.setCuisine = this.setCuisine.bind(this);
         this.setImpression = this.setImpression.bind(this);
-        }
+        this.setCity = this.setCity.bind(this);
+    }
+
     onChangeName(e) {
         this.setState({
          title : e.target.value
@@ -44,12 +48,22 @@ class NewNoteMain extends Component{
         );
     }
     sendEditedNote(e){
+        const token = getJwt();
         e.preventDefault();
-        axios.post(`http://localhost:8080/country/${this.props.countryName}/notes`,this.state);
+        const endpoint = `http://localhost:8080/notes/${this.props.noteId}`;
+        console.log(endpoint);
+            axios.put(endpoint, this.state, {
+            headers: {
+                Authorization: token
+            }
+        }).then(response => {
+                window.location.href = '/notes';
+                console.log("deleted");
+            });
         console.log("sthg");
         console.log(this.state);
-           
     }
+
     setPhotos(e){
            this.setState({photosEstimate :e});
     }
@@ -66,14 +80,28 @@ class NewNoteMain extends Component{
         this.setState({peopleEstimate
              :e});
     }
+    setCity(value) {
+        this.setState({
+            describedCity: value
+        });
+    }
     componentDidMount(){
-        actions.getNoteById(this.props.countryName,this.props.noteId).then(res=>{
-            console.log(res[0]);
-            this.setState(
-                 res[0]     
-            )
-        })
-        console.log(this.state);
+
+        const endpoint = `http://localhost:8080/country/notes/${this.props.noteId}`;
+        console.log(endpoint);
+        axios.get(endpoint)
+            .then(response => {
+                const note = response.data;
+                this.setState({note})
+            });
+
+        // actions.getNoteById(this.props.countryName,this.props.noteId).then(res=>{
+        //     console.log(res[0]);
+        //     this.setState(
+        //          res[0]
+        //     )
+        // })
+        // console.log(this.state);
         
     }
      getDate(){
@@ -90,7 +118,7 @@ class NewNoteMain extends Component{
                  <div className="name-field ">
                  <label htmlFor="name-note">Name of the note</label><input  name ="name-note" value={this.state.title} type="text" onInput={()=>{}} onChange={this.onChangeName}/>
                     </div>
-                    <City select_class="city-select" style_class = "city-field" countryName={this.props.countryName}/>
+                    <CityForNote select_class="city-select" style_class = "city-field" countryName={this.props.countryName} setCity={this.setCity}/>
                     <div className="date-field ">
                  <label htmlFor="date-note">Date</label><input name ="date-note" value={this.getDate}  type="date" onChange={this.onChangeDate}  className="date-in"/>
                     </div>
@@ -111,5 +139,5 @@ class NewNoteMain extends Component{
     }
 }
 
-export default NewNoteMain;
+export default EditNoteMain;
 

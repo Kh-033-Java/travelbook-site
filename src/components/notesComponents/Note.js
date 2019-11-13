@@ -41,7 +41,7 @@ return(
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
 <FooterWithEdit text ="edit note" path="/editNote"/>
-<FooterWithDelete text ="delete note" path="/deleteNote" noteId={this.state.note}/>
+<FooterWithDelete text ="delete note" path="/deleteNote" noteId={this.state.note.id}/>
 </aside>:<aside className="rightbar whole-comp-no-footer ">
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>

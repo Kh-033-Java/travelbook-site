@@ -10,37 +10,28 @@ class City extends Component {
         this.state = {
             cities: []
         }
-        this.onSelect = this.onSelect.bind(this);
     }
 
     componentDidMount() {
-        actions.getCityPropertyForNotesByCountry(this.props.countryName).then(res => {
+        actions.getCityPropertyForNotesByCountry(localStorage.getItem('country')).then(res => {
             console.log(res);
-            this.setState({
-                cities: res
-            })
-            this.props.setCity(res[0].name); // first city will be default value
+            this.setState({cities: res})
         })
     }
 
     createOptionsForSelect = () => {
         let options = [];
         for (let i = 0; i < this.state.cities.length; i++) {
-            options.push(<option value={`${this.state.cities[i].name}`}> {`${this.state.cities[i].name}`} </option>)
+            options.push(<option value={`${this.state.cities[i].id}`}> {`${this.state.cities[i].name}`}</option>)
         }
         return options;
     };
 
-    onSelect(e) {
-        this.props.setCity(e.target.value);
-        console.log("selected " + e.target.value);
-    }
-
     render() {
         return (
             <div className={this.props.style_class}>
-                <label for="from-city">City</label>
-                <select className={this.props.select_class} name="from-city" onChange={this.onSelect}>
+                <label for="from-city">City {this.props.direct}</label>
+                <select className={this.props.select_class} name="from-city">
                     {this.createOptionsForSelect()}
                 </select>
             </div>

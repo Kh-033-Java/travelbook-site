@@ -9,6 +9,8 @@ import PhotoUploader from './PhotoUploading';
 import Estimations from './Estimations';
 import * as am4core from "@amcharts/amcharts4/core";
 import axios from 'axios';
+import CityForNote from "../../sidebarComponents/CityForNote";
+import {getJwt} from "../../../helpers/jwt";
 
 class NewNoteMain extends Component {
     constructor(props) {
@@ -59,8 +61,17 @@ class NewNoteMain extends Component {
 
     sendNewNote(e) {
         e.preventDefault();
-        axios.post(`http://localhost:8080/notes`, this.state);
-        axios.put(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`);
+        const token = getJwt();
+        axios.post(`http://localhost:8080/notes`, this.state, {
+            headers: {
+                Authorization: token
+            }
+        });
+        axios.put(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`, {
+            headers: {
+                Authorization: token
+            }
+        });
         this.props.worldSeries.getPolygonById(this.props.idCountry).fill = am4core.color("#67f58d");
         console.log("new note created");
         console.log(this.state);
@@ -116,7 +127,7 @@ class NewNoteMain extends Component {
                     <label htmlFor="name-note">Name of the note</label><input type="text" onChange={this.onChangeName}
                                                                               name="name-note"/>
                 </div>
-                <City select_class="city-select" style_class="city-field" countryName={this.props.countryName} setCity={this.setCity}/>
+                <CityForNote select_class="city-select" style_class="city-field" countryName={this.props.countryName} setCity={this.setCity}/>
                 <div className="date-field ">
                     <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate} name="date-note"
                                                               className="date-in" required/>

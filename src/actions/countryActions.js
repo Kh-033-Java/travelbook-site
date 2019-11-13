@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 
 export const getCityPropertyForNotesByCountry = (countryName) => {
     let endpoint= `http://localhost:8080/country/${countryName}/cities`;
+    console.log(endpoint);
     return axios.get(endpoint)
         .then(res =>
             res.data
