@@ -30,7 +30,7 @@ class DeleteNoteMain extends Component {
             headers: {
                 Authorization: token
             }
-        }
+        })
             .catch(error => {
                 window.location.href = '/errorPage';
                 console.log(error);
