@@ -31,14 +31,7 @@
  }
 
  .create-plan-button{
-    grid-row: 3;
-    grid-column: span 2; 
- }
- .button-plan{
-    grid-row: 3;
-    grid-column: span 2;
-    height: 100%;
-    width: 100%;
+    grid-column: 2;
  }
 
  .list-main-auth{
