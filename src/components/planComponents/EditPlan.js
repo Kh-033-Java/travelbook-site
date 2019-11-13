@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import '../App.css';
-import './PlansStyling.css';
+import './SinglePlan.css';
 import './NewPlan.css';
 import"../sidebarComponents/SideBar.css";
 import Header from "../sidebarComponents/SidebarHeader"
@@ -19,7 +19,7 @@ class EditPlan extends Component {
             transports: [],
             userLoginCreator: localStorage.getItem('login'),
             linkToUserAvatar: localStorage.getItem('avatar'),
-            isPublic: false,
+            isPublic: '',
             title: '',
             date: '',
             nameCityToGo: '',
@@ -41,13 +41,13 @@ class EditPlan extends Component {
     sendEditedPlan(e){
         e.preventDefault();
         let token = getJwt();
-        axios.post(`http://localhost:8080/plans/${this.props.planId}`,this.state, {
+        console.log(this.state);
+        axios.put(`http://localhost:8080/plans/${this.props.planId}`,this.state, {
             headers: {
                 Authorization: token
             }
         });
-        console.log(this.state);
-
+        this.setState({onSubmit: true})
     }
 
 
@@ -123,16 +123,19 @@ class EditPlan extends Component {
     }
 
     render(){
+        if(this.state.onSubmit){
+            return <Redirect to="travelbook"/>
+        }
         return (
             <aside className="rightbar whole-comp ">
                 <Header title="Edit Plan" countryName={this.props.countryName}/>
-                <form name="addPlan" id="addPlan" className="main-sidebar  main-comp-newplan"
+                <form name="editPlan" id="editPlan" className="main-sidebar  main-comp-newplan"
                       onSubmit={this.sendEditedPlan}>
                     <div className="title-field prop">
                         <div>Title of the plan</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name = "title" value={this.state.title}/>
                     </div>
-                    <div className="date-field prop">
+                    <div className="date-field-plan prop">
                         <div>Date</div>
                         <input type="date" onChange={this.handleChange} name="date" className="date-in" value={this.state.date} required/>
                     </div>
@@ -166,7 +169,7 @@ class EditPlan extends Component {
                         <div>Amount of people</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name="amountOfPeople" value={this.state.amountOfPeople}/>
                     </div>
-                    <div className="description ">
+                    <div className="description-newplan">
                         <p className="header-text">Description</p>
                         <textarea placeholder="what do you want" onChange={this.handleChange} name="description" value={this.state.description}/>
                     </div>
@@ -175,7 +178,7 @@ class EditPlan extends Component {
                         htmlFor="name-plan">public</label>
                     </div>
                 </form>
-                <FooterSubmit text="edit plan" path="plans" for="editPlan"/>
+                <FooterSubmit text="Edit plan" path="plans" for="editPlan"/>
             </aside>
         );
     }

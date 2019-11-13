@@ -3,7 +3,7 @@ import '../App.css';
 import './NewPlan.css';
 import "../sidebarComponents/SideBar.css";
 import Header from "../sidebarComponents/SidebarHeader";
-import FooterSubmit from '../sidebarComponents/FooterSubmit'
+import FooterSubmit from '../sidebarComponents/FooterSubmit';
 import axios from "axios";
 import * as am4core from "@amcharts/amcharts4/core";
 import {Redirect} from "react-router";
@@ -114,7 +114,7 @@ class NewPlan extends Component{
                         <div>Title of the plan</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name = "title" value={this.state.title}/>
                     </div>
-                    <div className="date-field prop">
+                    <div className="date-field-plan prop">
                         <div>Date</div>
                         <input type="date" onChange={this.handleChange} name="date" className="date-in" value={this.state.date} required/>
                     </div>
@@ -148,7 +148,7 @@ class NewPlan extends Component{
                         <div>Amount of people</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name="amountOfPeople" value={this.state.amountOfPeople}/>
                     </div>
-                    <div className="description">
+                    <div className="description-newplan">
                         <p className="header-text">Description</p>
                         <textarea placeholder="what do you want" onChange={this.handleChange} name="description" value={this.state.description}/>
                     </div>

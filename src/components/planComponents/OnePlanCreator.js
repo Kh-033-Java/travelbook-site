@@ -54,25 +54,6 @@ class OnePlanCreator extends Component {
                     <div>City To </div>
                     <textarea value={this.props.plan.nameCityToGo} className="" readOnly/>
                 </div>
-                {/*<div className={"propertyBudgetMin  prop"}>*/}
-                {/*    <div>BudgetMin </div>*/}
-                {/*    <textarea value={this.props.plan.budgetMin} className="" readOnly/>*/}
-                {/*</div>*/}
-                {/*<div className={"propertyBudgetMax  prop"}>*/}
-                {/*    <div>BudgetMax </div>*/}
-                {/*    <textarea value={this.props.plan.budgetMax} className="" readOnly/>*/}
-                {/*</div>*/}
-                {/*<div className={"propertyTransport  prop"}>*/}
-                {/*    <div>Transport </div>*/}
-                {/*    <textarea value={this.props.plan.transportType} className="" readOnly/>*/}
-                {/*</div>*/}
-                {/*<div className={"propertyAmount  prop"}>*/}
-                {/*    <div>Amount of people </div>*/}
-                {/*    <textarea value={this.props.plan.amountOfPeople} className="" readOnly/>*/}
-                {/*</div>*/}
-                {/*<div className="description">*/}
-                {/*    <div>{this.props.plan.description}</div>*/}
-                {/*</div>*/}
             </div>
         )
     }
