@@ -14,7 +14,7 @@ class DeleteNoteMain extends Component {
         super(props);
         this.state = {
             note: [{}],
-            country: this.props.countryName,
+            country: localStorage.getItem('country'),
             login: localStorage.getItem('login')
         };
         this.deleteNote = this.deleteNote.bind(this);
@@ -29,16 +29,16 @@ class DeleteNoteMain extends Component {
                 window.location.href = '/errorPage';
                 console.log(error);
             });
-        // const deleteNoteEndpoint = `http://localhost:8080/notes/${this.props.noteId}`;
-        // axios.delete(deleteNoteEndpoint)
-        //     .then(response => {
-        //         window.location.href = '/notes';
-        //         console.log("deleted");
-        //     })
-        //     .catch(error => {
-        //         window.location.href = '/errorPage';
-        //         console.log(error);
-        //     })
+        const deleteNoteEndpoint = `http://localhost:8080/notes/${this.props.noteId}`;
+        axios.delete(deleteNoteEndpoint)
+            .then(response => {
+                window.location.href = '/notes';
+                console.log("deleted");
+            })
+            .catch(error => {
+                window.location.href = '/errorPage';
+                console.log(error);
+            })
     }
 
     getNoteEntityById(noteId) {

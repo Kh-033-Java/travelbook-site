@@ -62,7 +62,6 @@ class AuthNotes extends Component {
 
     componentDidMount() {
         this.loadAll();
-        showUserMap(this.props.worldSeries);
     }
 
     render() {
