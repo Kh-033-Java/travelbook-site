@@ -1,4 +1,4 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import '../App.css';
 import NotesWrapper from "./NotesWrapper.js";
 import OnlyMyNotes from "./OnlyMyNotes";
@@ -6,9 +6,6 @@ import ToAddFooter from "../sidebarComponents/ToAddFooter.js";
 import './AllNotesPage.css';
 import axios from 'axios';
 import Loading from "../Loading";
-import showUserMap from "../userMap/UserMapShower";
-import {getJwt} from "../../helpers/jwt";
-
 
 class AuthNotes extends Component {
     constructor(props) {
@@ -42,13 +39,8 @@ class AuthNotes extends Component {
     }
 
     loadAll() {
-        const token = getJwt();
         axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/${localStorage.getItem("login"
-        )}`, {
-            headers: {
-                Authorization: token
-            }
-        }).then(res => {
+        )}`).then(res => {
             console.log(res.data);
             this.setState({...this.state, notes: res.data})
             const isLoading = false;
@@ -57,13 +49,8 @@ class AuthNotes extends Component {
     }
 
     loadOnlyUsers() {
-        const token = getJwt();
         axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${localStorage.getItem("login"
-        )}`, {
-            headers: {
-                Authorization: token
-            }
-        }).then(res => {
+        )}`).then(res => {
             console.log(res.data);
             this.setState({...this.state, notes: res.data})
             const isLoading = false;

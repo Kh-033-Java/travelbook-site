@@ -60,17 +60,8 @@ class NewNoteMain extends Component {
 
     sendNewNote(e) {
         e.preventDefault();
-        const token = getJwt();
-        axios.post(`http://localhost:8080/notes`, this.state, {
-            headers: {
-                Authorization: token
-            }
-        });
-        axios.put(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`, {
-            headers: {
-                Authorization: token
-            }
-        });
+        axios.post(`http://localhost:8080/notes`, this.state);
+        axios.put(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`);
         this.props.worldSeries.getPolygonById(this.props.idCountry).fill = am4core.color("#67f58d");
         console.log("new note created");
         console.log(this.state);
@@ -99,6 +90,13 @@ class NewNoteMain extends Component {
             peopleEstimate: e
         });
     }
+
+    setCity(value) {
+        this.setState({
+            describedCity: value
+        });
+    }
+
     onCheck(e){
         if(e.target.checked){
             console.log("checked")

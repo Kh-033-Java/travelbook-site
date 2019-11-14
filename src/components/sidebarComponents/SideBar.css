@@ -28,14 +28,12 @@
 .sidebar-footer{
     grid-row: 3;
     grid-column: 1/3;
-    text-align: center;
-    font-size : 22px;
-    padding: 10px;
 }
 
 .sidebar-footer-edit{
      grid-row: 3;
      grid-column: 1/3;
+    height: 60px;
  }
 
  .create-plan-button{
@@ -49,23 +47,9 @@
     width: 100%;
  }
 
- .list-main-auth{
-     text-align: center;
-     font-size : 22px;
-     padding: 10px;
-     margin: 5px;
-     background-color: khaki;
-     height: 60px;
-      }
-
 .sidebar-footer-delete{
     grid-row: 4;
     grid-column: 1/3;
-    text-align: center;
-    font-size : 22px;
-    padding: 10px;
-    margin: 5px;
-    background-color: #c5523f;
     height: 60px;
 }
 

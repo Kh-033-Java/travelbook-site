@@ -131,7 +131,7 @@ class Main extends Component {
                 </Route>
                 <Route path = "/deleteNote">
                     <Icons></Icons>
-                    <DeleteNote countryName={state.nameCountry} noteId ={state.idNote} />
+                    <DeleteNote countryName={this.state.nameCountry} noteId ={this.state.idNote} />
                 </Route>
                 <Route path="/userPage/:login">
                     <Icons></Icons>

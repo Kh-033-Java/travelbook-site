@@ -130,5 +130,5 @@ class EditNoteMain extends Component{
     }
 }
 
-export default NewNoteMain;
+export default EditNoteMain;
 
