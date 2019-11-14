@@ -7,7 +7,6 @@ import {avatar} from './user-page/avatar';
 import UnauthorizedSettings from './UnauthorizedSettings.js'
 import isAuthorized from './checker/authorizationChecker.js'
 import {MAIN_USER_LOGIN_ROUTE} from "../constants/constants";
-import SearchPlansHeader from "./search/SearchPlansHeader";
 
 function Settings(props){
     return(
@@ -18,7 +17,9 @@ function Settings(props){
             :<React.Fragment>
                 <LogOut/>
                 <div>
-                    <SearchPlansHeader/>
+                    <NavLink to="/search-plans">
+                        <div className="button-plan" />
+                    </NavLink>
                     <NavLink to="/settings">
                         <div className="settings-button" />
                     </NavLink>
