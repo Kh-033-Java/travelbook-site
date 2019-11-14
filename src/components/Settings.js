@@ -18,7 +18,7 @@ function Settings(props){
             :<React.Fragment>
                 <LogOut/>
                 <div>
-                    <SearchPlansHeader/>
+                    {/*<SearchPlansHeader/>*/}
                     <NavLink to="/settings">
                         <div className="settings-button" />
                     </NavLink>

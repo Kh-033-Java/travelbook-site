@@ -22,9 +22,6 @@ class App extends Component {
                     <Route path="/userPage/:login" component={UserGeneralInformation} exact>
                         <Main gridClass="grid-cont"/>
                     </Route>
-                    <Route path="/toGeneralInfo">
-                        <Main gridClass="grid-cont"/>
-                    </Route>
                     <Route path="/generalInfo/">
                         <Main gridClass="grid-cont"/>
                     </Route>
@@ -62,6 +59,9 @@ class App extends Component {
                         <Main gridClass="grid-cont"/>
                     </Route>
                     <Route path="/general-photos">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
+                    <Route patrh="/rating">
                         <Main gridClass="grid-cont"/>
                     </Route>
                     <Route path="/errorPage/">

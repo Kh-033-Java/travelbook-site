@@ -1,9 +1,8 @@
-import React,{Component} from "react";
+import React from "react";
 import '../../App.css';
 import Header from "../../sidebarComponents/SidebarHeader";
-import"../../sidebarComponents/SideBar.css";
+import "../../sidebarComponents/SideBar.css";
 import EditNoteMain from "./EditNoteMain.js";
-import * as actions from '../../../actions/notesActions'
 import FooterSubmit from "../../sidebarComponents/FooterSubmit";
 
 function EditNote(props){
