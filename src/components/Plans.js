@@ -27,12 +27,7 @@ function Plans(props) {
                                  setId={props.setId}/>
                 <div className="create-plan-button container ">
                     <NavLink to="/newPlan">
-                        <button type="button" className="button-plan">Create plan</button>
-                    </NavLink>
-                </div>
-                <div className="create-plan-button container ">
-                    <NavLink to="/search-plans">
-                        <button type="button" className="button-plan">Search plans</button>
+                        <button type="button" className="create-plan-button">Create plan</button>
                     </NavLink>
                 </div>
             </aside>
