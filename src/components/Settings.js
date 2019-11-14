@@ -7,6 +7,7 @@ import {avatar} from './user-page/avatar';
 import UnauthorizedSettings from './UnauthorizedSettings.js'
 import isAuthorized from './checker/authorizationChecker.js'
 import {MAIN_USER_LOGIN_ROUTE} from "../constants/constants";
+import SearchPlansHeader from "./search/SearchPlansHeader";
 
 function Settings(props){
     return(

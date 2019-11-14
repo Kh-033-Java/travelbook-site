@@ -111,7 +111,7 @@ class NoteListElement extends Component {
         }
         return (
             <div className="list-el-container">
-                <div className="list-note-el">
+                <div className="list-note-el" onClick={event => this.setID(event)}>
                     <NoteOwner account={this.props.note.login} logo={this.props.note.linkToUserAvatar}
                                style_="owner-list-notes note-owner-gen"/>
                     <Estimation grade={this.avEstimate.bind(this)} onClick={e => this.setID(e)}/>
