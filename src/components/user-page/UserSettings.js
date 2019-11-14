@@ -42,7 +42,8 @@ class UserSettings extends Component {
             this.setState({lastName: res.data.lastName});
             this.setState({description: res.data.description});
             this.setState({avatar: res.data.avatar.link});
-            localStorage.setItem("avatar", res.data.avatar.link)
+            localStorage.setItem("avatar", res.data.avatar.link);
+            localStorage.setItem("login", res.data.login)
         });
     }
 
@@ -62,6 +63,8 @@ class UserSettings extends Component {
         let token = getJwt();
         const url = 'http://localhost:8080/users/' + localStorage.getItem("login");
         var {login, password, lastName, firstName, description, avatar} = this.state;
+
+        localStorage.setItem("login", login);
 
         if (!"avatar" in localStorage) {
             this.setState({[avatar]: null});
@@ -146,93 +149,111 @@ class UserSettings extends Component {
         return (
             <div className="userSettingsGeneral">
                 <Header/>
-                    <div className="titlePageName">Settings</div>
-                    <div className="ROW">
-                        <div className="CONTENT">
-                            <div className="INNER-CONTENT1">
-                                    <label className="my-account">My account</label>
-                                    <div>
-                                        <input className="settings-inputs"
-                                               type="text"
-                                               placeholder="Change First Name"
-                                               name="firstName"
-                                               onChange={e => this.handleChange(e)}
-                                               value={this.state.firstName}/>
-                                        <br/>
-                                        <input className="settings-inputs"
-                                               type="text"
-                                               placeholder="Change Last Name"
-                                               name="lastName"
-                                               onChange={e => this.handleChange(e)}
-                                               value={this.state.lastName}/>
-                                    </div>
+                <div className="user-settings-general">
+                    <div className="titlePageName container">Settings</div>
+
+                    <div className="firstTittle container">
+                        My account
+                    </div>
+                    <div className="secondTittle container">
+                        Description
+                    </div>
+                    <div className="thirdTittle container">
+                        Profile Image
+                    </div>
+                    <div className="CONTENT">
+                        <label className="label">First and Last Name</label>
+                        <div className="INNER-CONTENT1">
+                            <div>
+                                <input className="settings-inputs container-input"
+                                       style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none'}}
+                                       type="text"
+                                       placeholder="Change First Name"
+                                       name="firstName"
+                                       onChange={e => this.handleChange(e)}
+                                       value={this.state.firstName}/>
+                                <span className="bar"></span>
                             </div>
-                            <ValidatorForm ref={node => (this.form = node)}
-                                           onSubmit={this.handleSubmit}
-                                           onError={this.handleError}>
+                            <br/>
+                            <input className="settings-inputs"
+                                   style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none'}}
+                                   type="text"
+                                   placeholder="Change Last Name"
+                                   name="lastName"
+                                   onChange={e => this.handleChange(e)}
+                                   value={this.state.lastName}/>
+                            <span className="bar"></span>
+                        </div>
+                        <ValidatorForm ref={node => (this.form = node)}
+                                       onSubmit={this.handleSubmit}
+                                       onError={this.handleError}>
+                            <br/>
+                            <label className="label">Security</label>
                             <div className="INNER-CONTENT2">
-                                    <label className="security">Security</label>
-                                    <div className="inner-content-and-errors">
-                                        <input className="settings-inputs" type="text" placeholder="Change Login"
-                                               name="login"
-                                               onChange={e => this.handleChange(e)}
-                                               value={this.state.login}/>
-                                        <TextValidator
-                                            validatorListener={this.handleError}
-                                            onChange={this.handleChange}
-                                            name="login"
-                                            value={this.state.login}
-                                            validators={['required', 'minStringLength: 4', 'maxStringLength: 15']}
-                                            errorMessages={['this field is required', 'Login should to be 4 or more chars', 'Login should to be maximum 15 chars']}/>
-                                        <br/>
-                                        <input className="settings-inputs"
-                                               type="password"
-                                               placeholder="Change Password"
-                                               name="password"
-                                               autoComplete="on"
-                                               onChange={e => this.handleChange(e)}
-                                               value={this.state.password}/>
-                                        <TextValidator
-                                            validatorListener={this.handleError}
-                                            onChange={this.handleChange}
-                                            name="password"
-                                            value={this.state.password}
-                                            validators={['required', 'minStringLength: 4']}
-                                            errorMessages={['this field is required', 'Password should to be 4 or more chars']}/>
+                                <div className="inner-content-and-errors">
+                                    <br/>
+                                    <div>
+                                    <input className="settings-inputs" type="text" placeholder="Change Login"
+                                           style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none'}}
+                                           name="login"
+                                           onChange={e => this.handleChange(e)}
+                                           value={this.state.login}/>
+                                    <span className="bar"></span>
+                                    <TextValidator
+                                        validatorListener={this.handleError}
+                                        onChange={this.handleChange}
+                                        name="login"
+                                        value={this.state.login}
+                                        validators={['required', 'minStringLength: 4', 'maxStringLength: 15']}
+                                        errorMessages={['this field is required', 'Login should to be 4 or more chars', 'Login should to be maximum 15 chars']}/>
+                                    <br/>
                                     </div>
+                                    <input className="settings-inputs"
+                                           style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none'}}
+                                           type="password"
+                                           placeholder="Change Password"
+                                           name="password"
+                                           autoComplete="on"
+                                           onChange={e => this.handleChange(e)}
+                                           value={this.state.password}/>
+                                    <span className="bar"></span>
+                                    <TextValidator
+                                        validatorListener={this.handleError}
+                                        onChange={this.handleChange}
+                                        name="password"
+                                        value={this.state.password}
+                                        validators={['required', 'minStringLength: 4']}
+                                        errorMessages={['this field is required', 'Password should to be 4 or more chars']}/>
+                                </div>
                                 <div className="save-settings">
-                                    <button type="submit" disabled={this.state.disabled}>
+                                    <button className="submitButton" type="submit" disabled={this.state.disabled}>
                                         Save settings
                                     </button>
                                 </div>
                             </div>
-                            </ValidatorForm>
-                        </div>
-                        <div className="SIDEBAR-1">
-                                <div className="INNER-SIDEBAR-1">Description
-                                    <br/>
+                        </ValidatorForm>
+                    </div>
+                    <div className="SIDEBAR-1">
+                        <div className="INNER-SIDEBAR-1">
                                     <textarea className="description-input" type="text" name="description"
                                               onChange={e => this.handleChange(e)}
                                               value={this.state.description}/>
-                                </div>
-                        </div>
-                        <div className="SIDEBAR-2">
-                            <div className="INNER-SIDEBAR-2">Profile Image
-                                <ImageUpload/>
-                            </div>
                         </div>
                     </div>
-                <div className="FOOTER">
-                        <div className="INNER-FOOTER">
-                            <form onSubmit={this.deleteAccount}>
-                                <div className="delete-account">
-                                    <button type="submit">
-                                        Delete account
-                                    </button>
-                                </div>
-                            </form>
+                    <div className="SIDEBAR-2">
+                        <div className="INNER-SIDEBAR-2">
+                            <ImageUpload/>
                         </div>
                     </div>
+
+                    <div className="FOOTER">
+                        <form onSubmit={this.deleteAccount}>
+                            <button className="deleteSubmitButton" type="submit">
+                                Delete account
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }

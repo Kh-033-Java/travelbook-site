@@ -29,7 +29,7 @@ render(){
 <p>{this.props.name}</p>
 <h1>photos</h1>
 <React.Fragment>
-<GetPhotos photos={this.state.photos}></GetPhotos>
+{/*<GetPhotos photos={this.state.photos}></GetPhotos>*/}
 {isAuthorized()?<button>only my gallery</button>:<React.Fragment></React.Fragment>}
 </React.Fragment>
 </aside>

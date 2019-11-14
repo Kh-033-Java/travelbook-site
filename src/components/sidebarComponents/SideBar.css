@@ -1,102 +1,189 @@
-.whole-comp{
-    display : grid;
+.whole-comp {
+    display: grid;
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1fr 9fr 1fr;
-    
+
 }
-.whole-comp-no-footer{
-    display : grid;
+
+.whole-comp-no-footer {
+    display: grid;
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 0.91fr 9fr;
     
 }
-.main-comp{
+
+.main-comp {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 5fr 2fr 4fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    overflow: auto;
+}
+
+.main-comp-plan{
     display : grid;
- grid-template-columns: 1fr 1fr;
- grid-template-rows: 1fr 1fr 5fr 2fr 4fr;
- grid-column-gap: 5px;
- grid-row-gap: 5px;
- overflow: auto;
- }
- .main-sidebar{
-     grid-column: 1/3;
-     grid-row: 2; 
-     margin-bottom: 4px;  
-     margin-top:1px;
- }
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr 1fr 1fr 4fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    overflow: auto;
+}
 
-.sidebar-footer{
-     grid-row: 3;
-     grid-column: 1/3;
- }
+.main-sidebar {
+    grid-column: 1/3;
+    grid-row: 2;
+    margin-bottom: 4px;
+    margin-top: 1px;
+}
 
- .create-plan-button{
+.sidebar-footer {
+    text-align: center;
     grid-row: 3;
-    grid-column: span 2; 
- }
- .button-plan{
+    grid-column: 1/3;
+}
+
+.create-plan-button{
     grid-row: 3;
     grid-column: span 2;
+     height: 100%;
+     width: 100%;
+ }
+
+ .footer-single-plan-unauth{
+     grid-row: 3;
+     grid-column: 1/5;
+ }
+
+ .unauth-return-plan{
+     grid-row: 3;
+    grid-column: span 2;
+     height: 100%;
+     width: 100%;
+ }
+
+ .footer-single-plan-auth {
+     grid-row: 3;
+     grid-column: 1/5;
+     display: grid;
+     grid-template-columns: 1fr 3fr 1fr;
+     grid-auto-flow: column;
+     grid-template-row: 10 f 1fr;
+     padding: 0;
+ }
+
+.edit-button-plan {
+    background: url("../../components/icons/cd143e9b-979b-4fd5-ba9e-6272c5598736.jpg") 100% 100% no-repeat;
+    background-size: cover;
+}
+
+.delete-button-plan{
+    background: url("../../components/icons/61848.png") 100% 100% no-repeat;
+    background-size: cover;
+}
+
+.edit-plan{
+    grid-column: 1;
+    text-align: center;
+}
+
+.return-to-plan{
+    grid-column: 2;
     height: 100%;
     width: 100%;
- }
+}
+
+.auth-return-plan{
+    height: 100%;
+    width: 100%;
+}
+
+.delete-plan{
+    grid-column: 3;
+    text-align: center;
+}
+.plan-footer-buttons {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    background-position: center;
+    min-width: 40px;
+    min-height: 40px;
+    color: rgb(255, 255, 255);
+    box-shadow: rgb(255, 255, 255) 1px 1px 1px 1px;
+}
+
 
  .list-main-auth{
      text-align: center;
      font-size : 22px;
      padding: 10px;
       }
-.nav-link{
-    text-decoration: none;
-    color:black;
-   
+
+.list-main-auth {
+    text-align: center;
+    font-size: 22px;
+    padding: 10px;
 }
-      .list-main-auth{
-    display : grid;
-   grid-template-columns: 1fr;
-   grid-template-rows: 0.7fr 9fr;
-   grid-column-gap: 5px;
-   grid-row-gap: 5px;
-  overflow: auto;
- }
- .list-main-unauth{
-    display : grid;
-   grid-template-columns: 1fr ;
-   grid-template-rows: 1fr;
-   grid-column-gap: 5px;
-   grid-row-gap: 5px;
-   overflow: auto;
-   }
-   
- .only-my-checkbox{
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+
+}
+
+.list-main-auth {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 9fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    overflow: auto;
+}
+
+.list-main-unauth {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    overflow: auto;
+}
+
+.only-my-checkbox {
     grid-row: 1;
-   vertical-align: center;
-    padding:2px;
-    }
-.input-field{
+    vertical-align: center;
+    padding: 2px;
+}
+
+.input-field {
     text-align: center;
 }
-.add-note-button{
-padding: 0;
-border: none;
-font: inherit;
-color: inherit;
-width: 100%;
-height: 100%;
-background-color: transparent;
-  background-position: center;
-  min-width: 40px;
-min-height: 40px;
+
+.add-note-button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-position: center;
+    min-width: 40px;
+    min-height: 40px;
     color: black;
-    box-shadow: rgb(255, 255, 255) 1px 1px 1px 1px; 
+    box-shadow: rgb(255, 255, 255) 1px 1px 1px 1px;
 }
+
 textarea {
     outline: none;
     resize: none;
+}
+
+input:focus, textarea:focus {
+    background: rgba(0, 0, 0, .1);
 
 }
-input:focus, textarea:focus {
-    background   : rgba(0,0,0,.1);
-
-  }
 

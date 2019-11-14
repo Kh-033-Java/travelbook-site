@@ -5,6 +5,7 @@ import './searchComponents/Dropdown.css';
 import Axios from 'axios';
 import Checkbox from './searchComponents/Checkbox';
 import {Redirect} from 'react-router';
+import GeneralInfo from './GeneralInfo';
 
 class Search extends Component {
 
@@ -53,14 +54,13 @@ class Search extends Component {
         const displayData = [];
         
         for(let i = 0; i < countries.length; i++){
-            displayData.push( <div><button key={i} style={{ display: '' }} onClick={()=>{
+            displayData.push( <Link to ="/generalInfo"><button key={i} style={{ display: '' }} onClick={()=>{
                 this.state.mapComponent.changeSelectedCountry(countries[i].name, countries[i].map_id);
                 this.state.mapComponent.zoomToCurrentCountry();
                 this.setState({displayData});
-                displayData.push(<Redirect to="/toGeneralInfo"/>);
 
                 console.log('redirect', displayData);
-            }}>{countries[i].name}</button></div>)
+            }}>{countries[i].name}</button></Link>)
         }
         this.setState({displayData});
         

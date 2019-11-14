@@ -7,24 +7,25 @@ import Header from "./sidebarComponents/SidebarHeader";
 import UnAuthorizedPlans from "./planComponents/UnAuthorizedPlans";
 import AuthorizedPlans from "./planComponents/AuthorizedPlans";
 
-function Plans(props){
-    return(
-        !isAuthorized()?
+function Plans(props) {
+    return (
+
+        !isAuthorized() ?
             <aside className="rightbar whole-comp-no-footer ">
-                <Header title = "Plans" countryName={props.countryName}/>
-                <UnAuthorizedPlans countryName={props.countryName} id={props.id} setId={props.setId}/>
+                <Header title="Plans" countryName={props.name}/>
+                <UnAuthorizedPlans countryName={props.name} id={props.id} setId={props.setId}/>
             </aside>
             :
             <aside className="rightbar whole-comp ">
-                <Header title = "Plans" countryName={props.countryName}/>
-                <AuthorizedPlans countryName={props.countryName} id={props.id} worldSeries = {props.worldSeries} setId={props.setId}/>
-                <div className="create-plan-button container ">
+                <Header title="Plans" countryName={props.name}/>
+                <AuthorizedPlans countryName={props.name} id={props.id} worldSeries={props.worldSeries}
+                                 setId={props.setId}/>
+                <div className="create-plan-button  ">
                     <NavLink to="/newPlan">
-                        <button type="button" className="button-plan">Create plan</button>
+                        <button type="button" className="create-plan-button submitButton">Create plan</button>
                     </NavLink>
                 </div>
             </aside>
-
     )
 }
 
