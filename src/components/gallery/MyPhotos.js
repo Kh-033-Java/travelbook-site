@@ -33,16 +33,16 @@ class MyPhotos extends Component {
         const photos = this.state.photos;
         console.log();
         return (
-            <aside className="rightbar container">
+            <div>
                 <div>
-                    <h1>My Photo</h1>
-                    <p>{this.props.name}</p>
                     <h1>photos</h1>
-                    {photos ? <p>{photos.map((value, index) =>
-                        <img src={value.link} alt={"No image"} className="photoGallery" key={index}/>
-                    )}</p> : <p>No such country</p>}
+                    <div className="photos-gallery">
+                        {photos ? <p>{photos.map((value, index) =>
+                            <img src={value.link} alt={"No image"} className="photoGallery" key={index}/>
+                        )}</p> : <p>No such country</p>}
+                    </div>
                 </div>
-            </aside>
+            </div>
         )
     }
 }
