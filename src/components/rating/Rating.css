@@ -1,5 +1,8 @@
 .user-container {
     border: 2px solid grey;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     border-radius: 10px;
 }
 
@@ -32,6 +35,8 @@
     grid-auto-flow: column;
     max-height: 6%;
     margin-top: 1px;
+    align-items: center;
+    padding: 1px;
 }
 
 .inner-user > div{

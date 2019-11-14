@@ -72,92 +72,110 @@ class Registration extends Component {
         }
         return <div>
             <Header/>
-            <div className="titlePageName"> Registration</div>
-            <div className="ROW">
-                <div className="main-registration-form">
-                    <div className="main-registration-inner">
+            <div className="registration-title header-text"> Registration</div>
+            <div className="main-registration-form">
+                <div className="main-registration-inner">
+                    <div className="name-of-field1">
                         First Name:
-                        <div className="input-forms-dislocation">
-                            <input className="input-forms" type="text" name="firstName"
-                                   onChange={e => this.handleChange(e)}
-                                   value={this.state.firstName}/>
-                        </div>
-                        Last Name:
-                        <div className="input-forms-dislocation">
-                            <input className="input-forms" type="text" name="lastName"
-                                   onChange={e => this.handleChange(e)}
-                                   value={this.state.lastName}/>
-                        </div>
-                        <ValidatorForm ref={node => (this.form = node)}
-                                       onSubmit={this.handleSubmit}
-                                       onError={this.handleError}>
-                            Login:
-                            <div className="input-forms-dislocation">
-                                <input className="input-forms" type="text" name="login"
-                                       onChange={e => this.handleChange(e)}
-                                       value={this.state.login}/>
-                                <TextValidator
-                                    validatorListener={this.handleError}
-                                    onChange={this.handleChange}
-                                    name="login"
-                                    value={this.state.login}
-validators={['required', 'minStringLength: 4', 'maxStringLength: 15']}
-                                    errorMessages={['this field is required', 'Login should to be 4 or more chars', 'Login should to be maximum 15 chars']}
-                                />
-                            </div>
-                            Email:
-                            <div className="input-forms-dislocation">
-                                <input className="input-forms" type="text" name="email"
-                                       onChange={e => this.handleChange(e)}
-                                       value={this.state.email}/>
-                                <TextValidator
-                                    validatorListener={this.handleError}
-                                    onChange={this.handleChange}
-                                    name="email"
-                                    value={this.state.email}
-                                    validators={['required', 'isEmail']}
-                                    errorMessages={['this field is required', 'email is not valid']}
-                                />
-                            </div>
-                            Password:
-                            <div className="input-forms-dislocation">
-                                <input className="input-forms" type="password" name="password"
-                                       onChange={e => this.handleChange(e)}
-                                       value={this.state.password}/>
-                                <TextValidator
-                                    validatorListener={this.handleError}
-                                    onChange={this.handleChange}
-                                    name="password"
-                                    value={this.state.password}
-                                    validators={['required', 'minStringLength: 4']}
-                                    errorMessages={['this field is required', 'Password should to be 4 or more chars']}
-                                />
-                            </div>
-                            <div className="registration-button">
-                                <div className="registration-button-inner">
-                                    <button className="registration" type="submit" disabled={this.state.disabled}>
-                                        Registration
-                                    </button>
-                                </div>
-                            </div>
-                        </ValidatorForm>
                     </div>
+                    <div className="name-of-field2">
+                        Last Name:
+                    </div><div className="name-of-field3">
+                    Login:
+                    </div><div className="name-of-field4">
+                    Email:
+                    </div><div className="name-of-field5">
+                    Password:
                 </div>
-                <div className="photo-upload-form">
-                    <ImageUpload/>
+                    <div className="input-forms-dislocation1">
+                        <input className="input-forms" type="text" name="firstName"
+                               style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                               onChange={e => this.handleChange(e)}
+                               value={this.state.firstName}/>
+                        <span className="bar"></span>
+                    </div>
+                    <div className="input-forms-dislocation2">
+                        <input className="input-forms" type="text" name="lastName"
+                               style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                               onChange={e => this.handleChange(e)}
+                               value={this.state.lastName}/>
+                        <span className="bar"></span>
+                    </div>
+                    <ValidatorForm ref={node => (this.form = node)}
+                                   onSubmit={this.handleSubmit}
+                                   onError={this.handleError}>
+
+                        <div className="input-forms-dislocation3">
+                            <input className="input-forms" type="text" name="login"
+                                   style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                                   onChange={e => this.handleChange(e)}
+                                   value={this.state.login}/>
+                            <span className="bar"></span>
+                            <TextValidator
+                                validatorListener={this.handleError}
+                                onChange={this.handleChange}
+                                name="login"
+                                value={this.state.login}
+                                validators={['required', 'minStringLength: 4', 'maxStringLength: 15']}
+                                errorMessages={['this field is required', 'Login should to be 4 or more chars', 'Login should to be maximum 15 chars']}
+                            />
+                        </div>
+
+                        <div className="input-forms-dislocation4">
+                            <input className="input-forms" type="text" name="email"
+                                   style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                                   onChange={e => this.handleChange(e)}
+                                   value={this.state.email}/>
+                            <span className="bar"></span>
+                            <TextValidator
+                                validatorListener={this.handleError}
+                                onChange={this.handleChange}
+                                name="email"
+                                value={this.state.email}
+                                validators={['required', 'isEmail']}
+                                errorMessages={['this field is required', 'email is not valid']}
+                            />
+                        </div>
+                        <div className="input-forms-dislocation5">
+                            <input className="input-forms" type="password" name="password"
+                                   style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                                   onChange={e => this.handleChange(e)}
+                                   value={this.state.password}/>
+                            <span className="bar"></span>
+                            <TextValidator
+                                validatorListener={this.handleError}
+                                onChange={this.handleChange}
+                                name="password"
+                                value={this.state.password}
+                                validators={['required', 'minStringLength: 4']}
+                                errorMessages={['this field is required', 'Password should to be 4 or more chars']}
+                            />
+                        </div>
+                        <div className="registration-button">
+                            <div className="registration-button-inner">
+                                <button className="registration submitButton" type="submit" disabled={this.state.disabled}>
+                                    Registration
+                                </button>
+                            </div>
+                        </div>
+                    </ValidatorForm>
+
                 </div>
-            </div>
-            <div className="ROW">
-                <div className="description-part">Description
-                    <div className="description-inner">
+                <div className="description-part">
+                    <div className="description-title">
+                        Description
+                    </div>
+                        <div className="description-inner">
                         <textarea className="description-input-form" name="description" rows="4"
                                   onChange={e => this.handleChange(e)}
                                   value={this.state.description}>
                         </textarea>
                     </div>
                 </div>
+                <div className="photo-upload-form">
+                    <ImageUpload/>
+                </div>
             </div>
-
         </div>
     }
 }

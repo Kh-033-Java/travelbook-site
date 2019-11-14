@@ -25,7 +25,7 @@ class UnAuthNotes extends Component{
        const spinner = this.state.isLoading ? <Loading/> : null;
     return(
          <div className = "list-main-unauth  main-sidebar">
-<NotesWrapper classWr={"allNotes container"}  setId={this.props.setId} countryName={this.props.name} notes={this.state.notes}/>
+<NotesWrapper classWr={"allNotes note-container"}  setId={this.props.setId} countryName={this.props.name} notes={this.state.notes}/>
              {spinner}
 </div>
              )

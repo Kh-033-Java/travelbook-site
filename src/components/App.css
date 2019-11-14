@@ -28,7 +28,15 @@
 }
 
 .container {
-    border: 2px solid black;
+    border: 2px solid silver;
+    border-radius: 10px;
+}
+
+.aside-container{
+    border-right: grey;
+    border-left: 2px solid silver;
+    border-top: grey;
+    border-bottom: none;
 }
 
 header {
@@ -64,7 +72,8 @@ header {
 }
 
 .authorize2 {
-    grid-column: 5;
+    grid-column: 6;
+    width: 38px;
     margin-left: 40px;
 }
 
@@ -254,9 +263,6 @@ aside {
     grid-column: 5;
 }
 
-.weather {
-    color: purple;
-}
 
 .photoGallery {
     display: grid;
@@ -294,3 +300,4 @@ aside {
     height: 400px;
     overflow: scroll;
 }
+

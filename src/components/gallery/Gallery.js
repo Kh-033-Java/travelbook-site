@@ -32,6 +32,7 @@ class Gallery extends Component {
 
 
     render() {
+        const name = this.props.name;
         var button1;
         var button2;
         if (isAuthorized()) {
@@ -45,9 +46,13 @@ class Gallery extends Component {
                 </button>
 
         } else {
-            return null;
+            return <aside className="photo-container">
+                <div className="header-text">
+                    General Photos
+                    <GeneralPhotos name={name} onClick={this.changeToUserPhoto}/>
+                </div>
+            </aside>;
         }
-        const name = this.props.name;
         return (
             <aside className="photo-container">
                 {button1}

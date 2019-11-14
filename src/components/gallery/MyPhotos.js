@@ -16,7 +16,7 @@ class MyPhotos extends Component {
 
     componentDidMount() {
         const token = getJwt();
-        const endpoint = `http://localhost:8080/country/${this.props.name}/photos/${localStorage.getItem("login")}`;
+        const endpoint = `http://localhost:8080/country/${this.props.name}/photos/private?user=${localStorage.getItem("login")}`;
         axios.get(endpoint, {
             headers: {
                 Authorization: token
@@ -32,13 +32,22 @@ class MyPhotos extends Component {
                 validCountry: false
             });
         });
-        console.log("photots" + this.state.photos);
     }
 
     render() {
+        var render;
+        if(this.state.photos === []){
+            render = <div>No photos</div>;
+            return render
+        }else {
+            render =  <GetPhotos photos={this.state.photos}/>
+            console.log("AAAAA")
+            return render;
+
+        }
         return (
             <div className="photoGallery">
-                <GetPhotos photos={this.state.photos}/>
+                {render}
             </div>)
     }
 }

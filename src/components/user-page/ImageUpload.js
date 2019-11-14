@@ -78,7 +78,8 @@ class ImageUpload extends Component{
                 <form onSubmit={(e)=>this.handleSubmit(e)}>
                     <input className="fileInput"
                            type="file"
-                           onChange={(e)=>this.handleImageChange(e)} />
+                           onChange={(e)=>this.handleImageChange(e)}/>
+                           <br/>
                     <button className="submitButton"
                             type="submit"
                             onClick={(e)=>this.handleSubmit(e)}>Upload Image</button>
