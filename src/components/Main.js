@@ -14,6 +14,7 @@ import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 import EditNote from './notesComponents/editNoteComponents/EditNote';
 import NewPlan from './planComponents/NewPlan.js';
 import EditPlan from './planComponents/EditPlan'
+import ViewSinglePlan from "./planComponents/ViewSinglePlan";
 import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
@@ -28,7 +29,8 @@ class Main extends Component {
         this.state = {
             nameCountry: '',
             idCountry: '',
-            map: "",
+            map:"",
+            idPlan: '',
         }
         this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
@@ -128,11 +130,23 @@ class Main extends Component {
                     <EditNote countryName={this.state.nameCountry} id={this.state.idCountry}
                               worldSeries={this.state.map} noteId={this.state.idNote}/>
                 </Route>
+                <Route path="/newPlan">
+                    <Icons></Icons>
+                    <NewPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
+                </Route>
+                <Route path="/editPlan">
+                    <Icons></Icons>
+                    <EditPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                             planId={this.state.idPlan}/>
+                </Route>
+                <Route path = "/plan">
+                    <Icons></Icons>
+                    <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
+                </Route>
                 <Route path="/userPage/:login">
                     <Icons></Icons>
                     <UserGeneralInformation login={localStorage.getItem("login")}/>
                     </Route>
-
                 <Route
                     path="/search-plans">
                     <Icons></Icons>

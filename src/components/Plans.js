@@ -30,9 +30,7 @@ function Plans(props) {
                         <button type="button" className="button-plan">Create plan</button>
                     </NavLink>
                 </div>
-
             </aside>
-
     )
 }
 

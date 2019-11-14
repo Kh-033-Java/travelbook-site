@@ -101,7 +101,7 @@ main {
     grid-area: icons;
     grid-column: 2;
     margin-top: 10px;
-    margin-left: -370px;
+    margin-left: -65%;
 }
 
 .icons {
