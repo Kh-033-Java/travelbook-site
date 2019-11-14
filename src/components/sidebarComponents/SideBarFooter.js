@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
 import '../notesComponents/NoteStyling.css'
 import '../sidebarComponents/SideBar.css'
 import '../App.css';

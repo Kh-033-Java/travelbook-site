@@ -94,15 +94,6 @@ class EditNoteMain extends Component{
                 const note = response.data;
                 this.setState({note})
             });
-
-        // actions.getNoteById(this.props.countryName,this.props.noteId).then(res=>{
-        //     console.log(res[0]);
-        //     this.setState(
-        //          res[0]
-        //     )
-        // })
-        // console.log(this.state);
-        
     }
      getDate(){
         if(this.state.dateOfVisiting){
@@ -139,5 +130,5 @@ class EditNoteMain extends Component{
     }
 }
 
-export default EditNoteMain;
+export default NewNoteMain;
 

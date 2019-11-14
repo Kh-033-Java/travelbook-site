@@ -35,8 +35,7 @@ class NewNoteMain extends Component {
         this.setCuisine = this.setCuisine.bind(this);
         this.setImpression = this.setImpression.bind(this);
         this.onCheck = this.onCheck.bind(this);
-        // this.onChangeCity = this.onChangeCity.bind(this);
-        this.setCity = this.setCity.bind(this);
+        this.setCity= this.setCity.bind(this)
     }
 
     onChangeName(e) {
@@ -100,13 +99,6 @@ class NewNoteMain extends Component {
             peopleEstimate: e
         });
     }
-
-    setCity(value) {
-        this.setState({
-            describedCity: value
-        });
-    }
-
     onCheck(e){
         if(e.target.checked){
             console.log("checked")

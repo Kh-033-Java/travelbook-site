@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Route} from 'react-router-dom';
 import {ACCESS_TOKEN, SECRET_PHRASE} from "../../constants/constants";
 import {Redirect} from "react-router";
 import './UserInput.css'
@@ -52,7 +53,8 @@ export default class UserInput extends React.Component {
 
     render() {
         if (this.state.isSignedUp) {
-            return <Redirect to={{pathname: "/travelbook"}}/>;
+            return <Redirect to={{pathname: "/travelbook"}}/>
+
         }
         return <form onSubmit={e => this.handleSubmit(e)}>
             <div className="login-input">Login:
