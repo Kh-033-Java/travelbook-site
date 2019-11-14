@@ -29,11 +29,13 @@ class Main extends Component {
             idCountry: '',
             map:"",
             idPlan: '',
+            mapComponent: ''
         }
         this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
         this.setPlanID = this.setPlanID.bind(this)
         this.setMapComponent = this.setMapComponent.bind(this);
+        this.renderGI = this.renderGI.bind(this);
 
     }
 
@@ -63,8 +65,17 @@ class Main extends Component {
         })
     }
 
-    setMapComponent(mapComponent){
-        this.mapComponent = mapComponent;
+    renderGI(renderFunction){
+        this.setState({
+            renderGI: renderFunction
+        });
+    }
+
+    setMapComponent(newMap){
+        this.setState({
+        mapComponent: newMap
+        })
+        console.log(this.state.mapComponent, ' : ', newMap);
     }
 
     componentDidMount() {
@@ -84,10 +95,9 @@ class Main extends Component {
     render() {
         return (
             <div className={this.props.gridClass}>
-                <Map clicker={this.regionClicker} getMap={this.setMapComponent}/> 
-                <Head setMap={()=>{
-                    return this.mapComponent;
-                }}/>
+                
+                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI}/> 
+                <Head setMap={this.state.mapComponent}/>
 
                 <Route path="/travelbook">
                 </Route>
@@ -95,7 +105,7 @@ class Main extends Component {
                     <VisitedCountryCheckBox countryName={this.state.nameCountry} id={this.state.idCountry}
                                             worldSeries={this.state.map}/>
                     <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
-                    <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map}/>
+                    <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map} renderFunc={this.renderGI}/>
                 </Route>
                 <Route path="/notes">
                     <Icons></Icons>

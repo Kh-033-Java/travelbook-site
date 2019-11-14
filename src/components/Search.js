@@ -18,11 +18,14 @@ class Search extends Component {
             users: [],
             displayData: [],
             countries: [],
-            mapComponent: props.setMap()
+            mapComponent: props.setMap
         };
         this.onChange = this.onChange.bind(this);
     }
 
+    componentWillReceiveProps(newProp){
+        this.setState({mapComponent: newProp.setMap});
+    }
     async getAllUsers() {
         const endpoint = 'http://localhost:8080/users/allUsers';
         const response = await Axios.get(endpoint).then(async response => this.setState({ users: await response.data }));
@@ -54,13 +57,14 @@ class Search extends Component {
         const displayData = [];
         
         for(let i = 0; i < countries.length; i++){
-            displayData.push( <Link to ="/generalInfo"><button key={i} style={{ display: '' }} onClick={()=>{
+            displayData.push( <button key={i} style={{ display: '' }} onClick={()=>{
                 this.state.mapComponent.changeSelectedCountry(countries[i].name, countries[i].map_id);
                 this.state.mapComponent.zoomToCurrentCountry();
+              
+                this.state.mapComponent.props.renderGI();
                 this.setState({displayData});
 
-                console.log('redirect', displayData);
-            }}>{countries[i].name}</button></Link>)
+            }}>{countries[i].name}</button>)
         }
         this.setState({displayData});
         

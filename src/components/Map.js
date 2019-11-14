@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import showUserMap from './userMap/UserMapShower'
 import isAutorized from './checker/authorizationChecker.js'
 import { rgbToHsl } from "@amcharts/amcharts4/.internal/core/utils/Colors";
+import GeneralInfo from "./GeneralInfo";
 
 class Map extends Component {
   constructor(props){
@@ -14,13 +15,20 @@ class Map extends Component {
     this.state ={
       properLink:'/travelbook',
       chart: '',
-      polygonSeries: ''
+      polygonSeries: '',
+      renderGI: ''
     }
     props.getMap(this);
-    this.getRef = this.getRef.bind(this);
   }
-  
-  getRef=()=>this.props.getMap(this);
+
+  componentWillReceiveProps(newProps){
+    console.log(newProps);
+    if(newProps.renderGI !== undefined)
+    {
+      this.setState({renderGI: newProps.renderGI});
+    }
+
+  }
 
   changeState=()=>{
     this.setState({ properLink:'/travelbook'});
@@ -57,6 +65,7 @@ class Map extends Component {
       })
 
       e.target.series.chart.zoomToMapObject(e.target);
+      this.state.renderGI();
     });
 
     if (isAutorized) {
@@ -82,6 +91,7 @@ class Map extends Component {
 
 
   render() {
+
     return (
       <main className="mainPage " >
       <Link to={this.state.properLink}>
