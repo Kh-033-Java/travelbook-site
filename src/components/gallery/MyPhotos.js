@@ -8,7 +8,7 @@ class MyPhotos extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            photos: [{}],
+            photos: [],
             validCountry: true
         }
     }

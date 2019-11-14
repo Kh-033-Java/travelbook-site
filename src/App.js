@@ -5,7 +5,6 @@ import Login from './components/login-package/login';
 import UserSettings from './components/user-page/UserSettings';
 import Registration from "./components/Registration";
 import UserGeneralInformation from './components/user-page/UserGeneralInformation'
-import SearchPlans from "./components/search/SearchPlans";
 import SearchMain from "./components/search/SearchMain";
 
 
@@ -45,6 +44,15 @@ class App extends Component {
                         <Main gridClass="grid-cont"/>
                     </Route>
                     <Route path="/newnote/">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
+                    <Route path="/newPlan/">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
+                    <Route path="/editPlan/">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
+                    <Route path="/plan/">
                         <Main gridClass="grid-cont"/>
                     </Route>
                     <Route path="/travelbook/">

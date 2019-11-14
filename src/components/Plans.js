@@ -30,13 +30,7 @@ function Plans(props) {
                         <button type="button" className="button-plan">Create plan</button>
                     </NavLink>
                 </div>
-                <div className="create-plan-button container ">
-                    <NavLink to="/search-plans">
-                        <button type="button" className="button-plan">Search plans</button>
-                    </NavLink>
-                </div>
             </aside>
-
     )
 }
 

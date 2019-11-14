@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import GetPhotos from "./GetPhotos";
-import "./Gallery";
 
 
 class GeneralPhotos extends Component {

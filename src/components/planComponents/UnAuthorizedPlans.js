@@ -1,8 +1,6 @@
-import React, { Component } from "react";
-import '../App.css';
+import React, {Component} from "react";
 import OnePlanCreator from "./OnePlanCreator.js";
 import '../sidebarComponents/SideBar.css'
-import './AllPlansPage.css';
 import axios from 'axios';
 
 class UnAuthorizedPlans extends Component{
@@ -11,7 +9,7 @@ class UnAuthorizedPlans extends Component{
         super(props);
         this.state = {
             plans: [],
-        }
+        };
         this.getArrayPlans = this.getArrayPlans.bind(this);
     }
 
