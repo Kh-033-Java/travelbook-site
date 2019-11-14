@@ -67,15 +67,6 @@
      padding: 0;
  }
 
-/*.auth-return-plan{*/
-/*    grid-row: 3;*/
-/*    display: grid;*/
-/*    grid-template-columns: 1fr 3fr 1fr;*/
-/*    grid-auto-flow: column;*/
-/*    grid-template-row: 10 f 1fr;*/
-/*    padding: 0;*/
-/*}*/
-
 .edit-button-plan {
     background: url("../../components/icons/cd143e9b-979b-4fd5-ba9e-6272c5598736.jpg") 100% 100% no-repeat;
     background-size: cover;

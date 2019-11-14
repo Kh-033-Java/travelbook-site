@@ -6,6 +6,13 @@ import * as am4core from "@amcharts/amcharts4/core";
 import {getJwt} from "../helpers/jwt";
 import {Redirect} from "react-router";
 
+
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
+
 class VisitedCountryCheckBox extends Component {
     constructor(props) {
         super(props);

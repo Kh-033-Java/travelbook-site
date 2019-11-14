@@ -8,6 +8,11 @@ import {Redirect} from "react-router";
 import axios from 'axios';
 import Header from "../sidebarComponents/SidebarHeader";
 
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
 class ViewSinglePlan extends Component {
     constructor(props) {
         super(props);

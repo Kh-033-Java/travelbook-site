@@ -10,6 +10,13 @@ import {Redirect} from 'react-router-dom';
 import {getJwt} from "../../helpers/jwt";
 import * as moment from 'moment';
 
+
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
+
 class EditPlan extends Component {
     constructor(props){
         super(props);

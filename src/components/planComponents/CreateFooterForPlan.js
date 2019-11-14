@@ -7,6 +7,13 @@ import './NewPlan.css';
 import "../sidebarComponents/SideBar.css";
 import {confirmAlert} from "react-confirm-alert";
 
+
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
+
 class CreateFooterForPlan extends Component{
      constructor(props){
          super(props);

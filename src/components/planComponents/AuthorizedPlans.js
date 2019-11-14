@@ -4,6 +4,11 @@ import axios from 'axios';
 import {getJwt} from "../../helpers/jwt";
 import OnePlanCreator from "./OnePlanCreator";
 
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
 class AuthorizedPlans extends Component {
 
     constructor(props) {

@@ -3,6 +3,11 @@ import './AllPlansPage.css'
 import {Redirect} from 'react-router-dom';
 import * as moment from 'moment';
 
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
 class OnePlanCreator extends Component {
     constructor(props) {
         super(props);

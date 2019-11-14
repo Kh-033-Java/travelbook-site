@@ -9,6 +9,11 @@ import * as am4core from "@amcharts/amcharts4/core";
 import {Redirect} from "react-router";
 import {getJwt} from "../../helpers/jwt";
 
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
 class NewPlan extends Component{
     constructor(props){
         super(props);

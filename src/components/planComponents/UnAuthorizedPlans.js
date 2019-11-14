@@ -3,6 +3,11 @@ import OnePlanCreator from "./OnePlanCreator.js";
 import '../sidebarComponents/SideBar.css'
 import axios from 'axios';
 
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
 class UnAuthorizedPlans extends Component{
 
     constructor(props){
