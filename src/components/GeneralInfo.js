@@ -33,7 +33,7 @@ class GeneralInfo extends Component {
 
     componentDidMount() {
 
-        const endpoint = `http://localhost:8080/country/` + this.props.name + `/description`;
+        const endpoint = `http://localhost:8080/country/` + localStorage.country + `/description`;
         console.log(endpoint);
         const isLoading =false;
         axios.get(endpoint)

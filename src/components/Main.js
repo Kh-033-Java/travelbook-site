@@ -29,9 +29,10 @@ class Main extends Component {
             nameCountry: '',
             idCountry: '',
             map: "",
-        }
+                }
         this.setNoteID = this.setNoteID.bind(this);
         this.setPlanID = this.setPlanID.bind(this);
+        this.setMapComponent = this.setMapComponent.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
     }
     regionClicker(ev, worldSeries) {
@@ -59,6 +60,11 @@ class Main extends Component {
         })
     }
 
+    setMapComponent(mapComponent){
+        //this.setState({mapComponent: mapComponent});
+        this.mapComponent = mapComponent;
+    }
+
     componentDidMount() {
         console.log(localStorage.getItem('world'))
         if (this.state.nameCountry === '') {
@@ -72,11 +78,15 @@ class Main extends Component {
 
     }
 
+
     render() {
         return (
             <div className={this.props.gridClass}>
-                <Head />
-                <Map clicker={this.regionClicker} />
+                <Map clicker={this.regionClicker} getMap={this.setMapComponent}/> 
+                <Head setMap={()=>{
+                    return this.mapComponent;
+                }}/>
+
                 <Route path="/travelbook">
                 </Route>
                 <Route path="/toGeneralInfo">

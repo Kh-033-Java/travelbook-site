@@ -6,14 +6,22 @@ import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import showUserMap from './userMap/UserMapShower'
 import isAutorized from './checker/authorizationChecker.js'
+import { rgbToHsl } from "@amcharts/amcharts4/.internal/core/utils/Colors";
 
 class Map extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state ={
-      properLink:'/travelbook'
+      properLink:'/travelbook',
+      chart: '',
+      polygonSeries: ''
     }
+    props.getMap(this);
+    this.getRef = this.getRef.bind(this);
   }
+  
+  getRef=()=>this.props.getMap(this);
+
   changeState=()=>{
     this.setState({ properLink:'/travelbook'});
   }
@@ -21,12 +29,14 @@ class Map extends Component {
   componentDidMount() {
     let chart = am4core.create("chartdiv", am4maps.MapChart);
     chart.geodata = am4geodata_worldLow;
-
     chart.projection = new am4maps.projections.Miller();
-    
+    this.setState({chart});
+
     let polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.exclude = ["AQ"];
     polygonSeries.useGeodata = true;
+    this.setState({polygonSeries});
+    
 
     let polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipText = "{name}";
@@ -56,8 +66,17 @@ class Map extends Component {
     }
   }
  
-  render() {
+   changeSelectedCountry(name, id){
+    localStorage.setItem("country", name);
+    localStorage.setItem("id", id);
+  }
 
+   zoomToCurrentCountry(){
+    this.state.chart.zoomToMapObject(this.state.polygonSeries.getPolygonById(localStorage.getItem("id")));
+  }
+
+
+  render() {
     return (
       <main className="mainPage " >
       <Link to={this.state.properLink}>

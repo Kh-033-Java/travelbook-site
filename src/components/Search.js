@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
 import './App.css';
+import { BrowserRouter as  Link } from 'react-router-dom';
 import './searchComponents/Dropdown.css';
 import Axios from 'axios';
 import Checkbox from './searchComponents/Checkbox';
+import {Redirect} from 'react-router';
 
 class Search extends Component {
 
     constructor(props) {
-        super();
+        super(props);
+
         this.state = {
             inputValue: '',
             isUserSearch: true,
             users: [],
             displayData: [],
-            countries: []
+            countries: [],
+            mapComponent: props.setMap()
         };
-
         this.onChange = this.onChange.bind(this);
     }
 
@@ -37,20 +40,30 @@ class Search extends Component {
         const displayData = [];
 
         for (let i = 0; i < users.length; i++) {
-            displayData.push( <a key={i} href={"http://localhost:8080/users/" + users[i].login} style={{ display: '' }}>{users[i].login}</a>);
+            displayData.push( <a key={i} href={"http://localhost:3000/users/" + users[i].login} style={{ display: '' }}>{users[i].login}</a>);
 
         }
         this.setState({ displayData });
     }
 
+    
+
     displayAllCountries(){
         const countries = this.state.countries;
         const displayData = [];
-
+        
         for(let i = 0; i < countries.length; i++){
-            displayData.push(<a key={i} href={"http://localhost:8080/country/" + countries[i].name} style={{ display: '' }}>{countries[i].name}</a>)
+            displayData.push( <div><button key={i} style={{ display: '' }} onClick={()=>{
+                this.state.mapComponent.changeSelectedCountry(countries[i].name, countries[i].map_id);
+                this.state.mapComponent.zoomToCurrentCountry();
+                this.setState({displayData});
+                displayData.push(<Redirect to="/toGeneralInfo"/>);
+
+                console.log('redirect', displayData);
+            }}>{countries[i].name}</button></div>)
         }
         this.setState({displayData});
+        
     }
 
     filterUsers() {
