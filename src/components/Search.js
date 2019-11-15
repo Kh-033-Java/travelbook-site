@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import './App.css';
-import { BrowserRouter as  Link } from 'react-router-dom';
 import './searchComponents/Dropdown.css';
 import Axios from 'axios';
 import Checkbox from './searchComponents/Checkbox';
-import {Redirect} from 'react-router';
-import GeneralInfo from './GeneralInfo';
 
 class Search extends Component {
 
@@ -44,7 +41,11 @@ class Search extends Component {
         const displayData = [];
 
         for (let i = 0; i < users.length; i++) {
-            displayData.push( <a key={i} href={"http://localhost:3000/users/" + users[i].login} style={{ display: '' }}>{users[i].login}</a>);
+            displayData.push(  <button key={i} style={{ display: '' }} onClick={()=>{
+
+                //todo
+                
+            }}>{users[i].login}</button>);
 
         }
         this.setState({ displayData });
@@ -60,7 +61,7 @@ class Search extends Component {
             displayData.push( <button key={i} style={{ display: '' }} onClick={()=>{
                 this.state.mapComponent.changeSelectedCountry(countries[i].name, countries[i].map_id);
                 this.state.mapComponent.zoomToCurrentCountry();
-              
+                
                 this.state.mapComponent.props.renderGI();
                 this.setState({displayData});
 

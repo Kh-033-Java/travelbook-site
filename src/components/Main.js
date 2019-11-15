@@ -75,7 +75,6 @@ class Main extends Component {
         this.setState({
         mapComponent: newMap
         })
-        console.log(this.state.mapComponent, ' : ', newMap);
     }
 
     componentDidMount() {
@@ -173,6 +172,7 @@ class Main extends Component {
                     <Icons/>
                     <Rating/>
                 </Route>
+
             </div>
         );
     }

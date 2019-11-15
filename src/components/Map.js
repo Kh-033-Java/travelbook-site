@@ -22,11 +22,8 @@ class Map extends Component {
   }
 
   componentWillReceiveProps(newProps){
-    console.log(newProps);
-    if(newProps.renderGI !== undefined)
-    {
+
       this.setState({renderGI: newProps.renderGI});
-    }
 
   }
 
@@ -65,7 +62,9 @@ class Map extends Component {
       })
 
       e.target.series.chart.zoomToMapObject(e.target);
+      if(this.state.renderGI !== undefined){
       this.state.renderGI();
+      }
     });
 
     if (isAutorized) {
