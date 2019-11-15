@@ -18,7 +18,7 @@ function Plans(props) {
             :
             <aside className="rightbar whole-comp ">
                 <Header title="Plans" countryName={props.name}/>
-                <AuthorizedPlans countryName={props.name} id={props.id} worldSeries={props.worldSeries}
+                <AuthorizedPlans countryName={props.countryName} id={props.id} worldSeries={props.worldSeries}
                                  setId={props.setId}/>
                 <div className="create-plan-button  ">
                     <NavLink to="/newPlan">
