@@ -11,6 +11,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import axios from 'axios';
 import CityForNote from "../../sidebarComponents/CityForNote";
 import {getJwt} from "../../../helpers/jwt";
+import ImageUpload from "../../user-page/ImageUpload";
 
 class NewNoteMain extends Component {
     constructor(props) {

@@ -30,6 +30,7 @@ class Main extends Component {
             nameCountry: '',
             idCountry: '',
             map: "",
+            idNote: 0
         }
         this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
@@ -50,7 +51,7 @@ class Main extends Component {
     }
 
     setNoteID(id) {
-        console.log("got" + id);
+        console.log("noteId = " + id);
         this.setState({
             idNote: id
         })

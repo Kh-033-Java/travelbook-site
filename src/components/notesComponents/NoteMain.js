@@ -27,7 +27,7 @@ class NoteMain extends Component {
             <div className="main-comp main-sidebar">
                 <NoteOwner account={this.props.note.login} logo={this.props.note.linkToUserAvatar}
                            style_="note-owne note-owner-gen" onClick={console.log(this.props.note)}/>
-                <NoteProperties city={this.props.note.describedCity} date={this.getDate()}/>
+                <NoteProperties describedCity={this.props.note.describedCity} date={this.getDate()}/>
                 {console.log("notemain - " + this.props.note.describedCity)}
                 <div className="ddescription">
                     <div className="title-note">Description</div>
