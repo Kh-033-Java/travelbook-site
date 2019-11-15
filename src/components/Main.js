@@ -1,7 +1,6 @@
 import {Route} from 'react-router-dom';
-import React, {useState, Component} from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import SideBar from "./sidebar.js";
 import Head from "./header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
@@ -19,11 +18,10 @@ import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
 import GeneralInfo from "./GeneralInfo.js";
-import ToGeneralInfo from "./ToGeneralInfo.js";
-import SearchPlans from "./search/SearchPlans";
 import SearchMain from "./search/SearchMain";
 import FollowingPage from "./friendsComponents/FollowingPage";
 import FollowersPage from "./friendsComponents/FollowersPage";
+import Rating from './rating/Rating';
 
 class Main extends Component {
     constructor(props) {
@@ -84,10 +82,6 @@ class Main extends Component {
                 <Head/>
                 <Map clicker={this.regionClicker}/>
                 <Route path="/travelbook">
-                </Route>
-                <Route path="/toGeneralInfo">
-                    <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
-                    <ToGeneralInfo name={this.state.nameCountry} worldSeries={this.state.map}/>
                 </Route>
                 <Route path="/generalInfo">
                     <VisitedCountryCheckBox countryName={this.state.nameCountry} id={this.state.idCountry}
@@ -164,6 +158,10 @@ class Main extends Component {
                                  id={this.state.idCountry}
                                  worldSeries={this.state.map}
                                  setId={this.setPlanID}/>
+                </Route>
+                <Route path="/rating">
+                    <Icons/>
+                    <Rating/>
                 </Route>
             </div>
         );

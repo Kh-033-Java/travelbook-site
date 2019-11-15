@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import {getJwt} from "../../helpers/jwt";
 import axios from 'axios';
 import './UserMainPage.css';
+import {useParams} from "react-router";
 
 class UserGeneralInformation extends Component {
-    constructor(params){
+    constructor(params) {
         super(params);
 
         this.state = {
             login: '',
-            firstName:'',
+            firstName: '',
             lastName: '',
             description: '',
         }
@@ -29,43 +30,61 @@ class UserGeneralInformation extends Component {
             this.setState({firstName: res.data.firstName});
             this.setState({lastName: res.data.lastName});
             this.setState({description: res.data.description});
+            this.setState({avatar: res.data.avatar.link});
         });
+    }
+
+    checkIfPresent = (param) => {
+        var string = param;
+        switch (string) {
+            case this.state.firstName:
+                return <div className="fourth-inner-firstName container">
+                    {this.state.firstName}
+                </div>;
+                break;
+            case this.state.lastName:
+                return <div className="fourth-inner-secondName container">
+                    {this.state.lastName}
+                </div>;
+                break;
+            case this.state.description:
+                return <div>
+                    <div className="fifth-inner">
+                        Description
+                    </div>
+                    <div className="container description-inner">
+                        {this.state.description}
+                    </div>
+                </div>
+                break;
+            default: return null;
+        }
     }
 
 
     render() {
         return (
-            <aside className="rightbar container">
+            <aside className="users-page-container">
                 <div className="first container">
                     <div className="first-inner">
-                    Profile
+                        Profile
                     </div>
                 </div>
                 <div className="second container">
                     <div className="second-inner">
-                    {this.state.login}
+                        {this.state.login}
                     </div>
                 </div>
                 <div className="third container">
-                            <img className="avatar-inner" src={localStorage.getItem("avatar")}/>
+                    <img className="avatar-inner" src={this.state.avatar}/>
                 </div>
                 <div className="fourth container">
-                    <div className="fourth-inner">
-                    {this.state.firstName}
-                <br/>
-                <br/>
-                    {this.state.lastName}
-                    </div>
+                    {this.checkIfPresent(this.state.firstName)}
+                    {this.checkIfPresent(this.state.lastName)}
                 </div>
                 <div className="fifth container">
-                    <div className="fifth-inner">
-                    Description
-                    <div className="container">
-                    {this.state.description}
-                    </div>
-                </div>
-                    <div className="fifth-inner">
-                    </div>
+
+                    {this.checkIfPresent(this.state.description)}
                 </div>
             </aside>
         )
