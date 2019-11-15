@@ -22,6 +22,8 @@ import GeneralInfo from "./GeneralInfo.js";
 import ToGeneralInfo from "./ToGeneralInfo.js";
 import SearchPlans from "./search/SearchPlans";
 import SearchMain from "./search/SearchMain";
+import FollowingPage from "./friendsComponents/FollowingPage";
+import FollowersPage from "./friendsComponents/FollowersPage";
 
 class Main extends Component {
     constructor(props) {
@@ -142,6 +144,14 @@ class Main extends Component {
                 <Route path = "/plan">
                     <Icons></Icons>
                     <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
+                </Route>
+                <Route path = "/following">
+                    <Icons/>
+                    <FollowingPage/>
+                </Route>
+                <Route path = "/followers">
+                    <Icons/>
+                    <FollowersPage/>
                 </Route>
                 <Route path="/userPage/:login">
                     <Icons></Icons>

@@ -64,6 +64,12 @@ class App extends Component {
                     <Route path="/general-photos">
                         <Main gridClass="grid-cont"/>
                     </Route>
+                    <Route path="/following">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
+                    <Route path="/followers">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
                     <Route path="/errorPage/">
                         <h1>Error</h1>
                     </Route>

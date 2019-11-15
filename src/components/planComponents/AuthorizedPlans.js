@@ -68,7 +68,7 @@ class AuthorizedPlans extends Component {
         const plans = [];
         this.state.plans.forEach(e=>plans.push(<OnePlanCreator plan = {e} setId = {this.props.setId} countryName = {this.props.countryName}/>));
         return plans;
-    }
+    };
 
     componentDidMount() {
         this.showAllPlans();

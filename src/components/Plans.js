@@ -14,11 +14,11 @@ function Plans(props) {
             <aside className="rightbar whole-comp-no-footer ">
                 <Header title="Plans" countryName={props.countryName}/>
                 <UnAuthorizedPlans countryName={props.countryName} id={props.id} setId={props.setId}/>
-                <div className="create-plan-button container ">
-                    <NavLink to="/search-plans">
-                        <button type="button" className="button-plan">Search plans</button>
-                    </NavLink>
-                </div>
+                {/*<div className="create-plan-button container ">*/}
+                {/*    <NavLink to="/search-plans">*/}
+                {/*        <button type="button" className="button-plan">Search plans</button>*/}
+                {/*    </NavLink>*/}
+                {/*</div>*/}
             </aside>
             :
             <aside className="rightbar whole-comp ">
