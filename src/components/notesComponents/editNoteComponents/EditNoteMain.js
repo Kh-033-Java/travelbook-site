@@ -13,16 +13,15 @@ import {getJwt} from "../../../helpers/jwt";
 
 class EditNoteMain extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            note: {},
             title: '',
-            // isPublic: false,
+            isPublic: false,
             description: '',
             dateOfVisiting: '',
             login: localStorage.getItem('login'),
             describedCity: '',
-            // photoLink: [{}]
+            photoLink: [],
         };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
@@ -46,7 +45,6 @@ class EditNoteMain extends Component {
     onChangeDate(e) {
         this.setState({
             dateOfVisiting: e.target.value
-            // dateOfVisiting: "2019-11-15"
         });
 
     }
@@ -61,23 +59,50 @@ class EditNoteMain extends Component {
 
     sendEditedNote(e) {
         const token = getJwt();
-        this.setPhotos();
-        console.log(this.state);
+        this.setConstantPhotos();
+        console.log(this.state.photoLink);
         e.preventDefault();
         const endpoint = `http://localhost:8080/notes/${this.props.noteId}`;
         console.log(endpoint);
-            axios.put(endpoint, this.state, {
+        // axios.put(endpoint, {
+        //
+        //     // photoLink: this.state.photoLink,
+        // }, {
+        // headers: {
+        //     Authorization: token
+        // }
+        axios.put(endpoint, this.state, {
             headers: {
                 Authorization: token
             }
         }).then(response => {
-                window.location.href = '/notes';
-                console.log("edited");
+            window.location.href = '/notes';
+            console.log("edited");
+        });
+    }
+
+    setPhotos(files) {
+        const url = 'http://localhost:8080/uploadFile';
+        const formData = new FormData();
+        formData.append('file', files[0]);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        axios.post(url, formData, config)
+            .then(response => {
+                const generatedLink = response.data;
+                console.log("generatedLink - " + generatedLink);
             });
     }
 
-    setPhotos(e) {
-        // this.setState({photoLink: 'https://storage.googleapis.com/travelbook/c10.jpg'});
+    setConstantPhotos() {
+
+        this.setState({
+            photoLink: ['https://storage.googleapis.com/travelbook/2jCyerz6API.jpg', 'https://storage.googleapis.com/travelbook/yhJYRnkALho.jpg']
+        });
+
     }
 
     setCuisine(e) {
@@ -106,13 +131,13 @@ class EditNoteMain extends Component {
 
     componentDidMount() {
 
-        const endpoint = `http://localhost:8080/country/notes/${this.props.noteId}`;
-        console.log(endpoint);
-        axios.get(endpoint)
-            .then(response => {
-                const note = response.data;
-                this.setState({note})
-            });
+        // const endpoint = `http://localhost:8080/country/notes/${this.props.noteId}`;
+        // console.log(endpoint);
+        // axios.get(endpoint)
+        //     .then(response => {
+        //         const note = response.data;
+        //         this.setState({note})
+        //     });
     }
 
     getDate() {
@@ -120,6 +145,16 @@ class EditNoteMain extends Component {
             let str = this.state.dateOfVisiting;
             console.log(str.slice(0, 10));
             return str.slice(0, 10);
+        }
+    }
+
+    onCheck(e) {
+        if (e.target.checked) {
+            console.log("checked");
+            this.setState({isPublic: true})
+        } else {
+            console.log("not checked");
+            this.setState({isPublic: false})
         }
     }
 
@@ -150,7 +185,8 @@ class EditNoteMain extends Component {
                                  setPrices={this.setPrices} setImpression={this.setImpression}
                                  setCuisine={this.setCuisine}/>
                 <div className="public-checkbox ">
-                    <input name="isPublic" type="checkbox" value={this.state.isPublic}/> <label htmlFor="name-note">public</label>
+                    <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox" value={this.state.isPublic}/>
+                    <label htmlFor="name-note">public</label>
                 </div>
 
             </form>

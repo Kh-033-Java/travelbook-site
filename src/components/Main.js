@@ -30,7 +30,7 @@ class Main extends Component {
             nameCountry: '',
             idCountry: '',
             map: "",
-            idNote: 0
+            idNote: 49
         }
         this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);

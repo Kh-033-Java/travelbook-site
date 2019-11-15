@@ -100,10 +100,10 @@ class NewNoteMain extends Component {
 
     onCheck(e){
         if(e.target.checked){
-            console.log("checked")
+            console.log("checked");
             this.setState({isPublic:true})
         }else{
-            console.log("not checked")
+            console.log("not checked");
             this.setState({isPublic:false})
         }
     }
