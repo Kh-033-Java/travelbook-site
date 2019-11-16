@@ -5,8 +5,8 @@ import './UserMainPage.css';
 import {useParams} from "react-router";
 
 class UserGeneralInformation extends Component {
-    constructor(params) {
-        super(params);
+    constructor(props) {
+        super(props);
 
         this.state = {
             login: '',
@@ -16,11 +16,17 @@ class UserGeneralInformation extends Component {
         }
     }
 
+    componentWillReceiveProps(newProps){
+        this.setState({login: newProps.match.params.login}, this.componentDidMount);
+    }
+    
 
     componentDidMount() {
         let token = getJwt();
-        const url = 'http://localhost:8080/users/' + localStorage.getItem("login");
-
+        console.log('did', this.state.login);
+        if(this.state.login !== ''){
+        const url = 'http://localhost:8080/users/' + this.state.login;
+            console.log(url);
         axios.get(url, {
             headers: {
                 Authorization: token
@@ -32,6 +38,7 @@ class UserGeneralInformation extends Component {
             this.setState({description: res.data.description});
             this.setState({avatar: res.data.avatar.link});
         });
+    }
     }
 
     checkIfPresent = (param) => {

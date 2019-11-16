@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM, {Link} from 'react-router-dom'
 import './App.css';
 import './searchComponents/Dropdown.css';
 import Axios from 'axios';
@@ -21,7 +22,7 @@ class Search extends Component {
     }
 
     componentWillReceiveProps(newProp){
-        this.setState({mapComponent: newProp.setMap});
+        this.setState({mapComponent: newProp.setMap}, ()=>{});
     }
     async getAllUsers() {
         const endpoint = 'http://localhost:8080/users/allUsers';
@@ -41,11 +42,10 @@ class Search extends Component {
         const displayData = [];
 
         for (let i = 0; i < users.length; i++) {
-            displayData.push(  <button key={i} style={{ display: '' }} onClick={()=>{
-
-                //todo
-                
-            }}>{users[i].login}</button>);
+            displayData.push( <Link to={`/userPage/${users[i].login}`} onClick={()=>{
+                 this.setState({displayData: ''});
+                 this.setState({inputValue: ''})
+            }}> {users[i].login}</Link>);
 
         }
         this.setState({ displayData });

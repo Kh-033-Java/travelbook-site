@@ -29,7 +29,8 @@ class Main extends Component {
             idCountry: '',
             map:"",
             idPlan: '',
-            mapComponent: ''
+            mapComponent: '',
+            
         }
         this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
@@ -74,7 +75,7 @@ class Main extends Component {
     setMapComponent(newMap){
         this.setState({
         mapComponent: newMap
-        })
+        },()=>{})
     }
 
     componentDidMount() {
@@ -157,9 +158,9 @@ class Main extends Component {
                     <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
                 </Route>
                 <Route path="/userPage/:login">
+                    <Route path="/userPage/:login" component={UserGeneralInformation}/>
                     <Icons></Icons>
-                    <UserGeneralInformation login={localStorage.getItem("login")}/>
-                    </Route>
+                </Route>
                 <Route
                     path="/search-plans">
                     <Icons></Icons>
