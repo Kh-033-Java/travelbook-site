@@ -23,7 +23,8 @@ class Map extends Component {
 
   componentWillReceiveProps(newProps){
 
-      this.setState({renderGI: newProps.renderGI});
+      this.setState({renderGI: newProps.renderGI})//, this.componentDidMount)
+      
 
   }
 

@@ -23,10 +23,8 @@ class UserGeneralInformation extends Component {
 
     componentDidMount() {
         let token = getJwt();
-        console.log('did', this.state.login);
         if(this.state.login !== ''){
         const url = 'http://localhost:8080/users/' + this.state.login;
-            console.log(url);
         axios.get(url, {
             headers: {
                 Authorization: token
