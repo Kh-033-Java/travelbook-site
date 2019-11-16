@@ -79,7 +79,7 @@ class Search extends Component {
     filterUsers() {
         const users = this.state.users;
         const filtered = users.filter((user) => {
-            if (user.login.toLowerCase().startsWith(this.state.inputValue)) {
+            if (user.login.toLowerCase().startsWith(this.state.inputValue.toLowerCase())) {
                 return user;
             }
         });
@@ -104,6 +104,8 @@ class Search extends Component {
             inputValue: '',
             displayData: ''
         });
+        document.querySelector('.dropdown-content').style.display = 'none';
+
         if (this.state.isUserSearch == false) {
             this.setState({ isUserSearch: true });
         } else {
@@ -113,15 +115,18 @@ class Search extends Component {
 
     async onChange(event) {
         this.setState({ inputValue: event.target.value });
-        
+
         if (this.state.isUserSearch) {
+            this.setState({countries:[]});
             const allUsers = await this.getAllUsers();
             this.filterUsers();
             this.displayAllUsers();
         }else{
+            this.setState({users:[]});
             const AllCountries = await this.getAllCountries();
             this.filterCountries();
             this.displayAllCountries();
+            
         }
         this.checkInput();
 
