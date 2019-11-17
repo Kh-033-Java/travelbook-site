@@ -235,7 +235,7 @@ class UserSettings extends Component {
                     </div>
                     <div className="SIDEBAR-1">
                         <div className="INNER-SIDEBAR-1">
-                                    <textarea className="description-input" type="text" name="description"
+                                    <textarea className="description-input container" type="text" name="description"
                                               onChange={e => this.handleChange(e)}
                                               value={this.state.description}/>
                         </div>

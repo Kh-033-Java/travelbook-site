@@ -12,24 +12,27 @@
     overflow: hidden;
 }
 .propertyTitle textarea{
+    width: 110%;
     height:80%;
     border:1px solid black;
     text-align: center;
     margin: auto 1em auto 0;
 }
 .propertyDate textarea{
-    height:80%;
+    width: 105%;
     border:1px solid black;
     text-align: center;
     margin: auto 1em auto 0;
 }
 .propertyCityFrom textarea{
+    width: 110%;
     height:80%;
     border:1px solid black;
     text-align: center;
     margin: auto 1em auto 0;
 }
 .propertyCityTo textarea{
+    width: 105%;
     height:80%;
     border:1px solid black;
     text-align: center;
@@ -39,7 +42,6 @@
 .list-plan-el{
     width:100%;
     max-height:200px;
-    margin:10px 0;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -82,5 +84,6 @@
     word-spacing: 1.6px;
 }
 .grade{
+    font-size: 70%;
     margin-top:1em;
 }
