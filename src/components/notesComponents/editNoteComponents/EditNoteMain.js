@@ -21,7 +21,7 @@ class EditNoteMain extends Component {
             dateOfVisiting: '',
             login: localStorage.getItem('login'),
             describedCity: '',
-            photoLink: [],
+            photoLink: []
         };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
@@ -64,13 +64,6 @@ class EditNoteMain extends Component {
         e.preventDefault();
         const endpoint = `http://localhost:8080/notes/${this.props.noteId}`;
         console.log(endpoint);
-        // axios.put(endpoint, {
-        //
-        //     // photoLink: this.state.photoLink,
-        // }, {
-        // headers: {
-        //     Authorization: token
-        // }
         axios.put(endpoint, this.state, {
             headers: {
                 Authorization: token
@@ -83,18 +76,28 @@ class EditNoteMain extends Component {
 
     setPhotos(files) {
         const url = 'http://localhost:8080/uploadFile';
-        const formData = new FormData();
-        formData.append('file', files[0]);
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        };
-        axios.post(url, formData, config)
-            .then(response => {
-                const generatedLink = response.data;
-                console.log("generatedLink - " + generatedLink);
-            });
+        let photoLink = [];
+
+        files.forEach(element => {
+
+            const formData = new FormData();
+            formData.append('file', element);
+            const config = {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            };
+            axios.post(url, formData, config)
+                .then(response => {
+                    const generatedLink = response.data;
+                    photoLink.push(generatedLink);
+                    console.log("generatedLink - " + generatedLink);
+                });
+
+        });
+
+        console.log(photoLink);
+        this.setState({photoLink});
     }
 
     setConstantPhotos() {

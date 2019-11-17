@@ -65,9 +65,7 @@ class NewNoteMain extends Component {
         axios.put(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`);
         this.props.worldSeries.getPolygonById(this.props.idCountry).fill = am4core.color("#67f58d");
         console.log("new note created");
-        console.log(this.state);
-        this.setState({onSubmit:true})
-        
+        window.location.href = '/notes';
     }
 
     setPhotos(e) {
@@ -108,9 +106,33 @@ class NewNoteMain extends Component {
         }
     }
 
+    setPhotos(files) {
+        const url = 'http://localhost:8080/uploadFile';
+        let photoLink = [];
+
+        files.forEach(element => {
+
+            const formData = new FormData();
+            formData.append('file', element);
+            const config = {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            };
+            axios.post(url, formData, config)
+                .then(response => {
+                    const generatedLink = response.data;
+                    photoLink.push(generatedLink);
+                    console.log("generatedLink - " + generatedLink);
+                });
+
+        });
+
+        console.log(photoLink);
+        this.setState({photoLink});
+    }
 
     render() {
-        if(this.state.onSubmit){        return <Redirect to="travelbook"/>}
         return (
 
             <form name="addNote" id="addNote"  className="main-sidebar  main-comp-newnote" onSubmit={this.sendNewNote}>

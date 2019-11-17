@@ -9,12 +9,20 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css
 registerPlugin(FilePondPluginImagePreview);
 
 class PhotoUploader extends React.Component {
+
+    handleInit() {
+        console.log('FilePond instance has initialised', this.pond);
+    }
+
     render() {
         return (
             <div className="photo-upload">
                 <p className="header-text">Your photos</p>
-                <FilePond name="photos" allowMultiple={true}
-                          ref={(ref) => this.p = ref}
+                <FilePond name="photos"
+                          allowMultiple={true}
+                          ref={(ref) => this.pond = ref}
+                          maxFiles={3}
+                          oninit={() => this.handleInit() }
                           onupdatefiles={
                               (fileItems) => {
                                   this.props.setPhotos(fileItems.map(fileItem => fileItem.file));
