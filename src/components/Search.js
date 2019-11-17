@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactDOM, {Link} from 'react-router-dom'
+import ReactDOM, { Link } from 'react-router-dom'
 import './App.css';
 import './searchComponents/Dropdown.css';
 import Axios from 'axios';
@@ -22,8 +22,8 @@ class Search extends Component {
         this.onChange = this.onChange.bind(this);
     }
 
-    componentWillReceiveProps(newProp){
-        this.setState({mapComponent: newProp.setMap});
+    componentWillReceiveProps(newProp) {
+        this.setState({ mapComponent: newProp.setMap });
     }
     async getAllUsers() {
         const endpoint = 'http://localhost:8080/users/allUsers';
@@ -31,9 +31,9 @@ class Search extends Component {
     }
 
 
-    async getAllCountries(){
+    async getAllCountries() {
         const endpoint = 'http://localhost:8080/country/getAllCountries';
-        const response = await Axios.get(endpoint).then(async response => this.setState({countries: await response.data}));
+        const response = await Axios.get(endpoint).then(async response => this.setState({ countries: await response.data }));
     }
 
 
@@ -43,9 +43,9 @@ class Search extends Component {
         const displayData = [];
 
         for (let i = 0; i < users.length; i++) {
-            displayData.push( <Link to={`/userPage/${users[i].login}`} onClick={()=>{
-                 this.setState({displayData: ''});
-                 this.setState({inputValue: ''}, this.checkInput)
+            displayData.push(<Link to={`/userPage/${users[i].login}`} onClick={() => {
+                this.setState({ displayData: '' });
+                this.setState({ inputValue: '' }, this.checkInput)
             }}> {users[i].login}</Link>);
 
         }
@@ -53,27 +53,27 @@ class Search extends Component {
         this.setState({ displayData });
     }
 
-    
 
-    displayAllCountries(){
+
+    displayAllCountries() {
         const countries = this.state.countries;
         const displayData = [];
 
-        for(let i = 0; i < countries.length; i++){
-            displayData.push( <Link to ="/generalInfo" key={i} style={{ display: '' }} onClick={()=>{
+        for (let i = 0; i < countries.length; i++) {
+            displayData.push(<Link to="/generalInfo" key={i} style={{ display: '' }} onClick={() => {
                 this.state.mapComponent.changeSelectedCountry(countries[i].name, countries[i].map_id);
                 this.state.mapComponent.zoomToCurrentCountry();
-                if(this.state.mapComponent.props.renderGI !== undefined){
-                this.state.mapComponent.props.renderGI();
+                if (this.state.mapComponent.props.renderGI !== undefined) {
+                    this.state.mapComponent.props.renderGI();
                 }
-                this.setState({displayData});
-                this.setState({inputValue: ''}, this.checkInput);
+                this.setState({ displayData });
+                this.setState({ inputValue: '' }, this.checkInput);
 
             }}>{countries[i].name}</Link>)
         }
         this.checkInput();
-        this.setState({displayData});
-        
+        this.setState({ displayData });
+
     }
 
     filterUsers() {
@@ -88,15 +88,15 @@ class Search extends Component {
 
     }
 
-    filterCountries(){
+    filterCountries() {
         const countries = this.state.countries;
-        const filtered = countries.filter((country) =>{
-            if(country.name.toLowerCase().startsWith(this.state.inputValue.toLowerCase())){
+        const filtered = countries.filter((country) => {
+            if (country.name.toLowerCase().startsWith(this.state.inputValue.toLowerCase())) {
                 return country;
             }
         });
 
-        this.setState({countries:filtered});
+        this.setState({ countries: filtered });
     }
 
     onClick = () => {
@@ -117,23 +117,23 @@ class Search extends Component {
         this.setState({ inputValue: event.target.value });
 
         if (this.state.isUserSearch) {
-            this.setState({countries:[]});
+            this.setState({ countries: [] });
             const allUsers = await this.getAllUsers();
             this.filterUsers();
             this.displayAllUsers();
-        }else{
-            this.setState({users:[]});
+        } else {
+            this.setState({ users: [] });
             const AllCountries = await this.getAllCountries();
             this.filterCountries();
             this.displayAllCountries();
-            
+
         }
         this.checkInput();
 
     }
 
 
-    checkInput(){
+    checkInput() {
         if (this.state.inputValue.length > 0 && (this.state.users.length > 0 || this.state.countries.length > 0)) {
             document.querySelector('.dropdown-content').style.display = 'block';
         }
@@ -148,7 +148,7 @@ class Search extends Component {
                 <form name="myForm" className="search-form">
                     <input type="text" placeholder={this.state.isUserSearch ? 'Search User' : 'Search Country'} value={this.state.inputValue} onChange={this.onChange} />
                     <div className='dropdown-content'>
-                    {this.state.displayData}
+                        {this.state.displayData}
                     </div>
                 </form>
 
