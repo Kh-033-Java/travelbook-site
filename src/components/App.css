@@ -92,10 +92,17 @@ header {
     margin-bottom: 5px;
 }
 
+
+.search form{
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
 .search input {
     -webkit-border-radius: 30px;
     border-radius: 30px;
-
+    margin: 15px;
     height: 40px;
     width: 300px;
 }
