@@ -21,7 +21,7 @@ class UnAuthorizedPlans extends Component{
     componentDidMount() {
         let endpoint= `http://localhost:8080/country/${this.props.countryName}/plans`;
         axios.get(endpoint).then(res => {
-            this.setState({...this.state, plans: res.data})
+            this.setState({...this.state, plans: res.data});
             console.log(res.data);
         }).catch(error => {
             throw error;

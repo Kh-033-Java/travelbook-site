@@ -81,12 +81,8 @@ class VisitedCountryCheckBox extends Component {
 
 
     componentDidMount() {
-        let token = getJwt();
-        axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`, {
-            headers: {
-                Authorization: token
-            }
-        }).then(res =>{
+        axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`)
+            .then(res =>{
             this.setState({visitedCountries: res.data.visitedCountries});
         }).catch(error => {
             console.log(error);

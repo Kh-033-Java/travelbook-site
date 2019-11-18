@@ -20,7 +20,8 @@ class FollowersPage extends Component {
 
     getFollowers() {
         let friends = [];
-        this.state.followers.forEach(e => friends.push(<OneFollower login = {e.login} avatar = {e.avatar}/>));
+        console.log(this.state.followers);
+        this.state.followers.forEach(e => friends.push(<OneFollower login = {e.login} link = {e.avatar.link}/>));
         return friends;
     }
 
@@ -33,18 +34,14 @@ class FollowersPage extends Component {
             }
         }).then(res => {
             this.setState({followers : res.data});
-            console.log(res.data);
         });
     }
 
     render() {
         return(
-            <aside className="rightbar container">
-                <FriendsHeader/>
-                <aside className="followers">
-                    {this.getFollowers()}
-                </aside>
-            </aside>
+            <div className="all-friends">
+                {this.getFollowers()}
+            </div>
         )
     }
 }

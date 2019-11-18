@@ -45,8 +45,7 @@ class CreateFooterForPlan extends Component{
                         }).then(res => {
                             if (res.status === 200) {
                                 alert("Your plan successfully deleted!");
-                                localStorage.clear();
-                                window.location.href = '/travelbook';
+                                window.location.href = '/plans';
                             }
                         });
                     }

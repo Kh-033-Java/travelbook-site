@@ -101,7 +101,7 @@ class EditPlan extends Component {
             .catch(error=>{
                 console.log(error);
                 return <Redirect to="/errorPage"/>
-            })
+            });
 
         let token = getJwt();
         axios.get('http://localhost:8080/transport', {

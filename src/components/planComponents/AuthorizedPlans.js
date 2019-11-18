@@ -16,7 +16,7 @@ class AuthorizedPlans extends Component {
         this.state = {
             isChecked: false,
             plans: [],
-        }
+        };
         this.onCheck = this.onCheck.bind(this);
         this.showAllPlans = this.showAllPlans.bind(this);
         this.showOnlyUsersPlans = this.showOnlyUsersPlans.bind(this);

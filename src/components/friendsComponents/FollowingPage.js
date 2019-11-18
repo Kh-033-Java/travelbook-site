@@ -14,13 +14,13 @@ class FollowingPage extends Component {
         super(props);
         this.state = {
             followings: [],
-        }
+        };
         this.getFollowings = this.getFollowings.bind(this);
     }
 
     getFollowings() {
         let friends = [];
-        this.state.followings.forEach(e => friends.push(<OneFollowing login = {e.login} avatar = {e.avatar}/>));
+        this.state.followings.forEach(e => friends.push(<OneFollowing login = {e.login} link = {e.avatar.link}/>));
         return friends;
     }
 
@@ -33,18 +33,14 @@ class FollowingPage extends Component {
             }
         }).then(res => {
             this.setState({followings : res.data});
-            console.log(res.data);
         });
     }
 
     render() {
         return(
-            <aside className="rightbar container">
-                <FriendsHeader/>
-                <aside className="following">
-                    {this.getFollowings()}
-                </aside>
-            </aside>
+            <div className="all-friends">
+                {this.getFollowings()}
+            </div>
         )
     }
 }

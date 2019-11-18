@@ -19,9 +19,8 @@ import GeneralPhotos from "./gallery/GeneralPhotos";
 import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
 import GeneralInfo from "./GeneralInfo.js";
 import SearchMain from "./search/SearchMain";
-import FollowingPage from "./friendsComponents/FollowingPage";
-import FollowersPage from "./friendsComponents/FollowersPage";
 import Rating from './rating/Rating';
+import Friends from "./friendsComponents/Friends";
 
 class Main extends Component {
     constructor(props) {
@@ -139,13 +138,9 @@ class Main extends Component {
                     <Icons></Icons>
                     <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
                 </Route>
-                <Route path = "/following">
+                <Route path = "/friends">
                     <Icons/>
-                    <FollowingPage/>
-                </Route>
-                <Route path = "/followers">
-                    <Icons/>
-                    <FollowersPage/>
+                    <Friends/>
                 </Route>
                 <Route path="/userPage/:login">
                     <Icons></Icons>
