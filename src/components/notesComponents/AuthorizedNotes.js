@@ -13,11 +13,13 @@ class AuthNotes extends Component {
         this.state = {
             notes: [],
             checked: false,
-            isLoading: true
-        }
+            isLoading: true,
+            userNotesAmount: "init"
+        };
         this.onCheck = this.onCheck.bind(this);
         this.loadAll = this.loadAll.bind(this);
         this.loadOnlyUsers = this.loadOnlyUsers.bind(this);
+        this.setUserNotesAmount = this.setUserNotesAmount.bind(this);
     }
 
     onCheck(e) {
@@ -52,7 +54,7 @@ class AuthNotes extends Component {
         axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${localStorage.getItem("login"
         )}`).then(res => {
             console.log(res.data);
-            this.setState({...this.state, notes: res.data})
+            this.setState({...this.state, notes: res.data});
             const isLoading = false;
             this.setState({isLoading});
         })
@@ -60,6 +62,29 @@ class AuthNotes extends Component {
 
     componentDidMount() {
         this.loadAll();
+        this.setUserNotesAmount();
+        // this.setState({
+        //     userNotesAmount: "test"
+        // });
+        // localStorage.setItem('userNotesAmount', this.state.userNotesAmount);
+        // localStorage.setItem('userNotesAmount', 'test');
+    }
+
+    setUserNotesAmount() {
+        axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${localStorage.getItem("login"
+        )}`).then(res => {
+            const notes = res.data;
+            console.log(notes.length);
+            localStorage.setItem('userNotesAmount', notes.length);
+        });
+
+        // this.setState({
+        //     userNotesAmount: 'test'
+        // });
+
+
+        // console.log(getUserNotesAmount(this.props.countryName, localStorage.getItem("login")));
+
     }
 
     render() {

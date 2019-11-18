@@ -16,6 +16,7 @@ class NotesWrapper extends Component{
     tempList.forEach(element =>
         notes.push(<NoteListElement note={element} setId={this.props.setId} countryName={this.props.countryName}/>
         ));
+
     return notes
 }
 render()

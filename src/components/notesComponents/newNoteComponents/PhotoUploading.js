@@ -21,7 +21,7 @@ class PhotoUploader extends React.Component {
                 <FilePond name="photos"
                           allowMultiple={true}
                           ref={(ref) => this.pond = ref}
-                          maxFiles={3}
+                          maxFiles={20}
                           oninit={() => this.handleInit() }
                           onupdatefiles={
                               (fileItems) => {

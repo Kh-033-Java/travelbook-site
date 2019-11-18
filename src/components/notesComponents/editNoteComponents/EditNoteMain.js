@@ -21,7 +21,8 @@ class EditNoteMain extends Component {
             dateOfVisiting: '',
             login: localStorage.getItem('login'),
             describedCity: '',
-            photoLink: []
+            photoLink: [],
+            existedNotePhotos: []
         };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
@@ -71,12 +72,15 @@ class EditNoteMain extends Component {
         }).then(response => {
             window.location.href = '/notes';
             console.log("edited");
-        });
+        }).catch(error => {
+                window.location.href = '/errorPage';
+                console.log(error);
+            });
     }
 
     setPhotos(files) {
         const url = 'http://localhost:8080/uploadFile';
-        let photoLink = [];
+        let photoLink = this.state.existedNotePhotos;
 
         files.forEach(element => {
 
@@ -134,13 +138,15 @@ class EditNoteMain extends Component {
 
     componentDidMount() {
 
-        // const endpoint = `http://localhost:8080/country/notes/${this.props.noteId}`;
-        // console.log(endpoint);
-        // axios.get(endpoint)
-        //     .then(response => {
-        //         const note = response.data;
-        //         this.setState({note})
-        //     });
+        const endpoint = `http://localhost:8080/country/notes/${this.props.noteId}`;
+        console.log(endpoint);
+        axios.get(endpoint)
+            .then(response => {
+                const existedNotePhotos = response.data.photoLink;
+                this.setState({photoLink: existedNotePhotos});
+                this.setState({existedNotePhotos})
+            });
+
     }
 
     getDate() {

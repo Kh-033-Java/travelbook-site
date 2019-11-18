@@ -24,8 +24,8 @@ class NewNoteMain extends Component {
             login: localStorage.getItem('login'),
             describedCity: '',
             country: this.props.countryName,
-            photos: {}
-        }
+            photoLink: []
+        };
         this.sendNewNote = this.sendNewNote.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
@@ -62,14 +62,21 @@ class NewNoteMain extends Component {
     sendNewNote(e) {
         e.preventDefault();
         axios.post(`http://localhost:8080/notes`, this.state);
-        axios.put(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`);
-        this.props.worldSeries.getPolygonById(this.props.idCountry).fill = am4core.color("#67f58d");
         console.log("new note created");
-        window.location.href = '/notes';
-    }
-
-    setPhotos(e) {
-        this.setState({photosEstimate: e});
+        if (localStorage.getItem('userNotesAmount') == 0) {
+            axios.put(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`)
+                .then(response => {
+                    console.log("link user-country created");
+                    window.location.href = '/notes';
+                })
+                .catch(error => {
+                    window.location.href = '/errorPage';
+                    console.log(error);
+                });
+            this.props.worldSeries.getPolygonById(localStorage.getItem("id")).fill = am4core.color("#67f58d");
+        } else {
+            window.location.href = '/notes';
+        }
     }
 
     setCuisine(e) {
@@ -108,7 +115,7 @@ class NewNoteMain extends Component {
 
     setPhotos(files) {
         const url = 'http://localhost:8080/uploadFile';
-        let photoLink = [];
+        let photoLink = this.state.photoLink;
 
         files.forEach(element => {
 

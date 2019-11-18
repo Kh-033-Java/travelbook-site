@@ -24,17 +24,7 @@ class DeleteNoteMain extends Component {
     deleteNote(e) {
         e.preventDefault();
         const token = getJwt();
-        const deleteRelationshipEndpoint = `http://localhost:8080/country/${this.state.country}/notvisit?user=${this.state.login}`;
-        console.log(deleteRelationshipEndpoint);
-        axios.put(deleteRelationshipEndpoint, {
-            headers: {
-                Authorization: token
-            }
-        })
-            .catch(error => {
-                window.location.href = '/errorPage';
-                console.log(error);
-            });
+
         const deleteNoteEndpoint = `http://localhost:8080/notes/${this.props.noteId}`;
         axios.delete(deleteNoteEndpoint, {
             headers: {
@@ -42,13 +32,34 @@ class DeleteNoteMain extends Component {
             }
         })
             .then(response => {
+                console.log("note deleted");
                 window.location.href = '/notes';
-                console.log("deleted");
             })
             .catch(error => {
-                window.location.href = '/errorPage';
                 console.log(error);
+                window.location.href = '/errorPage';
+            });
+
+        if (localStorage.getItem('userNotesAmount') == 1) {
+            const deleteRelationshipEndpoint = `http://localhost:8080/country/${this.state.country}/notvisit?user=${this.state.login}`;
+            console.log(deleteRelationshipEndpoint);
+            axios.put(deleteRelationshipEndpoint, {
+                headers: {
+                    Authorization: token
+                }
+            }).then(response => {
+                window.location.href = '/notes';
+                console.log("link user-country deleted");
             })
+                .catch(error => {
+                    window.location.href = '/errorPage';
+                    console.log(error);
+                });
+        }
+        else {
+            window.location.href = '/notes';
+        }
+
     }
 
     getNoteEntityById(noteId) {
