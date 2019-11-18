@@ -1,71 +1,98 @@
-import React, {Component} from 'react';
-import {getJwt} from "../../helpers/jwt";
+import React, { Component } from 'react';
+import { getJwt } from "../../helpers/jwt";
 import axios from 'axios';
 import './UserMainPage.css';
+import { useParams } from "react-router";
 
 class UserGeneralInformation extends Component {
-    constructor(params){
-        super(params);
+    constructor(props) {
+        super(props);
 
         this.state = {
             login: '',
-            firstName:'',
+            firstName: '',
             lastName: '',
             description: '',
         }
+
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.setState({ login: newProps.match.params.login }, this.componentDidMount);
     }
 
 
     componentDidMount() {
         let token = getJwt();
-        const url = 'http://localhost:8080/users/' + localStorage.getItem("login");
+        if (this.props.match !== undefined && this.state.login === '') {
+            this.setState({ login: this.props.match.params.login }, this.componentDidMount);
+        } else {
+            const url = 'http://localhost:8080/users/' + this.state.login;
+            axios.get(url, {
+                headers: {
+                    Authorization: token
+                }
+            }).then(res => {
+                this.setState({ login: res.data.login });
+                this.setState({ firstName: res.data.firstName });
+                this.setState({ lastName: res.data.lastName });
+                this.setState({ description: res.data.description });
+                this.setState({ avatar: res.data.avatar.link });
+            });
+        }
+    }
 
-        axios.get(url, {
-            headers: {
-                Authorization: token
-            }
-        }).then(res => {
-            this.setState({login: res.data.login});
-            this.setState({firstName: res.data.firstName});
-            this.setState({lastName: res.data.lastName});
-            this.setState({description: res.data.description});
-        });
+    checkIfPresent = (param) => {
+        var string = param;
+        switch (string) {
+            case this.state.firstName:
+                return <div className="fourth-inner-firstName container">
+                    {this.state.firstName}
+                </div>;
+                break;
+            case this.state.lastName:
+                return <div className="fourth-inner-secondName container">
+                    {this.state.lastName}
+                </div>;
+                break;
+            case this.state.description:
+                return <div>
+                    <div className="fifth-inner">
+                        Description
+                    </div>
+                    <div className="container description-inner">
+                        {this.state.description}
+                    </div>
+                </div>
+                break;
+            default: return null;
+        }
     }
 
 
     render() {
         return (
-            <aside className="rightbar container">
+            <aside className="users-page-container">
                 <div className="first container">
                     <div className="first-inner">
-                    Profile
+                        Profile
                     </div>
                 </div>
                 <div className="second container">
                     <div className="second-inner">
-                    {this.state.login}
+                        {this.state.login}
                     </div>
                 </div>
                 <div className="third container">
-                            <img className="avatar-inner" src={localStorage.getItem("avatar")}/>
+                    <img className="avatar-inner" src={this.state.avatar} />
                 </div>
                 <div className="fourth container">
-                    <div className="fourth-inner">
-                    {this.state.firstName}
-                <br/>
-                <br/>
-                    {this.state.lastName}
-                    </div>
+                    {this.checkIfPresent(this.state.firstName)}
+                    {this.checkIfPresent(this.state.lastName)}
                 </div>
                 <div className="fifth container">
-                    <div className="fifth-inner">
-                    Description
-                    <div className="container">
-                    {this.state.description}
-                    </div>
-                </div>
-                    <div className="fifth-inner">
-                    </div>
+
+                    {this.checkIfPresent(this.state.description)}
                 </div>
             </aside>
         )

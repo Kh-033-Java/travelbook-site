@@ -1,16 +1,19 @@
 .fileInput {
-    box-shadow: 0 0 3px #000000;
+    border: 1px solid silver;
+    border-radius: 10px;
     padding: 10px;
     margin: 15px;
     cursor: pointer;
 }
 
 .imgPreview {
+    overflow: hidden;
     box-shadow: 0 0 3px #000000;
     text-align: center;
     margin: 5px 15px;
     height: 35vh;
-    width: 70%;
+    border-radius: 10px;
+    width: 65%;
 }
 .previewText {
     width: 100%;
@@ -18,8 +21,8 @@
 }
 
 .submitButton {
-    padding: 12px;
-    margin-left: 10px;
+    /*padding: 12px;*/
+    /*margin-left: 15px;*/
     background: white;
     border: 4px solid lightgray;
     border-radius: 15px;
@@ -30,16 +33,14 @@
 }
 
 .deleteSubmitButton{
-    width: 120px;
     padding: 12px;
-    margin-left: 10%;
-    background: white;
+    margin-left: 7%;
     border: 4px solid lightgray;
     border-radius: 15px;
     font-weight: 700;
     font-size: 10pt;
     cursor: pointer;
-    background: #efefef;
+    background: lightcoral;
 }
 
 .centerText {

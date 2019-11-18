@@ -1,7 +1,6 @@
 import {Route} from 'react-router-dom';
-import React, {useState, Component} from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import SideBar from "./sidebar.js";
 import Head from "./header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
@@ -14,14 +13,15 @@ import NewNote from './notesComponents/newNoteComponents/NewNote.js';
 import EditNote from './notesComponents/editNoteComponents/EditNote';
 import NewPlan from './planComponents/NewPlan.js';
 import EditPlan from './planComponents/EditPlan'
+import ViewSinglePlan from "./planComponents/ViewSinglePlan";
 import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
 import GeneralInfo from "./GeneralInfo.js";
-import ToGeneralInfo from "./ToGeneralInfo.js";
 import DeleteNote from "./notesComponents/deleteNoteComponents/DeleteNote";
 import SearchPlans from "./search/SearchPlans";
 import SearchMain from "./search/SearchMain";
+import Rating from './rating/Rating'
 
 class Main extends Component {
     constructor(props) {
@@ -29,12 +29,17 @@ class Main extends Component {
         this.state = {
             nameCountry: '',
             idCountry: '',
-            map: "",
+            map:"",
+            idPlan: '',
+            mapComponent: '',
             idNote: 49
         }
         this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
         this.setPlanID = this.setPlanID.bind(this)
+        this.setMapComponent = this.setMapComponent.bind(this);
+        this.renderGI = this.renderGI.bind(this);
+
     }
 
     regionClicker(ev, worldSeries) {
@@ -63,6 +68,18 @@ class Main extends Component {
         })
     }
 
+    renderGI(renderFunction){
+        this.setState({
+            renderGI: renderFunction
+        });
+    }
+
+    setMapComponent(newMap){
+        this.setState({
+        mapComponent: newMap
+        },()=>{})
+    }
+
     componentDidMount() {
         console.log(localStorage.getItem('world'))
         if (this.state.nameCountry === '') {
@@ -76,22 +93,21 @@ class Main extends Component {
 
     }
 
+
     render() {
         return (
             <div className={this.props.gridClass}>
-                <Head/>
-                <Map clicker={this.regionClicker}/>
+
+                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI}/>
+                <Head setMap={this.state.mapComponent}/>
+
                 <Route path="/travelbook">
-                </Route>
-                <Route path="/toGeneralInfo">
-                    <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
-                    <ToGeneralInfo name={this.state.nameCountry} worldSeries={this.state.map}/>
                 </Route>
                 <Route path="/generalInfo">
                     <VisitedCountryCheckBox countryName={this.state.nameCountry} id={this.state.idCountry}
                                             worldSeries={this.state.map}/>
                     <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
-                    <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map}/>
+                    <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map} renderFunc={this.renderGI}/>
                 </Route>
                 <Route path="/notes">
                     <Icons></Icons>
@@ -104,7 +120,7 @@ class Main extends Component {
                 </Route>
                 <Route path="/plans">
                     <Icons></Icons>
-                    <Plans countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                    <Plans name={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
                            setId={this.setPlanID}/>
                 </Route>
                 <Route
@@ -134,11 +150,23 @@ class Main extends Component {
                     <Icons></Icons>
                     <DeleteNote countryName={this.state.nameCountry} noteId ={this.state.idNote} />
                 </Route>
-                <Route path="/userPage/:login">
+                <Route path="/newPlan">
                     <Icons></Icons>
-                    <UserGeneralInformation login={localStorage.getItem("login")}/>
-                    </Route>
-
+                    <NewPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
+                </Route>
+                <Route path="/editPlan">
+                    <Icons></Icons>
+                    <EditPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                             planId={this.state.idPlan}/>
+                </Route>
+                <Route path = "/plan">
+                    <Icons></Icons>
+                    <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
+                </Route>
+                <Route path="/userPage/:login">
+                    <Route path="/userPage/:login" component={UserGeneralInformation}/>
+                    <Icons></Icons>
+                </Route>
                 <Route
                     path="/search-plans">
                     <Icons></Icons>
@@ -147,6 +175,11 @@ class Main extends Component {
                                  worldSeries={this.state.map}
                                  setId={this.setPlanID}/>
                 </Route>
+                <Route path="/rating">
+                    <Icons/>
+                    <Rating/>
+                </Route>
+
             </div>
         );
     }

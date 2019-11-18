@@ -111,7 +111,9 @@ class NoteListElement extends Component {
             return <Redirect to="/note"/>
         }
         return (
-            <div className="list-el-container" onClick={this.props.isReadOnly ? console.log("read only") : e=>this.setID(e)}>
+            <div className="list-el-container">
+                <div className="list-note-el" onClick={event => this.setID(event)}>
+            {/*<div className="list-el-container" onClick={this.props.isReadOnly ? console.log("read only") : e=>this.setID(e)}>*/}
                 <div className="list-note-el">
                     <NoteOwner account={this.props.note.login} logo={this.props.note.linkToUserAvatar}
                                style_="owner-list-notes note-owner-gen"/>

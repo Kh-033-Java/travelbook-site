@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import GetPhotos from "./GetPhotos";
+import "./Gallery";
 
 
 class GeneralPhotos extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            photos: [{}],
+            photos: [],
             validCountry: true
         }
     }
@@ -24,23 +26,16 @@ class GeneralPhotos extends Component {
                 validCountry: false
             });
         });
-        console.log("photots " + this.state.photos);
+        console.log(this.state.photos);
     }
 
     render() {
-        const photos = this.state.photos;
         return (
-            <aside className="rightbar container">
-                <div>
-                    <h1>General Gallery</h1>
-                    <p>{this.props.name}</p>
-                    <h1>photos</h1>
-                    {photos ? <p>{photos.map((value, index) =>
-
-                        <img src={value.link} alt={"No image"} className="photoGallery" key={index}/>
-                    )}</p> : <p>No such country</p>}
+            <div>
+                <div className="photoGallery">
+                    <GetPhotos photos={this.state.photos}/>
                 </div>
-            </aside>
+            </div>
         )
     }
 }

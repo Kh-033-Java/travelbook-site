@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import isAuthorized from './checker/authorizationChecker';
 import "./App.css"
 import axios from 'axios';
 import * as am4core from "@amcharts/amcharts4/core";
 import {getJwt} from "../helpers/jwt";
+import {Redirect} from "react-router";
 
 class VisitedCountryCheckBox extends Component {
     constructor(props) {
@@ -19,79 +20,93 @@ class VisitedCountryCheckBox extends Component {
     }
 
     onCheck(e) {
-        if (!this.isVisitedCountry()) {
-            if (e.target.checked) {
-                this.setState({checked: true});
-                this.addAndFill();
-            } else {
-                this.setState({checked: false});
-                this.delAndFill();
-            }
+        if (e.target.checked) {
+            this.setState({checked: true});
+            this.addAndFill();
+        } else {
+            this.setState({checked: false});
+            this.delAndFill();
         }
     }
 
     addAndFill() {
         let token = getJwt();
-        this.props.worldSeries.getPolygonById(this.props.id).fill = am4core.color("#67f58d");
         let endpointVisited = `http://localhost:8080/country/${this.props.countryName}/visit?user=${localStorage.getItem("login")}`;
-        axios.put(endpointVisited, {
-            headers: {
-                Authorization: token
-            }
-        })
-            .then(response => {
-                console.log(response);
-            })
+        let data = new FormData();
+        let request = new XMLHttpRequest();
+        request.open('POST', endpointVisited);
+        request.setRequestHeader("Authorization", token);
+        request.send(data);
+        request.onload = function () {
+            console.log(request.response);
+        };
+        this.props.worldSeries.getPolygonById(this.props.id).fill = am4core.color("#67f58d");
     }
 
     delAndFill() {
         let token = getJwt();
-        this.props.worldSeries.getPolygonById(this.props.id).fill = am4core.color("#cccccc")
         let endpointDidntVisited = `http://localhost:8080/country/${this.props.countryName}/notvisit?user=${localStorage.getItem("login")}`;
-        axios.put(endpointDidntVisited, {
-            headers: {
-                Authorization: token
-            }
-        })
-        .then(response => {
-            console.log(response);
-        }).catch((error)=>{
-            console.log(error);
-        })
+        let data = new FormData();
+        let request = new XMLHttpRequest();
+        request.open('POST', endpointDidntVisited);
+        request.setRequestHeader("Authorization", token);
+        request.send(data);
+        request.onload = function () {
+            console.log(request.response);
+        };
+        this.props.worldSeries.getPolygonById(this.props.id).fill = am4core.color("#cccccc");
     }
 
     isVisitedCountry() {
-        let token = getJwt();
-        let endpointAllVisitedCountries = `http://localhost:8080/users/${localStorage.getItem("login")}/map`;
-        axios.get(endpointAllVisitedCountries, {
-            headers: {
-                Authorization: token
-            }
-        }).then((res) =>{
-            let visitedCountries = res.data.visitedCountries;
-            this.setState({visitedCountries: visitedCountries});
-            console.log(this.state.visitedCountries);
-        });
         let check = false;
-        this.state.visitedCountries.forEach(e => {
-            console.log(e.name);
-            if(e.name === this.props.countryName) {
-                check = true;
-                this.setState({checked: true});
-                this.props.worldSeries.getPolygonById(this.props.id).fill = am4core.color("#67f58d");
+        let countries = this.state.visitedCountries;
+        if (countries.length !== 0) {
+            console.log(countries.length);
+            for(let i = 0; i < countries.length; i++) {
+                if (countries[i].name === this.props.countryName) {
+                    check = true;
+                    break;
+                }
             }
-        });
+        }
         return check;
     }
 
 
     componentDidMount() {
-        if (isAuthorized()) {
-            this.isVisitedCountry();
-        }
+        let token = getJwt();
+        axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`, {
+            headers: {
+                Authorization: token
+            }
+        }).then(res =>{
+            this.setState({visitedCountries: res.data.visitedCountries});
+        }).catch(error => {
+            console.log(error);
+            return <Redirect to={"errorPage"}/>
+        });
     };
 
     render() {
+        if(this.isVisitedCountry()){
+            return (
+                isAuthorized() ?
+                    <div className="visited">
+                        <form name ="visitedCountry">
+                            <input type="checkbox"
+                                   name='isVisited'
+                                   id='isVisited'
+                                   checked= 'true'
+                                   readOnly
+                            />
+                            <label htmlFor="isVisited">
+                                Visited
+                            </label>
+                        </form>
+                    </div>
+                    : <React.Fragment/>
+            );
+        }
         return (
             isAuthorized() ?
                 <div className="visited">

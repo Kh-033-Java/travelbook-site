@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import OnePlane from "./OnePlane";
 import {getJwt} from "../../helpers/jwt";
+import "./SearchPage.css"
 
 class SearchPlans extends Component {
 
@@ -81,98 +82,100 @@ class SearchPlans extends Component {
         const {plans, cityFrom, cityTo, transport, budgetMin, budgetMax, amountMin, amountMax} = this.state;
         return (
             <div className="search-plan">
-                <header className="header"/>
+                <header style={{color: "white"}}/>
                 <div>
-                    <div className='list-el-containerS list-plan-elS header'>
+                    <div>
                         <div>
                             <h1>Filters</h1>
                         </div>
-                        <div className={"propertyTitleS  prop"}>
-                            <div>"City From"</div>
-                            <input type={"text"} placeholder={cityFrom} onChange={e => {
-                                this.setState({
-                                    ...this.state,
-                                    cityFrom: e.target.value,
-                                })
-                            }}/>
-                        </div>
-                        <div className={"propertyCityFromS  prop"}>
-                            <div>"City To"</div>
-                            <input type={"text"} placeholder={cityTo} onChange={e => {
-                                this.setState({
-                                    ...this.state,
-                                    cityTo: e.target.value,
-                                })
-                            }}/>
-                        </div>
-                        <div className={"propertyTransports  prop"}>
-                            <div>"Transport"</div>
-                            <input type={"text"} placeholder={transport} onChange={e => {
-                                this.setState({
-                                    ...this.state,
-                                    transport: e.target.value,
-                                })
-                            }}/>
-                        </div>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <div className={"propertyBudgetMinS  prop"}>
-                            <div>"BudgetMin"</div>
-                            <input type={"text"} placeholder={budgetMin} onChange={e => {
-                                this.setState({
-                                    ...this.state,
-                                    budgetMin: e.target.value,
-                                })
-                            }}/>
-                        </div>
-                        <div className={"propertyBudgetMaxS  prop"}>
-                            <div>"BudgetMax"</div>
-                            <input type={"text"} placeholder={budgetMax} onChange={e => {
-                                this.setState({
-                                    ...this.state,
-                                    budgetMax: e.target.value,
-                                })
-                            }}/>
-                        </div>
-                        <div className={"propertyDateS  prop"}>
-                            <div>"Date From"</div>
-                            <input type="date" onChange={e => {
-                                this.setState({
-                                    ...this.state,
-                                    dateFrom: e.target.value,
-                                })
-                            }}
-                                   name="date-note"
-                                   className="date-in" required/>
-                        </div>
-                        <div className={"propertyDateS  prop"}>
-                            <div>"Date To"</div>
-                            <input type="date" onChange={e => {
-                                this.setState({
-                                    ...this.state,
-                                    dateTo: e.target.value,
-                                })
-                            }} name="date-note"
-                                   className="date-in" required/>
-                        </div>
-                        <div className={"propertyAmountS  prop"}>
-                            <div>"Amount of people min"</div>
-                            <input type={"text"} placeholder={amountMin} onChange={e => {
-                                this.setState({
-                                    ...this.state,
-                                    amountMin: e.target.value,
-                                })
-                            }}/>
-                        </div>
-                        <div className={"propertyAmountS  prop"}>
-                            <div>"Amount of people max"</div>
-                            <input type={"text"} placeholder={amountMax} onChange={e => {
-                                this.setState({
-                                    ...this.state,
-                                    amountMax: e.target.value,
-                                })
-                            }}/>
+                        <div className="search-filter">
+                            <div className={"prop-s"}>
+                                <div>"City From"</div>
+                                <input type={"text"} placeholder={cityFrom} onChange={e => {
+                                    this.setState({
+                                        ...this.state,
+                                        cityFrom: e.target.value,
+                                    })
+                                }}/>
+                            </div>
+                            <div className={"prop-s"}>
+                                <div>"City To"</div>
+                                <input type={"text"} placeholder={cityTo} onChange={e => {
+                                    this.setState({
+                                        ...this.state,
+                                        cityTo: e.target.value,
+                                    })
+                                }}/>
+                            </div>
+                            <div className={"prop-s"}>
+                                <div>"Transport"</div>
+                                <input type={"text"} placeholder={transport} onChange={e => {
+                                    this.setState({
+                                        ...this.state,
+                                        transport: e.target.value,
+                                    })
+                                }}/>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div className={"prop-s"}>
+                                <div>"BudgetMin"</div>
+                                <input type={"text"} placeholder={budgetMin} onChange={e => {
+                                    this.setState({
+                                        ...this.state,
+                                        budgetMin: e.target.value,
+                                    })
+                                }}/>
+                            </div>
+                            <div className={"prop-s"}>
+                                <div>"BudgetMax"</div>
+                                <input type={"text"} placeholder={budgetMax} onChange={e => {
+                                    this.setState({
+                                        ...this.state,
+                                        budgetMax: e.target.value,
+                                    })
+                                }}/>
+                            </div>
+                            <div className={"prop-s"}>
+                                <div>"Date From"</div>
+                                <input type="date" onChange={e => {
+                                    this.setState({
+                                        ...this.state,
+                                        dateFrom: e.target.value,
+                                    })
+                                }}
+                                       name="date-note"
+                                       className="date-in" required/>
+                            </div>
+                            <div className={"prop-s"}>
+                                <div>"Date To"</div>
+                                <input type="date" onChange={e => {
+                                    this.setState({
+                                        ...this.state,
+                                        dateTo: e.target.value,
+                                    })
+                                }} name="date-note"
+                                       className="date-in" required/>
+                            </div>
+                            <div className={"prop-s"}>
+                                <div>"PeopleMin"</div>
+                                <input type={"text"} placeholder={amountMin} onChange={e => {
+                                    this.setState({
+                                        ...this.state,
+                                        amountMin: e.target.value,
+                                    })
+                                }}/>
+                            </div>
+                            <div className={"prop-s"}>
+                                <div>"PeopleMax"</div>
+                                <input type={"text"} placeholder={amountMax} onChange={e => {
+                                    this.setState({
+                                        ...this.state,
+                                        amountMax: e.target.value,
+                                    })
+                                }}/>
+                            </div>
                         </div>
                     </div>
                     <div style={{textAlign: "center"}}>
@@ -185,9 +188,11 @@ class SearchPlans extends Component {
                     <div>
                         <h1>Recommendations</h1>
                     </div>
-                    {
-                        this.getArrayPlans(plans)
-                    }
+                    <div className="plan-scroll">
+                        {
+                            this.getArrayPlans(plans)
+                        }
+                    </div>
                 </div>
             </div>
 
