@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {getJwt} from "../../helpers/jwt";
+import React, { Component } from 'react';
+import { getJwt } from "../../helpers/jwt";
 import axios from 'axios';
 import './UserMainPage.css';
 import OneFollower from "../friendsComponents/OneFollower";
 import {useParams} from "react-router";
 
 class UserGeneralInformation extends Component {
-    constructor(params) {
-        super(params);
+    constructor(props) {
+        super(props);
 
         this.state = {
             login: '',
@@ -18,6 +18,10 @@ class UserGeneralInformation extends Component {
         };
         this.isFollowing = this.isFollowing.bind(this);
         this.addToFollowing = this.addToFollowing.bind(this);
+        }
+
+    componentWillReceiveProps(newProps) {
+        this.setState({ login: newProps.match.params.login }, this.componentDidMount);
     }
 
 
@@ -38,6 +42,23 @@ class UserGeneralInformation extends Component {
             this.setState({avatar: res.data.avatar.link});
             this.setState({followers: res.data.followers});
         });
+        if (this.props.match !== undefined && this.state.login === '') {
+            this.setState({ login: this.props.match.params.login }, this.componentDidMount);
+        } else {
+            const url = 'http://localhost:8080/users/' + this.state.login;
+            axios.get(url, {
+                headers: {
+                    Authorization: token
+                }
+            }).then(res => {
+                this.setState({ login: res.data.login });
+                this.setState({ firstName: res.data.firstName });
+                this.setState({ lastName: res.data.lastName });
+                this.setState({ description: res.data.description });
+                this.setState({ avatar: res.data.avatar.link });
+                this.setState({followers: res.data.followers});
+            });
+        }
     }
 
     checkIfPresent = (param) => {
@@ -110,7 +131,7 @@ class UserGeneralInformation extends Component {
                     </div>
                 </div>
                 <div className="third container">
-                    <img className="avatar-inner" src={this.state.avatar}/>
+                    <img className="avatar-inner" src={this.state.avatar} />
                 </div>
                 <div className="fourth container">
                     {this.checkIfPresent(this.state.firstName)}
