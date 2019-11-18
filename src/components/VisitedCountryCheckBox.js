@@ -74,17 +74,17 @@ class VisitedCountryCheckBox extends Component {
 
 
     componentDidMount() {
-        let token = getJwt();
-        axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`, {
-            headers: {
-                Authorization: token
-            }
-        }).then(res =>{
-            this.setState({visitedCountries: res.data.visitedCountries});
-        }).catch(error => {
-            console.log(error);
-            return <Redirect to={"errorPage"}/>
-        });
+        // let token = getJwt();
+        // axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`, {
+        //     headers: {
+        //         Authorization: token
+        //     }
+        // }).then(res =>{
+        //     this.setState({visitedCountries: res.data.visitedCountries});
+        // }).catch(error => {
+        //     console.log(error);
+        //     return <Redirect to={"errorPage"}/>
+        // });
     };
 
     render() {

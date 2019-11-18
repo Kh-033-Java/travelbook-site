@@ -32,7 +32,7 @@ class NoteListElement extends Component {
         this.getCountOfLikes();
         this.checkIfAlreadyLiked();
 
-        if(isAuthorized()){
+        if (isAuthorized()) {
             this.setState({disabled: true});
         }
     }
@@ -100,10 +100,10 @@ class NoteListElement extends Component {
 
     render() {
         let like = null;
-        if(!this.state.liked){
-            like = <div className="like" onClick={this.state.disabled ? this.sendLike: undefined}/>;
-        }else if(this.state.liked){
-            like = <div className="liked" onClick={this.state.disabled ? this.sendLike: undefined}/>;
+        if (!this.state.liked) {
+            like = <div className="like" onClick={this.state.disabled ? this.sendLike : undefined}/>;
+        } else if (this.state.liked) {
+            like = <div className="liked" onClick={this.state.disabled ? this.sendLike : undefined}/>;
         }
 
         if (this.state.clicked) {
@@ -137,10 +137,15 @@ class NoteListElement extends Component {
 export default NoteListElement;
 
 function Estimation(props) {
-
-    return (
-        <div className="gen-grade">
-            <div className="grade">{props.grade()}</div>
-        </div>
-    )
+    var grade = null;
+    if (isAuthorized()) {
+        grade = "grade";
+    } else{
+        grade = "grade-for-unauth";
+    }
+        return (
+            <div className="gen-grade">
+                <div className={grade}>{props.grade()}</div>
+            </div>
+        )
 }

@@ -29,15 +29,10 @@ class Main extends Component {
             idCountry: '',
             map:"",
             idPlan: '',
-            mapComponent: '',
-            
         }
         this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
         this.setPlanID = this.setPlanID.bind(this)
-        this.setMapComponent = this.setMapComponent.bind(this);
-        this.renderGI = this.renderGI.bind(this);
-
     }
 
     regionClicker(ev, worldSeries) {
@@ -66,18 +61,6 @@ class Main extends Component {
         })
     }
 
-    renderGI(renderFunction){
-        this.setState({
-            renderGI: renderFunction
-        });
-    }
-
-    setMapComponent(newMap){
-        this.setState({
-        mapComponent: newMap
-        },()=>{})
-    }
-
     componentDidMount() {
         console.log(localStorage.getItem('world'))
         if (this.state.nameCountry === '') {
@@ -91,21 +74,18 @@ class Main extends Component {
 
     }
 
-
     render() {
         return (
             <div className={this.props.gridClass}>
-                
-                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI}/> 
-                <Head setMap={this.state.mapComponent}/>
-
+                <Head/>
+                <Map clicker={this.regionClicker}/>
                 <Route path="/travelbook">
                 </Route>
                 <Route path="/generalInfo">
                     <VisitedCountryCheckBox countryName={this.state.nameCountry} id={this.state.idCountry}
                                             worldSeries={this.state.map}/>
                     <Icons countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
-                    <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map} renderFunc={this.renderGI}/>
+                    <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map}/>
                 </Route>
                 <Route path="/notes">
                     <Icons></Icons>
@@ -158,9 +138,9 @@ class Main extends Component {
                     <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
                 </Route>
                 <Route path="/userPage/:login">
-                    <Route path="/userPage/:login" component={UserGeneralInformation}/>
                     <Icons></Icons>
-                </Route>
+                    <UserGeneralInformation login={localStorage.getItem("login")}/>
+                    </Route>
                 <Route
                     path="/search-plans">
                     <Icons></Icons>
@@ -173,7 +153,6 @@ class Main extends Component {
                     <Icons/>
                     <Rating/>
                 </Route>
-
             </div>
         );
     }

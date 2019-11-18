@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { getJwt } from "../../helpers/jwt";
+import React, {Component} from 'react';
+import {getJwt} from "../../helpers/jwt";
 import axios from 'axios';
 import './UserMainPage.css';
-import { useParams } from "react-router";
+import {useParams} from "react-router";
 
 class UserGeneralInformation extends Component {
-    constructor(props) {
-        super(props);
+    constructor(params) {
+        super(params);
 
         this.state = {
             login: '',
@@ -14,32 +14,24 @@ class UserGeneralInformation extends Component {
             lastName: '',
             description: '',
         }
-
-    }
-
-    componentWillReceiveProps(newProps) {
-        this.setState({ login: newProps.match.params.login }, this.componentDidMount);
     }
 
 
     componentDidMount() {
         let token = getJwt();
-        if (this.props.match !== undefined && this.state.login === '') {
-            this.setState({ login: this.props.match.params.login }, this.componentDidMount);
-        } else {
-            const url = 'http://localhost:8080/users/' + this.state.login;
-            axios.get(url, {
-                headers: {
-                    Authorization: token
-                }
-            }).then(res => {
-                this.setState({ login: res.data.login });
-                this.setState({ firstName: res.data.firstName });
-                this.setState({ lastName: res.data.lastName });
-                this.setState({ description: res.data.description });
-                this.setState({ avatar: res.data.avatar.link });
-            });
-        }
+        const url = 'http://localhost:8080/users/' + localStorage.getItem("login");
+
+        axios.get(url, {
+            headers: {
+                Authorization: token
+            }
+        }).then(res => {
+            this.setState({login: res.data.login});
+            this.setState({firstName: res.data.firstName});
+            this.setState({lastName: res.data.lastName});
+            this.setState({description: res.data.description});
+            this.setState({avatar: res.data.avatar.link});
+        });
     }
 
     checkIfPresent = (param) => {
@@ -84,7 +76,7 @@ class UserGeneralInformation extends Component {
                     </div>
                 </div>
                 <div className="third container">
-                    <img className="avatar-inner" src={this.state.avatar} />
+                    <img className="avatar-inner" src={this.state.avatar}/>
                 </div>
                 <div className="fourth container">
                     {this.checkIfPresent(this.state.firstName)}

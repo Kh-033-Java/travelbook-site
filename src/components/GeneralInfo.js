@@ -4,7 +4,6 @@ import './GeneralInfo.css'
 import axios from 'axios';
 import Loading from "./Loading";
 import GetPhotos from "./gallery/GetPhotos";
-import { map } from "@amcharts/amcharts4/.internal/core/utils/Iterator";
 
 
 class GeneralInfo extends Component {
@@ -21,13 +20,11 @@ class GeneralInfo extends Component {
             isLoading: true,
         };
 
-
-
         this.openFunction = this.openFunction.bind(this);
-        props.renderFunc(this.openFunction);
     }
 
     checkInfoValid(generalInfo) {
+
         if (generalInfo.description === undefined || generalInfo.name === "undefined") {
             this.setState({isInfoValid: false});
             return false;
@@ -36,16 +33,15 @@ class GeneralInfo extends Component {
             return true;
         }
     }
-
-    componentDidMount(){
-        this.openFunction();
+    componentDidMount() {
+        {this.openFunction()}
     }
 
-
     openFunction() {
-
-        const country = localStorage.getItem("country");
-
+        var country = this.props.name;
+        if (this.props.name === '') {
+            country = localStorage.getItem("country");
+        }
         const isLoading = false;
         axios.get(`http://localhost:8080/country/${country}/description`)
             .then(response => {
@@ -61,6 +57,7 @@ class GeneralInfo extends Component {
                     this.setState({photos});
                 }
                 this.setState({isLoading});
+                console.log(response);
             }).catch(error => {
             console.log("Could not get GI from backend");
             console.log(error);
@@ -78,7 +75,9 @@ class GeneralInfo extends Component {
 
 
     render() {
-
+        if(this.state.country !== this.props.name){
+            this.openFunction()
+        }
         if (this.state.isInfoValid) {
             return (
                 <aside className="aside-container general" style={{overflow: 'auto'}}>
