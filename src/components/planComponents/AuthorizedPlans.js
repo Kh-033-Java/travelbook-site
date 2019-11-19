@@ -37,7 +37,7 @@ class AuthorizedPlans extends Component {
 
     showAllPlans() {
         let token = getJwt();
-        let endpointCheckedTrue = `http://localhost:8080/country/${this.props.countryName}/plans?user=${localStorage.getItem("login")}`;
+        let endpointCheckedTrue = `http://localhost:8080/country/${this.props.countryName}/plans/${localStorage.getItem("login")}`;
         axios.get(endpointCheckedTrue, {
             headers: {
                 Authorization: token
