@@ -63,11 +63,6 @@ class AuthNotes extends Component {
     componentDidMount() {
         this.loadAll();
         this.setUserNotesAmount();
-        // this.setState({
-        //     userNotesAmount: "test"
-        // });
-        // localStorage.setItem('userNotesAmount', this.state.userNotesAmount);
-        // localStorage.setItem('userNotesAmount', 'test');
     }
 
     setUserNotesAmount() {
@@ -77,13 +72,6 @@ class AuthNotes extends Component {
             console.log(notes.length);
             localStorage.setItem('userNotesAmount', notes.length);
         });
-
-        // this.setState({
-        //     userNotesAmount: 'test'
-        // });
-
-
-        // console.log(getUserNotesAmount(this.props.countryName, localStorage.getItem("login")));
 
     }
 
