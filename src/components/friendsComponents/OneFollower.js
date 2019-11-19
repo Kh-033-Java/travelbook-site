@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {getJwt} from "../../helpers/jwt";
 import axios from 'axios';
 import {Redirect} from "react-router";
+import {Link} from "react-router-dom";
 
 /**
  *
@@ -48,7 +49,6 @@ class OneFollower extends Component {
         });
         this.setState({login: this.props.login,
                             link: this.props.link});
-        console.log(this.state)
     }
 
     isFollowing(){
@@ -81,7 +81,10 @@ class OneFollower extends Component {
         return(
             <div className="one-friend-cont">
                 <div><img src={this.state.link} alt={""} className="account-image"/></div>
-                <div className="account-label">{this.state.login}</div>
+                <div className="account-label">
+                    <Link to={`/userPage/${this.state.login}`}> {this.state.login} </Link>
+                    {/*{this.state.login}*/}
+                </div>
                 {!this.isFollowing() ?
                 <div className="following">
                     <button className="follow-button" onClick={this.addToFollowings}>Follow</button>

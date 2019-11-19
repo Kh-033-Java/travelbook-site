@@ -14,10 +14,12 @@ class UserGeneralInformation extends Component {
             firstName: '',
             lastName: '',
             description: '',
-            followers: [],
+            following: [],
+            isFollowing: false,
         };
         this.isFollowing = this.isFollowing.bind(this);
         this.addToFollowing = this.addToFollowing.bind(this);
+        // this.getFollowing = this.getFollowing.bind(this);
         }
 
     componentWillReceiveProps(newProps) {
@@ -34,13 +36,12 @@ class UserGeneralInformation extends Component {
                 Authorization: token
             }
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({login: res.data.login});
             this.setState({firstName: res.data.firstName});
             this.setState({lastName: res.data.lastName});
             this.setState({description: res.data.description});
             this.setState({avatar: res.data.avatar.link});
-            this.setState({followers: res.data.followers});
         });
         if (this.props.match !== undefined && this.state.login === '') {
             this.setState({ login: this.props.match.params.login }, this.componentDidMount);
@@ -56,9 +57,15 @@ class UserGeneralInformation extends Component {
                 this.setState({ lastName: res.data.lastName });
                 this.setState({ description: res.data.description });
                 this.setState({ avatar: res.data.avatar.link });
-                this.setState({followers: res.data.followers});
             });
         }
+        axios.get(`http://localhost:8080/users/following?user=${localStorage.getItem('login')}`,{
+            headers: {
+                Authorization: token
+            }
+        }).then(res => {
+            this.setState({following: res.data});
+        });
     }
 
     checkIfPresent = (param) => {
@@ -92,11 +99,12 @@ class UserGeneralInformation extends Component {
         let check = false;
         if (this.state.login === localStorage.getItem('login')){
             check = true;
-        }
-        for (let i = 0; i < this.state.length; i++){
-            if (this.state.followers[i].login === localStorage.getItem('login')){
-                check = true;
-                break;
+        } else {
+            for (let i = 0; i < this.state.following.length; i++) {
+                if (this.state.following[i].login === this.state.login) {
+                    check = true;
+                    break;
+                }
             }
         }
         return check;
@@ -106,13 +114,14 @@ class UserGeneralInformation extends Component {
         let token = getJwt();
         let data = new FormData();
         let request = new XMLHttpRequest();
+        let login = this.state.login;
         request.open('PUT', `http://localhost:8080/users/addfollow/${this.state.login}?user=${localStorage.getItem('login')}`);
         request.setRequestHeader("Authorization", token);
         request.send(data);
         request.onload = function () {
             if (request.status === 200) {
                 alert("Your friend successfully added!");
-                window.location.href = '/userPage/' + this.state.login;
+                window.location.href = '/userPage/'+ login;
             }
         };
     }

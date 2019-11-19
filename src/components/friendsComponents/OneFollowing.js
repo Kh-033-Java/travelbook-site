@@ -3,6 +3,7 @@ import {getJwt} from "../../helpers/jwt";
 import axios from 'axios';
 import {confirmAlert} from "react-confirm-alert";
 import {Redirect} from "react-router";
+import {Link} from "react-router-dom";
 
 /**
  *
@@ -37,7 +38,7 @@ class OneFollowing extends Component {
                         request.send(data);
                         request.onload = function () {
                             if (request.status === 200) {
-                                alert("Your friend successfully added!");
+                                alert("This guy isn't your friend already! ;(");
                                 window.location.href = '/friends';
                             }
                         };
@@ -77,7 +78,9 @@ class OneFollowing extends Component {
         return(
             <div className="one-friend-cont">
                 <div><img src={this.state.link} alt={""} className="account-image"/></div>
-                <div className="account-label">{this.state.login}</div>
+                <div className="account-label">
+                    <Link to={`/userPage/${this.state.login}`}> {this.state.login} </Link>
+                </div>
                 <div className="delete">
                     <button className="delete-button" onClick={this.deleteFollowing}>Delete</button>
                 </div>
