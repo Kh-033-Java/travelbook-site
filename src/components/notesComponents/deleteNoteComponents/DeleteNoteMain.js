@@ -83,7 +83,7 @@ class DeleteNoteMain extends Component {
                   onSubmit={this.deleteNote}>
                 <div className="name-field">
                     Are you sure you want to delete this note?
-                    <NoteListElement note={this.state.note} isReadOnly={true}/>
+                    <NoteListElement note={this.state.note} readOnly/>
                 </div>
             </form>
         );
