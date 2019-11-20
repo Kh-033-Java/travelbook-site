@@ -3,7 +3,6 @@ import '../App.css';
 import '../planComponents/./AllPlansPage.css'
 import '../planComponents/SinglePlan.css'
 import '../planComponents/./NewPlan.css'
-import {Redirect} from 'react-router-dom';
 import * as moment from 'moment';
 
 class OnePlane extends Component {

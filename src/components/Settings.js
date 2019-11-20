@@ -16,7 +16,7 @@ function Settings(props){
             </React.Fragment>
             :<React.Fragment>
                 <LogOut/>
-                <div style={{display: "flex"}}>
+                <div style={{display: "flex", marginLeft : 45}}>
                     <NavLink to="/search-plans">
                         <div className="button-plan" />
                     </NavLink>
