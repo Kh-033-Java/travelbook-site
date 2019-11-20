@@ -58,49 +58,45 @@ class NewNoteMain extends Component {
         console.log("description changed")
     }
 
-    sendNewNote(e) {
+    async sendNewNote(e) {
         e.preventDefault();
         const token = getJwt();
-        let photoLink = uploadPhotos(this.state.photos);
+        let photoLink = await uploadPhotos(this.state.photos);
 
-        setTimeout(() => {
+        this.setState({photoLink});
+        console.log(this.state.photoLink);
 
-            this.setState({photoLink});
-            console.log(this.state.photoLink);
+        axios.post(`http://localhost:8080/notes`, this.state, {
+            headers: {
+                Authorization: token
+            }
+        })
+            .then(response => {
+                console.log("new note created");
+            })
+            .catch(error => {
+                window.location.href = '/errorPage';
+                console.log(error);
+            });
 
-            axios.post(`http://localhost:8080/notes`, this.state, {
+        if (localStorage.getItem('userNotesAmount') == 0) {
+            axios.post(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`, {
                 headers: {
                     Authorization: token
                 }
             })
                 .then(response => {
-                    console.log("new note created");
+                    console.log("link user-country created");
+                    window.location.href = '/notes';
                 })
                 .catch(error => {
                     window.location.href = '/errorPage';
                     console.log(error);
                 });
-
-            if (localStorage.getItem('userNotesAmount') == 0) {
-                axios.post(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`, {
-                    headers: {
-                        Authorization: token
-                    }
-                })
-                    .then(response => {
-                        console.log("link user-country created");
-                        window.location.href = '/notes';
-                    })
-                    .catch(error => {
-                        window.location.href = '/errorPage';
-                        console.log(error);
-                    });
-                this.props.worldSeries.getPolygonById(localStorage.getItem("id")).fill = am4core.color("#67f58d");
-            } else {
-                window.location.href = '/notes';
-            }
-
-        }, this.state.photos.length * 2500);
+            this.props.worldSeries.getPolygonById(localStorage.getItem("id")).fill = am4core.color("#67f58d");
+        } else {
+            window.location.href = '/notes';
+        }
 
     }
 
@@ -176,7 +172,7 @@ class NewNoteMain extends Component {
 
 export default NewNoteMain;
 
-function uploadPhotos(files) {
+async function uploadPhotos(files) {
     const url = 'http://localhost:8080/uploadFile';
     let photoLink = [];
 
@@ -188,10 +184,8 @@ function uploadPhotos(files) {
                 'content-type': 'multipart/form-data'
             }
         };
-        upLoadPhoto(url, formData, config)
-            .then((result) => {
-                photoLink.push(result)
-            });
+        let res = await upLoadPhoto(url, formData, config);
+        photoLink.push(res);
     }
 
     return photoLink;

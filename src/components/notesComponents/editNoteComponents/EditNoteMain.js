@@ -10,6 +10,8 @@ import axios from 'axios';
 import * as actions from '../../../actions/notesActions'
 import CityForNote from "../../sidebarComponents/CityForNote";
 import {getJwt} from "../../../helpers/jwt";
+import NotesPhotos from '../NotePhotos';
+import GetPhotos from "../../gallery/GetPhotos";
 
 class EditNoteMain extends Component {
     constructor(props) {
@@ -22,7 +24,7 @@ class EditNoteMain extends Component {
             login: localStorage.getItem('login'),
             describedCity: '',
             photoLink: [],
-            existedNotePhotos: []
+            existedNotePhotos: ['https://storage.googleapis.com/travelbook/2jCyerz6API.jpg']
         };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
@@ -187,6 +189,7 @@ class EditNoteMain extends Component {
                     <p className="header-text">Description</p>
                     <textarea name="description" value={this.state.description} onChange={this.onChangeDescription}/>
                 </div>
+                <GetPhotos photos={this.state.existedNotePhotos}/>
                 <PhotoUploader setPhotos={this.setPhotos}/>
                 <EditEstimations people={this.state.peopleEstimate} prices={this.state.pricesEstimate}
                                  cuisine={this.state.cuisineEstimate} impression={this.state.commonImpression}
