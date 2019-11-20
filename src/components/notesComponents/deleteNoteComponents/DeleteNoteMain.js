@@ -43,7 +43,7 @@ class DeleteNoteMain extends Component {
         if (localStorage.getItem('userNotesAmount') == 1) {
             const deleteRelationshipEndpoint = `http://localhost:8080/country/${this.state.country}/notvisit?user=${this.state.login}`;
             console.log(deleteRelationshipEndpoint);
-            axios.put(deleteRelationshipEndpoint, {
+            axios.post(deleteRelationshipEndpoint, {
                 headers: {
                     Authorization: token
                 }

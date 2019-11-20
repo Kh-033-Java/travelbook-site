@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import '../NoteStyling.css'
 import {Redirect} from 'react-router-dom';
 import './NewNote.css'
-import City from '../../sidebarComponents/CityProperty'
 import '../../App.css';
 import "../../sidebarComponents/SideBar.css";
 import PhotoUploader from './PhotoUploading';
@@ -11,7 +10,6 @@ import * as am4core from "@amcharts/amcharts4/core";
 import axios from 'axios';
 import CityForNote from "../../sidebarComponents/CityForNote";
 import {getJwt} from "../../../helpers/jwt";
-import ImageUpload from "../../user-page/ImageUpload";
 
 class NewNoteMain extends Component {
     constructor(props) {
@@ -24,7 +22,8 @@ class NewNoteMain extends Component {
             login: localStorage.getItem('login'),
             describedCity: '',
             country: this.props.countryName,
-            photoLink: []
+            photoLink: [],
+            photos: []
         };
         this.sendNewNote = this.sendNewNote.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
@@ -36,7 +35,7 @@ class NewNoteMain extends Component {
         this.setCuisine = this.setCuisine.bind(this);
         this.setImpression = this.setImpression.bind(this);
         this.onCheck = this.onCheck.bind(this);
-        this.setCity= this.setCity.bind(this)
+        this.setCity = this.setCity.bind(this);
     }
 
     onChangeName(e) {
@@ -61,22 +60,48 @@ class NewNoteMain extends Component {
 
     sendNewNote(e) {
         e.preventDefault();
-        axios.post(`http://localhost:8080/notes`, this.state);
-        console.log("new note created");
-        if (localStorage.getItem('userNotesAmount') == 0) {
-            axios.put(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`)
+        const token = getJwt();
+        let photoLink = uploadPhotos(this.state.photos);
+
+        setTimeout(() => {
+
+            this.setState({photoLink});
+            console.log(this.state.photoLink);
+
+            axios.post(`http://localhost:8080/notes`, this.state, {
+                headers: {
+                    Authorization: token
+                }
+            })
                 .then(response => {
-                    console.log("link user-country created");
-                    window.location.href = '/notes';
+                    console.log("new note created");
                 })
                 .catch(error => {
                     window.location.href = '/errorPage';
                     console.log(error);
                 });
-            this.props.worldSeries.getPolygonById(localStorage.getItem("id")).fill = am4core.color("#67f58d");
-        } else {
-            window.location.href = '/notes';
-        }
+
+            if (localStorage.getItem('userNotesAmount') == 0) {
+                axios.post(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`, {
+                    headers: {
+                        Authorization: token
+                    }
+                })
+                    .then(response => {
+                        console.log("link user-country created");
+                        window.location.href = '/notes';
+                    })
+                    .catch(error => {
+                        window.location.href = '/errorPage';
+                        console.log(error);
+                    });
+                this.props.worldSeries.getPolygonById(localStorage.getItem("id")).fill = am4core.color("#67f58d");
+            } else {
+                window.location.href = '/notes';
+            }
+
+        }, this.state.photos.length * 2500);
+
     }
 
     setCuisine(e) {
@@ -103,51 +128,32 @@ class NewNoteMain extends Component {
         });
     }
 
-    onCheck(e){
-        if(e.target.checked){
+    onCheck(e) {
+        if (e.target.checked) {
             console.log("checked");
-            this.setState({isPublic:true})
-        }else{
+            this.setState({isPublic: true})
+        } else {
             console.log("not checked");
-            this.setState({isPublic:false})
+            this.setState({isPublic: false})
         }
     }
 
     setPhotos(files) {
-        const url = 'http://localhost:8080/uploadFile';
-        let photoLink = this.state.photoLink;
-
-        files.forEach(element => {
-
-            const formData = new FormData();
-            formData.append('file', element);
-            const config = {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            };
-            axios.post(url, formData, config)
-                .then(response => {
-                    const generatedLink = response.data;
-                    photoLink.push(generatedLink);
-                    console.log("generatedLink - " + generatedLink);
-                });
-
+        this.setState({
+            photos: files
         });
-
-        console.log(photoLink);
-        this.setState({photoLink});
     }
 
     render() {
         return (
 
-            <form name="addNote" id="addNote"  className="main-sidebar  main-comp-newnote" onSubmit={this.sendNewNote}>
+            <form name="addNote" id="addNote" className="main-sidebar  main-comp-newnote" onSubmit={this.sendNewNote}>
                 <div className="name-field ">
                     <label htmlFor="name-note">Name of the note</label><input type="text" onChange={this.onChangeName}
                                                                               name="name-note"/>
                 </div>
-                <CityForNote select_class="city-select" style_class="city-field" countryName={this.props.countryName} setCity={this.setCity}/>
+                <CityForNote select_class="city-select" style_class="city-field" countryName={this.props.countryName}
+                             setCity={this.setCity}/>
                 <div className="date-field ">
                     <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate} name="date-note"
                                                               className="date-in" required/>
@@ -160,7 +166,7 @@ class NewNoteMain extends Component {
                 <Estimations setPeople={this.setPeople} setPrices={this.setPrices} setImpression={this.setImpression}
                              setCuisine={this.setCuisine}/>
                 <div className="public-checkbox ">
-                    <input name="isPublic" onClick={e=>this.onCheck(e)} type="checkbox"/> <label htmlFor="name-note">public</label>
+                    <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox"/> <label htmlFor="name-note">public</label>
                 </div>
 
             </form>
@@ -169,4 +175,33 @@ class NewNoteMain extends Component {
 }
 
 export default NewNoteMain;
+
+function uploadPhotos(files) {
+    const url = 'http://localhost:8080/uploadFile';
+    let photoLink = [];
+
+    for (let i = 0; i < files.length; i++) {
+        const formData = new FormData();
+        formData.append('file', files[i]);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        upLoadPhoto(url, formData, config)
+            .then((result) => {
+                photoLink.push(result)
+            });
+    }
+
+    return photoLink;
+}
+
+
+const upLoadPhoto = async (url, formData, config) => {
+    const response = await axios.post(url, formData, config);
+    const generatedLink = response.data;
+    console.log("generatedLink - " + generatedLink);
+    return generatedLink;
+};
 
