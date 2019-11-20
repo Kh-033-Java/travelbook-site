@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from './header';
+import Header from './Header';
 import ImageUpload from "./user-page/ImageUpload";
 import axios from 'axios';
 import './Registration.css';

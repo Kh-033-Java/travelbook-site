@@ -81,7 +81,7 @@ class Map extends Component {
   }
 
   changeSelectedCountry(name, id) {
-    localStorage.setItem("country", name);
+    localStorage.setItem( "country", name);
     localStorage.setItem("id", id);
   }
 

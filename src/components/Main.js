@@ -1,7 +1,7 @@
 import {Route} from 'react-router-dom';
 import React, {Component} from 'react';
 import './App.css';
-import Head from "./header.js";
+import Head from "./Header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
 import Plans from "./Plans.js";
@@ -20,6 +20,7 @@ import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
 import GeneralInfo from "./GeneralInfo.js";
 import SearchMain from "./search/SearchMain";
 import Rating from './rating/Rating'
+import AllPlansPage from './planComponents/AllPlansPage'
 
 class Main extends Component {
     constructor(props) {
@@ -156,6 +157,10 @@ class Main extends Component {
                 <Route path = "/plan">
                     <Icons></Icons>
                     <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
+                </Route>
+                <Route path = "/allplans">
+                    <Icons></Icons>
+                    <AllPlansPage/>
                 </Route>
                 <Route path="/userPage/:login">
                     <Route path="/userPage/:login" component={UserGeneralInformation}/>
