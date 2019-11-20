@@ -5,7 +5,7 @@ import UserGeneralInformation from "./UserGeneralInformation";
 
 export function avatar() {
     return (<div>
-            <NavLink to={MAIN_USER_LOGIN_ROUTE}>
+            <NavLink to={"/userPage/"+localStorage.getItem("login")}>
                 <img className="avatar" src={localStorage.getItem("avatar")}>
             </img>
             </NavLink>

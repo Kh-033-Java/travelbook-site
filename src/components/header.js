@@ -17,7 +17,7 @@ class Header extends Component {
             <div className = "title " > TravelBook </div> 
             <Search setMap = {this.props.setMap}/> 
             <Settings / >
-            <AllPlansPageButton />
+            <AllPlansPageButton/>
 
             </header>
 

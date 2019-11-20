@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from "../Header";
+import Header from "../header";
 import SearchPlans from "./SearchPlans";
 
 class SearchMain extends Component {

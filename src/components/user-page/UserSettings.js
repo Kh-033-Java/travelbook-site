@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from "../Header";
+import Header from "../header";
 import ImageUpload from "./ImageUpload";
 import axios from 'axios';
 import {getJwt} from "../../helpers/jwt";

@@ -1,7 +1,7 @@
 import {Route} from 'react-router-dom';
 import React, {Component} from 'react';
 import './App.css';
-import Head from "./Header.js";
+import Head from "./header.js";
 import Map from "./Map.js";
 import Notes from "./Notes.js";
 import Plans from "./Plans.js";
@@ -160,7 +160,7 @@ class Main extends Component {
                 </Route>
                 <Route path = "/allplans">
                     <Icons></Icons>
-                    <AllPlansPage/>
+                    <AllPlansPage setId={this.setPlanID}/>
                 </Route>
                 <Route path="/userPage/:login">
                     <Route path="/userPage/:login" component={UserGeneralInformation}/>
