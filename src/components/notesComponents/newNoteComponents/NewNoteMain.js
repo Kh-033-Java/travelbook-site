@@ -10,6 +10,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import axios from 'axios';
 import CityForNote from "../../sidebarComponents/CityForNote";
 import {getJwt} from "../../../helpers/jwt";
+import {uploadPhotos} from "../../../actions/notesActions";
 
 class NewNoteMain extends Component {
     constructor(props) {
@@ -171,31 +172,3 @@ class NewNoteMain extends Component {
 }
 
 export default NewNoteMain;
-
-async function uploadPhotos(files) {
-    const url = 'http://localhost:8080/uploadFile';
-    let photoLink = [];
-
-    for (let i = 0; i < files.length; i++) {
-        const formData = new FormData();
-        formData.append('file', files[i]);
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        };
-        let res = await upLoadPhoto(url, formData, config);
-        photoLink.push(res);
-    }
-
-    return photoLink;
-}
-
-
-const upLoadPhoto = async (url, formData, config) => {
-    const response = await axios.post(url, formData, config);
-    const generatedLink = response.data;
-    console.log("generatedLink - " + generatedLink);
-    return generatedLink;
-};
-

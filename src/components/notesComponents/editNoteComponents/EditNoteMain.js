@@ -9,6 +9,8 @@ import * as actions from '../../../actions/notesActions'
 import CityForNote from "../../sidebarComponents/CityForNote";
 import {getJwt} from "../../../helpers/jwt";
 import ExistedPhotos from "./ExistedPhotos";
+import "../newNoteComponents/NewNote.css";
+import {uploadPhotos} from "../../../actions/notesActions";
 
 class EditNoteMain extends Component {
     constructor(props) {
@@ -21,7 +23,8 @@ class EditNoteMain extends Component {
             login: localStorage.getItem('login'),
             describedCity: '',
             photoLink: [],
-            existedNotePhotos: []
+            existedNotePhotos: new Map(),
+            photos: []
         };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
@@ -34,6 +37,7 @@ class EditNoteMain extends Component {
         this.setCuisine = this.setCuisine.bind(this);
         this.setImpression = this.setImpression.bind(this);
         this.setCity = this.setCity.bind(this);
+        this.deleteExistedPhoto = this.deleteExistedPhoto.bind(this);
     }
 
     onChangeName(e) {
@@ -57,11 +61,16 @@ class EditNoteMain extends Component {
         );
     }
 
-    sendEditedNote(e) {
-        const token = getJwt();
-        this.setConstantPhotos();
-        console.log(this.state.photoLink);
+    async sendEditedNote(e) {
         e.preventDefault();
+        const token = getJwt();
+        let newPhotos = await uploadPhotos(this.state.photos);
+        let photoLink = [];
+        this.state.existedNotePhotos.forEach(existedPhoto => {photoLink.push(existedPhoto.link)});
+        newPhotos.forEach(newPhoto => {photoLink.push(newPhoto)});
+        console.log(photoLink);
+        this.setState({photoLink});
+
         const endpoint = `http://localhost:8080/notes/${this.props.noteId}`;
         console.log(endpoint);
         axios.put(endpoint, this.state, {
@@ -78,37 +87,15 @@ class EditNoteMain extends Component {
     }
 
     setPhotos(files) {
-        const url = 'http://localhost:8080/uploadFile';
-        let photoLink = this.state.existedNotePhotos;
-
-        files.forEach(element => {
-
-            const formData = new FormData();
-            formData.append('file', element);
-            const config = {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            };
-            axios.post(url, formData, config)
-                .then(response => {
-                    const generatedLink = response.data;
-                    photoLink.push(generatedLink);
-                    console.log("generatedLink - " + generatedLink);
-                });
-
+        this.setState({
+            photos: files
         });
-
-        console.log(photoLink);
-        this.setState({photoLink});
     }
 
     forTest() {
-
         this.setState({
             photoLink: ['https://storage.googleapis.com/travelbook/2jCyerz6API.jpg', 'https://storage.googleapis.com/travelbook/yhJYRnkALho.jpg']
         });
-
     }
 
     setCuisine(e) {
@@ -141,12 +128,11 @@ class EditNoteMain extends Component {
         console.log(endpoint);
         axios.get(endpoint)
             .then(response => {
-                let existedNotePhotos = [];
+                let existedNotePhotos = new Map();
                 for (let i = 0; i < response.data.photoLink.length; i++) {
                     const string = {link: response.data.photoLink[i]};
-                    existedNotePhotos.push(string);
+                    existedNotePhotos.set(response.data.photoLink[i], string);
                 }
-                this.setState({photoLink: existedNotePhotos});
                 this.setState({existedNotePhotos});
             });
 
@@ -170,6 +156,14 @@ class EditNoteMain extends Component {
         }
     }
 
+    deleteExistedPhoto(photolink) {
+        let existedNotePhotos = this.state.existedNotePhotos;
+        existedNotePhotos.delete(photolink);
+        console.log(existedNotePhotos);
+        this.setState({existedNotePhotos});
+        console.log("photo deleted " + photolink);
+    }
+
     render() {
 
         return (
@@ -184,15 +178,11 @@ class EditNoteMain extends Component {
                              setCity={this.setCity}/>
                 <div className="date-field ">
                     <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate} name="date-note"
-                                                              className="date-in"/>
+                                                              className="date-in" required/>
                 </div>
                 <div className="ddescription">
                     <p className="header-text">Description</p>
                     <textarea name="description" value={this.state.description} onChange={this.onChangeDescription}/>
-                </div>
-                <div className="existed-photos">
-                    <div className="header-text">Your Photos</div>
-                    <ExistedPhotos photos={this.state.existedNotePhotos}/>
                 </div>
                 <PhotoUploader setPhotos={this.setPhotos}/>
                 <EditEstimations people={this.state.peopleEstimate} prices={this.state.pricesEstimate}
@@ -204,10 +194,15 @@ class EditNoteMain extends Component {
                     <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox" value={this.state.isPublic}/>
                     <label htmlFor="name-note">public</label>
                 </div>
+                <div className="existed-photos">
+                    <div className="header-text-existed-photos">Your Photos</div>
+                    <ExistedPhotos photos={this.state.existedNotePhotos} deletePhoto={this.deleteExistedPhoto} />
+                </div>
             </form>
         );
     }
 }
 
 export default EditNoteMain;
+
 
