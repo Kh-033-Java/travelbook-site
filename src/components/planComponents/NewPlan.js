@@ -8,6 +8,7 @@ import axios from "axios";
 import * as am4core from "@amcharts/amcharts4/core";
 import {Redirect} from "react-router";
 import {getJwt} from "../../helpers/jwt";
+import {getLogin} from "../../helpers/getLogin";
 
 class NewPlan extends Component{
     constructor(props){
@@ -16,7 +17,7 @@ class NewPlan extends Component{
             country: this.props.countryName,
             cities: [],
             transports: [],
-            userLoginCreator: localStorage.getItem('login'),
+            userLoginCreator: getLogin(),
             linkToUserAvatar: localStorage.getItem('avatar'),
             isPublic: false,
             title: '',

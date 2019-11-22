@@ -9,6 +9,7 @@ import NoteOwner from '../NoteOwner';
 import axios from 'axios';
 import {getJwt} from "../../../helpers/jwt";
 import isAuthorized from "../../checker/authorizationChecker";
+import {getLogin} from "../../../helpers/getLogin";
 
 
 class NoteListElement extends Component {
@@ -68,8 +69,12 @@ class NoteListElement extends Component {
         console.log(this.state.noteId);
 
         const token = getJwt();
-        axios.put(`http://localhost:8080/notes/${this.props.note.id}/like/${localStorage.getItem("login")}`, {
+        var login = getLogin();
+        console.log(token);
+        fetch(`http://localhost:8080/notes/${this.props.note.id}/like/${login}`, {
+            method: 'PUT',
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: token
             }
         }).then((res) => {
@@ -77,10 +82,16 @@ class NoteListElement extends Component {
             this.checkIfAlreadyLiked();
             this.getCountOfLikes();
         })
-    }
+    };
 
     checkIfAlreadyLiked = () => {
-        axios.get(`http://localhost:8080/notes/${this.props.note.id}/liked/${localStorage.getItem("login")}`).then((res) => {
+        var login = getLogin();
+        var token = getJwt();
+        axios.get(`http://localhost:8080/notes/${this.props.note.id}/liked/${login}`, {
+            headers: {
+                Authorization: token
+            }
+        }).then((res) => {
             if (res.data === true) {
                 this.setState({liked: true})
                 console.log(this.state.liked)

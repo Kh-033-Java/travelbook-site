@@ -1,9 +1,10 @@
 import axios from 'axios';
 import * as am4core from "@amcharts/amcharts4/core";
+import {getLogin} from "../../helpers/getLogin";
 
 export default function showUserMap(worldSeries) {
 
-    const login = localStorage.getItem("login");
+    const login = getLogin();
     const endpoint = `http://localhost:8080/users/` + login + `/map`;
     axios.get(endpoint)
         .then(response => {

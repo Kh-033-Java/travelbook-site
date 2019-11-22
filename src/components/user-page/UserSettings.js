@@ -8,6 +8,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import './UserSettingsPage.css'
 import {ValidatorForm} from "react-form-validator-core";
 import TextValidator from "../validations/TextValidator";
+import {getLogin} from "../../helpers/getLogin";
 
 class UserSettings extends Component {
     constructor(props) {
@@ -30,7 +31,8 @@ class UserSettings extends Component {
 
     getUser() {
         let token = getJwt();
-        const url = 'http://localhost:8080/users/' + localStorage.getItem("login");
+        const login = getLogin();
+        const url = 'http://localhost:8080/users/' + login;
 
         axios.get(url, {
             headers: {
@@ -59,9 +61,9 @@ class UserSettings extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
         let token = getJwt();
-        const url = 'http://localhost:8080/users/' + localStorage.getItem("login");
+        const currentLogin = getLogin();
+        const url = 'http://localhost:8080/users/' + currentLogin;
         var {login, password, lastName, firstName, description, avatar} = this.state;
 
         localStorage.setItem("login", login);

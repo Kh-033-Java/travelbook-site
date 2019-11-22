@@ -36,7 +36,6 @@ export default class UserInput extends React.Component {
             .then(res => {
                 let encryptedToken = CryptoJS.AES.encrypt(res.data.token, SECRET_PHRASE);
                 localStorage.setItem(ACCESS_TOKEN, encryptedToken);
-                localStorage.setItem("login", res.data.login);
                 localStorage.setItem("avatar", res.data.avatar);
                 console.log(res.data);
                 console.log(res.data.token);

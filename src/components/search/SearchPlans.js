@@ -3,6 +3,7 @@ import axios from "axios";
 import OnePlane from "./OnePlane";
 import {getJwt} from "../../helpers/jwt";
 import "./SearchPage.css"
+import {getLogin} from "../../helpers/getLogin";
 
 class SearchPlans extends Component {
 
@@ -24,7 +25,7 @@ class SearchPlans extends Component {
 
     componentDidMount() {
         let token = getJwt();
-        const login = localStorage.getItem("login");
+        const login = getLogin();
         let endpoint = `http://localhost:8080/user/${login}/recommendation/plans`;
         axios.get(endpoint, {
             headers: {

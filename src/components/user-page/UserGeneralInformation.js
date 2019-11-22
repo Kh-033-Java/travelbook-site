@@ -3,6 +3,7 @@ import {getJwt} from "../../helpers/jwt";
 import axios from 'axios';
 import './UserMainPage.css';
 import {useParams} from "react-router";
+import {getLogin} from "../../helpers/getLogin";
 
 class UserGeneralInformation extends Component {
     constructor(params) {
@@ -19,7 +20,8 @@ class UserGeneralInformation extends Component {
 
     componentDidMount() {
         let token = getJwt();
-        const url = 'http://localhost:8080/users/' + localStorage.getItem("login");
+        var login = getLogin();
+        const url = 'http://localhost:8080/users/' + login;
 
         axios.get(url, {
             headers: {

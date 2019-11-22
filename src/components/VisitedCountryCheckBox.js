@@ -5,6 +5,7 @@ import axios from 'axios';
 import * as am4core from "@amcharts/amcharts4/core";
 import {getJwt} from "../helpers/jwt";
 import {Redirect} from "react-router";
+import {getLogin} from "../helpers/getLogin";
 
 class VisitedCountryCheckBox extends Component {
     constructor(props) {
@@ -45,7 +46,8 @@ class VisitedCountryCheckBox extends Component {
 
     delAndFill() {
         let token = getJwt();
-        let endpointDidntVisited = `http://localhost:8080/country/${this.props.countryName}/notvisit?user=${localStorage.getItem("login")}`;
+        let login = getLogin();
+        let endpointDidntVisited = `http://localhost:8080/country/${this.props.countryName}/notvisit?user=${login}`;
         let data = new FormData();
         let request = new XMLHttpRequest();
         request.open('POST', endpointDidntVisited);
@@ -74,17 +76,19 @@ class VisitedCountryCheckBox extends Component {
 
 
     componentDidMount() {
-        // let token = getJwt();
-        // axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`, {
-        //     headers: {
-        //         Authorization: token
-        //     }
-        // }).then(res =>{
-        //     this.setState({visitedCountries: res.data.visitedCountries});
-        // }).catch(error => {
-        //     console.log(error);
-        //     return <Redirect to={"errorPage"}/>
-        // });
+        if(isAuthorized()) {
+            let token = getJwt();
+            axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`, {
+                headers: {
+                    Authorization: token
+                }
+            }).then(res => {
+                this.setState({visitedCountries: res.data.visitedCountries});
+            }).catch(error => {
+                console.log(error);
+                return <Redirect to={"errorPage"}/>
+            });
+        }
     };
 
     render() {
