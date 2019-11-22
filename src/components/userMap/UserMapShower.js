@@ -12,18 +12,11 @@ export default function showUserMap(worldSeries) {
 
             const userMap = worldSeries;
 
-            let countryLabels = new Map();
-            countryLabels.set("Ukraine", "UA");
-            countryLabels.set("France", "FR");
-            countryLabels.set("Poland", "PL");
-            countryLabels.set("Germany", "DE");
             countriesPlannedToVisit.forEach(function (element) {
-                const countryLabel = countryLabels.get(element.name);
-                userMap.getPolygonById(countryLabel).fill = am4core.color("#E111F0");
+                userMap.getPolygonById(element.map_id).fill = am4core.color("#E111F0");
             });
             visitedCountries.forEach(function (element) {
-                const countryLabel = countryLabels.get(element.name);
-                userMap.getPolygonById(countryLabel).fill = am4core.color("#67f58d");
+                userMap.getPolygonById(element.map_id).fill = am4core.color("#67f58d");
             });
         });
 

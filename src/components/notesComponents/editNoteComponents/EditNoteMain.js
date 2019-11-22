@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import '../NoteStyling.css'
-import '../newNoteComponents/NewNote.css'
-import City from '../../sidebarComponents/CityProperty'
 import '../../App.css';
 import "../../sidebarComponents/SideBar.css";
 import PhotoUploader from '../newNoteComponents/PhotoUploading.js';
@@ -10,8 +8,7 @@ import axios from 'axios';
 import * as actions from '../../../actions/notesActions'
 import CityForNote from "../../sidebarComponents/CityForNote";
 import {getJwt} from "../../../helpers/jwt";
-import NotesPhotos from '../NotePhotos';
-import GetPhotos from "../../gallery/GetPhotos";
+import ExistedPhotos from "./ExistedPhotos";
 
 class EditNoteMain extends Component {
     constructor(props) {
@@ -24,7 +21,7 @@ class EditNoteMain extends Component {
             login: localStorage.getItem('login'),
             describedCity: '',
             photoLink: [],
-            existedNotePhotos: ['https://storage.googleapis.com/travelbook/2jCyerz6API.jpg']
+            existedNotePhotos: []
         };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
@@ -75,9 +72,9 @@ class EditNoteMain extends Component {
             window.location.href = '/notes';
             console.log("edited");
         }).catch(error => {
-                window.location.href = '/errorPage';
-                console.log(error);
-            });
+            window.location.href = '/errorPage';
+            console.log(error);
+        });
     }
 
     setPhotos(files) {
@@ -106,7 +103,7 @@ class EditNoteMain extends Component {
         this.setState({photoLink});
     }
 
-    setConstantPhotos() {
+    forTest() {
 
         this.setState({
             photoLink: ['https://storage.googleapis.com/travelbook/2jCyerz6API.jpg', 'https://storage.googleapis.com/travelbook/yhJYRnkALho.jpg']
@@ -144,9 +141,13 @@ class EditNoteMain extends Component {
         console.log(endpoint);
         axios.get(endpoint)
             .then(response => {
-                const existedNotePhotos = response.data.photoLink;
+                let existedNotePhotos = [];
+                for (let i = 0; i < response.data.photoLink.length; i++) {
+                    const string = {link: response.data.photoLink[i]};
+                    existedNotePhotos.push(string);
+                }
                 this.setState({photoLink: existedNotePhotos});
-                this.setState({existedNotePhotos})
+                this.setState({existedNotePhotos});
             });
 
     }
@@ -189,7 +190,10 @@ class EditNoteMain extends Component {
                     <p className="header-text">Description</p>
                     <textarea name="description" value={this.state.description} onChange={this.onChangeDescription}/>
                 </div>
-                <GetPhotos photos={this.state.existedNotePhotos}/>
+                <div className="existed-photos">
+                    <div className="header-text">Your Photos</div>
+                    <ExistedPhotos photos={this.state.existedNotePhotos}/>
+                </div>
                 <PhotoUploader setPhotos={this.setPhotos}/>
                 <EditEstimations people={this.state.peopleEstimate} prices={this.state.pricesEstimate}
                                  cuisine={this.state.cuisineEstimate} impression={this.state.commonImpression}
@@ -200,7 +204,6 @@ class EditNoteMain extends Component {
                     <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox" value={this.state.isPublic}/>
                     <label htmlFor="name-note">public</label>
                 </div>
-
             </form>
         );
     }

@@ -22,6 +22,10 @@ class NoteMain extends Component {
         }
     }
 
+    componentDidMount() {
+        localStorage.setItem('existedNotePhotos', this.props.note.photoLink);
+    }
+
     render() {
         return (
             <div className="main-comp main-sidebar">

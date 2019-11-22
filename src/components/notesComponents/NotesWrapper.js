@@ -23,7 +23,7 @@ render()
 {  
     console.log(this.props.notes);
     return(
-<div className={this.props.classWr}>
+    <div className="list-el-container">
 {this.getNotes()}
 
 </div>

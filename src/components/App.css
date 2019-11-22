@@ -253,13 +253,6 @@ aside {
     height: 30px;
 }
 
-
-.header-text {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 27px;
-    text-align: center;
-}
-
 .avatar {
     border-radius: 50%;
     border: 3px solid black;

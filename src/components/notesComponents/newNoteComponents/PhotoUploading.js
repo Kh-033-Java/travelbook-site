@@ -17,7 +17,7 @@ class PhotoUploader extends React.Component {
     render() {
         return (
             <div className="photo-upload">
-                <p className="header-text">Your photos</p>
+                <p className="header-text">Add photos</p>
                 <FilePond name="photos"
                           allowMultiple={true}
                           ref={(ref) => this.pond = ref}
