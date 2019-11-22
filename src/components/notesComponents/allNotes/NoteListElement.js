@@ -31,9 +31,8 @@ class NoteListElement extends Component {
     componentDidMount() {
         console.log(this.props.note.id);
         this.getCountOfLikes();
-        this.checkIfAlreadyLiked();
-
         if (isAuthorized()) {
+            this.checkIfAlreadyLiked();
             this.setState({disabled: true});
         }
     }
@@ -69,8 +68,7 @@ class NoteListElement extends Component {
         console.log(this.state.noteId);
 
         const token = getJwt();
-        var login = getLogin();
-        console.log(token);
+        const login = getLogin();
         fetch(`http://localhost:8080/notes/${this.props.note.id}/like/${login}`, {
             method: 'PUT',
             headers: {
@@ -79,10 +77,12 @@ class NoteListElement extends Component {
             }
         }).then((res) => {
             console.log(res.status)
-            this.checkIfAlreadyLiked();
+            if (isAuthorized()) {
+                this.checkIfAlreadyLiked();
+            }
             this.getCountOfLikes();
         })
-    };
+    }
 
     checkIfAlreadyLiked = () => {
         var login = getLogin();
@@ -148,15 +148,10 @@ class NoteListElement extends Component {
 export default NoteListElement;
 
 function Estimation(props) {
-    var grade = null;
-    if (isAuthorized()) {
-        grade = "grade";
-    } else{
-        grade = "grade-for-unauth";
-    }
-        return (
-            <div className="gen-grade">
-                <div className={grade}>{props.grade()}</div>
-            </div>
-        )
+
+    return (
+        <div className="gen-grade">
+            <div className="grade">{props.grade()}</div>
+        </div>
+    )
 }

@@ -32,7 +32,8 @@ class VisitedCountryCheckBox extends Component {
 
     addAndFill() {
         let token = getJwt();
-        let endpointVisited = `http://localhost:8080/country/${this.props.countryName}/visit?user=${localStorage.getItem("login")}`;
+        let login = getLogin();
+        let endpointVisited = `http://localhost:8080/country/${this.props.countryName}/visit?user=${login}`;
         let data = new FormData();
         let request = new XMLHttpRequest();
         request.open('POST', endpointVisited);
@@ -78,7 +79,8 @@ class VisitedCountryCheckBox extends Component {
     componentDidMount() {
         if(isAuthorized()) {
             let token = getJwt();
-            axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`, {
+            let login = getLogin();
+            axios.get(`http://localhost:8080/users/${login}/map`, {
                 headers: {
                     Authorization: token
                 }

@@ -17,8 +17,7 @@ class CreateFooterForPlan extends Component{
 
     isUsersPlan(){
          let check = false;
-        var login = getLogin();
-        if(this.props.userLoginCreator === login){
+        if(this.props.userLoginCreator === getLogin()){
             check = true;
         }
         return check;
@@ -40,8 +39,6 @@ class CreateFooterForPlan extends Component{
                         }).then(res => {
                             if (res.status === 200) {
                                 alert("Your plan successfully deleted!");
-                                localStorage.clear();
-                                window.location.href = '/travelbook';
                             }
                         });
                     }

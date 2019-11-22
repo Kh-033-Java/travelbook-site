@@ -17,7 +17,7 @@ class MyPhotos extends Component {
 
     componentDidMount() {
         const token = getJwt();
-        var login = getLogin();
+        let login = getLogin();
         const endpoint = `http://localhost:8080/country/${this.props.name}/photos/private?user=${login}`;
         axios.get(endpoint, {
             headers: {
@@ -43,7 +43,6 @@ class MyPhotos extends Component {
             return render
         }else {
             render =  <GetPhotos photos={this.state.photos}/>
-            console.log("AAAAA")
             return render;
 
         }

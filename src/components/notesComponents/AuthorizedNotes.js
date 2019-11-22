@@ -36,7 +36,7 @@ class AuthNotes extends Component {
 
     loadAll() {
         let token = getJwt();
-        var login = getLogin();
+        const login = getLogin();
         axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/${login}`, {
             headers: {
                 Authorization: token
@@ -49,7 +49,7 @@ class AuthNotes extends Component {
 
     loadOnlyUsers() {
         let token = getJwt();
-        var login = getLogin();
+        const login = getLogin();
         axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${login}`, {
             headers: {
                 Authorization: token

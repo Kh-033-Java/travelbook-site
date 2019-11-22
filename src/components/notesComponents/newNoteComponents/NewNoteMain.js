@@ -118,7 +118,7 @@ class NewNoteMain extends Component {
                     <label htmlFor="name-note">Name of the note</label><input type="text" onChange={this.onChangeName}
                                                                               name="name-note"/>
                 </div>
-                <City select_class="city-select" style_class="city-field" set={this.setCity()} countryName={this.props.nameCountry}/>
+                <City select_class="city-select" style_class="city-field" set={this.setCity()} countryName={this.props.countryName}/>
                 <div className="date-field ">
                     <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate} name="date-note"
                                                               className="date-in" required/>
