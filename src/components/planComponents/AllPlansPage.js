@@ -12,19 +12,21 @@ export default class AllPlansPage extends Component {
         super();
         this.state = {
             plans: [],
-            displayData:[]
+            displayData: []
         }
-        this.getAllUserPlans(this.getAllPlansDates);
-        
+        this.getAllUserPlans(() => { this.getAllPlansDates(); this.setDisplayPlans(this.getArrayPlans(this.state.plans)) });
+
 
     }
 
 
     Day = ({ day }) => {
         const onClick = (day) => {
-            
-            console.log(day,'test')
 
+            let date = new Date(day);
+            date = new Date(date.setHours(date.getHours()+2));
+            const filteredData = this.state.plans.filter((el)=> new Date(el.date).getTime() === date.getTime());
+            this.setState({displayData: this.getArrayPlans(filteredData)})
         }
 
         return (
@@ -34,34 +36,28 @@ export default class AllPlansPage extends Component {
 
     async getAllUserPlans(callback) {
         const endpoint = `http://localhost:8080/user/${localStorage.getItem('login')}/plans`;
-        const response = await Axios.get(endpoint).then(async response => { this.setState({ plans: await response.data}, callback) });
+        const response = await Axios.get(endpoint).then(async response => { this.setState({ plans: await response.data }, callback) });
 
     }
 
-    getArrayPlans = () => {
-        const plans = [];
+    getArrayPlans = (plans) => {
+        const temp = [];
         const { setId } = this.props;
-        this.state.plans.forEach(e => plans.push(<OnePlanCreator plan={e} setId={setId} />));
-        return plans;
+        plans.forEach(e => temp.push(<OnePlanCreator key ={e.id} plan={e} setId={setId} />));
+        return temp;
     };
 
-    setDisplayPlans = (plans, callback) =>{
-        console.log(this.state.plans, "setDisplay")
-        this.setState({displayData: plans}, callback)
+    setDisplayPlans = (plans, callback) => {
+        this.setState({ displayData: plans }, callback)
     }
-
-    onChange = date => console.log(date, '123')
 
     getAllPlansDates = (callback) => {
         const { plans } = this.state;
         const dates = plans.map((el) => el.date.substring(0, 10))
-        console.log(dates, this.state.plans, 'return dates');
-        //return dates;
-        this.setState(() => { return { dates: dates } },callback);
+        this.setState(() => { return { dates: dates } }, callback);
 
     }
     componentWillUpdate() {
-        console.log(this.state.plans, this.state.dates, 'update')
         this.render();
 
     }
@@ -69,10 +65,9 @@ export default class AllPlansPage extends Component {
 
     render() {
         if (isAuthorized && this.state.dates !== undefined) {
-            console.log(this.state.displayData, 'plans');
 
             return (
-                <aside className="rightbar " style={{overflow: "auto"}}>
+                <aside className="rightbar " style={{ overflow: "auto" }}>
                     <h3 className="note-title container header-text" style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>All plans</h3>
                     <div className="calendar">
                         <ThemeProvider theme={theme}>
@@ -87,7 +82,7 @@ export default class AllPlansPage extends Component {
                         </ThemeProvider>
                     </div>
                     <div className="allUserPlans" >
-                        {this.getArrayPlans()}
+                        {this.state.displayData.length > 0? this.state.displayData : <p>You dont have any plans</p> }
                     </div>
                 </aside>
             )
