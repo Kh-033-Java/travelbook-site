@@ -21,7 +21,6 @@ class GeneralInfo extends Component {
         };
 
 
-
         this.openFunction = this.openFunction.bind(this);
         props.renderFunc(this.openFunction);
     }
@@ -36,7 +35,7 @@ class GeneralInfo extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.openFunction();
     }
 
@@ -80,7 +79,7 @@ class GeneralInfo extends Component {
 
 
     render() {
-        if(this.state.country !== this.props.name){
+        if (this.state.country !== this.props.name) {
             this.openFunction()
         }
         if (this.state.isInfoValid) {
@@ -95,7 +94,8 @@ class GeneralInfo extends Component {
                     </div>
                     <div className="weather">Weather in capital: {this.state.weather.temperature}
                     </div>
-                    <img className="weather-img" src={`http://openweathermap.org/img/wn/${this.state.weather.description}@2x.png`}/>
+                    <img className="weather-img"
+                         src={`http://openweathermap.org/img/wn/${this.state.weather.description}@2x.png`}/>
                     <div
                         className="description-part-render">Description: {this.state.description.commonInformation}</div>
                     <div className="general-photos">
