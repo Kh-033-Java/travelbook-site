@@ -6,6 +6,7 @@ import ToAddFooter from "../sidebarComponents/ToAddFooter.js";
 import './AllNotesPage.css';
 import axios from 'axios';
 import {getJwt} from "../../helpers/jwt";
+import {getLogin} from "../../helpers/getLogin";
 
 
 class AuthNotes extends Component {
@@ -35,8 +36,8 @@ class AuthNotes extends Component {
 
     loadAll() {
         let token = getJwt();
-        axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/${localStorage.getItem("login"
-        )}`, {
+        const login = getLogin();
+        axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/${login}`, {
             headers: {
                 Authorization: token
             }
@@ -48,9 +49,8 @@ class AuthNotes extends Component {
 
     loadOnlyUsers() {
         let token = getJwt();
-
-        axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${localStorage.getItem("login"
-        )}`, {
+        const login = getLogin();
+        axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${login}`, {
             headers: {
                 Authorization: token
             }

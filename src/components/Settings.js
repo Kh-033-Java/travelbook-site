@@ -1,12 +1,11 @@
 import React from 'react'
-import {Route, NavLink} from 'react-router-dom';
+import {NavLink, Route} from 'react-router-dom';
 import './App.css';
 import LogOut from "./user-page/logOut";
-import icon from './icons/cd143e9b-979b-4fd5-ba9e-6272c5598736.jpg';
 import {avatar} from './user-page/avatar';
 import UnauthorizedSettings from './UnauthorizedSettings.js'
 import isAuthorized from './checker/authorizationChecker.js'
-import {MAIN_USER_LOGIN_ROUTE} from "../constants/constants";
+import {getLogin} from "../helpers/getLogin";
 
 function Settings(props){
     return(
@@ -25,7 +24,7 @@ function Settings(props){
                     </NavLink>
                 </div>
                 <div>
-                    <Route path={MAIN_USER_LOGIN_ROUTE}>
+                    <Route path={/userPage/ + getLogin()}>
                         {avatar}
                     </Route>
                 </div>

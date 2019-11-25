@@ -6,6 +6,7 @@ import '../App.css';
 import './NewPlan.css';
 import "../sidebarComponents/SideBar.css";
 import {confirmAlert} from "react-confirm-alert";
+import {getLogin} from "../../helpers/getLogin";
 
 class CreateFooterForPlan extends Component{
      constructor(props){
@@ -16,7 +17,7 @@ class CreateFooterForPlan extends Component{
 
     isUsersPlan(){
          let check = false;
-        if(this.props.userLoginCreator === localStorage.getItem('login')){
+        if(this.props.userLoginCreator === getLogin()){
             check = true;
         }
         return check;
@@ -38,8 +39,6 @@ class CreateFooterForPlan extends Component{
                         }).then(res => {
                             if (res.status === 200) {
                                 alert("Your plan successfully deleted!");
-                                localStorage.clear();
-                                window.location.href = '/travelbook';
                             }
                         });
                     }
