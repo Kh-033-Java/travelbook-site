@@ -3,7 +3,7 @@ import ReactDOM, { Link } from 'react-router-dom'
 import './App.css';
 import './searchComponents/Dropdown.css';
 import Axios from 'axios';
-import Checkbox from './searchComponents/Checkbox';
+import {Checkbox} from './searchComponent/Checkbox'
 
 class Search extends Component {
 
