@@ -9,12 +9,18 @@ import * as am4core from "@amcharts/amcharts4/core";
 import {Redirect} from "react-router";
 import {getJwt} from "../../helpers/jwt";
 
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
 class NewPlan extends Component{
     constructor(props){
         super(props);
         this.state = {
             country: this.props.countryName,
             cities: [],
+            citiesTo: [],
             transports: [],
             userLoginCreator: localStorage.getItem('login'),
             linkToUserAvatar: localStorage.getItem('avatar'),
@@ -22,10 +28,10 @@ class NewPlan extends Component{
             title: '',
             date: '',
             nameCityToGo: '',
-            nameCityFrom: '',
+            nameCityFrom: 'Kyiv',
             budgetMin: '',
             budgetMax: '',
-            transportType: '',
+            transportType: 'Plane',
             amountOfPeople: '',
             description: ''
         };
@@ -70,24 +76,34 @@ class NewPlan extends Component{
             console.log(error);
             return <Redirect to="errorPage"/>
         });
-        axios.get('http://localhost:8080/cities', {
-            headers: {
-                Authorization: token
-            }
-        })
+        axios.get('http://localhost:8080/cities')
             .then(res => {
                 this.setState({cities: res.data});
-                console.log(res.data);
+            }).catch(error => {
+                console.log(error);
+                return <Redirect to={"errorPage"}/>
+        });
+        axios.get(`http://localhost:8080/country/${this.state.country}/cities`)
+            .then(res => {
+                this.setState({citiesTo: res.data});
             }).catch(error => {
                 console.log(error);
                 return <Redirect to={"errorPage"}/>
         })
     }
 
-    getCities() {
+    getAllCities() {
         let options = [];
         for (let i = 0; i < this.state.cities.length; i++){
             options.push(<option value={this.state.cities[i].name}> {`${this.state.cities[i].name}`}</option>)
+        }
+        return options;
+    };
+
+    getCountryCities() {
+        let options = [];
+        for (let i = 0; i < this.state.citiesTo.length; i++){
+            options.push(<option value={this.state.citiesTo[i].name}> {`${this.state.citiesTo[i].name}`}</option>)
         }
         return options;
     };
@@ -110,41 +126,41 @@ class NewPlan extends Component{
                 <Header title = "New Plan" countryName={this.props.countryName}/>
                 <form name="addPlan" id="addPlan" className="main-sidebar  main-comp-newplan"
                       onSubmit={this.sendNewPlan}>
-                    <div className="title-field prop">
-                        <div>Title of the plan</div>
+                    <div className="title-field prop-plan">
+                        <div>Title </div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name = "title" value={this.state.title}/>
                     </div>
-                    <div className="date-field-plan prop">
+                    <div className="date-field-plan prop-plan">
                         <div>Date</div>
                         <input type="date" onChange={this.handleChange} name="date" className="date-in" value={this.state.date} required/>
                     </div>
-                    <div className="city-field-from prop">
+                    <div className="city-field-from prop-plan">
                         <div>City from </div>
                         <select className="city-select" name="nameCityFrom" value = {this.state.nameCityFrom} onChange={this.handleChange}>
-                            {this.getCities()}
+                            {this.getAllCities()}
                         </select>
                     </div>
-                    <div className="city-field-to prop">
+                    <div className="city-field-to prop-plan">
                         <div>City to </div>
                         <select className="city-select" name="nameCityToGo" value = {this.state.nameCityToGo} onChange={this.handleChange}>
-                            {this.getCities()}
+                            {this.getCountryCities()}
                         </select>
                     </div>
-                    <div className="budgetMin-field prop">
+                    <div className="budgetMin-field prop-plan">
                         <div>Budget min</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name ="budgetMin" value={this.state.budgetMin}/>
                     </div>
-                    <div className="budgetMax-field prop">
+                    <div className="budgetMax-field prop-plan">
                         <div>Budget Max</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name="budgetMax" value={this.state.budgetMax}/>
                     </div>
-                    <div className="transport-field prop">
+                    <div className="transport-field prop-plan">
                         <div>Transport </div>
                         <select className="transport-select" name="transportType" value={this.state.transportType} onChange={this.handleChange}>
                             {this.getTransport()}
                         </select>
                     </div>
-                    <div className="amount-field prop">
+                    <div className="amount-field prop-plan">
                         <div>Amount of people</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name="amountOfPeople" value={this.state.amountOfPeople}/>
                     </div>
@@ -157,7 +173,9 @@ class NewPlan extends Component{
                         htmlFor="name-plan">public</label>
                     </div>
                 </form>
-                <FooterSubmit text ="Add plan" for="addPlan"/>
+                <div className ="create-plan-button">
+                    <input type='submit' className="create-plan-button submitButton" form ="addPlan" value="Add Plan"/>
+                </div>
             </aside>
         );
     }

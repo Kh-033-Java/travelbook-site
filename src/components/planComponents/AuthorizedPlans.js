@@ -1,8 +1,15 @@
 import React, {Component} from "react";
 import '../App.css';
+import './AllPlansPage.css'
 import axios from 'axios';
 import {getJwt} from "../../helpers/jwt";
 import OnePlanCreator from "./OnePlanCreator";
+import {getLogin} from "../../helpers/getLogin";
+
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
 
 class AuthorizedPlans extends Component {
 
@@ -11,7 +18,7 @@ class AuthorizedPlans extends Component {
         this.state = {
             isChecked: false,
             plans: [],
-        }
+        };
         this.onCheck = this.onCheck.bind(this);
         this.showAllPlans = this.showAllPlans.bind(this);
         this.showOnlyUsersPlans = this.showOnlyUsersPlans.bind(this);
@@ -32,7 +39,8 @@ class AuthorizedPlans extends Component {
 
     showAllPlans() {
         let token = getJwt();
-        let endpointCheckedTrue = `http://localhost:8080/country/${this.props.countryName}/plans?user=${localStorage.getItem("login")}`;
+        var login = getLogin();
+        let endpointCheckedTrue = `http://localhost:8080/country/${this.props.countryName}/plans?user=${login}`;
         axios.get(endpointCheckedTrue, {
             headers: {
                 Authorization: token
@@ -46,7 +54,8 @@ class AuthorizedPlans extends Component {
 
     showOnlyUsersPlans() {
         let token = getJwt();
-        let endpointCheckedFalse = `http://localhost:8080/country/${this.props.countryName}/plans/private?user=${localStorage.getItem("login")}`;
+        var login = getLogin();
+        let endpointCheckedFalse = `http://localhost:8080/country/${this.props.countryName}/plans/private?user=${login}`;
         axios.get(endpointCheckedFalse, {
             headers: {
                 Authorization: token
@@ -63,7 +72,7 @@ class AuthorizedPlans extends Component {
         const plans = [];
         this.state.plans.forEach(e=>plans.push(<OnePlanCreator plan = {e} setId = {this.props.setId} countryName = {this.props.countryName}/>));
         return plans;
-    }
+    };
 
     componentDidMount() {
         this.showAllPlans();
@@ -85,7 +94,7 @@ class AuthorizedPlans extends Component {
                             </label>
                         </form>
                     </div>
-                    <div className = "allPlans container">
+                    <div className = "all-plans container">
                         {this.getArrayPlans()}
                     </div>
                 </div>

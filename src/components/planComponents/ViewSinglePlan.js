@@ -7,6 +7,14 @@ import CreateFooterForPlan from "./CreateFooterForPlan";
 import {Redirect} from "react-router";
 import axios from 'axios';
 import Header from "../sidebarComponents/SidebarHeader";
+import {confirmAlert} from "react-confirm-alert";
+import {getJwt} from "../../helpers/jwt";
+import {getLogin} from "../../helpers/getLogin";
+
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
 
 class ViewSinglePlan extends Component {
     constructor(props) {
@@ -26,6 +34,47 @@ class ViewSinglePlan extends Component {
             amountOfPeople: '',
             description: ''
         };
+        this.toCreateNote = this.toCreateNote.bind(this);
+        this.isUsersPlan = this.isUsersPlan.bind(this);
+    }
+
+    toCreateNote () {
+        confirmAlert({
+            title: 'Confirm to submit',
+            message: 'Do you want to delete this plan and create new note of this trip?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        let token = getJwt();
+                        axios.delete(`http://localhost:8080/plans/${this.props.planId}`, {
+                            headers: {
+                                Authorization: token
+                            }
+                        }).then(res => {
+                            if (res.status === 200) {
+                                alert("Your plan successfully deleted!");
+                                window.location.href = "/newnote";
+                            }
+                        });
+                    }
+                },
+                {
+                    label: 'No',
+                    onClick: () => alert('Click No')
+                }
+            ]
+        });
+    };
+
+
+    isUsersPlan(){
+        let check = false;
+        const login = getLogin();
+        if(this.state.userLoginCreator === login){
+            check = true;
+        }
+        return check;
     }
 
     componentDidMount() {
@@ -58,6 +107,13 @@ class ViewSinglePlan extends Component {
     }
 
     render() {
+        let button = <React.Fragment/>;
+        if(this.isUsersPlan()){
+            button =
+                    <div className="done">
+                        <button className="button-done" onClick={this.toCreateNote}>Done</button>
+                    </div>
+        }
         return (
             <aside className="rightbar whole-comp ">
                 <Header title = "View Plan" countryName={this.props.countryName}/>
@@ -65,8 +121,9 @@ class ViewSinglePlan extends Component {
                 <div className="plan-owner plan-owner-gen main-sidebar">
                     <div><img src={this.state.linkToUserAvatar} alt={""} className="account-image"/></div>
                     <div className="account-label">{this.state.userLoginCreator}</div>
+                    {button}
                 </div>
-                <div className={"planTitle  prop"}>
+                <div className="planTitle  prop">
                     <div>Title </div>
                     <textarea value={this.state.title} className="" readOnly/>
                 </div>
@@ -98,7 +155,7 @@ class ViewSinglePlan extends Component {
                     <div>Amount of people </div>
                     <textarea value={this.state.amountOfPeople} className="" readOnly/>
                 </div>
-                <div className="description-newplan">
+                <div className="description-view-plan">
                     <div className="title-plan">Description</div>
                     <textarea value={this.state.description} readOnly/>
                 </div>
