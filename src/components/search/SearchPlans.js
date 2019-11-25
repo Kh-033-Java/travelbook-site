@@ -89,7 +89,7 @@ class SearchPlans extends Component {
                             <h1>Filters</h1>
                         </div>
                         <div className="search-filter">
-                            <div className={"prop-s"}>
+                            <div>
                                 <div>"City From"</div>
                                 <input type={"text"} placeholder={cityFrom} onChange={e => {
                                     this.setState({
@@ -98,7 +98,7 @@ class SearchPlans extends Component {
                                     })
                                 }}/>
                             </div>
-                            <div className={"prop-s"}>
+                            <div>
                                 <div>"City To"</div>
                                 <input type={"text"} placeholder={cityTo} onChange={e => {
                                     this.setState({
@@ -107,7 +107,7 @@ class SearchPlans extends Component {
                                     })
                                 }}/>
                             </div>
-                            <div className={"prop-s"}>
+                            <div>
                                 <div>"Transport"</div>
                                 <input type={"text"} placeholder={transport} onChange={e => {
                                     this.setState({
@@ -116,11 +116,8 @@ class SearchPlans extends Component {
                                     })
                                 }}/>
                             </div>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <div className={"prop-s"}>
-                                <div>"BudgetMin"</div>
+                            <div>
+                                <div>"Budget"</div>
                                 <input type={"text"} placeholder={budgetMin} onChange={e => {
                                     this.setState({
                                         ...this.state,
@@ -128,8 +125,7 @@ class SearchPlans extends Component {
                                     })
                                 }}/>
                             </div>
-                            <div className={"prop-s"}>
-                                <div>"BudgetMax"</div>
+                            <div>
                                 <input type={"text"} placeholder={budgetMax} onChange={e => {
                                     this.setState({
                                         ...this.state,
@@ -137,8 +133,8 @@ class SearchPlans extends Component {
                                     })
                                 }}/>
                             </div>
-                            <div className={"prop-s"}>
-                                <div>"Date From"</div>
+                            <div>
+                                <div>"Date"</div>
                                 <input type="date" onChange={e => {
                                     this.setState({
                                         ...this.state,
@@ -148,8 +144,7 @@ class SearchPlans extends Component {
                                        name="date-note"
                                        className="date-in" required/>
                             </div>
-                            <div className={"prop-s"}>
-                                <div>"Date To"</div>
+                            <div>
                                 <input type="date" onChange={e => {
                                     this.setState({
                                         ...this.state,
@@ -158,8 +153,8 @@ class SearchPlans extends Component {
                                 }} name="date-note"
                                        className="date-in" required/>
                             </div>
-                            <div className={"prop-s"}>
-                                <div>"PeopleMin"</div>
+                            <div >
+                                <div>"Amount of people"</div>
                                 <input type={"text"} placeholder={amountMin} onChange={e => {
                                     this.setState({
                                         ...this.state,
@@ -167,8 +162,7 @@ class SearchPlans extends Component {
                                     })
                                 }}/>
                             </div>
-                            <div className={"prop-s"}>
-                                <div>"PeopleMax"</div>
+                            <div >
                                 <input type={"text"} placeholder={amountMax} onChange={e => {
                                     this.setState({
                                         ...this.state,

@@ -301,10 +301,12 @@ aside {
 }
 .search-plan {
     display: grid;
+    height: 83vh;
 }
 
 .plan-scroll {
-    height: 73vh;
+    height: 69vh;
     overflow: scroll;
+
 }
 
