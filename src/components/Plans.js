@@ -12,13 +12,13 @@ function Plans(props) {
 
         !isAuthorized() ?
             <aside className="rightbar whole-comp-no-footer ">
-                <Header title="Plans" countryName={props.name}/>
-                <UnAuthorizedPlans countryName={props.name} id={props.id} setId={props.setId}/>
+                <Header title="Plans" countryName={props.countryName}/>
+                <UnAuthorizedPlans countryName={props.countryName} id={props.id} setId={props.setId}/>
             </aside>
             :
             <aside className="rightbar whole-comp ">
-                <Header title="Plans" countryName={props.name}/>
-                <AuthorizedPlans countryName={props.name} id={props.id} worldSeries={props.worldSeries}
+                <Header title="Plans" countryName={props.countryName}/>
+                <AuthorizedPlans countryName={props.countryName} id={props.id} worldSeries={props.worldSeries}
                                  setId={props.setId}/>
                 <div className="create-plan-button  ">
                     <NavLink to="/newPlan">

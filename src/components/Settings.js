@@ -16,6 +16,12 @@ function Settings(props){
             :<React.Fragment>
                 <LogOut/>
                 <div>
+                    <NavLink to="/friends">
+                        <div className="friends-button"/>
+                    </NavLink>
+                </div>
+                <div>
+                    {/*<SearchPlansHeader/>*/}
                     <NavLink to="/settings">
                         <div className="settings-button" />
                     </NavLink>

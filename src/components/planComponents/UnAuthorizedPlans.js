@@ -1,7 +1,13 @@
 import React, {Component} from "react";
 import OnePlanCreator from "./OnePlanCreator.js";
-import '../sidebarComponents/SideBar.css'
+import '../sidebarComponents/SideBar.css';
+import './AllPlansPage.css'
 import axios from 'axios';
+
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
 
 class UnAuthorizedPlans extends Component{
 
@@ -16,7 +22,7 @@ class UnAuthorizedPlans extends Component{
     componentDidMount() {
         let endpoint= `http://localhost:8080/country/${this.props.countryName}/plans`;
         axios.get(endpoint).then(res => {
-            this.setState({...this.state, plans: res.data})
+            this.setState({...this.state, plans: res.data});
             console.log(res.data);
         }).catch(error => {
             throw error;
@@ -31,8 +37,8 @@ class UnAuthorizedPlans extends Component{
 
     render() {
        return(
-            <div className = "list-main-unauth  main-sidebar ">
-                <div className={"allPlans container"}>
+            <div className = "list-main-plan-unauth  main-sidebar ">
+                <div className="all-plans-unauth container">
                     {this.getArrayPlans()}
                 </div>
             </div>
