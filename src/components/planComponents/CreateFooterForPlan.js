@@ -19,12 +19,13 @@ class CreateFooterForPlan extends Component{
      constructor(props){
          super(props);
          this.deletePlan = this.deletePlan.bind(this);
-         this.isUsersPlan = this.isUsersPlan.bind(this);
+         this.isUsersPlan = this.isUsersPlan.bind(this)
      }
 
     isUsersPlan(){
          let check = false;
-        if(this.props.userLoginCreator === getLogin()){
+         const login = getLogin();
+        if(this.props.userLoginCreator === login){
             check = true;
         }
         return check;
