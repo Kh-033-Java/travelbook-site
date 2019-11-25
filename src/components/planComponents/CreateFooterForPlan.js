@@ -6,6 +6,7 @@ import '../App.css';
 import './NewPlan.css';
 import "../sidebarComponents/SideBar.css";
 import {confirmAlert} from "react-confirm-alert";
+import {getLogin} from "../../helpers/getLogin";
 
 
 /**
@@ -23,7 +24,7 @@ class CreateFooterForPlan extends Component{
 
     isUsersPlan(){
          let check = false;
-        if(this.props.userLoginCreator === localStorage.getItem('login')){
+        if(this.props.userLoginCreator === getLogin()){
             check = true;
         }
         return check;

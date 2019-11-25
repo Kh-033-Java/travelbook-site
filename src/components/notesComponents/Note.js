@@ -1,13 +1,12 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import '../App.css';
 import Header from "../sidebarComponents/SidebarHeader";
-import"../sidebarComponents/SideBar.css";
+import "../sidebarComponents/SideBar.css";
 import NoteMain from "./NoteMain";
-import * as actions from '../../actions/notesActions'
 import isAuthorized from '../checker/authorizationChecker'
 import FooterWithEdit from '../sidebarComponents/FooterWithEdit'
 import axios from 'axios'
-import {getJwt} from "../../helpers/jwt";
+import {getLogin} from "../../helpers/getLogin";
 
 
 class Note extends Component{
@@ -29,7 +28,7 @@ console.log(this.props.noteId)
 }
 theSameLogin(login){
     console.log(localStorage.getItem('country'))
-    return (login===localStorage.getItem('login'))
+    return (login===getLogin())
 }
     render(){
     

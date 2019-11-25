@@ -5,6 +5,7 @@ import axios from 'axios';
 import * as am4core from "@amcharts/amcharts4/core";
 import {getJwt} from "../helpers/jwt";
 import {Redirect} from "react-router";
+import {getLogin} from "../helpers/getLogin";
 
 
 /**
@@ -38,7 +39,8 @@ class VisitedCountryCheckBox extends Component {
 
     addAndFill() {
         let token = getJwt();
-        let endpointVisited = `http://localhost:8080/country/${this.props.countryName}/visit?user=${localStorage.getItem("login")}`;
+        let login = getLogin();
+        let endpointVisited = `http://localhost:8080/country/${this.props.countryName}/visit?user=${login}`;
         let data = new FormData();
         let request = new XMLHttpRequest();
         request.open('POST', endpointVisited);
@@ -52,7 +54,8 @@ class VisitedCountryCheckBox extends Component {
 
     delAndFill() {
         let token = getJwt();
-        let endpointDidntVisited = `http://localhost:8080/country/${this.props.countryName}/notvisit?user=${localStorage.getItem("login")}`;
+        let login = getLogin();
+        let endpointDidntVisited = `http://localhost:8080/country/${this.props.countryName}/notvisit?user=${login}`;
         let data = new FormData();
         let request = new XMLHttpRequest();
         request.open('POST', endpointDidntVisited);
@@ -80,13 +83,20 @@ class VisitedCountryCheckBox extends Component {
 
 
     componentDidMount() {
-        axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`)
-            .then(res => {
+        if(isAuthorized()) {
+            let token = getJwt();
+            let login = getLogin();
+            axios.get(`http://localhost:8080/users/${login}/map`, {
+                headers: {
+                    Authorization: token
+                }
+            }).then(res => {
                 this.setState({visitedCountries: res.data.visitedCountries});
             }).catch(error => {
-            console.log(error);
-            return <Redirect to={"errorPage"}/>
-        });
+                console.log(error);
+                return <Redirect to={"errorPage"}/>
+            });
+        }
     };
 
     render() {
