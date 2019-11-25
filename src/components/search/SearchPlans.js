@@ -91,7 +91,7 @@ class SearchPlans extends Component {
                         <div className="search-filter">
                             <div>
                                 <div>"City From"</div>
-                                <input type={"text"} placeholder={cityFrom} onChange={e => {
+                                <input className="input-field-search" type={"text"} placeholder={cityFrom} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         cityFrom: e.target.value,
@@ -100,7 +100,7 @@ class SearchPlans extends Component {
                             </div>
                             <div>
                                 <div>"City To"</div>
-                                <input type={"text"} placeholder={cityTo} onChange={e => {
+                                <input className="input-field-search" type={"text"} placeholder={cityTo} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         cityTo: e.target.value,
@@ -109,7 +109,7 @@ class SearchPlans extends Component {
                             </div>
                             <div>
                                 <div>"Transport"</div>
-                                <input type={"text"} placeholder={transport} onChange={e => {
+                                <input className="input-field-search" type={"text"} placeholder={transport} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         transport: e.target.value,
@@ -118,7 +118,7 @@ class SearchPlans extends Component {
                             </div>
                             <div>
                                 <div>"Budget"</div>
-                                <input type={"text"} placeholder={budgetMin} onChange={e => {
+                                <input className="input-field-search" type={"text"} placeholder={budgetMin} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         budgetMin: e.target.value,
@@ -126,7 +126,7 @@ class SearchPlans extends Component {
                                 }}/>
                             </div>
                             <div>
-                                <input type={"text"} placeholder={budgetMax} onChange={e => {
+                                <input className="input-field-search" type={"text"} placeholder={budgetMax} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         budgetMax: e.target.value,
@@ -145,7 +145,7 @@ class SearchPlans extends Component {
                                        className="date-in" required/>
                             </div>
                             <div>
-                                <input type="date" onChange={e => {
+                                <input  type="date" onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         dateTo: e.target.value,
@@ -155,7 +155,7 @@ class SearchPlans extends Component {
                             </div>
                             <div >
                                 <div>"Amount of people"</div>
-                                <input type={"text"} placeholder={amountMin} onChange={e => {
+                                <input className="input-field-search" type={"text"} placeholder={amountMin} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         amountMin: e.target.value,
@@ -163,7 +163,7 @@ class SearchPlans extends Component {
                                 }}/>
                             </div>
                             <div >
-                                <input type={"text"} placeholder={amountMax} onChange={e => {
+                                <input className="input-field-search" type={"text"} placeholder={amountMax} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         amountMax: e.target.value,
