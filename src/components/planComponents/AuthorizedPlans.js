@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import '../App.css';
+import './AllPlansPage.css'
 import axios from 'axios';
 import {getJwt} from "../../helpers/jwt";
 import OnePlanCreator from "./OnePlanCreator";
@@ -90,7 +91,7 @@ class AuthorizedPlans extends Component {
                             </label>
                         </form>
                     </div>
-                    <div className = "allPlans container">
+                    <div className = "all-plans container">
                         {this.getArrayPlans()}
                     </div>
                 </div>

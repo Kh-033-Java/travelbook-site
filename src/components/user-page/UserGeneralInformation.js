@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { getJwt } from "../../helpers/jwt";
 import axios from 'axios';
 import './UserMainPage.css';
-import OneFollower from "../friendsComponents/OneFollower";
 import {useParams} from "react-router";
 
 class UserGeneralInformation extends Component {
@@ -19,7 +18,6 @@ class UserGeneralInformation extends Component {
         };
         this.isFollowing = this.isFollowing.bind(this);
         this.addToFollowing = this.addToFollowing.bind(this);
-        // this.getFollowing = this.getFollowing.bind(this);
         }
 
     componentWillReceiveProps(newProps) {

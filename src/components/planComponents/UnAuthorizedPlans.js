@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import OnePlanCreator from "./OnePlanCreator.js";
-import '../sidebarComponents/SideBar.css'
+import '../sidebarComponents/SideBar.css';
+import './AllPlansPage.css'
 import axios from 'axios';
 
 /**
@@ -36,8 +37,8 @@ class UnAuthorizedPlans extends Component{
 
     render() {
        return(
-            <div className = "list-main-unauth  main-sidebar ">
-                <div className={"allPlans container"}>
+            <div className = "list-main-plan-unauth  main-sidebar ">
+                <div className="all-plans-unauth container">
                     {this.getArrayPlans()}
                 </div>
             </div>

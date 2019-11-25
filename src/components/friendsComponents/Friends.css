@@ -7,12 +7,11 @@
     border-left: silver;
     border-top: white;
     border-bottom: white;
-    background: silver;
+    cursor: pointer;
 }
 
-.following-page:active{
-    background: grey;
-    transition: background 0s;
+.following-page-button:focus{
+    background: #76757b;
 }
 
 .followers-page-button{
@@ -22,11 +21,11 @@
     width: 50%;
     height: 7%;
     border: none;
+    cursor: pointer;
 }
 
-.followers-page:active{
-    background: grey;
-    transition: background 0s;
+.followers-page-button:focus{
+    background: #76757b;
 }
 
 .all-friends {
@@ -52,7 +51,7 @@
     text-align: center;
 }
 
-.account-label {
+.account-label-friends {
     grid-row: 1;
     grid-column: 2;
     padding-top: 8%;

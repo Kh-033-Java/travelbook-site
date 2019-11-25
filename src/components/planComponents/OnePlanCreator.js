@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './AllPlansPage.css'
+import './SinglePlan.css'
 import {Redirect} from 'react-router-dom';
 import * as moment from 'moment';
 

@@ -81,9 +81,8 @@ class OneFollower extends Component {
         return(
             <div className="one-friend-cont">
                 <div><img src={this.state.link} alt={""} className="account-image"/></div>
-                <div className="account-label">
+                <div className="account-label-friends">
                     <Link to={`/userPage/${this.state.login}`}> {this.state.login} </Link>
-                    {/*{this.state.login}*/}
                 </div>
                 {!this.isFollowing() ?
                 <div className="following">

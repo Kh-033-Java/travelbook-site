@@ -68,9 +68,8 @@ class VisitedCountryCheckBox extends Component {
         let check = false;
         let countries = this.state.visitedCountries;
         if (countries.length !== 0) {
-            console.log(countries.length);
-            for(let i = 0; i < countries.length; i++) {
-                if (countries[i].name === this.props.countryName) {
+            for (let i = 0; i < countries.length; i++) {
+                if (countries[i].name === localStorage.getItem('country')) {
                     check = true;
                     break;
                 }
@@ -82,46 +81,29 @@ class VisitedCountryCheckBox extends Component {
 
     componentDidMount() {
         axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`)
-            .then(res =>{
-            this.setState({visitedCountries: res.data.visitedCountries});
-        }).catch(error => {
+            .then(res => {
+                this.setState({visitedCountries: res.data.visitedCountries});
+            }).catch(error => {
             console.log(error);
             return <Redirect to={"errorPage"}/>
         });
     };
 
     render() {
-        if(this.isVisitedCountry()){
-            return (
-                isAuthorized() ?
-                    <div className="visited">
-                        <form name ="visitedCountry">
-                            <input type="checkbox"
-                                   name='isVisited'
-                                   id='isVisited'
-                                   checked= 'true'
-                                   readOnly
-                            />
-                            <label htmlFor="isVisited">
-                                Visited
-                            </label>
-                        </form>
-                    </div>
-                    : <React.Fragment/>
-            );
+        let checkBox;
+        if (this.isVisitedCountry()) {
+            checkBox =
+                <input type="checkbox" name='isVisited' id='isVisited' checked='true' readOnly/>
+        } else {
+            checkBox =
+                <input type="checkbox" name='isVisited' id='isVisited' onClick={e => this.onCheck(e)}/>
         }
         return (
             isAuthorized() ?
                 <div className="visited">
-                    <form name ="visitedCountry">
-                        <input type="checkbox"
-                               name='isVisited'
-                               id='isVisited'
-                               onClick={e => this.onCheck(e)}
-                        />
-                        <label htmlFor="isVisited">
-                            Visited
-                        </label>
+                    <form name="visitedCountry">
+                        {checkBox}
+                        <label htmlFor="isVisited">Visited</label>
                     </form>
                 </div>
                 : <React.Fragment/>

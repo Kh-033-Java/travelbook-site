@@ -1,15 +1,14 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import '../App.css';
 import './SinglePlan.css';
 import './NewPlan.css';
-import"../sidebarComponents/SideBar.css";
+import "../sidebarComponents/SideBar.css";
 import Header from "../sidebarComponents/SidebarHeader"
-import FooterSubmit from "../sidebarComponents/FooterSubmit";
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import {getJwt} from "../../helpers/jwt";
 import * as moment from 'moment';
-
+import NewNote from "../notesComponents/newNoteComponents/NewNote";
 
 /**
  *
@@ -48,7 +47,6 @@ class EditPlan extends Component {
     sendEditedPlan(e){
         e.preventDefault();
         let token = getJwt();
-        console.log(this.state);
         axios.put(`http://localhost:8080/plans/${this.props.planId}`,this.state, {
             headers: {
                 Authorization: token
@@ -56,7 +54,6 @@ class EditPlan extends Component {
         });
         this.setState({onSubmit: true})
     }
-
 
     onCheck(e){
         if(e.target.checked){
@@ -138,41 +135,41 @@ class EditPlan extends Component {
                 <Header title="Edit Plan" countryName={this.props.countryName}/>
                 <form name="editPlan" id="editPlan" className="main-sidebar  main-comp-newplan"
                       onSubmit={this.sendEditedPlan}>
-                    <div className="title-field prop">
+                    <div className="title-field prop-plan">
                         <div>Title of the plan</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name = "title" value={this.state.title}/>
                     </div>
-                    <div className="date-field-plan prop">
+                    <div className="date-field-plan prop-plan">
                         <div>Date</div>
                         <input type="date" onChange={this.handleChange} name="date" className="date-in" value={this.state.date} required/>
                     </div>
-                    <div className="city-field-from prop">
+                    <div className="city-field-from prop-plan">
                         <div>City from </div>
                         <select className="city-select" name="nameCityFrom" value = {this.state.nameCityFrom} onChange={this.handleChange}>
                             {this.getCities()}
                         </select>
                     </div>
-                    <div className="city-field-to prop">
+                    <div className="city-field-to prop-plan">
                         <div>City to </div>
                         <select className="city-select" name="nameCityToGo" value = {this.state.nameCityToGo} onChange={this.handleChange}>
                             {this.getCities()}
                         </select>
                     </div>
-                    <div className="budgetMin-field prop">
+                    <div className="budgetMin-field prop-plan">
                         <div>Budget min</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name ="budgetMin" value={this.state.budgetMin}/>
                     </div>
-                    <div className="budgetMax-field prop">
+                    <div className="budgetMax-field prop-plan">
                         <div>Budget Max</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name="budgetMax" value={this.state.budgetMax}/>
                     </div>
-                    <div className="transport-field prop">
+                    <div className="transport-field prop-plan">
                         <div>Transport </div>
                         <select className="transport-select" name="transportType" value={this.state.transportType} onChange={this.handleChange}>
                             {this.getTransport()}
                         </select>
                     </div>
-                    <div className="amount-field prop">
+                    <div className="amount-field prop-plan">
                         <div>Amount of people</div>
                         <input className= "input-plan" type = "text" onChange={this.handleChange} name="amountOfPeople" value={this.state.amountOfPeople}/>
                     </div>
@@ -185,7 +182,9 @@ class EditPlan extends Component {
                         htmlFor="name-plan">public</label>
                     </div>
                 </form>
-                <FooterSubmit text="Edit plan" path="plans" for="editPlan"/>
+                <div className ="create-plan-button">
+                    <input type='submit' className="create-plan-button submitButton" form ="editPlan" value="Edit Plan"/>
+                </div>
             </aside>
         );
     }
