@@ -3,6 +3,7 @@ import '../App.css';
 import axios from 'axios';
 import {getJwt} from "../../helpers/jwt";
 import OnePlanCreator from "./OnePlanCreator";
+import {getLogin} from "../../helpers/getLogin";
 
 class AuthorizedPlans extends Component {
 
@@ -32,7 +33,8 @@ class AuthorizedPlans extends Component {
 
     showAllPlans() {
         let token = getJwt();
-        let endpointCheckedTrue = `http://localhost:8080/country/${this.props.countryName}/plans?user=${localStorage.getItem("login")}`;
+        var login = getLogin();
+        let endpointCheckedTrue = `http://localhost:8080/country/${this.props.countryName}/plans?user=${login}`;
         axios.get(endpointCheckedTrue, {
             headers: {
                 Authorization: token
@@ -46,7 +48,8 @@ class AuthorizedPlans extends Component {
 
     showOnlyUsersPlans() {
         let token = getJwt();
-        let endpointCheckedFalse = `http://localhost:8080/country/${this.props.countryName}/plans/private?user=${localStorage.getItem("login")}`;
+        var login = getLogin();
+        let endpointCheckedFalse = `http://localhost:8080/country/${this.props.countryName}/plans/private?user=${login}`;
         axios.get(endpointCheckedFalse, {
             headers: {
                 Authorization: token

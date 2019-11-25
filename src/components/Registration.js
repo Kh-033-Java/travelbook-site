@@ -5,8 +5,8 @@ import axios from 'axios';
 import './Registration.css';
 import {ValidatorForm} from 'react-form-validator-core';
 import TextValidator from "./validations/TextValidator";
-import {object} from "@amcharts/amcharts4/core";
 import {Redirect} from "react-router";
+import Select from "react-select";
 
 class Registration extends Component {
     constructor(props) {
@@ -18,16 +18,37 @@ class Registration extends Component {
             login: '',
             password: '',
             email: '',
+            homeland: null,
             description: '',
             avatar: '',
+            countries: [],
             disabled: true,
             isSignedUp: false
         };
     }
 
+    componentDidMount() {
+        const endpoint = 'http://localhost:8080/country/getAllCountries';
+        axios.get(endpoint)
+            .then(response => {
+                const array = response.data;
+                const newArray = [];
+                array.forEach(el => newArray.push({value: el.name, label: el.name}));
+                console.log(newArray);
+                this.setState({countries: newArray});
+            })
+    }
+
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value});
     }
+
+    selectedCountry = homeland => {
+        this.setState(
+            {homeland},
+            () => console.log(`Option selected:`, this.state.homeland)
+        );
+    };
 
     handleError = () => {
         this.form.isFormValid().then(isValid => {
@@ -38,7 +59,7 @@ class Registration extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        var {login, password, lastName, firstName, description, email} = this.state;
+        var {login, password, lastName, firstName, description, email, homeland} = this.state;
 
         axios.post("http://localhost:8080/anonymous/registration", {
             login: login,
@@ -47,6 +68,7 @@ class Registration extends Component {
             firstName: firstName,
             description: description,
             email: email,
+            homeland: homeland.value,
             avatar: localStorage.getItem("avatar")
         }).then(res => {
             console.log(res);
@@ -66,7 +88,9 @@ class Registration extends Component {
         })
     };
 
+
     render() {
+        const {homeland} = this.state;
         if (this.state.isSignedUp) {
             return <Redirect to={{pathname: "/login"}}/>;
         }
@@ -80,23 +104,36 @@ class Registration extends Component {
                     </div>
                     <div className="name-of-field2">
                         Last Name:
-                    </div><div className="name-of-field3">
-                    Login:
-                    </div><div className="name-of-field4">
-                    Email:
-                    </div><div className="name-of-field5">
-                    Password:
-                </div>
+                    </div>
+                    <div className="name-of-field3">
+                        Login:
+                    </div>
+                    <div className="name-of-field4">
+                        Email:
+                    </div>
+                    <div className="name-of-field5">
+                        Password:
+                    </div>
                     <div className="input-forms-dislocation1">
                         <input className="input-forms" type="text" name="firstName"
-                               style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                               style={{
+                                   'border-top': 'none',
+                                   'border-left': 'none',
+                                   'border-right': 'none',
+                                   'border-radius': '6px'
+                               }}
                                onChange={e => this.handleChange(e)}
                                value={this.state.firstName}/>
                         <span className="bar"></span>
                     </div>
                     <div className="input-forms-dislocation2">
                         <input className="input-forms" type="text" name="lastName"
-                               style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                               style={{
+                                   'border-top': 'none',
+                                   'border-left': 'none',
+                                   'border-right': 'none',
+                                   'border-radius': '6px'
+                               }}
                                onChange={e => this.handleChange(e)}
                                value={this.state.lastName}/>
                         <span className="bar"></span>
@@ -107,7 +144,12 @@ class Registration extends Component {
 
                         <div className="input-forms-dislocation3">
                             <input className="input-forms" type="text" name="login"
-                                   style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                                   style={{
+                                       'border-top': 'none',
+                                       'border-left': 'none',
+                                       'border-right': 'none',
+                                       'border-radius': '6px'
+                                   }}
                                    onChange={e => this.handleChange(e)}
                                    value={this.state.login}/>
                             <span className="bar"></span>
@@ -123,7 +165,12 @@ class Registration extends Component {
 
                         <div className="input-forms-dislocation4">
                             <input className="input-forms" type="text" name="email"
-                                   style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                                   style={{
+                                       'border-top': 'none',
+                                       'border-left': 'none',
+                                       'border-right': 'none',
+                                       'border-radius': '6px'
+                                   }}
                                    onChange={e => this.handleChange(e)}
                                    value={this.state.email}/>
                             <span className="bar"></span>
@@ -138,7 +185,12 @@ class Registration extends Component {
                         </div>
                         <div className="input-forms-dislocation5">
                             <input className="input-forms" type="password" name="password"
-                                   style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none', 'border-radius': '6px'}}
+                                   style={{
+                                       'border-top': 'none',
+                                       'border-left': 'none',
+                                       'border-right': 'none',
+                                       'border-radius': '6px'
+                                   }}
                                    onChange={e => this.handleChange(e)}
                                    value={this.state.password}/>
                             <span className="bar"></span>
@@ -153,7 +205,8 @@ class Registration extends Component {
                         </div>
                         <div className="registration-button">
                             <div className="registration-button-inner">
-                                <button className="registration submitButton" type="submit" disabled={this.state.disabled}>
+                                <button className="registration submitButton" type="submit"
+                                        disabled={this.state.disabled}>
                                     Registration
                                 </button>
                             </div>
@@ -165,11 +218,19 @@ class Registration extends Component {
                     <div className="description-title">
                         Description
                     </div>
-                        <div className="description-inner">
+                    <div className="description-inner">
                         <textarea className="description-input-form" name="description" rows="4"
                                   onChange={e => this.handleChange(e)}
                                   value={this.state.description}>
                         </textarea>
+                    </div>
+                    <div className="homeland-part">
+                        Homeland
+                        <Select
+                            className="homeland-select"
+                            value={homeland}
+                            onChange={this.selectedCountry}
+                            options={this.state.countries}/>
                     </div>
                 </div>
                 <div className="photo-upload-form">

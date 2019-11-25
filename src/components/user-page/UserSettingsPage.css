@@ -1,9 +1,9 @@
 .userSettingsGeneral {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 30px;
 }
 
 .user-settings-general {
+    font-size: 20px;
     display: grid;
     grid-template-rows: 12% 10% 65% 10%;
     grid-template-columns: 40% 20% 40%;
@@ -91,7 +91,7 @@
 }
 
 .save-settings {
-    transform: translate(50%, -17%);
+    transform: translate(50%, -50%);
     text-align: center;
 }
 

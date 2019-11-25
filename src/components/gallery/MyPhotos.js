@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import GetPhotos from "./GetPhotos";
 import {getJwt} from "../../helpers/jwt";
+import {getLogin} from "../../helpers/getLogin";
 
 
 class MyPhotos extends Component {
@@ -16,7 +17,8 @@ class MyPhotos extends Component {
 
     componentDidMount() {
         const token = getJwt();
-        const endpoint = `http://localhost:8080/country/${this.props.name}/photos/private?user=${localStorage.getItem("login")}`;
+        let login = getLogin();
+        const endpoint = `http://localhost:8080/country/${this.props.name}/photos/private?user=${login}`;
         axios.get(endpoint, {
             headers: {
                 Authorization: token
@@ -41,7 +43,6 @@ class MyPhotos extends Component {
             return render
         }else {
             render =  <GetPhotos photos={this.state.photos}/>
-            console.log("AAAAA")
             return render;
 
         }
