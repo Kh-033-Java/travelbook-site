@@ -17,7 +17,6 @@ class DeleteNoteMain extends Component {
         this.state = {
             note: [{}],
             country: localStorage.getItem('country'),
-            login: getLogin()
         };
         this.deleteNote = this.deleteNote.bind(this);
     }
@@ -42,7 +41,8 @@ class DeleteNoteMain extends Component {
             });
 
         if (localStorage.getItem('userNotesAmount') == 1) {
-            const deleteRelationshipEndpoint = `http://localhost:8080/country/${this.state.country}/notvisit?user=${this.state.login}`;
+            const login = getLogin();
+            const deleteRelationshipEndpoint = `http://localhost:8080/country/${this.state.country}/notvisit?user=${login}`;
             console.log(deleteRelationshipEndpoint);
             axios.post(deleteRelationshipEndpoint, {
                 headers: {

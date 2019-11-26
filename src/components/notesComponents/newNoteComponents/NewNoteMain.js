@@ -21,7 +21,6 @@ class NewNoteMain extends Component {
             isPublic: false,
             description: '',
             dateOfVisiting: '',
-            login: getLogin(),
             describedCity: '',
             country: this.props.countryName,
             photoLink: [],
@@ -63,6 +62,7 @@ class NewNoteMain extends Component {
     async sendNewNote(e) {
         e.preventDefault();
         const token = getJwt();
+
         let photoLink = await uploadPhotos(this.state.photos);
 
         this.setState({photoLink});
@@ -82,7 +82,8 @@ class NewNoteMain extends Component {
             });
 
         if (localStorage.getItem('userNotesAmount') == 0) {
-            axios.post(`http://localhost:8080/country/${this.state.country}/visit?user=${this.state.login}`, {
+            const login = getLogin();
+            axios.post(`http://localhost:8080/country/${this.state.country}/visit?user=${login}`, {
                 headers: {
                     Authorization: token
                 }
