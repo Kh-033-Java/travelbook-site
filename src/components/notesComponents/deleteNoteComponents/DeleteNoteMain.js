@@ -9,6 +9,7 @@ import {deleteNoteById} from "../../../actions/notesActions";
 import {Redirect} from 'react-router-dom';
 import NoteListElement from "../allNotes/NoteListElement";
 import {getJwt} from "../../../helpers/jwt";
+import {getLogin} from "../../../helpers/getLogin";
 
 class DeleteNoteMain extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class DeleteNoteMain extends Component {
         this.state = {
             note: [{}],
             country: localStorage.getItem('country'),
-            login: localStorage.getItem('login')
+            login: getLogin()
         };
         this.deleteNote = this.deleteNote.bind(this);
     }

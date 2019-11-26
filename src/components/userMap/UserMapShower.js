@@ -14,13 +14,13 @@ export default function showUserMap(worldSeries) {
                 const visitedCountries = response.data.visitedCountries;
                 const countriesPlannedToVisit = response.data.countriesPlannedToVisit;
 
-                const login = localStorage.getItem("login");
+                // const login = localStorage.getItem("login");
 
-                const endpoint = `http://localhost:8080/users/` + login + `/map`;
-                axios.get(endpoint)
-                    .then(response => {
-                        const visitedCountries = response.data.visitedCountries;
-                        const countriesPlannedToVisit = response.data.countriesPlannedToVisit;
+                // const endpoint = `http://localhost:8080/users/` + login + `/map`;
+                // axios.get(endpoint)
+                    // .then(response => {
+                    //     const visitedCountries = response.data.visitedCountries;
+                        // const countriesPlannedToVisit = response.data.countriesPlannedToVisit;
 
                         const userMap = worldSeries;
 
@@ -30,7 +30,7 @@ export default function showUserMap(worldSeries) {
                         visitedCountries.forEach(function (element) {
                             userMap.getPolygonById(element.map_id).fill = am4core.color("#67f58d");
                         });
-                    })
+                    // })
             })
     }
 }

@@ -11,6 +11,7 @@ import {getJwt} from "../../../helpers/jwt";
 import ExistedPhotos from "./ExistedPhotos";
 import "../newNoteComponents/NewNote.css";
 import {uploadPhotos} from "../../../actions/notesActions";
+import {getLogin} from "../../../helpers/getLogin";
 
 class EditNoteMain extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class EditNoteMain extends Component {
             isPublic: false,
             description: '',
             dateOfVisiting: '',
-            login: localStorage.getItem('login'),
+            login: getLogin(),
             describedCity: '',
             photoLink: [],
             existedNotePhotos: new Map(),

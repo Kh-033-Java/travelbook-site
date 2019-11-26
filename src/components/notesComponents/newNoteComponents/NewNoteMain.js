@@ -11,6 +11,7 @@ import axios from 'axios';
 import CityForNote from "../../sidebarComponents/CityForNote";
 import {getJwt} from "../../../helpers/jwt";
 import {uploadPhotos} from "../../../actions/notesActions";
+import {getLogin} from "../../../helpers/getLogin";
 
 class NewNoteMain extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class NewNoteMain extends Component {
             isPublic: false,
             description: '',
             dateOfVisiting: '',
-            login: localStorage.getItem('login'),
+            login: getLogin(),
             describedCity: '',
             country: this.props.countryName,
             photoLink: [],

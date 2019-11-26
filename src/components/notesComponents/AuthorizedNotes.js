@@ -79,13 +79,17 @@ class AuthNotes extends Component {
     }
 
     setUserNotesAmount() {
-        axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${localStorage.getItem("login"
-        )}`).then(res => {
-            const notes = res.data;
-            console.log(notes.length);
-            localStorage.setItem('userNotesAmount', notes.length);
-        });
-
+        const token = getJwt();
+        const login = getLogin();
+        axios.get(`http://localhost:8080/country/${this.props.countryName}/notes/private?user=${login}`, {
+            headers: {
+                Authorization: token
+            }})
+            .then(res => {
+                const notes = res.data;
+                console.log(notes.length);
+                localStorage.setItem('userNotesAmount', notes.length);
+            });
     }
 
     render() {
