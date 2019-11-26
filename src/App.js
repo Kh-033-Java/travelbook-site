@@ -61,6 +61,9 @@ class App extends Component {
                     <Route path="/general-photos">
                         <Main gridClass="grid-cont"/>
                     </Route>
+                    <Route path="/friends">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
                     <Route patrh="/rating">
                         <Main gridClass="grid-cont"/>
                     </Route>

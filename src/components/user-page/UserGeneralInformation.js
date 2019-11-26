@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getJwt } from "../../helpers/jwt";
 import axios from 'axios';
 import './UserMainPage.css';
-import { useParams } from "react-router";
+import {useParams} from "react-router";
 
 class UserGeneralInformation extends Component {
     constructor(props) {
@@ -13,9 +13,12 @@ class UserGeneralInformation extends Component {
             firstName: '',
             lastName: '',
             description: '',
+            following: [],
+            isFollowing: false,
+        };
+        this.isFollowing = this.isFollowing.bind(this);
+        this.addToFollowing = this.addToFollowing.bind(this);
         }
-
-    }
 
     componentWillReceiveProps(newProps) {
         this.setState({ login: newProps.match.params.login }, this.componentDidMount);
@@ -24,6 +27,20 @@ class UserGeneralInformation extends Component {
 
     componentDidMount() {
         let token = getJwt();
+        const url = 'http://localhost:8080/users/' + localStorage.getItem("login");
+
+        axios.get(url, {
+            headers: {
+                Authorization: token
+            }
+        }).then(res => {
+            // console.log(res.data);
+            this.setState({login: res.data.login});
+            this.setState({firstName: res.data.firstName});
+            this.setState({lastName: res.data.lastName});
+            this.setState({description: res.data.description});
+            this.setState({avatar: res.data.avatar.link});
+        });
         if (this.props.match !== undefined && this.state.login === '') {
             this.setState({ login: this.props.match.params.login }, this.componentDidMount);
         } else {
@@ -40,6 +57,13 @@ class UserGeneralInformation extends Component {
                 this.setState({ avatar: res.data.avatar.link });
             });
         }
+        axios.get(`http://localhost:8080/users/following?user=${localStorage.getItem('login')}`,{
+            headers: {
+                Authorization: token
+            }
+        }).then(res => {
+            this.setState({following: res.data});
+        });
     }
 
     checkIfPresent = (param) => {
@@ -67,8 +91,38 @@ class UserGeneralInformation extends Component {
                 break;
             default: return null;
         }
+    };
+
+    isFollowing() {
+        let check = false;
+        if (this.state.login === localStorage.getItem('login')){
+            check = true;
+        } else {
+            for (let i = 0; i < this.state.following.length; i++) {
+                if (this.state.following[i].login === this.state.login) {
+                    check = true;
+                    break;
+                }
+            }
+        }
+        return check;
     }
 
+    addToFollowing () {
+        let token = getJwt();
+        let data = new FormData();
+        let request = new XMLHttpRequest();
+        let login = this.state.login;
+        request.open('PUT', `http://localhost:8080/users/addfollow/${this.state.login}?user=${localStorage.getItem('login')}`);
+        request.setRequestHeader("Authorization", token);
+        request.send(data);
+        request.onload = function () {
+            if (request.status === 200) {
+                alert("Your friend successfully added!");
+                window.location.href = '/userPage/'+ login;
+            }
+        };
+    }
 
     render() {
         return (
@@ -94,6 +148,12 @@ class UserGeneralInformation extends Component {
 
                     {this.checkIfPresent(this.state.description)}
                 </div>
+                {this.isFollowing() ?
+                    <React.Fragment/>
+                    :
+                    <div className="following-in-general">
+                        <button className="follow-button-in-general" onClick={this.addToFollowing}>Follow</button>
+                    </div>}
             </aside>
         )
     }

@@ -19,7 +19,8 @@ import GeneralPhotos from "./gallery/GeneralPhotos";
 import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
 import GeneralInfo from "./GeneralInfo.js";
 import SearchMain from "./search/SearchMain";
-import Rating from './rating/Rating'
+import Rating from './rating/Rating';
+import Friends from "./friendsComponents/Friends";
 
 class Main extends Component {
     constructor(props) {
@@ -118,7 +119,7 @@ class Main extends Component {
                 </Route>
                 <Route path="/plans">
                     <Icons></Icons>
-                    <Plans name={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                    <Plans countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
                            setId={this.setPlanID}/>
                 </Route>
                 <Route
@@ -156,6 +157,10 @@ class Main extends Component {
                 <Route path = "/plan">
                     <Icons></Icons>
                     <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
+                </Route>
+                <Route path = "/friends">
+                    <Icons/>
+                    <Friends/>
                 </Route>
                 <Route path="/userPage/:login">
                     <Route path="/userPage/:login" component={UserGeneralInformation}/>

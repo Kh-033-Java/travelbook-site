@@ -8,16 +8,24 @@ import "../sidebarComponents/SideBar.css";
 import {confirmAlert} from "react-confirm-alert";
 import {getLogin} from "../../helpers/getLogin";
 
+
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
+
 class CreateFooterForPlan extends Component{
      constructor(props){
          super(props);
          this.deletePlan = this.deletePlan.bind(this);
-         this.isUsersPlan = this.isUsersPlan.bind(this);
+         this.isUsersPlan = this.isUsersPlan.bind(this)
      }
 
     isUsersPlan(){
          let check = false;
-        if(this.props.userLoginCreator === getLogin()){
+         const login = getLogin();
+        if(this.props.userLoginCreator === login){
             check = true;
         }
         return check;
@@ -39,6 +47,7 @@ class CreateFooterForPlan extends Component{
                         }).then(res => {
                             if (res.status === 200) {
                                 alert("Your plan successfully deleted!");
+                                window.location.href = '/plans';
                             }
                         });
                     }
@@ -56,7 +65,7 @@ class CreateFooterForPlan extends Component{
             !this.isUsersPlan() ?
                 <div className="footer-single-plan-unauth main-sidebar">
                     <NavLink to="/plans">
-                        <button type="button" className="unauth-return-plan">Return to plans</button>
+                        <button type="button" className="unauth-return-plan submitButton">Return to plans</button>
                     </NavLink>
                 </div>
                 :
@@ -68,7 +77,7 @@ class CreateFooterForPlan extends Component{
                     </div>
                     <div className="return-to-plan">
                         <NavLink to="/plans">
-                            <button className="auth-return-plan">Return to plans</button>
+                            <button className="auth-return-plan submitButton">Return to plans</button>
                         </NavLink>
                     </div>
                     <div className="delete-plan">
