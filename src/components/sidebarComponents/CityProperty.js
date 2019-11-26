@@ -13,7 +13,7 @@ class City extends Component {
     }
 
     componentDidMount() {
-        actions.getCityPropertyForNotesByCountry(this.props.countryName).then(res => {
+        actions.getCityPropertyForNotesByCountry(localStorage.getItem('country')).then(res => {
             console.log(res);
             this.setState({cities: res})
         })

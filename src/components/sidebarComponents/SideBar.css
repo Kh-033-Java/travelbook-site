@@ -43,6 +43,18 @@
     grid-column: 1/3;
 }
 
+.sidebar-footer-edit{
+    grid-row: 3;
+    grid-column: 1/3;
+    height: 60px;
+}
+
+.sidebar-footer-delete{
+    grid-row: 4;
+    grid-column: 1/3;
+    height: 60px;
+}
+
 .create-plan-button{
     grid-row: 3;
     grid-column: span 2;

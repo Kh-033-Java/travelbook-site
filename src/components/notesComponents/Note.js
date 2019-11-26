@@ -7,6 +7,8 @@ import isAuthorized from '../checker/authorizationChecker'
 import FooterWithEdit from '../sidebarComponents/FooterWithEdit'
 import axios from 'axios'
 import {getLogin} from "../../helpers/getLogin";
+import FooterWithDelete from "../sidebarComponents/FooterWithDelete";
+import {getJwt} from "../../helpers/jwt";
 
 
 class Note extends Component{
@@ -42,6 +44,7 @@ return(
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
 <FooterWithEdit text ="edit note" path="/editNote"/>
+<FooterWithDelete text ="delete note" path="/deleteNote" noteId={this.state.note.id}/>
 </aside>:<aside className="rightbar whole-comp-no-footer ">
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>

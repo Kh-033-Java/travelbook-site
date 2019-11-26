@@ -2,14 +2,14 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import '../sidebarComponents/SideBar.css'
 import '../App.css';
-function FooterWithEdit(props){
+function FooterWithDelete(props){
     return (
-  <div className ="sidebar-footer-edit container">
-                          <NavLink className="nav-link header-text" to ={props.path}>
+  <div className ="sidebar-footer-delete container">
+                          <NavLink className="nav-link header-text" to={props.path} noteId={props.noteId} note={props.note}>
                     {props.text}
                               </NavLink>
                              </div>
 
     );
 }
-export default FooterWithEdit;
+export default FooterWithDelete;

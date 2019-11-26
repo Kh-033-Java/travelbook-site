@@ -118,6 +118,7 @@ class NoteListElement extends Component {
         }
 
         if (this.state.clicked) {
+            const { note } = this.props.note;
             return <Redirect to="/note"/>
         }
         return (
@@ -155,3 +156,4 @@ function Estimation(props) {
         </div>
     )
 }
+
