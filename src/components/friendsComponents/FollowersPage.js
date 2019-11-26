@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {getJwt} from "../../helpers/jwt";
+import {getLogin} from "../../helpers/getLogin"
 import axios from 'axios';
 import OneFollower from './OneFollower';
-import FriendsHeader from "./FriendsHeader";
 
 /**
  *
@@ -14,26 +14,53 @@ class FollowersPage extends Component {
         super(props);
         this.state = {
             followers: [],
+            following: [],
         };
         this.getFollowers = this.getFollowers.bind(this);
+        this.isFollowing = this.isFollowing.bind(this);
+    }
+
+
+    isFollowing(e){
+        console.log(e);
+        let isFollowing = false;
+        let following = this.state.following;
+        for (let i = 0; i < following.length; i++){
+            if (following[i].login === e){
+                isFollowing = true;
+                break;
+            }
+        }
+        console.log(isFollowing);
+        return isFollowing;
     }
 
     getFollowers() {
         let friends = [];
-        console.log(this.state.followers);
-        this.state.followers.forEach(e => friends.push(<OneFollower login = {e.login} link = {e.avatar.link}/>));
+        this.state.followers.forEach(e => friends.push(
+        <OneFollower login={e.login} link={e.avatar.link} isFollowing={this.isFollowing(e.login)}/>
+    ));
         return friends;
     }
 
     componentDidMount() {
         let token = getJwt();
+        let login = getLogin();
 
-        axios.get(`http://localhost:8080/users/followers?user=${localStorage.getItem('login')}`,{
+        axios.get(`http://localhost:8080/users/followers?user=${login}`,{
             headers: {
                 Authorization: token
             }
         }).then(res => {
             this.setState({followers : res.data});
+        });
+
+        axios.get(`http://localhost:8080/users/following?user=${login}`,{
+            headers: {
+                Authorization: token
+            }
+        }).then(res => {
+            this.setState({following : res.data});
         });
     }
 

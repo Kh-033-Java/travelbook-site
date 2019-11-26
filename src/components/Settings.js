@@ -21,7 +21,7 @@ function Settings(props){
                     </NavLink>
                 </div>
 
-                <div style={{display: "flex", marginLeft : 45}}>
+                <div style={{display: "flex"}}>
                     <NavLink to="/search-plans">
                         <div className="button-plan" />
                     </NavLink>
