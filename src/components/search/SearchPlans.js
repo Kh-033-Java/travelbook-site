@@ -118,7 +118,7 @@ class SearchPlans extends Component {
                             </div>
                             <div>
                                 <div>"Budget"</div>
-                                <input className="input-field-search" type={"text"} placeholder={budgetMin} onChange={e => {
+                                <input className="input-field-search" type={"text"} placeholder={0} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         budgetMin: e.target.value,
@@ -142,7 +142,7 @@ class SearchPlans extends Component {
                                     })
                                 }}
                                        name="date-note"
-                                       className="date-in" required/>
+                                       className="date-in-search" required/>
                             </div>
                             <div>
                                 <input  type="date" onChange={e => {
@@ -151,7 +151,7 @@ class SearchPlans extends Component {
                                         dateTo: e.target.value,
                                     })
                                 }} name="date-note"
-                                       className="date-in" required/>
+                                       className="date-in-search" required/>
                             </div>
                             <div >
                                 <div>"Amount of people"</div>
@@ -172,7 +172,7 @@ class SearchPlans extends Component {
                             </div>
                         </div>
                     </div>
-                    <div style={{textAlign: "center"}}>
+                    <div className="button-field-search">
                         <button onClick={this.getPlansWithFilter}>
                             Search
                         </button>
