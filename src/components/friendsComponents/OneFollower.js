@@ -3,6 +3,7 @@ import {getJwt} from "../../helpers/jwt";
 import axios from 'axios';
 import {Redirect} from "react-router";
 import {Link} from "react-router-dom";
+import {getLogin} from "../../helpers/getLogin";
 
 /**
  *
@@ -39,8 +40,9 @@ class OneFollower extends Component {
 
     componentDidMount() {
         let token = getJwt();
+        let login = getLogin();
 
-        axios.get(`http://localhost:8080/users/following?user=${localStorage.getItem('login')}`,{
+        axios.get(`http://localhost:8080/users/following?user=${login}`,{
             headers: {
                 Authorization: token
             }

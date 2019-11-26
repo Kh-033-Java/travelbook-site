@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {getJwt} from "../../helpers/jwt";
+import {getLogin} from "../../helpers/getLogin"
 import axios from 'axios';
 import OneFollower from './OneFollower';
-import FriendsHeader from "./FriendsHeader";
 
 /**
  *
@@ -27,8 +27,9 @@ class FollowersPage extends Component {
 
     componentDidMount() {
         let token = getJwt();
+        let login = getLogin();
 
-        axios.get(`http://localhost:8080/users/followers?user=${localStorage.getItem('login')}`,{
+        axios.get(`http://localhost:8080/users/followers?user=${login}`,{
             headers: {
                 Authorization: token
             }
