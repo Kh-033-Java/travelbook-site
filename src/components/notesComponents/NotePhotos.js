@@ -11,11 +11,10 @@ constructor(props){
 getNotes=()=>{
     const notes=[];
     console.log(this.props.photos);
-    tempList = this.props.photos;
+    const tempList = this.props.photos;
     tempList.forEach(e=>notes.push(<div className="car-img">
     <img src={e} alt=""/>
     </div>));
-    console.log(tempList);
     console.log(notes);
     return notes
 }
@@ -39,5 +38,3 @@ render(){
 }
 }
 export default NotePhotos;
-
- let tempList = [{}]
