@@ -20,8 +20,11 @@ function Settings(props){
                         <div className="friends-button"/>
                     </NavLink>
                 </div>
-                <div>
-                    {/*<SearchPlansHeader/>*/}
+
+                <div style={{display: "flex", marginLeft : 45}}>
+                    <NavLink to="/search-plans">
+                        <div className="button-plan" />
+                    </NavLink>
                     <NavLink to="/settings">
                         <div className="settings-button" />
                     </NavLink>
