@@ -303,15 +303,17 @@ aside {
 
 .photos-gallery {
     width: 100%;
-    height: 400px;
+    height: 73vh;
     overflow: scroll;
 }
 .search-plan {
     display: grid;
+    height: 83vh;
 }
 
 .plan-scroll {
-    height: 400px;
+    height: 69vh;
     overflow: scroll;
+
 }
 
