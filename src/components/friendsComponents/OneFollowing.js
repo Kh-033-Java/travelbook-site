@@ -15,8 +15,8 @@ class OneFollowing extends Component {
     constructor(props){
         super(props);
         this.state = {
-            login: '',
-            link: '',
+            login: this.props.login,
+            link: this.props.link,
         };
         this.deleteFollowing = this.deleteFollowing.bind(this);
         this.hasFriends = this.hasFriends.bind(this);
@@ -53,14 +53,6 @@ class OneFollowing extends Component {
                 }
             ]
         });
-    }
-
-    componentDidMount() {
-        this.setState({
-            login: this.props.login,
-            link: this.props.link
-        });
-        console.log(this.state)
     }
 
     hasFriends(){
