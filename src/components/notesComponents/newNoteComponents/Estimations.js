@@ -5,18 +5,18 @@ function Estimations(props){
     return (
           <div className ="set-estimations ">
         <p className="header-text est-title">Estimations</p>
-            <div className="label-stars">people</div>
+            <div className="label-stars people-l">people</div>
             <Estimate type ="people" fun={props.setPeople} cssCl={props.type +"rating"}/>
           
-            <div className="label-stars">prices</div>
+            <div className="label-stars prices-l">prices</div>
             <Estimate type ="prices" fun={props.setPrices}/>
            
             
-            <div className="label-stars">cuisine</div>
+            <div className="label-stars cuisine-l">cuisine</div>
             <Estimate type ="cuisine" fun={props.setCuisine}/>
             
           
-            <div className="label-stars">general impression</div>
+            <div className="label-stars impression-l">general impression</div>
             <Estimate type ="general impression" fun={props.setImpression}/>
             
       </div>
@@ -33,7 +33,7 @@ function Estimate(props){
     }
     
 return(
-    <div className={props.type}>
+
     <div className="feedback">
     <div className="rating">
       <input type="radio" name={props.type +"rating"} id={props.type + "5"} onChange={check}/>
@@ -48,6 +48,6 @@ return(
       <label htmlFor={props.type + "1"}></label>
         </div>
         </div>
-        </div>
+
 )
 }

@@ -5,6 +5,14 @@ import axios from 'axios';
 import * as am4core from "@amcharts/amcharts4/core";
 import {getJwt} from "../helpers/jwt";
 import {Redirect} from "react-router";
+import {getLogin} from "../helpers/getLogin";
+
+
+/**
+ *
+ * @author Zhelezniak Dmytro
+ */
+
 
 class VisitedCountryCheckBox extends Component {
     constructor(props) {
@@ -31,7 +39,8 @@ class VisitedCountryCheckBox extends Component {
 
     addAndFill() {
         let token = getJwt();
-        let endpointVisited = `http://localhost:8080/country/${this.props.countryName}/visit?user=${localStorage.getItem("login")}`;
+        let login = getLogin();
+        let endpointVisited = `http://localhost:8080/country/${this.props.countryName}/visit?user=${login}`;
         let data = new FormData();
         let request = new XMLHttpRequest();
         request.open('POST', endpointVisited);
@@ -45,7 +54,8 @@ class VisitedCountryCheckBox extends Component {
 
     delAndFill() {
         let token = getJwt();
-        let endpointDidntVisited = `http://localhost:8080/country/${this.props.countryName}/notvisit?user=${localStorage.getItem("login")}`;
+        let login = getLogin();
+        let endpointDidntVisited = `http://localhost:8080/country/${this.props.countryName}/notvisit?user=${login}`;
         let data = new FormData();
         let request = new XMLHttpRequest();
         request.open('POST', endpointDidntVisited);
@@ -61,9 +71,8 @@ class VisitedCountryCheckBox extends Component {
         let check = false;
         let countries = this.state.visitedCountries;
         if (countries.length !== 0) {
-            console.log(countries.length);
-            for(let i = 0; i < countries.length; i++) {
-                if (countries[i].name === this.props.countryName) {
+            for (let i = 0; i < countries.length; i++) {
+                if (countries[i].name === localStorage.getItem('country')) {
                     check = true;
                     break;
                 }
@@ -74,51 +83,37 @@ class VisitedCountryCheckBox extends Component {
 
 
     componentDidMount() {
-        let token = getJwt();
-        axios.get(`http://localhost:8080/users/${localStorage.getItem("login")}/map`, {
-            headers: {
-                Authorization: token
-            }
-        }).then(res =>{
-            this.setState({visitedCountries: res.data.visitedCountries});
-        }).catch(error => {
-            console.log(error);
-            return <Redirect to={"errorPage"}/>
-        });
+        if(isAuthorized()) {
+            let token = getJwt();
+            let login = getLogin();
+            axios.get(`http://localhost:8080/users/${login}/map`, {
+                headers: {
+                    Authorization: token
+                }
+            }).then(res => {
+                this.setState({visitedCountries: res.data.visitedCountries});
+            }).catch(error => {
+                console.log(error);
+                return <Redirect to={"errorPage"}/>
+            });
+        }
     };
 
     render() {
-        if(this.isVisitedCountry()){
-            return (
-                isAuthorized() ?
-                    <div className="visited">
-                        <form name ="visitedCountry">
-                            <input type="checkbox"
-                                   name='isVisited'
-                                   id='isVisited'
-                                   checked= 'true'
-                                   readOnly
-                            />
-                            <label htmlFor="isVisited">
-                                Visited
-                            </label>
-                        </form>
-                    </div>
-                    : <React.Fragment/>
-            );
+        let checkBox;
+        if (this.isVisitedCountry()) {
+            checkBox =
+                <input type="checkbox" name='isVisited' id='isVisited' checked='true' readOnly/>
+        } else {
+            checkBox =
+                <input type="checkbox" name='isVisited' id='isVisited' onClick={e => this.onCheck(e)}/>
         }
         return (
             isAuthorized() ?
                 <div className="visited">
-                    <form name ="visitedCountry">
-                        <input type="checkbox"
-                               name='isVisited'
-                               id='isVisited'
-                               onClick={e => this.onCheck(e)}
-                        />
-                        <label htmlFor="isVisited">
-                            Visited
-                        </label>
+                    <form name="visitedCountry">
+                        {checkBox}
+                        <label htmlFor="isVisited">Visited</label>
                     </form>
                 </div>
                 : <React.Fragment/>

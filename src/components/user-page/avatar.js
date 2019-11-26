@@ -1,11 +1,10 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {MAIN_USER_LOGIN_ROUTE} from "../../constants/constants";
-import UserGeneralInformation from "./UserGeneralInformation";
+import {getLogin} from "../../helpers/getLogin";
 
 export function avatar() {
     return (<div>
-            <NavLink to={"/userPage/"+localStorage.getItem("login")}>
+            <NavLink to={/userPage/ + getLogin()}>
                 <img className="avatar" src={localStorage.getItem("avatar")}>
             </img>
             </NavLink>

@@ -44,6 +44,7 @@ class Map extends Component {
     this.setState({ chart });
 
     let polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    console.log(chart.series);
     this.setState({ polygonSeries });
     polygonSeries.exclude = ["AQ"];
     polygonSeries.useGeodata = true;

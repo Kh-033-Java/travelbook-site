@@ -18,9 +18,12 @@ import MyPhotos from "./gallery/MyPhotos";
 import GeneralPhotos from "./gallery/GeneralPhotos";
 import VisitedCountryCheckBox from "./VisitedCountryCheckBox";
 import GeneralInfo from "./GeneralInfo.js";
+import DeleteNote from "./notesComponents/deleteNoteComponents/DeleteNote";
+import SearchPlans from "./search/SearchPlans";
 import SearchMain from "./search/SearchMain";
-import Rating from './rating/Rating'
 import AllPlansPage from './planComponents/AllPlansPage'
+import Rating from './rating/Rating';
+import Friends from "./friendsComponents/Friends";
 
 class Main extends Component {
     constructor(props) {
@@ -31,7 +34,7 @@ class Main extends Component {
             map:"",
             idPlan: '',
             mapComponent: '',
-            
+            idNote: ''
         }
         this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
@@ -55,7 +58,7 @@ class Main extends Component {
     }
 
     setNoteID(id) {
-        console.log("got" + id);
+        console.log("noteId = " + id);
         this.setState({
             idNote: id
         })
@@ -96,8 +99,8 @@ class Main extends Component {
     render() {
         return (
             <div className={this.props.gridClass}>
-                
-                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI}/> 
+
+                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI}/>
                 <Head setMap={this.state.mapComponent}/>
 
                 <Route path="/travelbook">
@@ -119,7 +122,7 @@ class Main extends Component {
                 </Route>
                 <Route path="/plans">
                     <Icons></Icons>
-                    <Plans name={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
+                    <Plans countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
                            setId={this.setPlanID}/>
                 </Route>
                 <Route
@@ -145,6 +148,10 @@ class Main extends Component {
                     <EditNote countryName={this.state.nameCountry} id={this.state.idCountry}
                               worldSeries={this.state.map} noteId={this.state.idNote}/>
                 </Route>
+                <Route path = "/deleteNote">
+                    <Icons></Icons>
+                    <DeleteNote countryName={this.state.nameCountry} noteId ={this.state.idNote} />
+                </Route>
                 <Route path="/newPlan">
                     <Icons></Icons>
                     <NewPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
@@ -161,6 +168,10 @@ class Main extends Component {
                 <Route path = "/allplans">
                     <Icons></Icons>
                     <AllPlansPage setId={this.setPlanID}/>
+                </Route>
+                <Route path = "/friends">
+                    <Icons/>
+                    <Friends/>
                 </Route>
                 <Route path="/userPage/:login">
                     <Route path="/userPage/:login" component={UserGeneralInformation}/>

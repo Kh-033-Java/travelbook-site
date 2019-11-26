@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router,NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, NavLink} from 'react-router-dom';
 import Search from './Search.js'
 import './App.css';
 import Settings from "./Settings.js";
@@ -12,16 +12,17 @@ class Header extends Component {
     }
 
     render() {
-        return ( <header className = "header" >
+        return (
+            <header className="header">
 
-            <div className = "title " > TravelBook </div> 
-            <Search setMap = {this.props.setMap}/> 
-            <Settings / >
-            <AllPlansPageButton/>
-
+                <div className="title ">TravelBook</div>
+                <Search setMap={this.props.setMap}/>
+                <Settings/>
+                <AllPlansPageButton/>
             </header>
 
         )
     }
 }
+
 export default Header;

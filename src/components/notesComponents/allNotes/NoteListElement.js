@@ -9,6 +9,7 @@ import NoteOwner from '../NoteOwner';
 import axios from 'axios';
 import {getJwt} from "../../../helpers/jwt";
 import isAuthorized from "../../checker/authorizationChecker";
+import {getLogin} from "../../../helpers/getLogin";
 
 
 class NoteListElement extends Component {
@@ -30,9 +31,8 @@ class NoteListElement extends Component {
     componentDidMount() {
         console.log(this.props.note.id);
         this.getCountOfLikes();
-        this.checkIfAlreadyLiked();
-
-        if(isAuthorized()){
+        if (isAuthorized()) {
+            this.checkIfAlreadyLiked();
             this.setState({disabled: true});
         }
     }
@@ -68,19 +68,30 @@ class NoteListElement extends Component {
         console.log(this.state.noteId);
 
         const token = getJwt();
-        axios.put(`http://localhost:8080/notes/${this.props.note.id}/like/${localStorage.getItem("login")}`, {
+        const login = getLogin();
+        fetch(`http://localhost:8080/notes/${this.props.note.id}/like/${login}`, {
+            method: 'PUT',
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: token
             }
         }).then((res) => {
             console.log(res.status)
-            this.checkIfAlreadyLiked();
+            if (isAuthorized()) {
+                this.checkIfAlreadyLiked();
+            }
             this.getCountOfLikes();
         })
     }
 
     checkIfAlreadyLiked = () => {
-        axios.get(`http://localhost:8080/notes/${this.props.note.id}/liked/${localStorage.getItem("login")}`).then((res) => {
+        var login = getLogin();
+        var token = getJwt();
+        axios.get(`http://localhost:8080/notes/${this.props.note.id}/liked/${login}`, {
+            headers: {
+                Authorization: token
+            }
+        }).then((res) => {
             if (res.data === true) {
                 this.setState({liked: true})
                 console.log(this.state.liked)
@@ -100,13 +111,14 @@ class NoteListElement extends Component {
 
     render() {
         let like = null;
-        if(!this.state.liked){
-            like = <div className="like" onClick={this.state.disabled ? this.sendLike: undefined}/>;
-        }else if(this.state.liked){
-            like = <div className="liked" onClick={this.state.disabled ? this.sendLike: undefined}/>;
+        if (!this.state.liked) {
+            like = <div className="like" onClick={this.state.disabled ? this.sendLike : undefined}/>;
+        } else if (this.state.liked) {
+            like = <div className="liked" onClick={this.state.disabled ? this.sendLike : undefined}/>;
         }
 
         if (this.state.clicked) {
+            const { note } = this.props.note;
             return <Redirect to="/note"/>
         }
         return (
@@ -144,3 +156,4 @@ function Estimation(props) {
         </div>
     )
 }
+

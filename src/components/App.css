@@ -102,7 +102,6 @@ header {
 .search input {
     -webkit-border-radius: 30px;
     border-radius: 30px;
-    margin: 15px;
     height: 40px;
     width: 300px;
 }
@@ -248,11 +247,19 @@ aside {
     background: url("icons/cd143e9b-979b-4fd5-ba9e-6272c5598736.jpg") 100% 100% no-repeat;
     grid-column: 4;
     background-size: contain;
-    margin-left: 80px;
+    margin-left: 10px;
     width: 30px;
     height: 30px;
 }
 
+.friends-button {
+    background: url("icons/computer-icons-like-button-friends-icon.jpg") 100% 100% no-repeat;
+    grid-column: 4;
+    background-size: contain;
+    margin-left: 80px;
+    width: 30px;
+    height: 30px;
+}
 
 .header-text {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -296,15 +303,17 @@ aside {
 
 .photos-gallery {
     width: 100%;
-    height: 400px;
+    height: 73vh;
     overflow: scroll;
 }
 .search-plan {
     display: grid;
+    height: 83vh;
 }
 
 .plan-scroll {
-    height: 400px;
+    height: 69vh;
     overflow: scroll;
+
 }
 

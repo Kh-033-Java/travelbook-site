@@ -1,7 +1,14 @@
-.allPlans{
+.all-plans{
     grid-row: 2;
+    grid-template-rows: 4fr;
     overflow: auto;
-    display: grid;
+    /*display: grid;*/
+}
+
+.all-plans-unauth{
+    grid-row: 1;
+    grid-template-rows: 5fr;
+    overflow: auto;
 }
 
 .allUserPlans{
@@ -44,7 +51,7 @@
 .list-plan-el{
     width:100%;
     max-height:200px;
-    margin:10px 0;
+    margin:2px 0;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -85,7 +92,4 @@
     font-family: Verdana, Geneva, sans-serif;
     letter-spacing: -0.6px;
     word-spacing: 1.6px;
-}
-.grade{
-    margin-top:1em;
 }

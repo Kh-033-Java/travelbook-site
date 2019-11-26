@@ -1,12 +1,13 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import '../App.css';
 import Header from "../sidebarComponents/SidebarHeader";
-import"../sidebarComponents/SideBar.css";
+import "../sidebarComponents/SideBar.css";
 import NoteMain from "./NoteMain";
-import * as actions from '../../actions/notesActions'
 import isAuthorized from '../checker/authorizationChecker'
 import FooterWithEdit from '../sidebarComponents/FooterWithEdit'
 import axios from 'axios'
+import {getLogin} from "../../helpers/getLogin";
+import FooterWithDelete from "../sidebarComponents/FooterWithDelete";
 import {getJwt} from "../../helpers/jwt";
 
 
@@ -29,7 +30,7 @@ console.log(this.props.noteId)
 }
 theSameLogin(login){
     console.log(localStorage.getItem('country'))
-    return (login===localStorage.getItem('login'))
+    return (login===getLogin())
 }
     render(){
     
@@ -43,6 +44,7 @@ return(
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
 <FooterWithEdit text ="edit note" path="/editNote"/>
+<FooterWithDelete text ="delete note" path="/deleteNote" noteId={this.state.note.id}/>
 </aside>:<aside className="rightbar whole-comp-no-footer ">
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
