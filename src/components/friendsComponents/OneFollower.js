@@ -15,55 +15,30 @@ class OneFollower extends Component {
         super(props);
         this.state = {
             followings: [],
-            login: '',
-            link: '',
+            login: this.props.login,
+            link: this.props.link,
+            isFollowing: this.props.isFollowing,
         };
         this.addToFollowings = this.addToFollowings.bind(this);
-        this.isFollowing = this.isFollowing.bind(this);
         this.hasFriends = this.hasFriends.bind(this);
     }
 
     addToFollowings () {
         let token = getJwt();
-        let data = new FormData();
-        let request = new XMLHttpRequest();
-        request.open('PUT', `http://localhost:8080/users/addfollow/${this.props.login}?user=${localStorage.getItem('login')}`);
-        request.setRequestHeader("Authorization", token);
-        request.send(data);
-        request.onload = function () {
-            if (request.status === 200) {
-                alert("Your friend successfully added!");
-                window.location.href = '/friends';
-            }
-        };
-    }
-
-    componentDidMount() {
-        let token = getJwt();
         let login = getLogin();
 
-        axios.get(`http://localhost:8080/users/following?user=${login}`,{
+        fetch(`http://localhost:8080/users/addfollow/${this.props.login}?user=${login}`, {
+            method: 'PUT',
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: token
             }
         }).then(res => {
-            this.setState({followings : res.data});
-        });
-        this.setState({login: this.props.login,
-                            link: this.props.link});
-    }
-
-    isFollowing(){
-        let isFollowing = false;
-        let followings = this.state.followings;
-        for (let i = 0; i < followings.length; i++){
-            if (followings[i].login === this.state.login){
-                isFollowing = true;
-                break;
+            if (res.status === 200) {
+                alert("Your friend successfully added!");
+                window.location.href = '/friends';
             }
-        }
-
-        return isFollowing;
+        });
     }
 
     hasFriends(){
@@ -86,7 +61,7 @@ class OneFollower extends Component {
                 <div className="account-label-friends">
                     <Link to={`/userPage/${this.state.login}`}> {this.state.login} </Link>
                 </div>
-                {!this.isFollowing() ?
+                {!this.state.isFollowing ?
                 <div className="following">
                     <button className="follow-button" onClick={this.addToFollowings}>Follow</button>
                 </div>
