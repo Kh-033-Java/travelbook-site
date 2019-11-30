@@ -21,6 +21,7 @@ class NewNoteMain extends Component {
             isPublic: false,
             description: '',
             dateOfVisiting: '',
+            login: getLogin(),
             describedCity: '',
             country: this.props.countryName,
             photoLink: [],

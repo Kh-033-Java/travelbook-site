@@ -9,7 +9,8 @@ import axios from 'axios'
 import {getLogin} from "../../helpers/getLogin";
 import FooterWithDelete from "../sidebarComponents/FooterWithDelete";
 import {getJwt} from "../../helpers/jwt";
-
+import FooterBackToNotes from "../sidebarComponents/FooterBackToNotes";
+import FooterBackToNotesUnauthorized from "../sidebarComponents/FooterBackToNotesUnauthorized";
 
 class Note extends Component{
 constructor(props){
@@ -40,14 +41,18 @@ return(
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
 </aside>
-:( this.theSameLogin(this.state.note.login)?<aside className="rightbar whole-comp ">{/*check login and node owner*/}
+:( this.theSameLogin(this.state.note.login)?<aside className="rightbar whole-comp">{/*check login and node owner*/}
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
-<FooterWithEdit text ="edit note" path="/editNote"/>
-<FooterWithDelete text ="delete note" path="/deleteNote" noteId={this.state.note.id}/>
+ <div className="note-footer">
+<FooterWithEdit text ="edit" path="/editNote"/>
+<FooterBackToNotes text ="back to notes" path="/notes"/>
+<FooterWithDelete text ="delete" path="/deleteNote" noteId={this.state.note.id}/>
+ </div>
 </aside>:<aside className="rightbar whole-comp-no-footer ">
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
+<FooterBackToNotesUnauthorized text ="back to notes" path="/notes"/>
 </aside>
 )
 );

@@ -4,7 +4,7 @@ import '../sidebarComponents/SideBar.css'
 import '../App.css';
 function FooterWithEdit(props){
     return (
-  <div className ="sidebar-footer-edit container">
+  <div className ="note-edit container">
                           <NavLink className="nav-link header-text" to ={props.path}>
                     {props.text}
                               </NavLink>

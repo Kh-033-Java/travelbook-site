@@ -25,7 +25,11 @@ class EditNoteMain extends Component {
             describedCity: '',
             photoLink: [],
             existedNotePhotos: new Map(),
-            photos: []
+            photos: [],
+            peopleEstimate: '',
+            pricesEstimate: '',
+            cuisineEstimate: '',
+            commonImpression: ''
         };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
@@ -39,6 +43,7 @@ class EditNoteMain extends Component {
         this.setImpression = this.setImpression.bind(this);
         this.setCity = this.setCity.bind(this);
         this.deleteExistedPhoto = this.deleteExistedPhoto.bind(this);
+        this.forTest = this.forTest.bind(this);
     }
 
     onChangeName(e) {
@@ -55,7 +60,7 @@ class EditNoteMain extends Component {
     }
 
     onChangeDescription(e) {
-        console.log("chnge");
+        console.log("description changed");
         this.setState({
                 description: e.target.value
             }
@@ -67,8 +72,12 @@ class EditNoteMain extends Component {
         const token = getJwt();
         let newPhotos = await uploadPhotos(this.state.photos);
         let photoLink = [];
-        this.state.existedNotePhotos.forEach(existedPhoto => {photoLink.push(existedPhoto.link)});
-        newPhotos.forEach(newPhoto => {photoLink.push(newPhoto)});
+        this.state.existedNotePhotos.forEach(existedPhoto => {
+            photoLink.push(existedPhoto.link)
+        });
+        newPhotos.forEach(newPhoto => {
+            photoLink.push(newPhoto)
+        });
         console.log(photoLink);
         this.setState({photoLink});
 
@@ -94,9 +103,8 @@ class EditNoteMain extends Component {
     }
 
     forTest() {
-        this.setState({
-            photoLink: ['https://storage.googleapis.com/travelbook/2jCyerz6API.jpg', 'https://storage.googleapis.com/travelbook/yhJYRnkALho.jpg']
-        });
+        console.log("title = " + this.state.title);
+        console.log("city = " + this.state.describedCity);
     }
 
     setCuisine(e) {
@@ -135,8 +143,18 @@ class EditNoteMain extends Component {
                     existedNotePhotos.set(response.data.photoLink[i], string);
                 }
                 this.setState({existedNotePhotos});
+                this.setState({
+                    title: response.data.title,
+                    isPublic: response.data.isPublic,
+                    description: response.data.description,
+                    dateOfVisiting: response.data.dateOfVisiting.slice(0, 10),
+                    describedCity: response.data.describedCity,
+                    peopleEstimate: response.data.peopleEstimate,
+                    pricesEstimate: response.data.pricesEstimate,
+                    cuisineEstimate: response.data.cuisineEstimate,
+                    commonImpression: response.data.commonImpression
+                })
             });
-
     }
 
     getDate() {
@@ -154,6 +172,14 @@ class EditNoteMain extends Component {
         } else {
             console.log("not checked");
             this.setState({isPublic: false})
+        }
+    }
+
+    getIsPublicValueForRender = () => {
+        if (this.state.isPublic) {
+            return <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox" checked/>
+        } else {
+            return <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox"/>
         }
     }
 
@@ -176,10 +202,11 @@ class EditNoteMain extends Component {
                 }} onChange={this.onChangeName}/>
                 </div>
                 <CityForNote select_class="city-select" style_class="city-field" countryName={this.props.countryName}
-                             setCity={this.setCity}/>
+                             setCity={this.setCity} currentCity={this.state.describedCity}/>
                 <div className="date-field ">
                     <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate} name="date-note"
-                                                              className="date-in" required/>
+                                                              className="date-in" value={this.state.dateOfVisiting}
+                                                              required/>
                 </div>
                 <div className="ddescription">
                     <p className="header-text">Description</p>
@@ -192,12 +219,12 @@ class EditNoteMain extends Component {
                                  setPrices={this.setPrices} setImpression={this.setImpression}
                                  setCuisine={this.setCuisine}/>
                 <div className="public-checkbox ">
-                    <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox" value={this.state.isPublic}/>
+                    {this.getIsPublicValueForRender()}
                     <label htmlFor="name-note">public</label>
                 </div>
                 <div className="existed-photos">
                     <div className="header-text-existed-photos">Your Photos</div>
-                    <ExistedPhotos photos={this.state.existedNotePhotos} deletePhoto={this.deleteExistedPhoto} />
+                    <ExistedPhotos photos={this.state.existedNotePhotos} deletePhoto={this.deleteExistedPhoto}/>
                 </div>
             </form>
         );

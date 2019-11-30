@@ -15,11 +15,10 @@ class CityForNote extends Component {
 
     componentDidMount() {
         actions.getCityPropertyForNotesByCountry(this.props.countryName).then(res => {
-            console.log(res);
             this.setState({
                 cities: res
-            })
-            this.props.setCity(res[0].name); // first city will be default value
+            });
+            this.props.setCity(this.props.currentCity);
         })
     }
 
@@ -40,7 +39,7 @@ class CityForNote extends Component {
         return (
             <div className={this.props.style_class}>
                 <label for="from-city">City</label>
-                <select className={this.props.select_class} name="from-city" onChange={this.onSelect}>
+                <select className={this.props.select_class} name="from-city" onChange={this.onSelect} value={this.props.currentCity}>
                     {this.createOptionsForSelect()}
                 </select>
             </div>

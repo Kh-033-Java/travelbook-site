@@ -5,6 +5,33 @@
 
 }
 
+.note-footer {
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 33% 100% 33%;
+    width: auto;
+}
+
+.note-edit {
+    grid-column: 1;
+}
+
+.note-back-to-all {
+    grid-column: 2;
+    text-align: center;
+    padding: 17px;
+}
+
+.note-delete {
+    grid-column: 3;
+}
+
+.note-back-to-all-unauth {
+    grid-row: 3;
+    text-align: center;
+    padding: 17px;
+}
+
 .whole-comp-no-footer {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -49,8 +76,14 @@
     height: 60px;
 }
 
-.sidebar-footer-delete{
+.sidebar-footer-back-to-notes{
     grid-row: 4;
+    grid-column: 1/3;
+    height: 60px;
+}
+
+.sidebar-footer-delete{
+    grid-row: 5;
     grid-column: 1/3;
     height: 60px;
 }
