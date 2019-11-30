@@ -15,19 +15,13 @@ function Settings(props){
             </React.Fragment>
             :<React.Fragment>
                 <LogOut/>
-                <div>
-                    <NavLink to="/friends">
-                        <div className="friends-button"/>
-                    </NavLink>
-                </div>
+ 
 
                 <div style={{display: "flex"}}>
                     <NavLink to="/search-plans">
                         <div className="button-plan" />
                     </NavLink>
-                    <NavLink to="/settings">
-                        <div className="settings-button" />
-                    </NavLink>
+
                 </div>
                 <div>
                     <Route path={/userPage/ + getLogin()}>
