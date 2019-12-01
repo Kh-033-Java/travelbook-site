@@ -12,6 +12,7 @@ import ExistedPhotos from "./ExistedPhotos";
 import "../newNoteComponents/NewNote.css";
 import {uploadPhotos} from "../../../actions/notesActions";
 import {getLogin} from "../../../helpers/getLogin";
+import Loading from "../../Loading";
 
 class EditNoteMain extends Component {
     constructor(props) {
@@ -29,7 +30,8 @@ class EditNoteMain extends Component {
             peopleEstimate: '',
             pricesEstimate: '',
             cuisineEstimate: '',
-            commonImpression: ''
+            commonImpression: '',
+            isLoading: true
         };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
@@ -132,7 +134,7 @@ class EditNoteMain extends Component {
     }
 
     componentDidMount() {
-
+        const isLoading = false;
         const endpoint = `http://localhost:8080/country/notes/${this.props.noteId}`;
         console.log(endpoint);
         axios.get(endpoint)
@@ -153,7 +155,8 @@ class EditNoteMain extends Component {
                     pricesEstimate: response.data.pricesEstimate,
                     cuisineEstimate: response.data.cuisineEstimate,
                     commonImpression: response.data.commonImpression
-                })
+                });
+                this.setState({isLoading});
             });
     }
 
@@ -192,42 +195,55 @@ class EditNoteMain extends Component {
     }
 
     render() {
-
-        return (
-            <form name="editNote" id="editNote" className="main-sidebar  main-comp-newnote"
-                  onSubmit={this.sendEditedNote}>
-                <div className="name-field ">
-                    <label htmlFor="name-note">Name of the note</label><input name="name-note" value={this.state.title}
-                                                                              type="text" onInput={() => {
-                }} onChange={this.onChangeName}/>
+        const spinner = this.state.isLoading ? <Loading/> : null;
+        if (this.state.isLoading) {
+            return (
+                <div className="loading-center">
+                    {spinner}
                 </div>
-                <CityForNote select_class="city-select" style_class="city-field" countryName={this.props.countryName}
-                             setCity={this.setCity} currentCity={this.state.describedCity}/>
-                <div className="date-field ">
-                    <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate} name="date-note"
-                                                              className="date-in" value={this.state.dateOfVisiting}
-                                                              required/>
-                </div>
-                <div className="ddescription">
-                    <p className="header-text">Description</p>
-                    <textarea name="description" value={this.state.description} onChange={this.onChangeDescription}/>
-                </div>
-                <PhotoUploader setPhotos={this.setPhotos}/>
-                <EditEstimations people={this.state.peopleEstimate} prices={this.state.pricesEstimate}
-                                 cuisine={this.state.cuisineEstimate} impression={this.state.commonImpression}
-                                 setPeople={this.setPeople}
-                                 setPrices={this.setPrices} setImpression={this.setImpression}
-                                 setCuisine={this.setCuisine}/>
-                <div className="public-checkbox ">
-                    {this.getIsPublicValueForRender()}
-                    <label htmlFor="name-note">public</label>
-                </div>
-                <div className="existed-photos">
-                    <div className="header-text-existed-photos">Your Photos</div>
-                    <ExistedPhotos photos={this.state.existedNotePhotos} deletePhoto={this.deleteExistedPhoto}/>
-                </div>
-            </form>
-        );
+            )
+        }
+        else {
+            return (
+                <form name="editNote" id="editNote" className="main-sidebar  main-comp-newnote"
+                      onSubmit={this.sendEditedNote}>
+                    <div className="name-field ">
+                        <label htmlFor="name-note">Name of the note</label><input name="name-note"
+                                                                                  value={this.state.title}
+                                                                                  type="text" onInput={() => {
+                    }} onChange={this.onChangeName}/>
+                    </div>
+                    <CityForNote select_class="city-select" style_class="city-field"
+                                 countryName={this.props.countryName}
+                                 setCity={this.setCity} currentCity={this.state.describedCity}/>
+                    <div className="date-field ">
+                        <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate}
+                                                                  name="date-note"
+                                                                  className="date-in" value={this.state.dateOfVisiting}
+                                                                  required/>
+                    </div>
+                    <div className="ddescription">
+                        <p className="header-text">Description</p>
+                        <textarea name="description" value={this.state.description}
+                                  onChange={this.onChangeDescription}/>
+                    </div>
+                    <PhotoUploader setPhotos={this.setPhotos}/>
+                    <EditEstimations people={this.state.peopleEstimate} prices={this.state.pricesEstimate}
+                                     cuisine={this.state.cuisineEstimate} impression={this.state.commonImpression}
+                                     setPeople={this.setPeople}
+                                     setPrices={this.setPrices} setImpression={this.setImpression}
+                                     setCuisine={this.setCuisine}/>
+                    <div className="public-checkbox ">
+                        {this.getIsPublicValueForRender()}
+                        <label htmlFor="name-note">public</label>
+                    </div>
+                    <div className="existed-photos">
+                        <div className="header-text-existed-photos">Your Photos</div>
+                        <ExistedPhotos photos={this.state.existedNotePhotos} deletePhoto={this.deleteExistedPhoto}/>
+                    </div>
+                </form>
+            );
+        }
     }
 }
 

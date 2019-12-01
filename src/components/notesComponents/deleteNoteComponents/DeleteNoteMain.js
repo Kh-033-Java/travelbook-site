@@ -11,6 +11,7 @@ import NoteListElement from "../allNotes/NoteListElement";
 import {getJwt} from "../../../helpers/jwt";
 import {getLogin} from "../../../helpers/getLogin";
 import NoteListElementReadOnly from "../allNotes/NoteListElementReadOnly";
+import Loading from "../../Loading";
 
 class DeleteNoteMain extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class DeleteNoteMain extends Component {
         this.state = {
             note: [{}],
             country: localStorage.getItem('country'),
+            isLoading: true
         };
         this.deleteNote = this.deleteNote.bind(this);
     }
@@ -65,11 +67,13 @@ class DeleteNoteMain extends Component {
     }
 
     getNoteEntityById(noteId) {
+        const isLoading = false;
         const endpoint = `http://localhost:8080/country/notes/${noteId}`;
         axios.get(endpoint)
             .then(response => {
                 const note = response.data;
-                this.setState({note})
+                this.setState({note});
+                this.setState({isLoading});
             });
     }
 
@@ -79,16 +83,25 @@ class DeleteNoteMain extends Component {
     }
 
     render() {
-
-        return (
-            <form name="deleteNote" id="deleteNote" className="main-sidebar  main-comp-newnote"
-                  onSubmit={this.deleteNote}>
-                <div className="name-field">
-                    Are you sure you want to delete this note?
-                    <NoteListElementReadOnly note={this.state.note}/>
+        const spinner = this.state.isLoading ? <Loading/> : null;
+        if (this.state.isLoading) {
+            return (
+                <div className="loading-center">
+                    {spinner}
                 </div>
-            </form>
-        );
+            )
+        }
+        else {
+            return (
+                <form name="deleteNote" id="deleteNote" className="main-sidebar  main-comp-newnote"
+                      onSubmit={this.deleteNote}>
+                    <div className="name-field">
+                        Are you sure you want to delete this note?
+                        <NoteListElementReadOnly note={this.state.note}/>
+                    </div>
+                </form>
+            );
+        }
     }
 
 }

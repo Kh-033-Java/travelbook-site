@@ -257,3 +257,14 @@ input:focus, textarea:focus {
 
 }
 
+.whole-comp-loading {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 0.91fr 9fr;
+}
+
+.loading-center {
+    grid-column: 1 / 3;
+    grid-row: 2;
+}
+
