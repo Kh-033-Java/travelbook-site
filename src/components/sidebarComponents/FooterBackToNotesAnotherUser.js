@@ -2,9 +2,9 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import '../sidebarComponents/SideBar.css'
 import '../App.css';
-function FooterBackToNotesUnauthorized(props){
+function FooterBackToNotesAnotherUser(props){
     return (
-  <div className ="note-back-to-all-unauth container">
+  <div className ="note-back-to-all-another-user container">
                           <NavLink className="nav-link header-text" to={props.path}>
                               {props.text}
                               </NavLink>
@@ -12,4 +12,4 @@ function FooterBackToNotesUnauthorized(props){
 
     );
 }
-export default FooterBackToNotesUnauthorized;
+export default FooterBackToNotesAnotherUser;

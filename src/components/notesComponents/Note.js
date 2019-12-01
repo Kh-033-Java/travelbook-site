@@ -10,7 +10,7 @@ import {getLogin} from "../../helpers/getLogin";
 import FooterWithDelete from "../sidebarComponents/FooterWithDelete";
 import {getJwt} from "../../helpers/jwt";
 import FooterBackToNotes from "../sidebarComponents/FooterBackToNotes";
-import FooterBackToNotesUnauthorized from "../sidebarComponents/FooterBackToNotesUnauthorized";
+import FooterBackToNotesAnotherUser from "../sidebarComponents/FooterBackToNotesAnotherUser";
 
 class Note extends Component{
 constructor(props){
@@ -52,7 +52,9 @@ return(
 </aside>:<aside className="rightbar whole-comp-no-footer ">
 <Header title = {this.state.note.title} countryName={localStorage.getItem('country')}/>
 <NoteMain note = {this.state.note}/>
-<FooterBackToNotesUnauthorized text ="back to notes" path="/notes"/>
+<div className="note-footer-another-user">
+<FooterBackToNotesAnotherUser text ="back to notes" path="/notes"/>
+</div>
 </aside>
 )
 );

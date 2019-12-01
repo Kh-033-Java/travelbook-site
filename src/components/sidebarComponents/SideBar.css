@@ -12,8 +12,25 @@
     width: auto;
 }
 
+.note-footer-another-user {
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 33% 100% 33%;
+    width: auto;
+}
+
 .note-edit {
     grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon-button-edit-note {
+    padding: 32px;
+    background: url("../icons/IconEditNote.png") 100% 100% no-repeat;
+    background-size: cover;
+    cursor: pointer;
 }
 
 .note-back-to-all {
@@ -24,10 +41,20 @@
 
 .note-delete {
     grid-column: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.note-back-to-all-unauth {
-    grid-row: 3;
+.icon-button-delete-note {
+    padding: 32px;
+    background: url("../icons/IconDeleteNote.png") 100% 100% no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.note-back-to-all-another-user {
+    grid-column: 2;
     text-align: center;
     padding: 17px;
 }

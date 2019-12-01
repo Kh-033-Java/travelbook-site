@@ -10,6 +10,7 @@ import {Redirect} from 'react-router-dom';
 import NoteListElement from "../allNotes/NoteListElement";
 import {getJwt} from "../../../helpers/jwt";
 import {getLogin} from "../../../helpers/getLogin";
+import NoteListElementReadOnly from "../allNotes/NoteListElementReadOnly";
 
 class DeleteNoteMain extends Component {
     constructor(props) {
@@ -84,7 +85,7 @@ class DeleteNoteMain extends Component {
                   onSubmit={this.deleteNote}>
                 <div className="name-field">
                     Are you sure you want to delete this note?
-                    <NoteListElement note={this.state.note}/>
+                    <NoteListElementReadOnly note={this.state.note}/>
                 </div>
             </form>
         );
