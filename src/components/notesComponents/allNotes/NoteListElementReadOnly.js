@@ -22,7 +22,6 @@ class NoteListElementReadOnly extends Component {
             liked: false,
             disabled: false
         }
-        this.setID = this.setID.bind(this);
         this.getCountOfLikes = this.getCountOfLikes.bind(this);
         this.sendLike = this.sendLike.bind(this);
         this.checkIfAlreadyLiked = this.checkIfAlreadyLiked.bind(this);
@@ -34,18 +33,6 @@ class NoteListElementReadOnly extends Component {
         if (isAuthorized()) {
             this.checkIfAlreadyLiked();
             this.setState({disabled: true});
-        }
-    }
-
-    setID(e) {
-        e.preventDefault();
-        if (!this.props.note) {
-            return;
-        }
-        console.log(this.props.note)
-        if (this.props.note.id) {
-            this.props.setId(this.props.note.id)
-            this.setState({clicked: true});
         }
     }
 

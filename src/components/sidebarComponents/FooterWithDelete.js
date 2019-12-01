@@ -7,7 +7,6 @@ function FooterWithDelete(props) {
     return (
         <div className="note-delete container">
             <NavLink className="nav-link header-text" to={props.path} noteId={props.noteId} note={props.note}>
-                {/*{props.text}*/}
                 <button className="icon-button-delete-note icons-button"></button>
             </NavLink>
         </div>
