@@ -4,6 +4,7 @@ import axios from 'axios';
 import {confirmAlert} from "react-confirm-alert";
 import {Redirect} from "react-router";
 import {Link} from "react-router-dom";
+import {getLogin} from "../../helpers/getLogin";
 
 /**
  *
@@ -14,8 +15,8 @@ class OneFollowing extends Component {
     constructor(props){
         super(props);
         this.state = {
-            login: '',
-            link: '',
+            login: this.props.login,
+            link: this.props.link,
         };
         this.deleteFollowing = this.deleteFollowing.bind(this);
         this.hasFriends = this.hasFriends.bind(this);
@@ -23,8 +24,7 @@ class OneFollowing extends Component {
 
     deleteFollowing () {
         let token = getJwt();
-        let data = new FormData();
-        let request = new XMLHttpRequest();
+        let login = getLogin();
 
         confirmAlert({
             title: 'Confirm to submit',
@@ -33,15 +33,18 @@ class OneFollowing extends Component {
                 {
                     label: 'Yes',
                     onClick: () => {
-                        request.open('PUT', `http://localhost:8080/users/deletefollow/${this.state.login}?user=${localStorage.getItem('login')}`);
-                        request.setRequestHeader("Authorization", token);
-                        request.send(data);
-                        request.onload = function () {
-                            if (request.status === 200) {
+                        fetch(`http://localhost:8080/users/deletefollow/${this.state.login}?user=${login}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Authorization: token
+                            }
+                        }).then(res => {
+                            if (res.status === 200) {
                                 alert("This guy isn't your friend already! ;(");
                                 window.location.href = '/friends';
                             }
-                        };
+                        });
                     }
                 },
                 {
@@ -50,14 +53,6 @@ class OneFollowing extends Component {
                 }
             ]
         });
-    }
-
-    componentDidMount() {
-        this.setState({
-            login: this.props.login,
-            link: this.props.link
-        });
-        console.log(this.state)
     }
 
     hasFriends(){

@@ -27,19 +27,21 @@ class UserGeneralInformation extends Component {
 
     componentDidMount() {
         let token = getJwt();
-        const url = 'http://localhost:8080/users/' + localStorage.getItem("login");
+        const url = 'http://localhost:8080/users/' + this.state.login;
 
         axios.get(url, {
             headers: {
                 Authorization: token
             }
         }).then(res => {
-            // console.log(res.data);
+             console.log(res.data);
+            if(res.data.id !== undefined){ 
             this.setState({login: res.data.login});
             this.setState({firstName: res.data.firstName});
             this.setState({lastName: res.data.lastName});
             this.setState({description: res.data.description});
             this.setState({avatar: res.data.avatar.link});
+            }
         });
         if (this.props.match !== undefined && this.state.login === '') {
             this.setState({ login: this.props.match.params.login }, this.componentDidMount);

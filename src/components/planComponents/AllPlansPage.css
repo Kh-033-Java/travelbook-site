@@ -11,6 +11,11 @@
     overflow: auto;
 }
 
+.allUserPlans{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
 .list-el{
     text-align: center;
     display:grid;

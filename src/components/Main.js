@@ -21,6 +21,7 @@ import GeneralInfo from "./GeneralInfo.js";
 import DeleteNote from "./notesComponents/deleteNoteComponents/DeleteNote";
 import SearchPlans from "./search/SearchPlans";
 import SearchMain from "./search/SearchMain";
+import AllPlansPage from './planComponents/AllPlansPage'
 import Rating from './rating/Rating';
 import Friends from "./friendsComponents/Friends";
 
@@ -163,6 +164,10 @@ class Main extends Component {
                 <Route path = "/plan">
                     <Icons></Icons>
                     <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
+                </Route>
+                <Route path = "/allplans">
+                    <Icons></Icons>
+                    <AllPlansPage setId={this.setPlanID}/>
                 </Route>
                 <Route path = "/friends">
                     <Icons/>

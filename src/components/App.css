@@ -96,8 +96,8 @@ header {
 .search form{
     display: inline-block;
     position: relative;
-    float: left;
 }
+
 
 .search input {
     -webkit-border-radius: 30px;
@@ -247,7 +247,7 @@ aside {
     background: url("icons/cd143e9b-979b-4fd5-ba9e-6272c5598736.jpg") 100% 100% no-repeat;
     grid-column: 4;
     background-size: contain;
-    margin-left: 80px;
+    margin-left: 10px;
     width: 30px;
     height: 30px;
 }
@@ -303,15 +303,17 @@ aside {
 
 .photos-gallery {
     width: 100%;
-    height: 400px;
+    height: 73vh;
     overflow: scroll;
 }
 .search-plan {
     display: grid;
+    height: 83vh;
 }
 
 .plan-scroll {
-    height: 400px;
+    height: 69vh;
     overflow: scroll;
+
 }
 
