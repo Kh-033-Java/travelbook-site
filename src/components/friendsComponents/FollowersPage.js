@@ -37,8 +37,8 @@ class FollowersPage extends Component {
 
     getFollowers() {
         let friends = [];
-        this.state.followers.forEach(e => friends.push(
-        <OneFollower login={e.login} link={e.avatar.link} isFollowing={this.isFollowing(e.login)}/>
+        this.state.followers.forEach((e, key) => friends.push(
+        <OneFollower login={e.login} link={e.avatar.link} isFollowing={this.isFollowing(e.login)} key={key}/>
     ));
         return friends;
     }

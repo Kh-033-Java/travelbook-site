@@ -53,7 +53,7 @@ class OnePlane extends Component {
                 </div>
                 <div className={"propertyTransport-s  prop-s"}>
                     <div>"Transport"</div>
-                    <textarea value={this.props.plan.transportType} className="" readOnly/>
+                    <textarea value={this.props.plan.transportType? this.props.plan.transportType : "Plane"} className="" readOnly/>
                 </div>
                 <div className={"propertyAmount-s  prop-s"}>
                     <div>"Amount of people"</div>
