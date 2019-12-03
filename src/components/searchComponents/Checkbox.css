@@ -1,10 +1,14 @@
 .check-box{
     display: inline-block;
-    float: left;
+    margin: 10px;
 }
 .check-box p{
     display: inline-block;
 }
+.selected {
+  font-weight: bold;
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -42,9 +46,7 @@
     transition: .4s;
   }
   
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
+
   
   input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;

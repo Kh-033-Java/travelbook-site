@@ -12,6 +12,7 @@ import ExistedPhotos from "./ExistedPhotos";
 import "../newNoteComponents/NewNote.css";
 import {uploadPhotos} from "../../../actions/notesActions";
 import {getLogin} from "../../../helpers/getLogin";
+import Loading from "../../Loading";
 
 class EditNoteMain extends Component {
     constructor(props) {
@@ -25,7 +26,12 @@ class EditNoteMain extends Component {
             describedCity: '',
             photoLink: [],
             existedNotePhotos: new Map(),
-            photos: []
+            photos: [],
+            peopleEstimate: '',
+            pricesEstimate: '',
+            cuisineEstimate: '',
+            commonImpression: '',
+            isLoading: true
         };
         this.sendEditedNote = this.sendEditedNote.bind(this);
         this.getDate = this.getDate.bind(this);
@@ -39,6 +45,7 @@ class EditNoteMain extends Component {
         this.setImpression = this.setImpression.bind(this);
         this.setCity = this.setCity.bind(this);
         this.deleteExistedPhoto = this.deleteExistedPhoto.bind(this);
+        this.forTest = this.forTest.bind(this);
     }
 
     onChangeName(e) {
@@ -55,7 +62,7 @@ class EditNoteMain extends Component {
     }
 
     onChangeDescription(e) {
-        console.log("chnge");
+        console.log("description changed");
         this.setState({
                 description: e.target.value
             }
@@ -67,8 +74,12 @@ class EditNoteMain extends Component {
         const token = getJwt();
         let newPhotos = await uploadPhotos(this.state.photos);
         let photoLink = [];
-        this.state.existedNotePhotos.forEach(existedPhoto => {photoLink.push(existedPhoto.link)});
-        newPhotos.forEach(newPhoto => {photoLink.push(newPhoto)});
+        this.state.existedNotePhotos.forEach(existedPhoto => {
+            photoLink.push(existedPhoto.link)
+        });
+        newPhotos.forEach(newPhoto => {
+            photoLink.push(newPhoto)
+        });
         console.log(photoLink);
         this.setState({photoLink});
 
@@ -94,9 +105,8 @@ class EditNoteMain extends Component {
     }
 
     forTest() {
-        this.setState({
-            photoLink: ['https://storage.googleapis.com/travelbook/2jCyerz6API.jpg', 'https://storage.googleapis.com/travelbook/yhJYRnkALho.jpg']
-        });
+        console.log("title = " + this.state.title);
+        console.log("city = " + this.state.describedCity);
     }
 
     setCuisine(e) {
@@ -124,7 +134,7 @@ class EditNoteMain extends Component {
     }
 
     componentDidMount() {
-
+        const isLoading = false;
         const endpoint = `http://localhost:8080/country/notes/${this.props.noteId}`;
         console.log(endpoint);
         axios.get(endpoint)
@@ -135,8 +145,19 @@ class EditNoteMain extends Component {
                     existedNotePhotos.set(response.data.photoLink[i], string);
                 }
                 this.setState({existedNotePhotos});
+                this.setState({
+                    title: response.data.title,
+                    isPublic: response.data.isPublic,
+                    description: response.data.description,
+                    dateOfVisiting: response.data.dateOfVisiting.slice(0, 10),
+                    describedCity: response.data.describedCity,
+                    peopleEstimate: response.data.peopleEstimate,
+                    pricesEstimate: response.data.pricesEstimate,
+                    cuisineEstimate: response.data.cuisineEstimate,
+                    commonImpression: response.data.commonImpression
+                });
+                this.setState({isLoading});
             });
-
     }
 
     getDate() {
@@ -157,6 +178,14 @@ class EditNoteMain extends Component {
         }
     }
 
+    getIsPublicValueForRender = () => {
+        if (this.state.isPublic) {
+            return <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox" checked/>
+        } else {
+            return <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox"/>
+        }
+    }
+
     deleteExistedPhoto(photolink) {
         let existedNotePhotos = this.state.existedNotePhotos;
         existedNotePhotos.delete(photolink);
@@ -166,41 +195,55 @@ class EditNoteMain extends Component {
     }
 
     render() {
-
-        return (
-            <form name="editNote" id="editNote" className="main-sidebar  main-comp-newnote"
-                  onSubmit={this.sendEditedNote}>
-                <div className="name-field ">
-                    <label htmlFor="name-note">Name of the note</label><input name="name-note" value={this.state.title}
-                                                                              type="text" onInput={() => {
-                }} onChange={this.onChangeName}/>
+        const spinner = this.state.isLoading ? <Loading/> : null;
+        if (this.state.isLoading) {
+            return (
+                <div className="loading-center">
+                    {spinner}
                 </div>
-                <CityForNote select_class="city-select" style_class="city-field" countryName={this.props.countryName}
-                             setCity={this.setCity}/>
-                <div className="date-field ">
-                    <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate} name="date-note"
-                                                              className="date-in" required/>
-                </div>
-                <div className="ddescription">
-                    <p className="header-text">Description</p>
-                    <textarea name="description" value={this.state.description} onChange={this.onChangeDescription}/>
-                </div>
-                <PhotoUploader setPhotos={this.setPhotos}/>
-                <EditEstimations people={this.state.peopleEstimate} prices={this.state.pricesEstimate}
-                                 cuisine={this.state.cuisineEstimate} impression={this.state.commonImpression}
-                                 setPeople={this.setPeople}
-                                 setPrices={this.setPrices} setImpression={this.setImpression}
-                                 setCuisine={this.setCuisine}/>
-                <div className="public-checkbox ">
-                    <input name="isPublic" onClick={e => this.onCheck(e)} type="checkbox" value={this.state.isPublic}/>
-                    <label htmlFor="name-note">public</label>
-                </div>
-                <div className="existed-photos">
-                    <div className="header-text-existed-photos">Your Photos</div>
-                    <ExistedPhotos photos={this.state.existedNotePhotos} deletePhoto={this.deleteExistedPhoto} />
-                </div>
-            </form>
-        );
+            )
+        }
+        else {
+            return (
+                <form name="editNote" id="editNote" className="main-sidebar  main-comp-newnote"
+                      onSubmit={this.sendEditedNote}>
+                    <div className="name-field ">
+                        <label htmlFor="name-note">Name of the note</label><input name="name-note"
+                                                                                  value={this.state.title}
+                                                                                  type="text" onInput={() => {
+                    }} onChange={this.onChangeName}/>
+                    </div>
+                    <CityForNote select_class="city-select" style_class="city-field"
+                                 countryName={this.props.countryName}
+                                 setCity={this.setCity} currentCity={this.state.describedCity}/>
+                    <div className="date-field ">
+                        <label for="date-note">Date</label><input type="date" onChange={this.onChangeDate}
+                                                                  name="date-note"
+                                                                  className="date-in" value={this.state.dateOfVisiting}
+                                                                  required/>
+                    </div>
+                    <div className="ddescription">
+                        <p className="header-text">Description</p>
+                        <textarea name="description" value={this.state.description}
+                                  onChange={this.onChangeDescription}/>
+                    </div>
+                    <PhotoUploader setPhotos={this.setPhotos}/>
+                    <EditEstimations people={this.state.peopleEstimate} prices={this.state.pricesEstimate}
+                                     cuisine={this.state.cuisineEstimate} impression={this.state.commonImpression}
+                                     setPeople={this.setPeople}
+                                     setPrices={this.setPrices} setImpression={this.setImpression}
+                                     setCuisine={this.setCuisine}/>
+                    <div className="public-checkbox ">
+                        {this.getIsPublicValueForRender()}
+                        <label htmlFor="name-note">public</label>
+                    </div>
+                    <div className="existed-photos">
+                        <div className="header-text-existed-photos">Your Photos</div>
+                        <ExistedPhotos photos={this.state.existedNotePhotos} deletePhoto={this.deleteExistedPhoto}/>
+                    </div>
+                </form>
+            );
+        }
     }
 }
 

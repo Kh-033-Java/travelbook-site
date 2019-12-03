@@ -19,12 +19,12 @@ class CheckBox extends Component {
     render(){
     return (
         <div className='check-box'>
-            <p>User</p>
+            <p className={this.props.isUserSearch || this.props === undefined ? "selected" : null}>User</p>
             <label  className="switch">
                 <input onClick={this.onClick} type="checkbox"/>
                 <span className="slider round"></span>
             </label>
-            <p>Country</p>
+            <p className={this.props.isUserSearch ? null : "selected"}>Country</p>
         </div>
     );
     }
