@@ -1,19 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
 
-html, body{
-  height: 100%;  
-}
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f1f1f1;
-  font-family: 'Roboto', sans-serif;
-}
 
 .dropdown-container {
   width: 100px;
+  margin: 10px;
   box-sizing: border-box;
   padding: 10px;
   background: #fff;
