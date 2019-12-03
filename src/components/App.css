@@ -316,3 +316,9 @@ aside {
 
 }
 
+.user-page-icon{
+    margin-left: auto;
+    grid-row: 1;
+    grid-column: 4;
+}
+

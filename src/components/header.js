@@ -14,25 +14,12 @@ class Header extends Component {
     render() {
         return (
             <header className="header">
-
+                <NavLink to="/travelbook">
                 <div className="title ">TravelBook</div>
+                </NavLink>
                 <Search setMap={this.props.setMap}/>
                 <Settings/>
-                <Dropdown label="Menu">
-
-                    <NavLink to="/friends" className = "dropdown-option">
-                    <DropdownItem label="Friens"/>
-                    </NavLink>
-
-
-                    <NavLink to="/alluserplans" className = "dropdown-option">
-                    <DropdownItem label="My Plans"/>
-                    </NavLink>
-
-                    <NavLink to="/settings" className = "dropdown-option">
-                    <DropdownItem label="Settings"/>
-                    </NavLink>
-                </Dropdown>
+              
             </header>
 
         )

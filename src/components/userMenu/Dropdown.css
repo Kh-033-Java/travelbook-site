@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
 
 
+.dropdown{
+  grid-column: 4;
+  grid-row: 1;
+}
 
 .dropdown-container {
   width: 100px;
@@ -10,6 +14,7 @@
   background: #fff;
   position: relative;
   box-shadow:0 2px 4px rgba(0,0,0,.2),0 2px 2px rgba(0,0,0,.25);
+  margin-left: 50%;
 }
 
 .dropdown-label {
