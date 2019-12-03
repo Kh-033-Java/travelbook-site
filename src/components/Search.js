@@ -152,7 +152,7 @@ class Search extends Component {
                     </div>
                 </form>
 
-                <Checkbox onClick={this.onClick} />
+                <Checkbox onClick={this.onClick} isUserSearch={this.state.isUserSearch}/>
 
             </div>
         )

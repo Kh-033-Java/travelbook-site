@@ -5,6 +5,60 @@
 
 }
 
+.note-footer {
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 33% 100% 33%;
+    width: auto;
+}
+
+.note-footer-another-user {
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 33% 100% 33%;
+    width: auto;
+}
+
+.note-edit {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon-button-edit-note {
+    padding: 32px;
+    background: url("../icons/IconEditNote.png") 100% 100% no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.note-back-to-all {
+    grid-column: 2;
+    text-align: center;
+    padding: 17px;
+}
+
+.note-delete {
+    grid-column: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon-button-delete-note {
+    padding: 32px;
+    background: url("../icons/IconDeleteNote.png") 100% 100% no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.note-back-to-all-another-user {
+    grid-column: 2;
+    text-align: center;
+    padding: 17px;
+}
+
 .whole-comp-no-footer {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -49,8 +103,14 @@
     height: 60px;
 }
 
-.sidebar-footer-delete{
+.sidebar-footer-back-to-notes{
     grid-row: 4;
+    grid-column: 1/3;
+    height: 60px;
+}
+
+.sidebar-footer-delete{
+    grid-row: 5;
     grid-column: 1/3;
     height: 60px;
 }
@@ -195,5 +255,16 @@ textarea {
 input:focus, textarea:focus {
     background: rgba(0, 0, 0, .1);
 
+}
+
+.whole-comp-loading {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 0.91fr 9fr;
+}
+
+.loading-center {
+    grid-column: 1 / 3;
+    grid-row: 2;
 }
 

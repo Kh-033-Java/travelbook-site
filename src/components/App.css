@@ -96,8 +96,8 @@ header {
 .search form{
     display: inline-block;
     position: relative;
-    float: left;
 }
+
 
 .search input {
     -webkit-border-radius: 30px;
