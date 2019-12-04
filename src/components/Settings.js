@@ -20,7 +20,7 @@ function Settings(props) {
                 <Dropdown label="Menu" className="dropdown">
 
                     <NavLink to="/friends" className="dropdown-option">
-                        <DropdownItem label="Friens" />
+                        <DropdownItem label="Friends" />
                     </NavLink>
 
 
