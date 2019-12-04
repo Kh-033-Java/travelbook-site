@@ -73,6 +73,9 @@ class App extends Component {
                     <Route patrh="/rating">
                         <Main gridClass="grid-cont"/>
                     </Route>
+                    <Route path="/messages">
+                        <Main gridClass="grid-cont"/>
+                    </Route>
                     <Route path="/errorPage/">
                         <h1>Error</h1>
                     </Route>

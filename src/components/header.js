@@ -19,6 +19,7 @@ class Header extends Component {
                 <Search setMap={this.props.setMap}/>
                 <Settings/>
                 <AllPlansPageButton/>
+
             </header>
 
         )

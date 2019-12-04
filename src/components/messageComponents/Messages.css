@@ -1,0 +1,15 @@
+
+.messages-sidebar {
+    padding: 0;
+    border-right: silver;
+    border-left: 2px solid silver;
+    border-top: silver;
+    border-bottom: white;
+}
+
+.icon-button-messages {
+    padding: 32px;
+    background: url("../icons/IconMessages.png") 100% 100% no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ import {avatar} from './user-page/avatar';
 import UnauthorizedSettings from './UnauthorizedSettings.js'
 import isAuthorized from './checker/authorizationChecker.js'
 import {getLogin} from "../helpers/getLogin";
+import MessageIcon from "./messageComponents/MessageIcon";
 
 function Settings(props){
     return(
@@ -34,6 +35,7 @@ function Settings(props){
                         {avatar}
                     </Route>
                 </div>
+                <MessageIcon/>
             </React.Fragment>
 
     )

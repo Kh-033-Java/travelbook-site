@@ -24,6 +24,7 @@ import SearchMain from "./search/SearchMain";
 import AllPlansPage from './planComponents/AllPlansPage'
 import Rating from './rating/Rating';
 import Friends from "./friendsComponents/Friends";
+import Messages from "./messageComponents/Messages";
 
 class Main extends Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class Main extends Component {
         this.state = {
             nameCountry: '',
             idCountry: '',
-            map:"",
+            map: "",
             idPlan: '',
             mapComponent: '',
             idNote: ''
@@ -70,16 +71,17 @@ class Main extends Component {
         })
     }
 
-    renderGI(renderFunction){
+    renderGI(renderFunction) {
         this.setState({
             renderGI: renderFunction
         });
     }
 
-    setMapComponent(newMap){
+    setMapComponent(newMap) {
         this.setState({
-        mapComponent: newMap
-        },()=>{})
+            mapComponent: newMap
+        }, () => {
+        })
     }
 
     componentDidMount() {
@@ -148,28 +150,31 @@ class Main extends Component {
                     <EditNote countryName={this.state.nameCountry} id={this.state.idCountry}
                               worldSeries={this.state.map} noteId={this.state.idNote}/>
                 </Route>
-                <Route path = "/deleteNote">
+                <Route path="/deleteNote">
                     <Icons></Icons>
-                    <DeleteNote countryName={this.state.nameCountry} noteId ={this.state.idNote} />
+                    <DeleteNote countryName={this.state.nameCountry} noteId={this.state.idNote}/>
                 </Route>
                 <Route path="/newPlan">
                     <Icons></Icons>
-                    <NewPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}/>
+                    <NewPlan countryName={this.state.nameCountry} id={this.state.idCountry}
+                             worldSeries={this.state.map}/>
                 </Route>
                 <Route path="/editPlan">
                     <Icons></Icons>
-                    <EditPlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
-                             planId={this.state.idPlan}/>
+                    <EditPlan countryName={this.state.nameCountry} id={this.state.idCountry}
+                              worldSeries={this.state.map}
+                              planId={this.state.idPlan}/>
                 </Route>
-                <Route path = "/plan">
+                <Route path="/plan">
                     <Icons></Icons>
-                    <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry} worldSeries = {this.state.map} planId ={this.state.idPlan} />
+                    <ViewSinglePlan countryName={this.state.nameCountry} id={this.state.idCountry}
+                                    worldSeries={this.state.map} planId={this.state.idPlan}/>
                 </Route>
-                <Route path = "/allplans">
+                <Route path="/allplans">
                     <Icons></Icons>
                     <AllPlansPage setId={this.setPlanID}/>
                 </Route>
-                <Route path = "/friends">
+                <Route path="/friends">
                     <Icons/>
                     <Friends/>
                 </Route>
@@ -181,19 +186,23 @@ class Main extends Component {
                     path="/search-plans">
                     <Icons></Icons>
                     <SearchMain countryName={this.state.nameCountry}
-                                 id={this.state.idCountry}
-                                 worldSeries={this.state.map}
-                                 setId={this.setPlanID}/>
+                                id={this.state.idCountry}
+                                worldSeries={this.state.map}
+                                setId={this.setPlanID}/>
                 </Route>
                 <Route path="/rating">
                     <Icons/>
                     <Rating/>
                 </Route>
+                <Route path="/messages">
+                    <Icons/>
+                    <Messages/>
+                </Route>
 
             </div>
-        );
+    );
     }
-}
+    }
 
 
-export default Main;
+    export default Main;
