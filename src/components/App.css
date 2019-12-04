@@ -80,7 +80,6 @@ header {
 .authorize3 {
     grid-column: 3/5;
     margin-left: 55%;
-    width: 100%;
 }
 
 .search {
@@ -315,5 +314,11 @@ aside {
     height: 69vh;
     overflow: scroll;
 
+}
+
+.user-page-icon{
+    margin-left: auto;
+    grid-row: 1;
+    grid-column: 4;
 }
 

@@ -3,8 +3,8 @@ import {BrowserRouter as Router, NavLink} from 'react-router-dom';
 import Search from './Search.js'
 import './App.css';
 import Settings from "./Settings.js";
-import AllPlansPageButton from "../components/planComponents/AllPlansPageButton"
-
+import Dropdown from '../components/userMenu/Dropdown'
+import DropdownItem from '../components/userMenu/DropdownItem'
 class Header extends Component {
 
     constructor(props) {
@@ -14,11 +14,12 @@ class Header extends Component {
     render() {
         return (
             <header className="header">
-
+                <NavLink to="/travelbook">
                 <div className="title ">TravelBook</div>
+                </NavLink>
                 <Search setMap={this.props.setMap}/>
                 <Settings/>
-                <AllPlansPageButton/>
+              
             </header>
 
         )
