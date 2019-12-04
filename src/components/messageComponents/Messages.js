@@ -4,6 +4,7 @@ import {getLogin} from "../../helpers/getLogin";
 import axios from 'axios';
 import './Messages.css'
 import Loading from "../Loading";
+import Intercolutors from "./Intercolutors";
 
 
 class Messages extends Component {
@@ -11,7 +12,6 @@ class Messages extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // isFollowers: false
             intercolutors: [],
             isLoading: true
         }
@@ -22,7 +22,6 @@ class Messages extends Component {
         const login = getLogin();
         axios.get(`http://localhost:8080/messages/${login}/contacts`)
             .then(response => {
-                // console.log(response.data);
                 this.setState({intercolutors: response.data});
                 this.setState({isLoading});
             }).catch(error => console.log(error));
@@ -40,7 +39,9 @@ class Messages extends Component {
         else {
             return (
                 <aside className="messages-sidebar">
-                    <div>Messages</div>
+                    <div className="list-main-messages">
+                        <Intercolutors intercolutors={this.state.intercolutors}/>
+                    </div>
                 </aside>
             )
         }

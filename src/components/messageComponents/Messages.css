@@ -5,6 +5,13 @@
     border-left: 2px solid silver;
     border-top: silver;
     border-bottom: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /*font-size: 200%;*/
+    /*width: 50%;*/
+    /*height: 7%;*/
+    /*border-left: silver;*/
+    /*border-top: white;*/
+    /*border-bottom: white;*/
 }
 
 .icon-button-messages {
@@ -12,4 +19,21 @@
     background: url("../icons/IconMessages.png") 100% 100% no-repeat;
     background-size: cover;
     cursor: pointer;
+}
+
+.list-main-messages {
+    text-align: center;
+    font-size : 22px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 9fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    overflow: auto;
+}
+
+.list-element {
+    border: 3px solid grey;
+    border-radius: 2%;
 }
