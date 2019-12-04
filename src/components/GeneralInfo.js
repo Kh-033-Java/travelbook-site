@@ -74,8 +74,7 @@ class GeneralInfo extends Component {
             }
 
         });
-    }
-    ;
+    };
 
 
     render() {
@@ -99,7 +98,7 @@ class GeneralInfo extends Component {
                     <div
                         className="description-part-render">Description: {this.state.description.commonInformation}</div>
                     <div className="general-photos">
-                        <GetPhotos photos={this.state.photos}/>
+                        <GetPhotos photos={this.state.photos} />
                     </div>
                 </aside>
             );

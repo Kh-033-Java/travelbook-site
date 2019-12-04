@@ -15,10 +15,14 @@ export default function showUserMap(worldSeries) {
                 const countriesPlannedToVisit = response.data.countriesPlannedToVisit;
                 const userMap = worldSeries;
                 countriesPlannedToVisit.forEach(function (element) {
-                    userMap.getPolygonById(element.map_id).fill = am4core.color("#E111F0");
+                    if (userMap.getPolygonById(element.map_id).fill !== undefined){
+                        userMap.getPolygonById(element.map_id).fill = am4core.color("#E111F0");
+                    }
                 });
                 visitedCountries.forEach(function (element) {
-                    userMap.getPolygonById(element.map_id).fill = am4core.color("#67f58d");
+                    if (userMap.getPolygonById(element.map_id).fill !== undefined){
+                        userMap.getPolygonById(element.map_id).fill = am4core.color("#67f58d");
+                    }
                 });
             })
     }

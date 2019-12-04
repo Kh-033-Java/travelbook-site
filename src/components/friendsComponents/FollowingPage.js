@@ -11,7 +11,7 @@ import FriendsHeader from "./FriendsHeader";
  */
 
 class FollowingPage extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             followings: [],
@@ -21,7 +21,8 @@ class FollowingPage extends Component {
 
     getFollowings() {
         let friends = [];
-        this.state.followings.forEach(e => friends.push(<OneFollowing login = {e.login} link = {e.avatar.link}/>));
+        this.state.followings.forEach((e, key) => friends.push(<OneFollowing login={e.login} link={e.avatar.link}
+                                                                             key={key}/>));
         return friends;
     }
 
@@ -29,17 +30,17 @@ class FollowingPage extends Component {
         let token = getJwt();
         let login = getLogin();
 
-        axios.get(`http://localhost:8080/users/following?user=${login}`,{
+        axios.get(`http://localhost:8080/users/following?user=${login}`, {
             headers: {
                 Authorization: token
             }
         }).then(res => {
-            this.setState({followings : res.data});
+            this.setState({followings: res.data});
         });
     }
 
     render() {
-        return(
+        return (
             <div className="all-friends">
                 {this.getFollowings()}
             </div>
