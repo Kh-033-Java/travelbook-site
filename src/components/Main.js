@@ -98,10 +98,9 @@ class Main extends Component {
 
     render() {
         return (
-            <div className={this.props.gridClass}>
-
-                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI}/>
+            <div className='container-fluid'>
                 <Head setMap={this.state.mapComponent}/>
+                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI}/>
 
                 <Route path="/travelbook">
                 </Route>

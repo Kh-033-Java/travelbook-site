@@ -1,6 +1,8 @@
 .check-box{
     display: inline-block;
-    margin: 10px;
+    margin-top: 15px;
+    margin-left: 10px;
+    
 }
 .check-box p{
     display: inline-block;

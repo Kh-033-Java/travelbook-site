@@ -13,15 +13,16 @@ class Header extends Component {
 
     render() {
         return (
-            <header className="header">
-                <NavLink to="/travelbook">
-                <div className="title ">TravelBook</div>
+            <div>
+            <header className="row header-row">
+                <NavLink to="/travelbook" className="col-lg-2 col-sm-12 d-flex justify-content-center justify-content-lg-start" style={{minWidth: 150+"px"}}>
+                <div className="title">TravelBook</div>
                 </NavLink>
                 <Search setMap={this.props.setMap}/>
                 <Settings/>
               
             </header>
-
+            </div>
         )
     }
 }

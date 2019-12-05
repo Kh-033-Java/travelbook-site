@@ -38,9 +38,9 @@ export default class Dropdown extends React.Component {
       });
       if(this.props !== undefined){
       return (
-        <div className={className} 
-          onClick={this.toggleDropdown.bind(this)}>
-          <div className="dropdown-label">
+        <div className={className}  
+          onClick={this.toggleDropdown.bind(this)} style={{ marginRight: 2 + "%" }}>
+          <div className="dropdown-label " >
             {this.props.label}
           </div>
 

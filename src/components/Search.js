@@ -144,9 +144,9 @@ class Search extends Component {
 
     render() {
         return (
-            <div className="search">
+            <div className="search col-lg-3 col-12 justify-content-sm-center justify-content-center d-flex">
                 <form name="myForm" className="search-form">
-                    <input type="text" placeholder={this.state.isUserSearch ? 'Search User' : 'Search Country'} value={this.state.inputValue} onChange={this.onChange} />
+                    <input type="text" placeholder={this.state.isUserSearch ? 'Search User' : 'Search Country'} value={this.state.inputValue} onChange={this.onChange} className="w-100"/>
                     <div className='dropdown-content'>
                         {this.state.displayData}
                     </div>
