@@ -17,24 +17,31 @@ export default function showUserMap(worldSeries) {
             const countriesPlannedToVisit = response.data.countriesPlannedToVisit;
             const userMap = worldSeries;
             countriesPlannedToVisit.forEach(function (element) {
-                if (userMap === undefined ||
-                    typeof userMap.getPolygonById(element.map_id) === undefined ||
-                    userMap.getPolygonById(element.map_id) === undefined ||
-                    typeof userMap.getPolygonById(element.map_id).fill === undefined ||
-                    userMap.getPolygonById(element.map_id).fill === undefined) {
-                    return;
+                try {
+                    if (userMap === undefined ||
+                        typeof userMap.getPolygonById(element.map_id) === undefined ||
+                        userMap.getPolygonById(element.map_id) === undefined ||
+                        typeof userMap.getPolygonById(element.map_id).fill === undefined ||
+                        userMap.getPolygonById(element.map_id).fill === undefined) {
+                        return;
+                    }
+                    userMap.getPolygonById(element.map_id).fill = am4core.color("#E111F0");
+                } catch (e) {
                 }
-                userMap.getPolygonById(element.map_id).fill = am4core.color("#E111F0");
             });
             visitedCountries.forEach(function (element) {
-                if (userMap === undefined ||
-                    typeof userMap.getPolygonById(element.map_id) === undefined ||
-                    userMap.getPolygonById(element.map_id) === undefined ||
-                    typeof userMap.getPolygonById(element.map_id).fill === undefined ||
-                    userMap.getPolygonById(element.map_id).fill === undefined) {
-                    return;
+                try {
+                    if (userMap === undefined ||
+                        typeof userMap.getPolygonById(element.map_id) === undefined ||
+                        userMap.getPolygonById(element.map_id) === undefined ||
+                        typeof userMap.getPolygonById(element.map_id).fill === undefined ||
+                        userMap.getPolygonById(element.map_id).fill === undefined) {
+                        return;
+                    }
+                    userMap.getPolygonById(element.map_id).fill = am4core.color("#67f58d");
+                } catch (e) {
                 }
-                userMap.getPolygonById(element.map_id).fill = am4core.color("#67f58d");
+
             });
         })
 }
