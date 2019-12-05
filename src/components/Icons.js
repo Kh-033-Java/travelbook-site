@@ -8,7 +8,7 @@ function Icons(props) {
 
 
     return (
-        <div className="icons">
+        <div className="icons header-row d-flex justify-content-center justify-content-lg-end  col-12">
             <div className="icon-comp2 ">
                 <NavLink to="/notes">
                     <button className="icon-button2 icons-button"></button>
