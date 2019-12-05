@@ -128,7 +128,7 @@ class UserGeneralInformation extends Component {
 
     render() {
         return (
-            <aside className="users-page-container">
+            <aside className="users-page-container col-12 col-lg-6">
                 <div className="first container">
                     <div className="first-inner">
                         Profile

@@ -28,7 +28,7 @@ class Friends extends Component {
 
     render() {
         return (
-            <aside className="friends-sidebar">
+            <aside className="friends-sidebar col-12 col-lg-6">
                 <button className="following-page-button" onClick={this.toFollowing}>
                     Following
                 </button>

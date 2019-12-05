@@ -27,6 +27,8 @@ class VisitedCountryCheckBox extends Component {
         this.isVisitedCountry = this.isVisitedCountry.bind(this);
     }
 
+
+
     onCheck(e) {
         if (e.target.checked) {
             this.setState({checked: true});

@@ -26,11 +26,11 @@ class GeneralInfo extends Component {
     }
 
     checkInfoValid(generalInfo) {
-        if (generalInfo.description === undefined || generalInfo.name === "undefined") {
-            this.setState({isInfoValid: false});
+        if (generalInfo.description === undefined || generalInfo.name === undefined) {
+            this.setState(()=> ({isInfoValid: false}));
             return false;
         } else {
-            this.setState({isInfoValid: true});
+            this.setState(()=> ({isInfoValid: true}));
             return true;
         }
     }
@@ -41,7 +41,7 @@ class GeneralInfo extends Component {
 
 
     openFunction() {
-
+        console.log('open')
         var country = this.props.name;
         if (this.props.name === '') {
             country = localStorage.getItem("country");
@@ -51,7 +51,7 @@ class GeneralInfo extends Component {
         axios.get(`http://localhost:8080/country/${country}/description`)
             .then(response => {
                 const generalInfo = response.data;
-                if (this.checkInfoValid(generalInfo)) {
+                if(this.checkInfoValid(generalInfo)){
                     const description = response.data.description;
                     const weather = response.data.weather;
                     const photos = response.data.photos;
@@ -78,12 +78,9 @@ class GeneralInfo extends Component {
 
 
     render() {
-        if (this.state.country !== this.props.name) {
-            this.openFunction()
-        }
         if (this.state.isInfoValid) {
             return (
-                <aside className="aside-container general" style={{overflow: 'auto'}}>
+                <aside className="aside-container general col-12 col-lg-6" style={{overflow: 'auto'}}>
                     <div className="title-part header-text ">General Information</div>
                     <div className="current-country ">
                         Country name: {this.state.generalInfo.name}
@@ -104,13 +101,13 @@ class GeneralInfo extends Component {
             );
         } else if (this.state.isLoading) {
             return (
-                <aside className="rightbar aside-container" style={{overflow: 'auto'}}>
+                <aside className="rightbar aside-container col-12 col-lg-6" style={{overflow: 'auto'}}>
                     <Loading/>
                 </aside>
             );
         } else {
             return (
-                <aside className="rightbar aside-container" style={{overflow: 'auto'}}>
+                <aside className="rightbar aside-container col-12 col-lg-6" style={{overflow: 'auto'}}>
                     <div className="header-text">no info</div>
                 </aside>
             );

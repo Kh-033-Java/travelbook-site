@@ -101,16 +101,17 @@ class Main extends Component {
             <div className='container-fluid'>
                 <Head setMap={this.state.mapComponent}/>
                 <div className='row'>
-                <Icons/>
+                <Icons countryName={this.state.nameCountry} id={this.state.idCountry}
+                                            worldSeries={this.state.mapComponent}/>
                 </div>
+                <div className='row'>
                 <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI}/>
 
                 <Route path="/travelbook">
 
                 </Route>
                 <Route path="/generalInfo">
-                    <VisitedCountryCheckBox countryName={this.state.nameCountry} id={this.state.idCountry}
-                                            worldSeries={this.state.map}/>
+
                     <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map} renderFunc={this.renderGI}/>
                 </Route>
                 <Route path="/notes">
@@ -176,8 +177,10 @@ class Main extends Component {
                 <Route path="/rating">
                     <Rating/>
                 </Route>
-
+                {console.log(this.state.mapComponent, 'map')}
+                </div>
             </div>
+            
         );
     }
 }

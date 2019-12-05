@@ -4,11 +4,26 @@ import './App.css';
 import VisitedCountryCheckBox from './VisitedCountryCheckBox.js';
 
 
-function Icons(props) {
+export default class Icons extends React.Component {
 
+    constructor(props){
+        super();
+        this.state={
+            countryName:'',
+            id: '',
+            worldSeries: ''
+        }
+    }
 
+    componentWillReceiveProps(newProps){
+        this.setState(()=>{return{id: newProps.id, countryName: newProps.countryName, worldSeries: newProps.worldSeries.state.polygonSeries}});
+    }
+    render(){
     return (
-        <div className="icons header-row d-flex justify-content-center justify-content-lg-end  col-12">
+        <div className="icons header-row d-flex justify-content-end justify-content-lg-end col-lg-6 col-12">
+            
+            <VisitedCountryCheckBox countryName={this.state.countryName} id={this.state.id}
+                                            worldSeries={this.state.worldSeries}/>
             <div className="icon-comp2 ">
                 <NavLink to="/notes">
                     <button className="icon-button2 icons-button"></button>
@@ -37,5 +52,5 @@ function Icons(props) {
         </div>
     );
 }
+}
 
-export default Icons;

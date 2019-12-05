@@ -33,7 +33,7 @@ function Settings(props) {
                         </NavLink>
 
 
-                        <NavLink to="/alluserplans" className="dropdown-option">
+                        <NavLink to="/allplans" className="dropdown-option">
                             <DropdownItem label="My Plans" />
                         </NavLink>
 
