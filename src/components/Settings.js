@@ -26,10 +26,11 @@ function Settings(props) {
 
                     </div>
 
+
                     <Dropdown label="Menu" className="dropdown d-inline-block" >
 
                         <NavLink to="/friends" className="dropdown-option">
-                            <DropdownItem label="Friens" />
+                            <DropdownItem label="Friends" />
                         </NavLink>
 
 
