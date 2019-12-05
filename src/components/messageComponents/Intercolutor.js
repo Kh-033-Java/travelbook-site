@@ -3,6 +3,7 @@ import {NavLink, Redirect} from 'react-router-dom'
 import '../App.css';
 import axios from 'axios';
 import MessageOwner from "./MessageOwner";
+import ToConversation from "./ToConversation";
 
 
 class Intercolutor extends Component {
@@ -11,7 +12,7 @@ class Intercolutor extends Component {
         this.state = {
             clicked: false
         };
-
+        this.setIntercolutor = this.setIntercolutor.bind(this);
     }
 
     componentDidMount() {
@@ -35,6 +36,11 @@ class Intercolutor extends Component {
         }
     }
 
+    setIntercolutor(e) {
+        e.preventDefault();
+        console.log("setIntercolutor = ");
+        localStorage.setItem('intercolutor', this.props.intercolutor.login);
+    }
 
     render() {
         return (
@@ -42,21 +48,7 @@ class Intercolutor extends Component {
                 <div className="list-note-el" onClick={event => this.setID(event)}>
                     <MessageOwner login={this.props.intercolutor.login}
                                   avatar={this.props.intercolutor.avatar.link}/>
-
-                    {/*<Estimation grade={this.avEstimate.bind(this)} onClick={e => this.setID(e)}/>*/}
-                    {/*<NProperty positn="property1  prop" type="Title" text={this.props.note.title}*/}
-                    {/*onClick={e => this.setID(e)}/>*/}
-                    {/*<NProperty positn="property2  prop" type="City" text={this.props.note.describedCity}*/}
-                    {/*onClick={e => this.setID(e)}/>*/}
-                    {/*</div>*/}
-                    {/*<div className="like-part">*/}
-                    {/*<div className="small-description">*/}
-                    {/*<div>{this.props.note.description}</div>*/}
-                    {/*</div>*/}
-                    {/*{like}*/}
-                    {/*<div className="count-of-likes">*/}
-                    {/*{this.state.numberOfLikes}*/}
-                    {/*</div>*/}
+                    <ToConversation onClick={event => this.setIntercolutor(event)} login={this.props.intercolutor.login}/>
                 </div>
             </div>
         )

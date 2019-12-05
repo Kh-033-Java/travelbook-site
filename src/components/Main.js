@@ -25,6 +25,7 @@ import AllPlansPage from './planComponents/AllPlansPage'
 import Rating from './rating/Rating';
 import Friends from "./friendsComponents/Friends";
 import Messages from "./messageComponents/Messages";
+import Conversation from "./messageComponents/Conversation";
 
 class Main extends Component {
     constructor(props) {
@@ -197,6 +198,10 @@ class Main extends Component {
                 <Route path="/messages">
                     <Icons/>
                     <Messages/>
+                </Route>
+                <Route path="/conversation">
+                    <Icons/>
+                    <Conversation/>
                 </Route>
 
             </div>

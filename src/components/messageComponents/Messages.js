@@ -5,6 +5,9 @@ import axios from 'axios';
 import './Messages.css'
 import Loading from "../Loading";
 import Intercolutors from "./Intercolutors";
+import Header from "../header";
+import SidebarHeader from "../sidebarComponents/SidebarHeader";
+import MessagesHeader from "./MessagesHeader";
 
 
 class Messages extends Component {
@@ -32,6 +35,7 @@ class Messages extends Component {
         if (this.state.isLoading) {
             return (
                 <div className="messages-sidebar">
+                    <MessagesHeader title = "Messages" />
                     {spinner}
                 </div>
             )
@@ -39,6 +43,7 @@ class Messages extends Component {
         else {
             return (
                 <aside className="messages-sidebar">
+                    <MessagesHeader title = "Messages" />
                     <div className="list-main-messages">
                         <Intercolutors intercolutors={this.state.intercolutors}/>
                     </div>
