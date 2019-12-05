@@ -42,9 +42,7 @@ class GeneralInfo extends Component {
 
 
     openFunction() {
-        console.log('open', this.state,'        ', this.props)
         var country = localStorage.getItem("country");
-        console.log(country);
         const isLoading = false;
         axios.get(`http://localhost:8080/country/${country}/description`)
             .then(response => {
