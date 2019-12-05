@@ -16,15 +16,16 @@ class Map extends Component {
       properLink: '/travelbook',
       chart: '',
       polygonSeries: '',
-      renderGI: ''
+      renderGI: '',
+      generalInfo:''
     }
     props.getMap(this);
   }
 
   componentWillReceiveProps(newProps) {
 
-    this.setState({ renderGI: newProps.renderGI })//, this.componentDidMount)
-
+    this.setState({ renderGI: newProps.renderGI, generalInfo: newProps.generalInfo })//, this.componentDidMount)
+    console.log(newProps, 'np');
 
   }
 
@@ -84,6 +85,8 @@ class Map extends Component {
   changeSelectedCountry(name, id) {
     localStorage.setItem( "country", name);
     localStorage.setItem("id", id);
+    this.state.generalInfo.setState(()=> ({country: name}));
+    console.log(this.state.generalInfo);
   }
 
   zoomToCurrentCountry() {

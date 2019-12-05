@@ -34,13 +34,15 @@ class Main extends Component {
             map:"",
             idPlan: '',
             mapComponent: '',
-            idNote: ''
+            idNote: '',
+            generalInfo: ''
         }
         this.setNoteID = this.setNoteID.bind(this);
         this.regionClicker = this.regionClicker.bind(this);
         this.setPlanID = this.setPlanID.bind(this)
         this.setMapComponent = this.setMapComponent.bind(this);
         this.renderGI = this.renderGI.bind(this);
+        this.setGeneralInfo = this.setGeneralInfo.bind(this);
 
     }
 
@@ -68,6 +70,10 @@ class Main extends Component {
         this.setState({
             idPlan: id
         })
+    }
+
+    setGeneralInfo(generalInfo){
+        this.setState({generalInfo: generalInfo})
     }
 
     renderGI(renderFunction){
@@ -105,14 +111,14 @@ class Main extends Component {
                                             worldSeries={this.state.mapComponent}/>
                 </div>
                 <div className='row'>
-                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI}/>
+                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI} generalInfo={this.state.generalInfo}/>
 
                 <Route path="/travelbook">
 
                 </Route>
                 <Route path="/generalInfo">
 
-                    <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map} renderFunc={this.renderGI}/>
+                    <GeneralInfo name={this.state.nameCountry} worldSeries={this.state.map} renderFunc={this.renderGI} setGeneralInfo={this.setGeneralInfo}/>
                 </Route>
                 <Route path="/notes">
                     <Notes name={this.state.nameCountry} id={this.state.idCountry} worldSeries={this.state.map}
