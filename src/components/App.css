@@ -4,6 +4,11 @@
 header{
     border-bottom: 2px solid silver;
 }
+
+#root{
+    height: 100%;
+}
+
 .App {
     text-align: center;
 }
@@ -243,6 +248,7 @@ aside {
 }
 .rightbar{
     min-width: 400px;
+    min-height: 500px;
 }
 .settings-button {
     background: url("icons/cd143e9b-979b-4fd5-ba9e-6272c5598736.jpg") 100% 100% no-repeat;

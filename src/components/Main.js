@@ -104,13 +104,13 @@ class Main extends Component {
 
     render() {
         return (
-            <div className='container-fluid'>
+            <div className='container-fluid h-100'>
                 <Head setMap={this.state.mapComponent}/>
                 <div className='row'>
                 <Icons countryName={this.state.nameCountry} id={this.state.idCountry}
                                             worldSeries={this.state.mapComponent}/>
                 </div>
-                <div className='row'>
+                <div className='row h-100'>
                 <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI} generalInfo={this.state.generalInfo}/>
 
                 <Route path="/travelbook">

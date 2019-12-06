@@ -97,7 +97,7 @@ class Map extends Component {
   render() {
 
     return (
-      <main className="mainPage col-12 col-lg" >
+      <main className="mainPage col-12 col-lg h-100" >
         <Link to={this.state.properLink}>
           <div className="chartdiv" onClick={this.changeState}></div>
         </Link>
