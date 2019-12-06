@@ -16,11 +16,15 @@ export default class Icons extends React.Component {
     }
 
     componentWillReceiveProps(newProps){
-        this.setState(()=>{return{id: newProps.id, countryName: newProps.countryName, worldSeries: newProps.worldSeries.state.polygonSeries}});
+        if(newProps.countryName !== undefined && newProps.id !== undefined && newProps.worldSeries !== undefined && newProps.worldSeries.state !== undefined){
+            this.setState(()=>{return{id: newProps.id, countryName: newProps.countryName, worldSeries: newProps.worldSeries.state.polygonSeries}});
+            console.log(newProps, 'icons');
+
+        }
     }
     render(){
     return (
-        <div className="icons header-row d-flex justify-content-end justify-content-lg-end col-lg-6 col-12">
+        <div className="icons header-row d-flex justify-content-end justify-content-lg-end col-12">
             
             <VisitedCountryCheckBox countryName={this.state.countryName} id={this.state.id}
                                             worldSeries={this.state.worldSeries}/>

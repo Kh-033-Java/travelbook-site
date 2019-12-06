@@ -5,7 +5,7 @@ import '../App.css';
 
 function FooterWithEdit(props) {
     return (
-        <div className="note-edit container">
+        <div className="note-edit container-box">
             <NavLink className="nav-link header-text" to={props.path}>
                 <button className="icon-button-edit-note icons-button"></button>
             </NavLink>

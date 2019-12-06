@@ -5,7 +5,7 @@ import '../App.css';
 
 function FooterWithDelete(props) {
     return (
-        <div className="note-delete container">
+        <div className="note-delete container-box">
             <NavLink className="nav-link header-text" to={props.path} noteId={props.noteId} note={props.note}>
                 <button className="icon-button-delete-note icons-button"></button>
             </NavLink>

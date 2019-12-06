@@ -110,7 +110,7 @@ class AuthNotes extends Component {
                         <NotesWrapper classWr={"allNotes container"} setId={this.props.setId} notes={this.state.notes}
                                       countryName={localStorage.getItem("country")}/>
                     </div>
-                    <ToAddFooter text="add note" path="newnote"/>
+                    <ToAddFooter text="Add new note" path="newnote"/>
                 </React.Fragment>
             )
         }

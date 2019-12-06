@@ -75,7 +75,7 @@ export default class AllPlansPage extends Component {
 
             return (
                 <aside className="rightbar col-12 col-lg-6" style={{ overflow: "auto" }}>
-                    <h3 className="note-title container header-text" style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>All plans</h3>
+                    <h3 className="note-title container-box header-text" style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>All plans</h3>
                     <div className="calendar">
                         <ThemeProvider theme={theme}>
                             <RangePicker

@@ -72,12 +72,12 @@ class UserGeneralInformation extends Component {
         var string = param;
         switch (string) {
             case this.state.firstName:
-                return <div className="fourth-inner-firstName container">
+                return <div className="fourth-inner-firstName container-box">
                     {this.state.firstName}
                 </div>;
                 break;
             case this.state.lastName:
-                return <div className="fourth-inner-secondName container">
+                return <div className="fourth-inner-secondName container-box">
                     {this.state.lastName}
                 </div>;
                 break;
@@ -86,7 +86,7 @@ class UserGeneralInformation extends Component {
                     <div className="fifth-inner">
                         Description
                     </div>
-                    <div className="container description-inner">
+                    <div className="container-box description-inner">
                         {this.state.description}
                     </div>
                 </div>
@@ -129,24 +129,24 @@ class UserGeneralInformation extends Component {
     render() {
         return (
             <aside className="users-page-container col-12 col-lg-6">
-                <div className="first container">
+                <div className="first container-box">
                     <div className="first-inner">
                         Profile
                     </div>
                 </div>
-                <div className="second container">
+                <div className="second container-box">
                     <div className="second-inner">
                         {this.state.login}
                     </div>
                 </div>
-                <div className="third container">
+                <div className="third container-box">
                     <img className="avatar-inner" src={this.state.avatar} />
                 </div>
-                <div className="fourth container">
+                <div className="fourth container-box">
                     {this.checkIfPresent(this.state.firstName)}
                     {this.checkIfPresent(this.state.lastName)}
                 </div>
-                <div className="fifth container">
+                <div className="fifth container-box">
 
                     {this.checkIfPresent(this.state.description)}
                 </div>

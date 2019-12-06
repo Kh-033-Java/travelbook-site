@@ -34,7 +34,7 @@ header{
     height: 100vh;
 }
 
-.container {
+.container-box {
     border: 2px solid silver;
     border-radius: 10px;
 }
@@ -249,6 +249,7 @@ aside {
 .rightbar{
     min-width: 400px;
     min-height: 500px;
+    height: 100%!important;
 }
 .settings-button {
     background: url("icons/cd143e9b-979b-4fd5-ba9e-6272c5598736.jpg") 100% 100% no-repeat;

@@ -77,7 +77,7 @@ class OneFollowing extends Component {
                     <Link to={`/userPage/${this.state.login}`}> {this.state.login} </Link>
                 </div>
                 <div className="delete">
-                    <button className="delete-button" onClick={this.deleteFollowing}>Delete</button>
+                    <button className="btn btn-outline-danger" onClick={this.deleteFollowing}>Delete</button>
                 </div>
             </div>
         )

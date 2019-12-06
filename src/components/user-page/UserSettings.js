@@ -153,15 +153,15 @@ class UserSettings extends Component {
             <div className="userSettingsGeneral">
                 <Header/>
                 <div className="user-settings-general">
-                    <div className="titlePageName container">Settings</div>
+                    <div className="titlePageName container-box">Settings</div>
 
-                    <div className="firstTittle container">
+                    <div className="firstTittle container-box">
                         My account
                     </div>
-                    <div className="secondTittle container">
+                    <div className="secondTittle container-box">
                         Description
                     </div>
-                    <div className="thirdTittle container">
+                    <div className="thirdTittle container-box">
                         Profile Image
                     </div>
                     <div className="CONTENT">

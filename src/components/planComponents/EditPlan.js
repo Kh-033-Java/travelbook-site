@@ -183,7 +183,7 @@ class EditPlan extends Component {
                     </div>
                 </form>
                 <div className ="create-plan-button">
-                    <input type='submit' className="create-plan-button submitButton" form ="editPlan" value="Edit Plan"/>
+                    <input type='submit' className="btn btn-success btn-lg btn-block" form ="editPlan" value="Edit Plan"/>
                 </div>
             </aside>
         );

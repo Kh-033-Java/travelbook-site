@@ -27,14 +27,18 @@ class VisitedCountryCheckBox extends Component {
         this.isVisitedCountry = this.isVisitedCountry.bind(this);
     }
 
+    componentWillReceiveProps(newProps){
+        console.log(newProps, 'porps');
+        this.componentDidMount();
+    }
 
 
     onCheck(e) {
         if (e.target.checked) {
-            this.setState({checked: true});
+            this.setState(()=>({checked: true}));
             this.addAndFill();
         } else {
-            this.setState({checked: false});
+            this.setState(()=>({checked: false}));
             this.delAndFill();
         }
     }
@@ -93,7 +97,7 @@ class VisitedCountryCheckBox extends Component {
                     Authorization: token
                 }
             }).then(res => {
-                this.setState({visitedCountries: res.data.visitedCountries});
+                this.setState(()=>({visitedCountries: res.data.visitedCountries}));
             }).catch(error => {
                 console.log(error);
                 return <Redirect to={"errorPage"}/>
@@ -107,6 +111,7 @@ class VisitedCountryCheckBox extends Component {
             checkBox =
                 <input type="checkbox" name='isVisited' id='isVisited' checked='true' readOnly/>
         } else {
+            console.log('fffals');
             checkBox =
                 <input type="checkbox" name='isVisited' id='isVisited' onClick={e => this.onCheck(e)}/>
         }

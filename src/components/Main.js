@@ -6,7 +6,6 @@ import Map from "./Map.js";
 import Notes from "./Notes.js";
 import Plans from "./Plans.js";
 import Gallery from "./gallery/Gallery.js";
-import Icons from './Icons';
 import UserGeneralInformation from "./user-page/UserGeneralInformation";
 import Note from './notesComponents/Note.js';
 import NewNote from './notesComponents/newNoteComponents/NewNote.js';
@@ -106,12 +105,10 @@ class Main extends Component {
         return (
             <div className='container-fluid h-100'>
                 <Head setMap={this.state.mapComponent}/>
-                <div className='row'>
-                <Icons countryName={this.state.nameCountry} id={this.state.idCountry}
-                                            worldSeries={this.state.mapComponent}/>
-                </div>
+              
                 <div className='row h-100'>
-                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI} generalInfo={this.state.generalInfo}/>
+                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI} generalInfo={this.state.generalInfo}countryName={this.state.nameCountry} id={this.state.idCountry}
+                                            worldSeries={this.state.mapComponent}/>
 
                 <Route path="/travelbook">
 

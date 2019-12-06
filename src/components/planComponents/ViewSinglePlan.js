@@ -111,7 +111,7 @@ class ViewSinglePlan extends Component {
         if(this.isUsersPlan()){
             button =
                     <div className="done">
-                        <button className="button-done" onClick={this.toCreateNote}>Done</button>
+                        <button className="btn btn-success" onClick={this.toCreateNote}>Done</button>
                     </div>
         }
         return (

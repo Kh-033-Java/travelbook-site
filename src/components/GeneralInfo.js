@@ -105,7 +105,7 @@ class GeneralInfo extends Component {
         } else {
             return (
                 <aside className="rightbar aside-container col-12 col-lg-6" style={{overflow: 'auto'}}>
-                    <div className="header-text">no info</div>
+                    <div className="no-info alert alert-info">No info</div>
                 </aside>
             );
         }

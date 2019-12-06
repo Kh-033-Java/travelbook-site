@@ -8,7 +8,8 @@ function LogOut() {
     };
     return (
         <div className="header-text d-inline-block align-self-center">
-            <NavLink to='/travelbook' className="nav-link" onClick={logout}>Log Out</NavLink>
+            <NavLink to='/travelbook' className="nav-link" onClick={logout}><button type="button" class="btn btn-danger">Sign out</button>
+</NavLink>
         </div>
     )
 }
