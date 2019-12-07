@@ -3,6 +3,7 @@ import { getJwt } from "../../helpers/jwt";
 import axios from 'axios';
 import './UserMainPage.css';
 import {useParams} from "react-router";
+import ToConversation from "../messageComponents/ToConversation";
 
 class UserGeneralInformation extends Component {
     constructor(props) {
@@ -156,6 +157,10 @@ class UserGeneralInformation extends Component {
                     <div className="following-in-general">
                         <button className="follow-button-in-general" onClick={this.addToFollowing}>Follow</button>
                     </div>}
+                {this.isFollowing() ?
+                    <React.Fragment/>
+                    :
+                    <ToConversation login={this.state.login}/>}
             </aside>
         )
     }
