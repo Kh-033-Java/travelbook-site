@@ -7,7 +7,7 @@
     text-align: center;
 }
 
-input[type=password], input[type=text] {
+input[type=password], input[type=text], input[type=date]{
     border: 1px #b6e7f9 solid;
     padding: 5px 10px;
 }

@@ -154,7 +154,7 @@ class UserGeneralInformation extends Component {
                     <React.Fragment/>
                     :
                     <div className="following-in-general">
-                        <button className="follow-button-in-general" onClick={this.addToFollowing}>Follow</button>
+                        <button className="btn btn-outline-primary" onClick={this.addToFollowing}>Follow</button>
                     </div>}
             </aside>
         )
