@@ -38,7 +38,7 @@ class UnAuthorizedPlans extends Component{
     render() {
        return(
             <div className = "list-main-plan-unauth  main-sidebar ">
-                <div className="all-plans-unauth container">
+                <div className="all-plans-unauth container-box">
                     {this.getArrayPlans()}
                 </div>
             </div>

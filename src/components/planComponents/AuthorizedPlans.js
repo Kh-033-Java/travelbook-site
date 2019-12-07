@@ -94,7 +94,7 @@ class AuthorizedPlans extends Component {
                             </label>
                         </form>
                     </div>
-                    <div className = "all-plans container">
+                    <div className = "all-plans container-box">
                         {this.getArrayPlans()}
                     </div>
                 </div>

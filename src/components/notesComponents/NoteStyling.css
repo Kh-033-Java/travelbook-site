@@ -24,6 +24,7 @@
 .note-property{
     padding :5px;
     margin-bottom:12px;
+    min-width: 200px;
 }
 .note-property-date{
     grid-row: 2;

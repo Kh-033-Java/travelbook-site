@@ -27,7 +27,7 @@ class Rating extends Component {
 
     render() {
         return (
-            <aside className="main-container">
+            <aside className="main-container rightbar col-12 col-lg-6">
                 <div className="rating-header">Rating</div>
                 <RatingWrapper users={this.state.users}/>
             </aside>

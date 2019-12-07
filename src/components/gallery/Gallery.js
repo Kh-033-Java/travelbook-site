@@ -54,7 +54,7 @@ class Gallery extends Component {
             </aside>;
         }
         return (
-            <aside className="photo-container">
+            <aside className="photo-container col-12 col-lg-6">
                 {button1}
                 {button2}
                 {

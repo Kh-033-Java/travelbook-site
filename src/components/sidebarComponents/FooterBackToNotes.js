@@ -4,8 +4,8 @@ import '../sidebarComponents/SideBar.css'
 import '../App.css';
 function FooterBackToNotes(props){
     return (
-  <div className ="note-back-to-all container">
-                          <NavLink className="nav-link header-text" to={props.path}>
+  <div className ="note-back-to-all btn btn-primary btn-lg btn-block">
+                          <NavLink className="" to={props.path}>
                               {props.text}
                               </NavLink>
                              </div>

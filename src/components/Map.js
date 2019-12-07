@@ -8,6 +8,7 @@ import showUserMap from './userMap/UserMapShower'
 import isAutorized from './checker/authorizationChecker.js'
 import { rgbToHsl } from "@amcharts/amcharts4/.internal/core/utils/Colors";
 import GeneralInfo from "./GeneralInfo";
+import Icons from './Icons';
 
 class Map extends Component {
   constructor(props) {
@@ -16,15 +17,19 @@ class Map extends Component {
       properLink: '/travelbook',
       chart: '',
       polygonSeries: '',
-      renderGI: ''
+      renderGI: '',
+      generalInfo: '',
+      nameCountry: '',
+      idCountry: '',
+      mapComponent: ''
     }
     props.getMap(this);
   }
 
   componentWillReceiveProps(newProps) {
 
-    this.setState({ renderGI: newProps.renderGI })//, this.componentDidMount)
-
+    this.setState(() => ({ renderGI: newProps.renderGI, generalInfo: newProps.generalInfo, nameCountry: newProps.countryName, idCountry: newProps.id, mapComponent: newProps.worldSeries }))//, this.componentDidMount)
+    console.log(newProps, 'np');
 
   }
 
@@ -82,8 +87,10 @@ class Map extends Component {
   }
 
   changeSelectedCountry(name, id) {
-    localStorage.setItem( "country", name);
+    localStorage.setItem("country", name);
     localStorage.setItem("id", id);
+    this.state.generalInfo.setState(() => ({ country: name }));
+    console.log(this.state.generalInfo);
   }
 
   zoomToCurrentCountry() {
@@ -92,12 +99,18 @@ class Map extends Component {
 
 
   render() {
-
     return (
-      <main className="mainPage " >
+      <main className="mainPage col-12 col-lg h-100" >
+        <div className='row'>
+          <Icons countryName={this.state.nameCountry} id={this.state.idCountry}
+            worldSeries={this.state.mapComponent} />
+        </div>
         <Link to={this.state.properLink}>
-          <div className="chartdiv" onClick={this.changeState}></div>
+          <div className="chartdiv" onClick={this.changeState}>
+
+          </div>
         </Link>
+
       </main>
 
     )

@@ -131,7 +131,7 @@ class EditPlan extends Component {
             return <Redirect to="travelbook"/>
         }
         return (
-            <aside className="rightbar whole-comp ">
+            <aside className="rightbar whole-comp col-12 col-lg-6">
                 <Header title="Edit Plan" countryName={this.props.countryName}/>
                 <form name="editPlan" id="editPlan" className="main-sidebar  main-comp-newplan"
                       onSubmit={this.sendEditedPlan}>
@@ -183,7 +183,7 @@ class EditPlan extends Component {
                     </div>
                 </form>
                 <div className ="create-plan-button">
-                    <input type='submit' className="create-plan-button submitButton" form ="editPlan" value="Edit Plan"/>
+                    <input type='submit' className="btn btn-success btn-lg btn-block" form ="editPlan" value="Edit Plan"/>
                 </div>
             </aside>
         );

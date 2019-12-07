@@ -111,11 +111,11 @@ class ViewSinglePlan extends Component {
         if(this.isUsersPlan()){
             button =
                     <div className="done">
-                        <button className="button-done" onClick={this.toCreateNote}>Done</button>
+                        <button className="btn btn-success" onClick={this.toCreateNote}>Done</button>
                     </div>
         }
         return (
-            <aside className="rightbar whole-comp ">
+            <aside className="rightbar whole-comp col-12 col-lg-6">
                 <Header title = "View Plan" countryName={this.props.countryName}/>
             <div className='main-comp-plan main-sidebar'>
                 <div className="plan-owner plan-owner-gen main-sidebar">

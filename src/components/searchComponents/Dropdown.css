@@ -7,14 +7,12 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    max-height: 200px;
+    max-height: 300%;
     background-color: #f6f6f6;
-    min-width: 280px;
+    min-width: 180px;
     overflow: auto;
     border: 1px solid #ddd;
     z-index: 1;
-    top: 60px;
-    left: 20px;
   }
   
   /* Links inside the dropdown */

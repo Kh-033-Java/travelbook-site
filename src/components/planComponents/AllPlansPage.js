@@ -3,6 +3,8 @@ import isAuthorized from "../checker/authorizationChecker";
 import OnePlanCreator, { setId } from "../planComponents/OnePlanCreator"
 import { RangePicker, theme } from 'react-trip-date';
 import { ThemeProvider } from 'styled-components';
+import {getLogin} from '../../helpers/getLogin'
+import {getJwt} from "../../helpers/jwt";
 import Axios from 'axios'
 
 
@@ -35,8 +37,12 @@ export default class AllPlansPage extends Component {
     };
 
     async getAllUserPlans(callback) {
-        const endpoint = `http://localhost:8080/user/${localStorage.getItem('login')}/plans`;
-        const response = await Axios.get(endpoint).then(async response => { this.setState({ plans: await response.data }, callback) });
+        const endpoint = `http://localhost:8080/user/${getLogin()}/plans`;
+        const response = await Axios.get(endpoint, {
+            headers: {
+                Authorization: getJwt()
+            }
+        }).then(async response => { this.setState({ plans: await response.data }, callback) });
 
     }
 
@@ -64,11 +70,12 @@ export default class AllPlansPage extends Component {
 
 
     render() {
+        console.log(isAuthorized, 'auth', this.state.dates, 'dates');
         if (isAuthorized && this.state.dates !== undefined) {
 
             return (
-                <aside className="rightbar " style={{ overflow: "auto" }}>
-                    <h3 className="note-title container header-text" style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>All plans</h3>
+                <aside className="rightbar col-12 col-lg-6" style={{ overflow: "auto" }}>
+                    <h3 className="note-title container-box header-text" style={{ gridColumnStart: 1, gridColumnEnd: 3 }}>All plans</h3>
                     <div className="calendar">
                         <ThemeProvider theme={theme}>
                             <RangePicker
