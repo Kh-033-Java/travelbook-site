@@ -86,7 +86,7 @@
 .correspondence {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 5fr 2fr 4fr;
+    /*grid-template-rows: 1fr 1fr 5fr 2fr 4fr;*/
     grid-column-gap: 5px;
     grid-row-gap: 5px;
     overflow: auto;
@@ -127,4 +127,12 @@
     grid-row: 3;
     text-align: center;
     margin: 5px;
+}
+
+.to-chat {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #b6e7f0;
 }

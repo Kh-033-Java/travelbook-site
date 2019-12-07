@@ -2,6 +2,7 @@ import {Link, NavLink, Redirect} from 'react-router-dom';
 import '../sidebarComponents/SideBar.css'
 import '../App.css';
 import React, {Component} from 'react';
+import "./Messages.css"
 
 
 class ToConversation extends Component {
@@ -27,10 +28,10 @@ class ToConversation extends Component {
             return <Redirect to='/conversation'/>;
         }
         return (
-            <div className="note-edit container">
+            <div className="to-chat container">
                 <Link className="nav-link header-text" to="/conversation"
                       onClick={this.setIntercolutor}>
-                    To conversation
+                    To chat
                 </Link>
             </div>
         )

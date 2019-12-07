@@ -14,10 +14,10 @@ class Conversation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sendedMessages: [],
-            receivedMessages: [],
+            correspondence: [],
             isLoading: true,
-            text: ''
+            text: '',
+            sender: getLogin()
         };
         this.onChangeText = this.onChangeText.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
@@ -25,17 +25,7 @@ class Conversation extends Component {
     }
 
     componentDidMount() {
-        const isLoading = false;
-        const login = getLogin();
-        const intercolutor = localStorage.getItem('intercolutor');
-        axios.get(`http://localhost:8080/messages/${login}/history/${intercolutor}`
-        ).then(res => {
-            this.setState({
-                sendedMessages: res.data.sendedMessages,
-                receivedMessages: res.data.receivedMessages
-            });
-            this.setState({isLoading});
-        }).catch(err => console.log(err));
+        this.updateMessagesData();
     }
 
     onChangeText(e) {
@@ -49,14 +39,13 @@ class Conversation extends Component {
         const sender = getLogin();
         const receiver = localStorage.getItem('intercolutor');
         const endpoint = `http://localhost:8080/messages/sendMessage?sender=${sender}&receiver=${receiver}`;
-        // this.setState({isLoading: true});
         await axios.post(endpoint, this.state)
             .then(response => {
                 console.log(response.data);
             }).catch(error => {
-            window.location.href = '/errorPage';
-            console.log(error);
-        });
+                window.location.href = '/errorPage';
+                console.log(error);
+            });
         this.updateMessagesData();
     }
 
@@ -67,12 +56,26 @@ class Conversation extends Component {
         axios.get(`http://localhost:8080/messages/${login}/history/${intercolutor}`
         ).then(res => {
             this.setState({
-                sendedMessages: res.data.sendedMessages,
-                receivedMessages: res.data.receivedMessages
+                correspondence: res.data
             });
             this.setState({isLoading: false});
         }).catch(err => console.log(err));
     }
+
+    createCorrespondenceForRender = () => {
+        const correspondence = [];
+        this.state.correspondence.forEach((element, key) => {
+                if (element.sender === this.state.sender) {
+                    correspondence.push(<div className="sended-message container" key={key}>
+                        {element.text} </div>);
+                } else {
+                    correspondence.push(<div className="received-message container" key={key}>
+                        {element.text} </div>);
+                    correspondence.push(<br/>);
+                }
+            });
+        return correspondence;
+    };
 
     render() {
         const spinner = this.state.isLoading ? <Loading className="loading-center"/> : null;
@@ -87,10 +90,7 @@ class Conversation extends Component {
                 <aside className="rightbar whole-comp-conversation">
                     <ConversationHeader title="Conversation" intercolutor={localStorage.getItem('intercolutor')}/>
                     <div className="correspondence correspondence-sidebar">
-                        {this.state.sendedMessages.map(message => <div
-                            className="sended-message container"> {message.text} </div>)}
-                        {this.state.receivedMessages.map(message => <div
-                            className="received-message container"> {message.text} </div>)}
+                        {this.createCorrespondenceForRender()}
                     </div>
                     <div className="text-message">
                         <p className="header-text">Your message</p>

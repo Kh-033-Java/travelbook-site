@@ -40,6 +40,10 @@ class NewNoteMain extends Component {
         this.setCity = this.setCity.bind(this);
     }
 
+    componentDidMount() {
+        console.log("describedCity = " + this.state.describedCity);
+    }
+
     onChangeName(e) {
         this.setState({
             title: e.target.value
@@ -67,7 +71,7 @@ class NewNoteMain extends Component {
         let photoLink = await uploadPhotos(this.state.photos);
 
         this.setState({photoLink});
-        console.log(this.state.photoLink);
+        console.log(this.state.describedCity);
 
         axios.post(`http://localhost:8080/notes`, this.state, {
             headers: {
