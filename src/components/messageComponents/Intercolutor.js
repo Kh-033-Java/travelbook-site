@@ -20,8 +20,8 @@ class Intercolutor extends Component {
 
     render() {
         return (
-            <div className="list-el-container">
-                <div className="list-note-el">
+            <div className="list-intercolutor-container">
+                <div className="list-intercolutor-el">
                     <MessageOwner login={this.props.intercolutor.login}
                                   avatar={this.props.intercolutor.avatar.link}/>
                     <ToConversation login={this.props.intercolutor.login}/>

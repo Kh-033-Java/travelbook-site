@@ -34,7 +34,7 @@ class Messages extends Component {
         const spinner = this.state.isLoading ? <Loading/> : null;
         if (this.state.isLoading) {
             return (
-                <div className="messages-sidebar">
+                <div className="whole-comp-messages">
                     <MessagesHeader title = "Messages" />
                     {spinner}
                 </div>
@@ -42,7 +42,7 @@ class Messages extends Component {
         }
         else {
             return (
-                <aside className="messages-sidebar">
+                <aside className="whole-comp-messages">
                     <MessagesHeader title = "Messages" />
                     <div className="list-main-messages">
                         <Intercolutors intercolutors={this.state.intercolutors}/>
