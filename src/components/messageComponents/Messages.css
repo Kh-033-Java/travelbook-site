@@ -68,7 +68,7 @@
 .whole-comp-conversation {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: 1fr 9fr 1fr;
+    grid-template-rows: 1fr 7fr 7fr 1fr;
 }
 
 .whole-comp-messages {
@@ -111,7 +111,6 @@
 .correspondence {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /*grid-template-rows: 1fr 1fr 5fr 2fr 4fr;*/
     grid-column-gap: 5px;
     grid-row-gap: 5px;
     overflow: auto;
@@ -152,6 +151,12 @@
     grid-row: 3;
     text-align: center;
     margin: 5px;
+}
+
+.content-text {
+    width: 85%;
+    height: 70%;
+    min-height: 150px;
 }
 
 .to-chat {
