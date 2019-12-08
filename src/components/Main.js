@@ -105,8 +105,7 @@ class Main extends Component {
         return (
             <div className='container-fluid h-100'>
                 <Head setMap={this.state.mapComponent}/>
-              
-                <div className='row h-100'>
+                <div className='row main-content'>
                 <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI} generalInfo={this.state.generalInfo}countryName={this.state.nameCountry} id={this.state.idCountry}
                                             worldSeries={this.state.mapComponent}/>
 
