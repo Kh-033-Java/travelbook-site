@@ -94,7 +94,7 @@ class Conversation extends Component {
                     </div>
                     <div className="text-message">
                         <p className="header-text">Your message</p>
-                        <textarea name="message" onChange={this.onChangeText}/>
+                        <textarea name="message" className="content-text" onChange={this.onChangeText}/>
                     </div>
                     <div className="conversation-footer">
                         <FooterSendMessage sendMessage={this.sendMessage}/>
