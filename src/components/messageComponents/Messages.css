@@ -13,18 +13,19 @@
     background: url("../icons/IconMessages.png") 100% 100% no-repeat;
     background-size: cover;
     cursor: pointer;
+
 }
 
 .list-main-messages {
     text-align: center;
     font-size : 22px;
     padding: 10px;
-    display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.7fr 9fr;
     grid-column-gap: 5px;
     grid-row-gap: 5px;
     overflow: auto;
+
 }
 
 .list-element {
