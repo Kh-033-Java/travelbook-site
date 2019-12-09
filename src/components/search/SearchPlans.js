@@ -196,7 +196,7 @@ class SearchPlans extends Component {
                         </button>
                         </div>
                     </div>
-                    <div className='col-12 col-md justify-content-center justify-content-md-start plan-search-block'>
+                    <div className='col-12 col-md-6 justify-content-center justify-content-md-start plan-search-block'>
                         <div>
                             <h1>Recommendations</h1>
                         </div>
