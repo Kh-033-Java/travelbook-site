@@ -33,7 +33,6 @@ function Settings(props) {
                             <DropdownItem label="Friends" />
                         </NavLink>
 
-
                         <NavLink to="/allplans" className="dropdown-option">
                             <DropdownItem label="My Plans" />
                         </NavLink>
@@ -41,6 +40,11 @@ function Settings(props) {
                         <NavLink to="/settings" className="dropdown-option">
                             <DropdownItem label="Settings" />
                         </NavLink>
+
+                        <NavLink to="/messages" className="dropdown-option">
+                            <DropdownItem label="Messages" />
+                        </NavLink>
+
                     </Dropdown>
 
                     <div className="user-page-icon d-inline-block align-self-center" style={{ marginRight: 2 + "%" }}>

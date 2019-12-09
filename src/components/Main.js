@@ -23,6 +23,8 @@ import SearchMain from "./search/SearchMain";
 import AllPlansPage from './planComponents/AllPlansPage'
 import Rating from './rating/Rating';
 import Friends from "./friendsComponents/Friends";
+import Messages from "./messageComponents/Messages";
+import Conversation from "./messageComponents/Conversation";
 
 class Main extends Component {
     constructor(props) {
@@ -180,9 +182,15 @@ class Main extends Component {
                     <Rating/>
                 </Route>
                 {console.log(this.state.mapComponent, 'map')}
+                    <Route path="/messages">
+                        <Messages/>
+                    </Route>
+                    <Route path="/conversation">
+                        <Conversation/>
+                    </Route>
                 </div>
             </div>
-            
+
         );
     }
 }

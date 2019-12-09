@@ -18,7 +18,12 @@ class CityForNote extends Component {
             this.setState({
                 cities: res
             });
-            this.props.setCity(this.props.currentCity);
+            console.log(this.props.currentCity);
+            if (this.props.currentCity === undefined) {
+                this.props.setCity(this.state.cities[0].name);
+            } else {
+                this.props.setCity(this.props.currentCity);
+            }
         })
     }
 
@@ -39,7 +44,8 @@ class CityForNote extends Component {
         return (
             <div className={this.props.style_class}>
                 <label for="from-city">City</label>
-                <select className={this.props.select_class} name="from-city" onChange={this.onSelect} value={this.props.currentCity}>
+                <select className={this.props.select_class} name="from-city" onChange={this.onSelect}
+                        value={this.props.currentCity}>
                     {this.createOptionsForSelect()}
                 </select>
             </div>
