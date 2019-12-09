@@ -29,7 +29,7 @@ class ToConversation extends Component {
         }
         return (
             <div className="to-chat container">
-                <Link className="nav-link header-text" to="/conversation"
+                <Link className="btn btn-outline-primary" to="/conversation"
                       onClick={this.setIntercolutor}>
                     To chat
                 </Link>

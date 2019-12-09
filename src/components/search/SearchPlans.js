@@ -92,7 +92,7 @@ class SearchPlans extends Component {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">City from: </span>
                                 </div>
-                                <input className="" type={"text"} placeholder={cityFrom} onChange={e => {
+                                <input className="" className="col" type={"text"} placeholder={cityFrom} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         cityFrom: e.target.value,
@@ -103,7 +103,7 @@ class SearchPlans extends Component {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">City to: </span>
                                 </div>
-                                <input type={"text"} placeholder={cityTo} onChange={e => {
+                                <input className="col" type={"text"} placeholder={cityTo} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         cityTo: e.target.value,
@@ -114,7 +114,7 @@ class SearchPlans extends Component {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Transport: </span>
                                 </div>
-                                <input type={"text"} placeholder={transport} onChange={e => {
+                                <input className="col" type={"text"} placeholder={transport} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         transport: e.target.value,
@@ -125,7 +125,7 @@ class SearchPlans extends Component {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Min budget: </span>
                                 </div>
-                                <input type={"text"} placeholder={0} onChange={e => {
+                                <input className="col" type={"text"} placeholder={0} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         budgetMin: e.target.value,
@@ -136,7 +136,7 @@ class SearchPlans extends Component {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Max budget: </span>
                                 </div>
-                                <input type={"text"} placeholder={budgetMax} onChange={e => {
+                                <input className="col" type={"text"} placeholder={budgetMax} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         budgetMax: e.target.value,
@@ -147,31 +147,31 @@ class SearchPlans extends Component {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Date start: </span>
                                 </div>
-                                <input type="date" onChange={e => {
+                                <input className="col" type="date" onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         dateFrom: e.target.value,
                                     })
                                 }}
                                     name="date-note"
-                                    className="date-in-search" required />
+                                     required />
                             </div>
                             <div className="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Date end: </span>
-                                </div>                                    <input type="date" onChange={e => {
+                                </div>                                    <input className="col" type="date" onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         dateTo: e.target.value,
                                     })
                                 }} name="date-note"
-                                    className="date-in-search" required />
+                                     required />
                             </div>
                             <div className="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Min amount of people: </span>
                                 </div>
-                                <input className="input-field-search" type={"text"} placeholder={amountMin} onChange={e => {
+                                <input className="col" type={"text"} placeholder={amountMin} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         amountMin: e.target.value,
@@ -182,7 +182,7 @@ class SearchPlans extends Component {
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Max amount of people: </span>
                                 </div>
-                                <input className="input-field-search" type={"text"} placeholder={amountMax} onChange={e => {
+                                <input className="col" type={"text"} placeholder={amountMax} onChange={e => {
                                     this.setState({
                                         ...this.state,
                                         amountMax: e.target.value,

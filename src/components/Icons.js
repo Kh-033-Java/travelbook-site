@@ -48,11 +48,7 @@ export default class Icons extends React.Component {
                     <button className="icon-button4 icons-button"></button>
                 </NavLink>
             </div>
-            <div className="icon-comp5">
-                <NavLink to="/rating">
-                    <button className="icon-button5 icons-button"></button>
-                </NavLink>
-            </div>
+
         </div>
     );
 }

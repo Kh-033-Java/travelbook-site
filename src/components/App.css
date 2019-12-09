@@ -130,7 +130,7 @@ main {
 }
 .visited {
 
-    margin-top: 10px;
+    margin-right: 2%;
 
 }
 
@@ -310,9 +310,9 @@ aside {
 }
 
 .general-photo {
-    padding-top: 10px;
-    padding-left: 10%;
+    padding: 10% 5% 0 5%;
     text-align: center;
+
 }
 
 .this-photo {

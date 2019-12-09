@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getJwt } from "../../helpers/jwt";
+import {getLogin} from '../../helpers/getLogin'
 import axios from 'axios';
 import './UserMainPage.css';
 import {useParams} from "react-router";
@@ -158,8 +159,8 @@ class UserGeneralInformation extends Component {
                     <div className="following-in-general">
                         <button className="btn btn-outline-primary" onClick={this.addToFollowing}>Follow</button>
                     </div>}
-                {this.isFollowing() ?
-                    <React.Fragment/>
+                    {getLogin() === this.state.login ? 
+                    null 
                     :
                     <ToConversationFromUserPage className="btn btn-outline-primary" login={this.state.login}/>}
             </aside>

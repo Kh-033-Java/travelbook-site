@@ -4,8 +4,8 @@ import '../App.css';
 
 function FooterSendMessage(props){
     return (
-        <div className ="conversation-send-message container">
-            <input name="sendMessage" onClick={props.sendMessage} type="button" value="Send message"/>
+        <div className ="conversation-send-message">
+            <input className='btn btn-outline-primary' name="sendMessage" onClick={props.sendMessage} type="button" value="Send message"/>
         </div>
     );
 }

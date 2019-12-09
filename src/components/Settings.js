@@ -36,18 +36,24 @@ function Settings(props) {
                         <NavLink to="/allplans" className="dropdown-option">
                             <DropdownItem label="My Plans" />
                         </NavLink>
+                        
+                        <NavLink to="/rating" className="dropdown-option">
+                            <DropdownItem label="Rating" />
+                        </NavLink>
+                        
+                        <NavLink to="/messages" className="dropdown-option">
+                            <DropdownItem label="Messages" />
+                        </NavLink>
 
                         <NavLink to="/settings" className="dropdown-option">
                             <DropdownItem label="Settings" />
                         </NavLink>
 
-                        <NavLink to="/messages" className="dropdown-option">
-                            <DropdownItem label="Messages" />
-                        </NavLink>
+
 
                     </Dropdown>
 
-                    <div className="user-page-icon d-inline-block align-self-center" style={{ marginRight: 2 + "%" }}>
+                    <div className="user-page-icon d-inline-block align-self-center" style={{ marginRight: 2 + "%", marginLeft: 2 + "%"}}>
                         <Route path={/userPage/ + getLogin()}>
                             {avatar}
                         </Route>

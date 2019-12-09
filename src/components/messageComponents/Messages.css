@@ -51,6 +51,7 @@
     border: 3px solid grey;
     border-radius: 2%;
     height : 100%;
+    margin: 10px;
 }
 
 .list-intercolutor-el {
@@ -135,6 +136,9 @@
     grid-column: 2;
     text-align: center;
     padding: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .conversation-send-message {
@@ -144,7 +148,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #b6e7f0;
 }
 
 .text-message {
@@ -161,34 +164,15 @@
 }
 
 .to-chat {
-    grid-column: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #b6e7f0;
+    height: 50%;
+    align-self: center;
 }
 
 .link-to-chat {
     grid-column: 1;
-
-    display: inline-block;
-    font-weight: 400;
     text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-
-    color: #007bff;
-    border-color: #007bff;
-
-    box-sizing: border-box;
+  
 }

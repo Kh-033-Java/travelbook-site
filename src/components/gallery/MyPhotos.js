@@ -40,10 +40,8 @@ class MyPhotos extends Component {
         var render;
         if(this.state.photos === []){
             render = <div>No photos</div>;
-            return render
         }else {
             render =  <GetPhotos photos={this.state.photos}/>
-            return render;
 
         }
         return (

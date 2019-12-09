@@ -87,7 +87,7 @@ class Conversation extends Component {
         }
         else {
             return (
-                <aside className="rightbar whole-comp-conversation">
+                <aside className="rightbar aside-container whole-comp-conversation">
                     <ConversationHeader title="Conversation" intercolutor={localStorage.getItem('intercolutor')}/>
                     <div className="correspondence correspondence-sidebar">
                         {this.createCorrespondenceForRender()}
