@@ -4,6 +4,7 @@ import axios from 'axios';
 import './UserMainPage.css';
 import {useParams} from "react-router";
 import ToConversation from "../messageComponents/ToConversation";
+import ToConversationFromUserPage from "../messageComponents/ToConversationFromUserPage";
 
 class UserGeneralInformation extends Component {
     constructor(props) {
@@ -160,7 +161,7 @@ class UserGeneralInformation extends Component {
                 {this.isFollowing() ?
                     <React.Fragment/>
                     :
-                    <ToConversation login={this.state.login}/>}
+                    <ToConversationFromUserPage className="btn btn-outline-primary" login={this.state.login}/>}
             </aside>
         )
     }

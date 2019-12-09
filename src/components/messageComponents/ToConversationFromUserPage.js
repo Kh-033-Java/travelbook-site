@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import "./Messages.css"
 
 
-class ToConversation extends Component {
+class ToConversationFromUserPage extends Component {
 
     constructor(props) {
         super(props);
@@ -28,14 +28,12 @@ class ToConversation extends Component {
             return <Redirect to='/conversation'/>;
         }
         return (
-            <div className="to-chat container">
-                <Link className="nav-link header-text" to="/conversation"
+                <Link className="link-to-chat" to="/conversation"
                       onClick={this.setIntercolutor}>
                     To chat
                 </Link>
-            </div>
         )
     }
 }
 
-export default ToConversation;
+export default ToConversationFromUserPage;

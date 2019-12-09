@@ -182,16 +182,13 @@ class Main extends Component {
                     <Rating/>
                 </Route>
                 {console.log(this.state.mapComponent, 'map')}
+                    <Route path="/messages">
+                        <Messages/>
+                    </Route>
+                    <Route path="/conversation">
+                        <Conversation/>
+                    </Route>
                 </div>
-                <Route path="/messages">
-                    <Icons/>
-                    <Messages/>
-                </Route>
-                <Route path="/conversation">
-                    <Icons/>
-                    <Conversation/>
-                </Route>
-
             </div>
 
         );
