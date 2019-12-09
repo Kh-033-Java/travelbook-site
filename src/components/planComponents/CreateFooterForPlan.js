@@ -65,7 +65,7 @@ class CreateFooterForPlan extends Component{
             !this.isUsersPlan() ?
                 <div className="footer-single-plan-unauth main-sidebar">
                     <NavLink to="/plans">
-                        <button type="button" className="unauth-return-plan submitButton">Return to plans</button>
+                        <button type="button" className="unauth-return-plan btn btn-primary btn-lg btn-block">Return to plans</button>
                     </NavLink>
                 </div>
                 :
@@ -77,7 +77,7 @@ class CreateFooterForPlan extends Component{
                     </div>
                     <div className="return-to-plan">
                         <NavLink to="/plans">
-                            <button className="auth-return-plan submitButton">Return to plans</button>
+                            <button className="auth-return-plan btn btn-primary btn-lg btn-block">Return to plans</button>
                         </NavLink>
                     </div>
                     <div className="delete-plan">

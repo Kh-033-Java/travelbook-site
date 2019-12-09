@@ -70,7 +70,7 @@ class AuthorizedPlans extends Component {
 
     getArrayPlans=()=>{
         const plans = [];
-        this.state.plans.forEach(e=>plans.push(<OnePlanCreator plan = {e} setId = {this.props.setId} countryName = {this.props.countryName}/>));
+        this.state.plans.forEach(e=>plans.push(<OnePlanCreator plan = {e} setId = {this.props.setId} countryName = {this.props.countryName} key={e.id}/> ));
         return plans;
     };
 
@@ -94,7 +94,7 @@ class AuthorizedPlans extends Component {
                             </label>
                         </form>
                     </div>
-                    <div className = "all-plans container">
+                    <div className = "all-plans container-box">
                         {this.getArrayPlans()}
                     </div>
                 </div>

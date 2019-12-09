@@ -5,7 +5,7 @@ import SearchPlans from "./SearchPlans";
 class SearchMain extends Component {
     render() {
         return (
-            <div>
+            <div className="container-fluid h-100">
                 <Header/>
                 <SearchPlans/>
             </div>

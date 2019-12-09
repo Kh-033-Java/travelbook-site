@@ -5,9 +5,10 @@ import '../App.css';
 
 function ToAddFooter(props){
     return (
-  <div className ="sidebar-footer container submitButton">
+  <div className ="sidebar-footer">
       <NavLink className="nav-link header-text" to ={props.path}>
-                    {props.text}
+      <button type="button" class="btn btn-primary btn-lg btn-block">{props.text}</button>
+
                               </NavLink>
                    </div>
 

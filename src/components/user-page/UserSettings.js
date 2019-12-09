@@ -150,25 +150,27 @@ class UserSettings extends Component {
 
     render() {
         return (
-            <div className="userSettingsGeneral">
+            <div className="container-fluid h-100">
                 <Header/>
-                <div className="user-settings-general">
-                    <div className="titlePageName container">Settings</div>
-
-                    <div className="firstTittle container">
+                <div className="">
+                    <div className="titlePageName container-box row col justify-content-center">Settings</div>
+                    <div className="row no-gutters">
+                    <div className="settings-title container-box col-4">
                         My account
                     </div>
-                    <div className="secondTittle container">
+                    <div className="settings-title container-box col-4">
                         Description
                     </div>
-                    <div className="thirdTittle container">
+                    <div className="settings-title container-box col-4">
                         Profile Image
                     </div>
-                    <div className="CONTENT">
+                    </div>
+                    <div className="row  d-flex justify-content-center">
+                    <div className="CONTENT col-4">
                         <label className="label">First and Last Name</label>
-                        <div className="INNER-CONTENT1">
-                            <div>
-                                <input className="settings-inputs container-input"
+                        <div className="INNER-CONTENT1 ">
+                            <div >
+                                <input className="settings-inputs container-input "
                                        style={{'border-top': 'none', 'border-left': 'none', 'border-right': 'none'}}
                                        type="text"
                                        placeholder="Change First Name"
@@ -229,29 +231,31 @@ class UserSettings extends Component {
                                         errorMessages={['this field is required', 'Password should to be 4 or more chars']}/>
                                 </div>
                                 <div className="save-settings">
-                                    <button className="submitButton" type="submit" disabled={this.state.disabled}>
+                                    <button className=" btn btn-outline-success" type="submit" disabled={this.state.disabled}>
                                         Save settings
                                     </button>
                                 </div>
                             </div>
                         </ValidatorForm>
                     </div>
-                    <div className="SIDEBAR-1">
+                    <div className="SIDEBAR-1 col-4">
                         <div className="INNER-SIDEBAR-1">
                                     <textarea className="description-input" type="text" name="description"
                                               onChange={e => this.handleChange(e)}
                                               value={this.state.description}/>
                         </div>
                     </div>
-                    <div className="SIDEBAR-2">
+                    <div className="SIDEBAR-2 col-4">
                         <div className="INNER-SIDEBAR-2">
                             <ImageUpload/>
                         </div>
                     </div>
 
-                    <div className="FOOTER">
+                    </div>
+
+                    <div className="row justify-content-center">
                         <form onSubmit={this.deleteAccount}>
-                            <button className="deleteSubmitButton" type="submit">
+                            <button className="deleteSubmitButton btn btn-danger" type="submit">
                                 Delete account
                             </button>
                         </form>

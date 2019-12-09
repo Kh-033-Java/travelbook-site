@@ -11,18 +11,18 @@ function Plans(props) {
     return (
 
         !isAuthorized() ?
-            <aside className="rightbar whole-comp-no-footer ">
+            <aside className="rightbar aside-container whole-comp-no-footer col-12 col-lg-6">
                 <Header title="Plans" countryName={props.countryName}/>
                 <UnAuthorizedPlans countryName={props.countryName} id={props.id} setId={props.setId}/>
             </aside>
             :
-            <aside className="rightbar whole-comp ">
+            <aside className="rightbar aside-container whole-comp col-12 col-lg-6">
                 <Header title="Plans" countryName={props.countryName}/>
                 <AuthorizedPlans countryName={props.countryName} id={props.id} worldSeries={props.worldSeries}
                                  setId={props.setId}/>
                 <div className="create-plan-button  ">
                     <NavLink to="/newPlan">
-                        <button type="button" className="create-plan-button submitButton">Create plan</button>
+                        <button type="button" className="btn btn-primary btn-lg btn-block">Create plan</button>
                     </NavLink>
                 </div>
             </aside>

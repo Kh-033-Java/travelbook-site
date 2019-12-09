@@ -41,7 +41,7 @@ class Note extends Component {
     render() {
         const spinner = this.state.isLoading ? <Loading className="loading-center"/> : null;
         if (this.state.isLoading) {
-            return <aside className="whole-comp-loading">
+            return <aside className="whole-comp-loading col-12 col-lg-6">
                 <Header title={this.state.note.title} countryName={localStorage.getItem('country')}/>
                 <div className="loading-center">{spinner}</div>
             </aside>
@@ -49,12 +49,12 @@ class Note extends Component {
         else {
             return (
                 !isAuthorized() ?
-                    <aside className="rightbar whole-comp-no-footer">
+                    <aside className="rightbar aside-container whole-comp-no-footer col-12 col-lg-6">
                         <Header title={this.state.note.title} countryName={localStorage.getItem('country')}/>
                         <NoteMain note={this.state.note}/>
                     </aside>
                     : ( this.theSameLogin(this.state.note.login) ?
-                        <aside className="rightbar whole-comp">{/*check login and node owner*/}
+                        <aside className="rightbar aside-container whole-comp col-12 col-lg-6">{/*check login and node owner*/}
                             <Header title={this.state.note.title} countryName={localStorage.getItem('country')}/>
                             <NoteMain note={this.state.note}/>
                             <div className="note-footer">
@@ -62,7 +62,7 @@ class Note extends Component {
                                 <FooterBackToNotes text="back to notes" path="/notes"/>
                                 <FooterWithDelete text="delete" path="/deleteNote" noteId={this.state.note.id}/>
                             </div>
-                        </aside> : <aside className="rightbar whole-comp-no-footer ">
+                        </aside> : <aside className="rightbar aside-container whole-comp-no-footer col-12 col-lg-6">
                             <Header title={this.state.note.title} countryName={localStorage.getItem('country')}/>
                             <NoteMain note={this.state.note}/>
                             <div className="note-footer-another-user">

@@ -13,9 +13,9 @@ class RatingWrapper extends Component {
         const users = [];
         console.log(this.props.users);
         const tempList = this.props.users;
-        for(var i = 0;i<tempList.length; i++){
-            var id = i;
-            users.push(<UserInRating user={tempList[i]} id={++id}/>)
+        for(let i = 0; i<tempList.length; i++){
+            let id = i;
+            users.push(<UserInRating user={tempList[i]} id={++id} key={id}/>)
         }
         return users
     }

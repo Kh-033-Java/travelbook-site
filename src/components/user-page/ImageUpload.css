@@ -22,25 +22,14 @@
 
 .submitButton {
     padding: 12px;
-    margin-left: 15px;
-    background: white;
-    border: 4px solid lightgray;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 10pt;
-    cursor: pointer;
-    background: #efefef;
+
 }
 
 .deleteSubmitButton{
     padding: 12px;
     margin-left: 7%;
-    border: 4px solid lightgray;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 10pt;
-    cursor: pointer;
-    background: lightcoral;
+    
+
 }
 
 .centerText {
