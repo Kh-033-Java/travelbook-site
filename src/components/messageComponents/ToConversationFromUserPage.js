@@ -30,7 +30,7 @@ class ToConversationFromUserPage extends Component {
         return (
                 <Link className="link-to-chat" to="/conversation"
                       onClick={this.setIntercolutor}>
-                    To chat
+                    <button className='btn btn-outline-primary'>Send message</button>
                 </Link>
         )
     }

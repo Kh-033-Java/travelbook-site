@@ -6,8 +6,8 @@ import "./Messages.css"
 
 function FooterBackToMessages(props){
     return (
-        <div className ="conversation-back-to-all container">
-            <NavLink className="nav-link header-text" to={props.path}>
+        <div className ="conversation-back-to-all">
+            <NavLink className="btn btn-primary" to={props.path}>
                 {props.text}
             </NavLink>
         </div>
