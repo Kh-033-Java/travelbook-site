@@ -66,7 +66,7 @@ class ImageUpload extends Component{
         }
         let DeleteButton;
         if (localStorage.getItem("avatar")){
-            DeleteButton = <button className="deleteSubmitButton" type="delete" onClick={(e) =>this.handleSubmitDeletePhoto(e)}>Delete photo
+            DeleteButton = <button className="deleteSubmitButton btn btn-outline-danger" type="delete" onClick={(e) =>this.handleSubmitDeletePhoto(e)}>Delete photo
             </button>;
         }
 
@@ -75,12 +75,13 @@ class ImageUpload extends Component{
                 <div className="imgPreview">
                     {$imagePreview}
                 </div>
-                <form onSubmit={(e)=>this.handleSubmit(e)}>
-                    <input className="fileInput"
+                <form className="custom-file" style={{marginTop: 20+'px', width: 65+'%'}} onSubmit={(e)=>this.handleSubmit(e)}>
+                    <input className="custom-file-input"
                            type="file"
                            onChange={(e)=>this.handleImageChange(e)}/>
+                           <label class="custom-file-label" for="customFileLang">Choose img</label>
                            <br/>
-                    <button className="submitButton"
+                    <button className="submitButton btn btn-outline-primary"
                             type="submit"
                             onClick={(e)=>this.handleSubmit(e)}>Upload Image</button>
                     {DeleteButton}

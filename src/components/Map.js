@@ -68,6 +68,10 @@ class Map extends Component {
         properLink: '/generalInfo'
       })
 
+      polygonTemplate.events.on("startchanged", (e)=>{
+        console.log(e);
+      })
+
       e.target.series.chart.zoomToMapObject(e.target);
       if (this.state.renderGI !== undefined) {
         this.state.renderGI();

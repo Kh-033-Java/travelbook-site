@@ -131,7 +131,7 @@ class EditPlan extends Component {
             return <Redirect to="travelbook"/>
         }
         return (
-            <aside className="rightbar whole-comp col-12 col-lg-6">
+            <aside className="rightbar aside-container whole-comp col-12 col-lg-6">
                 <Header title="Edit Plan" countryName={this.props.countryName}/>
                 <form name="editPlan" id="editPlan" className="main-sidebar  main-comp-newplan"
                       onSubmit={this.sendEditedPlan}>

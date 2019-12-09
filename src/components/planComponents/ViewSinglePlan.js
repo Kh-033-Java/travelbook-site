@@ -115,7 +115,7 @@ class ViewSinglePlan extends Component {
                     </div>
         }
         return (
-            <aside className="rightbar whole-comp col-12 col-lg-6">
+            <aside className="rightbar aside-container whole-comp col-12 col-lg-6">
                 <Header title = "View Plan" countryName={this.props.countryName}/>
             <div className='main-comp-plan main-sidebar'>
                 <div className="plan-owner plan-owner-gen main-sidebar">

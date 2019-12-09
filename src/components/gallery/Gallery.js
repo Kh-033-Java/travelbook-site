@@ -46,7 +46,7 @@ class Gallery extends Component {
                 </button>
 
         } else {
-            return <aside className="photo-container">
+            return <aside className="aside-container">
                 <div className="header-text">
                     General Photos
                     <GeneralPhotos name={name} onClick={this.changeToUserPhoto}/>
@@ -54,7 +54,7 @@ class Gallery extends Component {
             </aside>;
         }
         return (
-            <aside className="photo-container col-12 col-lg-6">
+            <aside className="aside-container col-12 col-lg-6">
                 {button1}
                 {button2}
                 {

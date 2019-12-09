@@ -11,12 +11,12 @@ function Plans(props) {
     return (
 
         !isAuthorized() ?
-            <aside className="rightbar whole-comp-no-footer col-12 col-lg-6">
+            <aside className="rightbar aside-container whole-comp-no-footer col-12 col-lg-6">
                 <Header title="Plans" countryName={props.countryName}/>
                 <UnAuthorizedPlans countryName={props.countryName} id={props.id} setId={props.setId}/>
             </aside>
             :
-            <aside className="rightbar whole-comp col-12 col-lg-6">
+            <aside className="rightbar aside-container whole-comp col-12 col-lg-6">
                 <Header title="Plans" countryName={props.countryName}/>
                 <AuthorizedPlans countryName={props.countryName} id={props.id} worldSeries={props.worldSeries}
                                  setId={props.setId}/>

@@ -15,7 +15,7 @@
     border-right: grey;
     border-left: 2px solid silver;
     border-top: grey;
-    border-bottom: white;
+    border-bottom: 2px solid silver;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.91fr 9fr;
