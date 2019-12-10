@@ -24,6 +24,7 @@ class GeneralInfo extends Component {
         this.openFunction = this.openFunction.bind(this);
         props.renderFunc(this.openFunction);
         props.setGeneralInfo(this);
+        console.log(props);
     }
 
     checkInfoValid(generalInfo) {
@@ -85,10 +86,10 @@ class GeneralInfo extends Component {
                     <div className="capital-of-country ">
                         Capital: {this.state.description.capital}
                     </div>
-                    <div className="weather">Weather in capital: {this.state.weather.temperature}
-                    </div>
-                    <img className="weather-img"
-                         src={`http://openweathermap.org/img/wn/${this.state.weather.description}@2x.png`}/>
+                    {/*<div className="weather">Weather in capital: {this.state.weather.temperature}*/}
+                    {/*</div>*/}
+                    {/*<img className="weather-img"*/}
+                    {/*     src={`http://openweathermap.org/img/wn/${this.state.weather.description}@2x.png`}/>*/}
                     <div
                         className="description-part-render">Description: {this.state.description.commonInformation}</div>
                     <div className="general-photos">

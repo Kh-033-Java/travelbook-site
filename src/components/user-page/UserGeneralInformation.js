@@ -118,7 +118,9 @@ class UserGeneralInformation extends Component {
         let data = new FormData();
         let request = new XMLHttpRequest();
         let login = this.state.login;
-        request.open('PUT', `http://localhost:8080/users/addfollow/${this.state.login}?user=${localStorage.getItem('login')}`);
+        const followingLogin = getLogin();
+
+        request.open('PUT', `http://localhost:8080/users/addfollow/${this.state.login}?user=${followingLogin}`);
         request.setRequestHeader("Authorization", token);
         request.send(data);
         request.onload = function () {
