@@ -63,7 +63,7 @@ class OneFollower extends Component {
                 </div>
                 {!this.state.isFollowing ?
                 <div className="following">
-                    <button className="follow-button" onClick={this.addToFollowings}>Follow</button>
+                    <button className="btn btn-outline-primary" onClick={this.addToFollowings}>Follow</button>
                 </div>
                     : <React.Fragment/>}
             </div>

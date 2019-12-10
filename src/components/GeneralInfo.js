@@ -24,6 +24,7 @@ class GeneralInfo extends Component {
         this.openFunction = this.openFunction.bind(this);
         props.renderFunc(this.openFunction);
         props.setGeneralInfo(this);
+        console.log(props);
     }
 
     checkInfoValid(generalInfo) {

@@ -93,7 +93,8 @@ class Map extends Component {
   changeSelectedCountry(name, id) {
     localStorage.setItem("country", name);
     localStorage.setItem("id", id);
-    this.state.generalInfo.setState(() => ({ country: name }));
+    console.log(this.state.generalInfo);
+    //this.state.generalInfo.setState(() => ({ country: name }));
     console.log(this.state.generalInfo);
   }
 

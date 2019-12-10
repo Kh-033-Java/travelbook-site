@@ -74,6 +74,7 @@ class Main extends Component {
     }
 
     setGeneralInfo(generalInfo){
+        console.log(generalInfo);
         this.setState({generalInfo: generalInfo})
     }
 
@@ -108,7 +109,7 @@ class Main extends Component {
             <div className='container-fluid h-100'>
                 <Head setMap={this.state.mapComponent}/>
                 <div className='row main-content'>
-                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI} generalInfo={this.state.generalInfo}countryName={this.state.nameCountry} id={this.state.idCountry}
+                <Map clicker={this.regionClicker} getMap={this.setMapComponent} renderGI={this.state.renderGI} generalInfo={this.state.generalInfo} countryName={this.state.nameCountry} id={this.state.idCountry}
                                             worldSeries={this.state.mapComponent}/>
 
                 <Route path="/travelbook">
