@@ -1,0 +1,27 @@
+.login-input {
+    text-align: center;
+}
+
+.password-input {
+    padding-right: 46px;
+    text-align: center;
+}
+
+input[type=password], input[type=text], input[type=date]{
+    border: 1px #b6e7f9 solid;
+    padding: 5px 10px;
+}
+
+.auth {
+    right: 50px;
+}
+
+.button-submit {
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #65b0ed;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+}

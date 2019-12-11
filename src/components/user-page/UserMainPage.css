@@ -1,0 +1,119 @@
+.users-page-container{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-right: grey;
+    border-left: 2px solid silver;
+    border-top: grey;
+    border-bottom: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.1fr 1.5fr 1fr 0.2fr;
+}
+
+.first{
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    width: 100%;
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
+}
+
+.first-inner{
+    font-size: 200%;
+}
+
+.second{
+    border-right: none;
+    border-top: none;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.second-inner{
+    padding-left: 20px;
+    font-size: 30px;
+}
+
+.third{
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    grid-column: 1;
+    grid-row: 2;
+    overflow: hidden;
+}
+
+.third-inner{
+    font-size: 200%;
+}
+
+.fourth{
+    border-right: none;
+    border-top: none;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.fourth-inner-firstName{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 30%;
+    font-size: 200%;
+}
+
+.fourth-inner-secondName{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 20%;
+    font-size: 200%;
+}
+
+.fifth{
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-bottom: 6px silver;
+    grid-column: 1/2;
+    grid-row: 3;
+
+}
+
+.fifth-inner{
+    font-size: 30px;
+}
+
+.description-inner{
+    padding-top: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    overflow: hidden;
+}
+
+.avatar-inner{
+    width:100% ;
+}
+
+.following-in-general {
+    grid-row: 4;
+    grid-column: 2;
+}
+
+.follow-button-in-general {
+    padding: 12px;
+    margin-left: 7%;
+    border: 4px solid lightgray;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 10pt;
+    cursor: pointer;
+    background: lightseagreen;
+    text-align: center;
+}

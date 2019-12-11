@@ -1,0 +1,150 @@
+.userSettingsGeneral {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.user-settings-general {
+    font-size: 20px;
+    display: grid;
+    grid-template-rows: 12% 10% 65% 10%;
+    grid-template-columns: 40% 20% 40%;
+}
+
+.titlePageName {
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-bottom: none;
+    margin: 2% 0 1% 0;
+    text-align: center;
+    font-size: 300%;
+}
+
+
+.settings-title{
+    border-top:none;
+    border-right:none;
+    text-align: center;
+    font-size: 200%;
+    margin: 1% 0 1% 0;
+}
+
+
+.CONTENT {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.INNER-CONTENT1 {
+    margin-top: 5%;
+    margin-left: 25%;
+    position: relative;
+    font-size: 40px;
+}
+
+.INNER-CONTENT2 {
+    margin-left: 25%;
+    position: relative;
+    font-size: 40px;
+}
+
+.SIDEBAR-1 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+
+.SIDEBAR-2 {
+    align-items: center;
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.INNER-SIDEBAR-2 {
+    padding-left: 25%;
+}
+
+.description-input {
+    width: 100%;
+    height: 250px;
+    font-size: 20px;
+    box-shadow: 0 0 3px #000000;
+    font-weight: bold;
+    white-space: normal;
+    margin-top: 25px;
+}
+
+.save-settings {
+    transform: translate(20%, 5%);
+}
+
+
+
+.delete-account {
+}
+
+.label{
+    position:relative;
+    display:inline-block;
+    font-size: 30px;
+}
+
+
+
+.label1{
+    font-size: 30px;
+    margin-left: 40%;
+}
+
+
+.settings-inputs {
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    width: 310px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.settings-inputs:focus {
+    outline: none;
+}
+
+.settings-inputs:focus ~ label, input:valid ~ label {
+    top: -15px;
+    font-size: 14px;
+    color: #5264AE;
+}
+
+.inner-content-and-errors {
+    /*font-size: 80%;*/
+}
+
+.bar {
+    position: relative;
+    display: block;
+    width: 310px;
+}
+
+.bar:before, .bar:after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+    left: 50%;
+}
+.bar:after {
+    right: 50%;
+}
+
+
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+    width: 45%;
+}

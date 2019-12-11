@@ -1,0 +1,40 @@
+.btn-margin-first {
+    background: silver;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: grey;
+    font-size: 200%;
+    width: 50%;
+    height: 7%;
+    border-left: silver;
+    border-top: white;
+    border-bottom: white;
+    background: silver;
+}
+
+.btn-margin-first:active{
+    background: grey;
+    transition: background 0s;
+}
+
+.btn-margin-second{
+    background: silver;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: grey;
+    font-size: 200%;
+    width: 50%;
+    height: 7%;
+    border: none;
+}
+
+.btn-margin-second:active{
+    background: grey;
+    transition: background 0s;
+}
+
+.photo-container {
+    padding: 0;
+    border-right: silver;
+    border-left: 2px solid silver;
+    border-top: silver;
+    border-bottom: white;
+}
